@@ -1,0 +1,29 @@
+{
+  "name": "studio-video-ia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Studio de vidéos animées verticales pour DevsTeach et Astuces",
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "render:style-tests": "tsx scripts/render-style-tests.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.537",
+    "@remotion/captions": "4.0.537",
+    "@remotion/cli": "4.0.537",
+    "@remotion/google-fonts": "4.0.537",
+    "@remotion/media-utils": "4.0.537",
+    "@remotion/renderer": "4.0.537",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.537"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "@types/react": "19.1.12",
+    "tsx": "4.20.5",
+    "typescript": "5.9.3"
+  }
+}
