@@ -29,10 +29,17 @@
 ## Avatar Astuces
 - Personnage original : jeune adulte en 2D plate, silhouette simple, grande tête, lunettes rondes noires, cheveux bouclés brun foncé, haut blanc à manches longues, pantalon bleu #2F5FA7, chaussures noires. Peau #C68A5E, contour noir #141414 de 6 px. Ni logo ni marque.
 - Composant : `src/components/Avatar.tsx`, dessin SVG sans image externe.
-- Poses (`pose`) : « neutre » (bras le long du corps), « explique » (main levée), « montre » (bras tendu vers le centre de l'image, index pointé), « surpris » (mains levées, yeux ronds, bouche en O), « reflechit » (main au menton, regard en l'air), « content » (mains sur les hanches, yeux plissés, grand sourire).
+- Poses (`pose`) : « neutre » (bras le long du corps), « explique » (main levée), « montre » (bras tendu vers le centre de l'image, index pointé), « surpris » (mains levées, yeux ronds, bouche en O), « choque » (mains sur les joues, yeux très ouverts, bouche grande ouverte), « reflechit » (main au menton, regard en l'air), « rit » (yeux plissés, grand rire, petits sursauts, mains sur le ventre), « content » (mains sur les hanches, yeux plissés, grand sourire).
+- Dans une vidéo, la pose suit l'émotion indiquée entre crochets dans le script (`src/lib/script.ts`).
 - Passage d'une pose à l'autre : ressort doux (props `previousPose` et `poseFrom`). Respiration lente et clignement des yeux toutes les 3,5 s environ.
 - Parole (`speaking` + `audioSrc`) : la bouche s'ouvre selon le volume de la voix ; sinon elle reste fermée.
 - Placement (`side`) : « droite » par défaut, en bas à droite ; « gauche » le place en bas à gauche, retourné pour regarder vers le centre.
   - Hauteur 560 px, largeur 373 px.
   - Toujours dans la zone sûre : 130 px du bord droit (80 px du bord gauche avec `side="gauche"`).
   - Bas de l'avatar à 560 px du bas de l'image : 380 px de zone basse + 180 px réservés aux sous-titres. Il ne recouvre jamais les sous-titres.
+
+## Humour
+- Une blague toutes les 8 à 10 s au plus, jamais davantage.
+- Toujours au service de l'explication : la blague illustre l'idée en cours, elle ne part pas ailleurs.
+- Jamais d'humour contre les victimes d'arnaques.
+- La clarté passe avant la blague : si elle gêne la compréhension, on la coupe.

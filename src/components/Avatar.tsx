@@ -6,7 +6,7 @@ import {AVATAR_LAYOUT, SOFT_SPRING} from '../theme';
 // Avatar original de la chaîne Astuces : jeune adulte en 2D plate,
 // grande tête, lunettes rondes, cheveux bouclés, haut blanc, pantalon bleu.
 
-export type AvatarPose = 'neutre' | 'explique' | 'montre' | 'surpris' | 'reflechit' | 'content';
+export type AvatarPose = 'neutre' | 'explique' | 'montre' | 'surpris' | 'choque' | 'reflechit' | 'rit' | 'content';
 export type AvatarSide = 'gauche' | 'droite';
 
 type Props = {
@@ -59,6 +59,8 @@ type PoseParams = {
 	mouthOpen: number;
 	mouthShift: number;
 	blush: number;
+	// 1 = petits sursauts du rire.
+	laugh: number;
 };
 
 const NEUTRAL: PoseParams = {
@@ -78,6 +80,7 @@ const NEUTRAL: PoseParams = {
 	mouthOpen: 0,
 	mouthShift: 0,
 	blush: 0,
+	laugh: 0,
 };
 
 const POSES: Record<AvatarPose, PoseParams> = {
@@ -111,6 +114,17 @@ const POSES: Record<AvatarPose, PoseParams> = {
 		mouthCurve: 0,
 		mouthOpen: 22,
 	},
+	choque: {
+		...NEUTRAL,
+		frontHand: {x: 124, y: 214},
+		backHand: {x: 276, y: 214},
+		bodyLift: 6,
+		browRaise: 18,
+		eyeScale: 1.5,
+		mouthWidth: 34,
+		mouthCurve: -4,
+		mouthOpen: 30,
+	},
 	reflechit: {
 		...NEUTRAL,
 		backHand: {x: 222, y: 252},
@@ -122,6 +136,19 @@ const POSES: Record<AvatarPose, PoseParams> = {
 		mouthWidth: 30,
 		mouthCurve: -2,
 		mouthShift: 10,
+	},
+	rit: {
+		...NEUTRAL,
+		frontHand: {x: 178, y: 404},
+		backHand: {x: 226, y: 404},
+		headTilt: -7,
+		browRaise: 8,
+		happyEyes: 1,
+		mouthWidth: 64,
+		mouthCurve: 18,
+		mouthOpen: 24,
+		blush: 1,
+		laugh: 1,
 	},
 	content: {
 		...NEUTRAL,
@@ -288,7 +315,8 @@ export const Avatar: React.FC<Props> = ({pose, speaking = false, audioSrc, side 
 	const blinkPhase = frame % Math.round(fps * 3.5);
 	const blink = blinkPhase < 4 ? interpolate(blinkPhase, [0, 2, 4], [0, 1, 0]) : 0;
 
-	const lift = -params.bodyLift - breath;
+	const laughBounce = Math.abs(Math.sin((frame / fps) * Math.PI * 4)) * 6 * params.laugh;
+	const lift = -params.bodyLift - breath - laughBounce;
 	const headTransform = `translate(0 ${lift * 1.2}) rotate(${params.headTilt} 200 250)`;
 	const {width, height, right, left, bottom} = AVATAR_LAYOUT;
 

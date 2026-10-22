@@ -4,11 +4,12 @@ import {bundle} from '@remotion/bundler';
 import {renderMedia, selectComposition} from '@remotion/renderer';
 import path from 'node:path';
 import {THEME_IDS} from '../src/theme';
+import {webpackOverride} from '../src/webpack-override';
 
 const audioFile = process.argv[2];
 // Chrome à utiliser à la place de celui que Remotion télécharge (facultatif).
 const browserExecutable = process.env.REMOTION_BROWSER_EXECUTABLE ?? null;
-const serveUrl = await bundle({entryPoint: path.resolve('src/index.ts')});
+const serveUrl = await bundle({entryPoint: path.resolve('src/index.ts'), webpackOverride});
 
 for (const theme of THEME_IDS) {
 	const inputProps = {theme, ...(audioFile ? {audioFile} : {})};

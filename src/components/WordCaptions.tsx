@@ -6,21 +6,63 @@ import {CAPTIONS, SAFE_ZONE, SOFT_SPRING} from '../theme';
 import {FONTS} from '../theme/fonts';
 
 type Props = {
-	words: TimedWord[];
+	words: (TimedWord & {sentence?: number})[];
 	// Regroupe les mots en « pages » qui s'affichent ensemble.
 	pageDurationMs?: number;
+	// Si défini : pages de 3 à `maxWordsPerPage` mots, sans jamais couper entre deux phrases.
+	maxWordsPerPage?: number;
 	// Cache les sous-titres à partir de ce moment (phrase finale, par exemple).
 	hideAfterMs?: number;
 };
 
+type Page = {startMs: number; tokens: {text: string; fromMs: number; toMs: number}[]};
+
+const isSentenceEnd = (word: string) => /[.!?…]["»”]?$/.test(word);
+
+// Pages de taille régulière : 7 mots → 4 + 3, 9 mots → 3 + 3 + 3.
+const pagesByWordCount = (words: Props['words'], maxWords: number): Page[] => {
+	const groups: Props['words'][] = [];
+	let current: Props['words'] = [];
+	words.forEach((w, i) => {
+		current.push(w);
+		const next = words[i + 1];
+		const sentenceChanges = next === undefined || (w.sentence !== undefined ? next.sentence !== w.sentence : isSentenceEnd(w.text));
+		if (sentenceChanges) {
+			groups.push(current);
+			current = [];
+		}
+	});
+	return groups.flatMap((group) => {
+		const count = Math.ceil(group.length / maxWords);
+		const pages: Page[] = [];
+		let from = 0;
+		for (let p = 0; p < count; p++) {
+			const size = Math.round((group.length - from) / (count - p));
+			const slice = group.slice(from, from + size);
+			from += size;
+			pages.push({
+				startMs: slice[0].startMs,
+				tokens: slice.map((w, i) => ({text: i === 0 ? w.text : ` ${w.text}`, fromMs: w.startMs, toMs: w.endMs})),
+			});
+		}
+		return pages;
+	});
+};
+
+// Une page reste affichée au plus ce temps après son dernier mot.
+const LINGER_MS = 1200;
+
 // Sous-titres mot à mot : la page courante s'affiche en bas de la zone sûre,
 // le mot prononcé passe en jaune.
-export const WordCaptions: React.FC<Props> = ({words, pageDurationMs = 1400, hideAfterMs = Infinity}) => {
+export const WordCaptions: React.FC<Props> = ({words, pageDurationMs = 1400, maxWordsPerPage, hideAfterMs = Infinity}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const nowMs = (frame / fps) * 1000;
 
-	const pages = useMemo(() => {
+	const pages: Page[] = useMemo(() => {
+		if (maxWordsPerPage) {
+			return pagesByWordCount(words, maxWordsPerPage);
+		}
 		const captions: Caption[] = words.map((w, i) => ({
 			text: i === 0 ? w.text : ` ${w.text}`,
 			startMs: w.startMs,
@@ -29,7 +71,7 @@ export const WordCaptions: React.FC<Props> = ({words, pageDurationMs = 1400, hid
 			confidence: null,
 		}));
 		return createTikTokStyleCaptions({captions, combineTokensWithinMilliseconds: pageDurationMs}).pages;
-	}, [words, pageDurationMs]);
+	}, [words, pageDurationMs, maxWordsPerPage]);
 
 	if (nowMs >= hideAfterMs) {
 		return null;
@@ -44,6 +86,9 @@ export const WordCaptions: React.FC<Props> = ({words, pageDurationMs = 1400, hid
 		return null;
 	}
 	const page = pages[index];
+	if (nowMs > page.tokens[page.tokens.length - 1].toMs + LINGER_MS) {
+		return null;
+	}
 
 	const enter = spring({
 		frame: frame - Math.round((page.startMs / 1000) * fps),
