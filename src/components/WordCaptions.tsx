@@ -88,7 +88,7 @@ export const WordCaptions: React.FC<Props> = ({words, pageDurationMs = 1400, hid
 								// Le contour est peint sous le remplissage : 2 × 6 px pour 6 px visibles.
 								WebkitTextStroke: `${CAPTIONS.strokeWidth * 2}px ${CAPTIONS.strokeColor}`,
 								paintOrder: 'stroke fill',
-								whiteSpace: 'pre',
+								whiteSpace: 'pre-wrap',
 							}}
 						>
 							{token.text}

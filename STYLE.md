@@ -25,3 +25,14 @@
 - Fond #0E1422, texte #E8EEF7, accent doré #FFC857, vert #3DDC97, violet #9B8CFF.
 - Une fenêtre d'éditeur arrondie à côté d'une illustration plate d'un objet du quotidien ; le code s'écrit ligne par ligne.
 - Usage : DevsTeach.
+
+## Avatar Astuces
+- Personnage original : jeune adulte en 2D plate, silhouette simple, grande tête, lunettes rondes noires, cheveux bouclés brun foncé, haut blanc à manches longues, pantalon bleu #2F5FA7, chaussures noires. Peau #C68A5E, contour noir #141414 de 6 px. Ni logo ni marque.
+- Composant : `src/components/Avatar.tsx`, dessin SVG sans image externe.
+- Poses (`pose`) : « neutre » (bras le long du corps), « explique » (main levée), « montre » (bras tendu vers le centre de l'image, index pointé), « surpris » (mains levées, yeux ronds, bouche en O), « reflechit » (main au menton, regard en l'air), « content » (mains sur les hanches, yeux plissés, grand sourire).
+- Passage d'une pose à l'autre : ressort doux (props `previousPose` et `poseFrom`). Respiration lente et clignement des yeux toutes les 3,5 s environ.
+- Parole (`speaking` + `audioSrc`) : la bouche s'ouvre selon le volume de la voix ; sinon elle reste fermée.
+- Placement (`side`) : « droite » par défaut, en bas à droite ; « gauche » le place en bas à gauche, retourné pour regarder vers le centre.
+  - Hauteur 560 px, largeur 373 px.
+  - Toujours dans la zone sûre : 130 px du bord droit (80 px du bord gauche avec `side="gauche"`).
+  - Bas de l'avatar à 560 px du bas de l'image : 380 px de zone basse + 180 px réservés aux sous-titres. Il ne recouvre jamais les sous-titres.

@@ -29,3 +29,15 @@ export const SOFT_SPRING = {
 	damping: 200,
 	mass: 0.8,
 } as const;
+
+// Hauteur réservée aux sous-titres en bas de la zone sûre (deux lignes).
+export const CAPTION_BAND = 180;
+
+// Avatar : dans la zone sûre, juste au-dessus des sous-titres, contre le bord droit (ou gauche).
+export const AVATAR_LAYOUT = {
+	height: 560,
+	width: Math.round((560 * 400) / 600),
+	right: SAFE_ZONE.right,
+	left: SAFE_ZONE.left,
+	bottom: SAFE_ZONE.bottom + CAPTION_BAND,
+} as const;
