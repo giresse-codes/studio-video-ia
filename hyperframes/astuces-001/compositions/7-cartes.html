@@ -1,0 +1,144 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s7-title {
+			top: 160px;
+			font-size: 96px;
+		}
+		.s7-card {
+			position: absolute;
+			left: 80px;
+			width: 870px;
+			height: 150px;
+			border-radius: 36px;
+			background: #ffffff;
+			box-shadow: 0 30px 60px rgba(60, 30, 20, 0.25);
+		}
+		.s7-num {
+			position: absolute;
+			left: 22px;
+			top: 18px;
+			width: 114px;
+			height: 114px;
+			border-radius: 57px;
+			background: #7cc8f0;
+			text-align: center;
+			font-family: Poppins;
+			font-weight: 800;
+			font-size: 84px;
+			line-height: 120px;
+			color: #1a1a1a;
+		}
+		.s7-text {
+			position: absolute;
+			left: 162px;
+			top: 38px;
+			font-family: Inter;
+			font-weight: 800;
+			font-size: 60px;
+			color: #1a1a1a;
+		}
+		.s7-icon {
+			position: absolute;
+			right: 24px;
+			top: 15px;
+			width: 120px;
+			height: 120px;
+			overflow: visible;
+		}
+	</style>
+	<div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div class="stage" id="s7-stage">
+			<div class="cam">
+				<!-- Fond : tableau en liège, punaises, papiers. -->
+				<div class="bg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<rect x="40" y="130" width="1000" height="1020" rx="40" fill="#C9986F" />
+						<rect x="60" y="150" width="960" height="980" rx="30" fill="#D9AE85" />
+						<g opacity="0.55">
+							<rect x="700" y="880" width="220" height="160" rx="10" fill="#FFFFFF" transform="rotate(6 810 960)" />
+							<rect x="120" y="900" width="200" height="150" rx="10" fill="#EFE6F7" transform="rotate(-5 220 975)" />
+						</g>
+						<circle cx="810" cy="885" r="14" fill="#E5383B" />
+						<circle cx="220" cy="905" r="14" fill="#7CC8F0" />
+					</svg>
+				</div>
+				<!-- Objets : titre et trois cartes. -->
+				<div class="mid">
+					<div id="s7-title" class="title"><span>3</span> <span>gestes</span></div>
+					<div id="s7-c1" class="s7-card" style="top: 300px">
+						<div class="s7-num">1</div>
+						<div class="s7-text">Surface dure</div>
+						<svg class="s7-icon" viewBox="0 0 120 120">
+							<rect x="10" y="80" width="100" height="14" rx="5" fill="#A9826B" />
+							<rect x="35" y="64" width="50" height="14" rx="5" fill="#BFC5CC" />
+							<path class="s7-i1" d="M 40 52 q 8 -10 0 -20 M 60 52 q 8 -10 0 -20 M 80 52 q 8 -10 0 -20" stroke="#7CC8F0" stroke-width="7" stroke-linecap="round" fill="none" />
+						</svg>
+					</div>
+					<div id="s7-c2" class="s7-card" style="top: 470px">
+						<div class="s7-num">2</div>
+						<div class="s7-text">Sans coque</div>
+						<svg class="s7-icon" viewBox="0 0 120 120">
+							<rect x="38" y="16" width="44" height="88" rx="12" fill="#BFC5CC" stroke="#1A1A1A" stroke-width="4" />
+							<rect id="s7-case" x="30" y="8" width="60" height="104" rx="16" fill="none" stroke="#F08A4B" stroke-width="10" />
+						</svg>
+					</div>
+					<div id="s7-c3" class="s7-card" style="top: 640px">
+						<div class="s7-num">3</div>
+						<div class="s7-text">Sans jeu</div>
+						<svg class="s7-icon" viewBox="0 0 120 120">
+							<path d="M 20 50 Q 20 34 36 34 H 84 Q 100 34 100 50 L 106 80 Q 108 96 92 92 L 78 78 H 42 L 28 92 Q 12 96 14 80 Z" fill="#9B8CFF" />
+							<path d="M 38 52 v 16 M 30 60 h 16" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+							<circle cx="80" cy="56" r="5" fill="#FFFFFF" />
+							<circle cx="90" cy="64" r="5" fill="#FFFFFF" />
+							<path class="s7-x" d="M 14 14 L 106 106" stroke="#E5383B" stroke-width="12" stroke-linecap="round" fill="none" />
+							<path class="s7-x" d="M 106 14 L 14 106" stroke="#E5383B" stroke-width="12" stroke-linecap="round" fill="none" />
+						</svg>
+					</div>
+				</div>
+				<!-- Premier plan : punaise et coin de papier flous. -->
+				<div class="fg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<circle cx="1010" cy="160" r="60" fill="#E5383B" />
+						<path d="M -40 1080 L 200 1140 L 120 1300 L -60 1260 Z" fill="#FFFFFF" opacity="0.9" />
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const K = 6;
+			const tl = gsap.timeline({paused: true});
+			const {dur} = kit.scene(K);
+			const stage = document.getElementById('s7-stage');
+			const at = (prefix, f, nth) => kit.word(K, prefix, f, nth);
+
+			kit.enterExit(tl, stage, dur, {from: 'down'});
+			kit.parallax(tl, stage, dur, {bg: 16, mid: 30, fg: 120, zoom: 1.04});
+
+			// « trois gestes » : titre qui rebondit mot par mot.
+			tl.fromTo('#s7-title span', {opacity: 0, y: -90}, {opacity: 1, y: 0, duration: 0.5, ease: 'bounce.out', stagger: 0.15}, at('trois', 0.07) - 0.1);
+
+			// Une carte par geste, quand il est annoncé, avec son chiffre qui rebondit et son pictogramme.
+			const cards = [
+				['#s7-c1', at('une', 0.18)],
+				['#s7-c2', at('deux', 0.49)],
+				['#s7-c3', at('trois', 0.76, 1)],
+			];
+			cards.forEach(([card, t]) => {
+				tl.fromTo(card, {opacity: 0, x: -160, rotation: -4}, {opacity: 1, x: 0, rotation: 0, duration: 0.5, ease: 'back.out(1.8)'}, t - 0.1);
+				kit.pop(tl, `${card} .s7-num`, t + 0.1);
+			});
+			kit.cascade(tl, '.s7-i1', at('surface', 0.28), 0.1);
+			kit.loop(tl, '.s7-i1', {y: -6}, at('surface', 0.28) + 0.5, dur, 0.6);
+			tl.to('#s7-case', {x: 50, y: -20, rotation: 25, opacity: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.in(1.6)'}, at('coque', 0.58));
+			kit.draw(tl, '.s7-x', at('jeu', 0.87), 0.25, 'power2.out');
+
+			window.__timelines['s7'] = tl;
+		})();
+	</script>
+</template>

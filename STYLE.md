@@ -5,7 +5,7 @@
 - Zone sûre du texte : 80 px à gauche, 130 px à droite, 380 px en bas, 160 px en haut.
 - Polices : Poppins ExtraBold pour les titres, Inter pour le reste (via @remotion/google-fonts).
 - Sous-titres : 56 px, mot actif jaune #FFD23F, autres mots blancs, contour noir 6 px.
-- Mouvement : ressorts doux (spring), pas d'apparition sèche. Un changement visuel toutes les 2 à 4 s.
+- Mouvement : ressorts doux (spring), pas d'apparition sèche. Une nouvelle image ou un nouvel élément toutes les 1,5 à 3 s (voir « Richesse visuelle »).
 - Fin : phrase à retenir en grand pendant 3 s, puis une question pour les commentaires.
 - Mascotte : un personnage original à définir ensemble, différent de ceux des références.
 
@@ -39,7 +39,15 @@
   - Bas de l'avatar à 560 px du bas de l'image : 380 px de zone basse + 180 px réservés aux sous-titres. Il ne recouvre jamais les sous-titres.
 
 ## Humour
-- Une blague toutes les 8 à 10 s au plus, jamais davantage.
+- Une blague (dite ou gag visuel) toutes les 8 à 10 s au plus, jamais davantage.
 - Toujours au service de l'explication : la blague illustre l'idée en cours, elle ne part pas ailleurs.
 - Jamais d'humour contre les victimes d'arnaques.
 - La clarté passe avant la blague : si elle gêne la compréhension, on la coupe.
+
+## Richesse visuelle (toutes les vidéos)
+- Rythme : une nouvelle image ou un nouvel élément toutes les 1,5 à 3 s, calé sur le mot prononcé.
+- Profondeur : chaque scène a au moins 3 plans (fond, objets, premier plan légèrement flou), avec un léger mouvement de caméra ou de parallaxe (chaque plan dérive à sa propre vitesse).
+- Animations : rebond, écrasement et étirement (chutes, atterrissages, changements de pose), apparition en cascade, flèches et traits qui se dessinent.
+- Illustrations : dessinées en SVG par nos soins (objets du quotidien en personnages : pizzeria, serveur, annuaire, fichiers HTML/CSS/JS en squelette, vêtements, muscles…). Ni Lottie, ni image téléchargée sans licence claire.
+- Bruitages : pop, whoosh, ding, générés en local (ffmpeg ou synthèse), crête vers -18 dBFS, sous la voix. Chaque bruitage a une cause à l'écran (changement de scène, étiquette, carte, chiffre) ; varier les prises d'un même son.
+- Gags visuels : un toutes les 8 à 10 s au plus, au service de l'explication (voir « Humour »).

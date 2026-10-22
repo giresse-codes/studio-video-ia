@@ -1,0 +1,49 @@
+/* Styles partagés des scènes d'Astuces #1 (style « Atelier » de STYLE.md). */
+.stage,
+.cam,
+.bg,
+.mid,
+.fg {
+	position: absolute;
+	inset: 0;
+}
+.cam {
+	transform-origin: 50% 40%;
+}
+.layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: visible;
+}
+.fg {
+	filter: blur(6px);
+}
+/* Étiquette « Atelier » : fond noir, texte bleu clair, au moins 48 px. */
+.label {
+	position: absolute;
+	padding: 14px 30px;
+	border-radius: 20px;
+	background: #1a1a1a;
+	color: #8ee3ff;
+	font-family: Inter;
+	font-weight: 800;
+	font-size: 52px;
+	white-space: nowrap;
+	box-shadow: 0 30px 60px rgba(60, 30, 20, 0.25);
+}
+.title {
+	position: absolute;
+	left: 80px;
+	width: 870px;
+	text-align: center;
+	font-family: Poppins;
+	font-weight: 800;
+	color: #1a1a1a;
+	line-height: 1.05;
+}
+.title span {
+	display: inline-block;
+}

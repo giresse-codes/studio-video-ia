@@ -1,0 +1,214 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s2-l-cable {
+			left: 90px;
+			top: 1010px;
+		}
+		#s2-l-charger {
+			left: 110px;
+			top: 470px;
+		}
+		#s2-l-battery {
+			left: 560px;
+			top: 300px;
+		}
+		#s2-l-heat {
+			left: 200px;
+			top: 165px;
+			font-size: 60px;
+		}
+	</style>
+	<div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div class="stage" id="s2-stage">
+			<div class="cam" id="s2-cam">
+				<!-- Fond : planche d'atelier quadrillée et engrenages. -->
+				<div class="bg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<rect x="40" y="140" width="1000" height="1010" rx="40" fill="#F3EBE3" />
+						<g stroke="#D8C7BA" stroke-width="3">
+							<path d="M 40 240 H 1040 M 40 340 H 1040 M 40 440 H 1040 M 40 540 H 1040 M 40 640 H 1040 M 40 740 H 1040 M 40 840 H 1040 M 40 940 H 1040 M 40 1040 H 1040" />
+							<path d="M 140 140 V 1150 M 240 140 V 1150 M 340 140 V 1150 M 440 140 V 1150 M 540 140 V 1150 M 640 140 V 1150 M 740 140 V 1150 M 840 140 V 1150 M 940 140 V 1150" />
+						</g>
+						<g id="s2-gear-a" fill="#BFC5CC">
+							<circle cx="960" cy="230" r="58" />
+							<g stroke="#BFC5CC" stroke-width="26" stroke-linecap="round">
+								<line x1="960" y1="150" x2="960" y2="310" />
+								<line x1="880" y1="230" x2="1040" y2="230" />
+								<line x1="903" y1="173" x2="1017" y2="287" />
+								<line x1="1017" y1="173" x2="903" y2="287" />
+							</g>
+							<circle cx="960" cy="230" r="22" fill="#F3EBE3" />
+						</g>
+						<g id="s2-gear-b" fill="#BFC5CC">
+							<circle cx="110" cy="1090" r="44" />
+							<g stroke="#BFC5CC" stroke-width="20" stroke-linecap="round">
+								<line x1="110" y1="1030" x2="110" y2="1150" />
+								<line x1="50" y1="1090" x2="170" y2="1090" />
+							</g>
+							<circle cx="110" cy="1090" r="16" fill="#F3EBE3" />
+						</g>
+					</svg>
+				</div>
+				<!-- Objets : téléphone en coupe, batterie, chargeur, câble, flèches. -->
+				<div class="mid">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<defs>
+							<filter id="s2-soft" x="-30%" y="-30%" width="160%" height="160%">
+								<feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#3C1E14" flood-opacity="0.25" />
+							</filter>
+							<radialGradient id="s2-heat">
+								<stop offset="0" stop-color="#F08A4B" stop-opacity="0.75" />
+								<stop offset="1" stop-color="#F08A4B" stop-opacity="0" />
+							</radialGradient>
+						</defs>
+						<g id="s2-glows">
+							<circle class="s2-glow" cx="260" cy="900" r="130" fill="url(#s2-heat)" opacity="0" />
+							<circle class="s2-glow" cx="180" cy="680" r="140" fill="url(#s2-heat)" opacity="0" />
+							<circle class="s2-glow" cx="470" cy="520" r="200" fill="url(#s2-heat)" opacity="0" />
+						</g>
+						<g id="s2-phone" filter="url(#s2-soft)">
+							<rect x="310" y="260" width="320" height="600" rx="64" fill="#BFC5CC" />
+							<rect x="332" y="282" width="276" height="556" rx="48" fill="#EDE7E2" />
+							<rect x="450" y="840" width="40" height="20" rx="6" fill="#8F969E" />
+						</g>
+						<g id="s2-battery">
+							<rect x="370" y="380" width="200" height="300" rx="34" fill="#FFFFFF" stroke="#7CC8F0" stroke-width="10" />
+							<rect x="440" y="358" width="60" height="26" rx="8" fill="#7CC8F0" />
+							<rect id="s2-charge" x="382" y="392" width="176" height="276" rx="24" fill="#7CC8F0" />
+							<path d="M 470 470 v 90 M 425 515 h 90" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" />
+						</g>
+						<g id="s2-charger" filter="url(#s2-soft)">
+							<rect x="140" y="560" width="22" height="56" rx="8" fill="#8F969E" />
+							<rect x="204" y="560" width="22" height="56" rx="8" fill="#8F969E" />
+							<rect x="100" y="606" width="168" height="150" rx="34" fill="#BFC5CC" />
+							<rect x="116" y="620" width="136" height="20" rx="10" fill="#FFFFFF" opacity="0.5" />
+						</g>
+						<path id="s2-cable" d="M 184 756 C 184 960 470 990 470 860" fill="none" stroke="#1A1A1A" stroke-width="18" stroke-linecap="round" />
+						<path id="s2-current" d="M 184 756 C 184 960 470 990 470 860 L 470 700" fill="none" stroke="#F2B33D" stroke-width="12" stroke-linecap="round" opacity="0" />
+						<path id="s2-current-head" d="M 446 724 L 470 682 L 494 724 Z" fill="#F2B33D" stroke="#F2B33D" stroke-width="8" stroke-linejoin="round" opacity="0" />
+						<g id="s2-electrons" fill="#FFFFFF" stroke="#E09A1E" stroke-width="5">
+							<circle class="s2-e" r="10" cx="0" cy="0" opacity="0" />
+							<circle class="s2-e" r="10" cx="0" cy="0" opacity="0" />
+							<circle class="s2-e" r="10" cx="0" cy="0" opacity="0" />
+						</g>
+						<g stroke="#E5383B" stroke-width="20" stroke-linecap="round" fill="none">
+							<path class="s2-leak" id="s2-leak-cable" d="M 290 935 Q 250 1000 190 1030" opacity="0" />
+							<path class="s2-leak" id="s2-leak-charger" d="M 150 600 Q 110 520 60 490" opacity="0" />
+							<path class="s2-leak" id="s2-leak-battery" d="M 580 470 Q 660 430 730 380" opacity="0" />
+						</g>
+						<g fill="#E5383B">
+							<path id="s2-head-cable" d="M -26 -24 L 18 0 L -26 24 Z" transform="translate(190 1030) rotate(155)" opacity="0" />
+							<path id="s2-head-charger" d="M -26 -24 L 18 0 L -26 24 Z" transform="translate(60 490) rotate(-150)" opacity="0" />
+							<path id="s2-head-battery" d="M -26 -24 L 18 0 L -26 24 Z" transform="translate(730 380) rotate(-35)" opacity="0" />
+						</g>
+					</svg>
+					<div id="s2-l-cable" class="label">câble</div>
+					<div id="s2-l-charger" class="label">chargeur</div>
+					<div id="s2-l-battery" class="label">batterie</div>
+					<div id="s2-l-heat" class="label">chaleur perdue</div>
+				</div>
+				<!-- Premier plan : la loupe qui ouvre la coupe, un tournevis flou. -->
+				<div class="fg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<g id="s2-screwdriver" transform="rotate(-35 980 120)">
+							<rect x="900" y="40" width="200" height="56" rx="26" fill="#E5383B" />
+							<rect x="760" y="56" width="150" height="24" rx="8" fill="#BFC5CC" />
+						</g>
+					</svg>
+				</div>
+				<svg class="layer" viewBox="0 0 1080 1920" style="pointer-events: none">
+					<g id="s2-lens">
+						<circle cx="470" cy="560" r="300" fill="none" stroke="#1A1A1A" stroke-width="44" />
+						<rect x="650" y="790" width="70" height="300" rx="30" fill="#1A1A1A" transform="rotate(-40 685 940)" />
+					</g>
+				</svg>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const K = 1;
+			const tl = gsap.timeline({paused: true});
+			const {dur} = kit.scene(K);
+			const stage = document.getElementById('s2-stage');
+			const at = (prefix, f, nth) => kit.word(K, prefix, f, nth);
+
+			kit.enterExit(tl, stage, dur, {from: 'none'});
+			kit.parallax(tl, stage, dur, {bg: 24, mid: 50, fg: 140, zoom: 1.05});
+
+			// Plongée à travers la loupe : elle grossit jusqu'à sortir du cadre et révèle la coupe.
+			tl.fromTo('#s2-lens', {scale: 0.35, opacity: 1, transformOrigin: '470px 560px'}, {scale: 3.4, duration: 0.7, ease: 'power3.in'}, 0);
+			tl.to('#s2-lens', {opacity: 0, duration: 0.2}, 0.55);
+			tl.fromTo('#s2-phone, #s2-battery', {opacity: 0, scale: 0.8, transformOrigin: '470px 560px'}, {opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.8)'}, 0.25);
+			kit.drop(tl, '#s2-charger', 1.1, {height: 260});
+			tl.fromTo('#s2-cable', {opacity: 0}, {opacity: 1, duration: 0.01}, 1.3);
+			kit.draw(tl, '#s2-cable', 1.3, 0.5);
+			kit.loop(tl, '#s2-gear-a', {rotation: 40, transformOrigin: '960px 230px'}, 0, dur, 3);
+			kit.loop(tl, '#s2-gear-b', {rotation: -40, transformOrigin: '110px 1090px'}, 0, dur, 3.4);
+
+			// Le courant : flèche dorée qui se dessine, électrons qui suivent le câble.
+			const courant = at('courant', 0.2);
+			kit.draw(tl, '#s2-current', courant, 1.2);
+			tl.fromTo('#s2-current-head', {opacity: 0, scale: 0, transformOrigin: '470px 700px'}, {opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(3)'}, courant + 1.15);
+			const path = document.getElementById('s2-current');
+			const len = path.getTotalLength();
+			document.querySelectorAll('.s2-e').forEach((dot, i) => {
+				const start = courant + 0.4 + i * 0.35;
+				const travel = {p: 0};
+				const cycles = Math.max(1, Math.floor((dur - start - 0.4) / 1.2));
+				tl.fromTo(dot, {opacity: 0}, {opacity: 1, duration: 0.15}, start);
+				tl.fromTo(
+					travel,
+					{p: 0},
+					{
+						p: 1,
+						duration: 1.2,
+						ease: 'none',
+						repeat: cycles - 1,
+						onUpdate: () => {
+							const pt = path.getPointAtLength(travel.p * len);
+							dot.setAttribute('cx', pt.x);
+							dot.setAttribute('cy', pt.y);
+						},
+					},
+					start,
+				);
+			});
+
+			// La batterie se remplit sur « batterie ».
+			const full = at('batterie', 0.33) + 0.3;
+			tl.fromTo('#s2-charge', {scaleY: 0.1, transformOrigin: '50% 100%'}, {scaleY: 1, duration: 0.8, ease: 'back.out(1.6)'}, full);
+			tl.to('#s2-battery', {scaleX: 1.08, scaleY: 0.94, transformOrigin: '50% 100%', duration: 0.1, yoyo: true, repeat: 1}, full + 0.8);
+
+			// Pertes : une flèche rouge et une étiquette par partie, quand elle est nommée.
+			const parts = [
+				['cable', at('cable', 0.5)],
+				['charger', at('chargeur', 0.57)],
+				['battery', at('batterie', 0.66, 1)],
+			];
+			parts.forEach(([name, t]) => {
+				kit.draw(tl, `#s2-leak-${name}`, t, 0.35, 'power2.out');
+				tl.fromTo(`#s2-head-${name}`, {opacity: 0}, {opacity: 1, duration: 0.1}, t + 0.3);
+				kit.pop(tl, `#s2-l-${name}`, t);
+			});
+
+			// Chaleur : halos orange qui pulsent, puis l'étiquette tamponnée.
+			const perdue = at('perdue', 0.82);
+			tl.fromTo('.s2-glow', {opacity: 0, scale: 0.6, transformOrigin: '50% 50%'}, {opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out', stagger: 0.12}, perdue);
+			kit.loop(tl, '.s2-glow', {scale: 1.12}, perdue + 0.6, dur, 0.9);
+			kit.stamp(tl, '#s2-l-heat', at('chaleur', 0.91));
+
+			// Caméra : petits recadrages vers chaque partie nommée.
+			tl.to('#s2-cam', {x: 30, y: -40, duration: 0.6, ease: 'power2.inOut'}, parts[0][1] - 0.2);
+			tl.to('#s2-cam', {x: 30, y: 50, duration: 0.6, ease: 'power2.inOut'}, parts[1][1] - 0.2);
+			tl.to('#s2-cam', {x: -30, y: 40, duration: 0.6, ease: 'power2.inOut'}, parts[2][1] - 0.2);
+			tl.to('#s2-cam', {x: 0, y: 0, duration: 0.8, ease: 'power2.inOut'}, perdue);
+
+			window.__timelines['s2'] = tl;
+		})();
+	</script>
+</template>

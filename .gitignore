@@ -1,2 +1,6 @@
 out/
 node_modules/
+
+# Copie générée de la voix (scripts/hyperframes-astuces-001.ts)
+hyperframes/*/assets/audio/
+hyperframes/*/.hyperframes/

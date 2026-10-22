@@ -1,0 +1,175 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s8-banner-text {
+			position: absolute;
+			left: 140px;
+			top: 196px;
+			width: 750px;
+			text-align: center;
+			font-family: Poppins;
+			font-weight: 800;
+			font-size: 84px;
+			color: #ffffff;
+		}
+		#s8-bib {
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+	<div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+		<div class="stage" id="s8-stage">
+			<div class="cam">
+				<!-- Fond : tribune et public qui s'agite. -->
+				<div class="bg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<rect x="-100" y="380" width="1280" height="420" fill="#C9A28E" />
+						<g id="s8-crowd">
+							<g class="s8-row" fill="#8C6957">
+								<circle cx="40" cy="470" r="34" />
+								<circle cx="140" cy="460" r="34" />
+								<circle cx="240" cy="472" r="34" />
+								<circle cx="340" cy="462" r="34" />
+								<circle cx="440" cy="470" r="34" />
+								<circle cx="540" cy="460" r="34" />
+								<circle cx="640" cy="472" r="34" />
+								<circle cx="740" cy="462" r="34" />
+								<circle cx="840" cy="470" r="34" />
+								<circle cx="940" cy="460" r="34" />
+								<circle cx="1040" cy="470" r="34" />
+							</g>
+							<g class="s8-row" fill="#A9826B">
+								<circle cx="90" cy="560" r="36" />
+								<circle cx="190" cy="552" r="36" />
+								<circle cx="290" cy="562" r="36" />
+								<circle cx="390" cy="552" r="36" />
+								<circle cx="490" cy="560" r="36" />
+								<circle cx="590" cy="552" r="36" />
+								<circle cx="690" cy="562" r="36" />
+								<circle cx="790" cy="552" r="36" />
+								<circle cx="890" cy="560" r="36" />
+								<circle cx="990" cy="552" r="36" />
+							</g>
+						</g>
+						<rect x="-100" y="600" width="1280" height="200" fill="#B99A8C" />
+					</svg>
+				</div>
+				<!-- Objets : manette interdite, banderole, coureur en charge, piste. -->
+				<div class="mid">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<defs>
+							<filter id="s8-soft" x="-30%" y="-30%" width="160%" height="160%">
+								<feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#3C1E14" flood-opacity="0.25" />
+							</filter>
+						</defs>
+						<g id="s8-banner">
+							<rect x="110" y="180" width="810" height="130" rx="22" fill="#E5383B" filter="url(#s8-soft)" />
+							<rect x="110" y="120" width="16" height="70" fill="#8C6957" />
+							<rect x="904" y="120" width="16" height="70" fill="#8C6957" />
+						</g>
+						<g id="s8-track">
+							<rect class="s8-dash" x="80" y="1080" width="130" height="16" rx="8" fill="#FFFFFF" opacity="0.6" />
+							<rect class="s8-dash" x="330" y="1080" width="130" height="16" rx="8" fill="#FFFFFF" opacity="0.6" />
+							<rect class="s8-dash" x="580" y="1080" width="130" height="16" rx="8" fill="#FFFFFF" opacity="0.6" />
+							<rect class="s8-dash" x="830" y="1080" width="130" height="16" rx="8" fill="#FFFFFF" opacity="0.6" />
+						</g>
+						<g id="s8-pad">
+							<path d="M 130 930 Q 130 900 160 900 H 290 Q 320 900 320 930 L 332 990 Q 336 1020 306 1012 L 280 986 H 170 L 144 1012 Q 114 1020 118 990 Z" fill="#9B8CFF" />
+							<path d="M 170 938 v 28 M 156 952 h 28" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+							<circle cx="270" cy="944" r="9" fill="#FFFFFF" />
+							<circle cx="288" cy="962" r="9" fill="#FFFFFF" />
+							<path class="s8-x" d="M 110 880 L 340 1040" stroke="#E5383B" stroke-width="20" stroke-linecap="round" fill="none" />
+							<path class="s8-x" d="M 340 880 L 110 1040" stroke="#E5383B" stroke-width="20" stroke-linecap="round" fill="none" />
+						</g>
+						<!-- Chargeur au bord de la piste, câble qui suit le coureur. -->
+						<g transform="translate(60 980)">
+							<rect x="-50" y="-40" width="100" height="84" rx="22" fill="#BFC5CC" />
+							<rect x="-30" y="-66" width="14" height="30" rx="5" fill="#8F969E" />
+							<rect x="16" y="-66" width="14" height="30" rx="5" fill="#8F969E" />
+						</g>
+						<path id="s8-cable" d="M 60 1020 C 200 1100 300 1000 420 900" stroke="#1A1A1A" stroke-width="12" stroke-linecap="round" fill="none" />
+						<g id="s8-runner">
+							<g id="s8-leg-a"><line x1="390" y1="880" x2="390" y2="1040" stroke="#1A1A1A" stroke-width="18" stroke-linecap="round" /></g>
+							<g id="s8-leg-b"><line x1="450" y1="880" x2="450" y2="1040" stroke="#1A1A1A" stroke-width="18" stroke-linecap="round" /></g>
+							<g id="s8-arm-a"><line x1="335" y1="700" x2="270" y2="780" stroke="#1A1A1A" stroke-width="16" stroke-linecap="round" /></g>
+							<g id="s8-arm-b">
+								<line x1="505" y1="700" x2="575" y2="640" stroke="#1A1A1A" stroke-width="16" stroke-linecap="round" />
+								<g id="s8-sandwich" transform="translate(590 620)">
+									<path d="M -50 0 L 50 0 L 0 -60 Z" fill="#E9C38B" stroke="#C99A5B" stroke-width="6" stroke-linejoin="round" />
+									<path d="M -46 4 Q -20 18 0 6 Q 22 18 46 4" stroke="#5DBB63" stroke-width="10" fill="none" stroke-linecap="round" />
+									<path d="M -50 14 L 50 14 L 0 70 Z" fill="#E9C38B" stroke="#C99A5B" stroke-width="6" stroke-linejoin="round" />
+									<circle id="s8-bite" cx="38" cy="-6" r="0" fill="#C9A28E" />
+								</g>
+							</g>
+							<rect x="330" y="560" width="180" height="330" rx="40" fill="#BFC5CC" stroke="#141414" stroke-width="6" />
+							<rect x="346" y="576" width="148" height="298" rx="30" fill="#2B3445" />
+							<ellipse cx="390" cy="630" rx="13" ry="16" fill="#FFFFFF" />
+							<ellipse cx="450" cy="630" rx="13" ry="16" fill="#FFFFFF" />
+							<rect x="356" y="680" width="128" height="120" rx="12" fill="#FFFFFF" />
+							<circle cx="372" cy="696" r="6" fill="#1A1A1A" />
+							<circle cx="468" cy="696" r="6" fill="#1A1A1A" />
+							<text x="420" y="775" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="64" fill="#1A1A1A">42</text>
+						</g>
+					</svg>
+					<div id="s8-banner-text">MARATHON</div>
+				</div>
+				<!-- Premier plan : plots qui défilent, flous. -->
+				<div class="fg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<g id="s8-cones" fill="#F08A4B">
+							<path d="M 1100 1250 L 1170 1060 L 1240 1250 Z" />
+							<path d="M 1500 1250 L 1570 1060 L 1640 1250 Z" />
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const K = 7;
+			const tl = gsap.timeline({paused: true});
+			const {dur} = kit.scene(K);
+			const stage = document.getElementById('s8-stage');
+			const at = (prefix, f, nth) => kit.word(K, prefix, f, nth);
+
+			kit.enterExit(tl, stage, dur, {from: 'right'});
+			kit.parallax(tl, stage, dur, {bg: 30, mid: 20, fg: 60, zoom: 1.05});
+			document.querySelectorAll('.s8-row').forEach((row, i) => kit.loop(tl, row, {y: -14}, i * 0.15, dur, 0.5 + i * 0.1));
+
+			// « même pas un petit match » : la manette tombe, puis une croix rouge se dessine.
+			kit.drop(tl, '#s8-pad', 0.1, {height: 500});
+			kit.draw(tl, '.s8-x', at('match', 0.24) - 0.1, 0.3, 'power2.out');
+			tl.to('#s8-pad', {x: -380, rotation: -30, opacity: 0, transformOrigin: '50% 50%', duration: 0.45, ease: 'power3.in'}, at('on', 0.39) - 0.2);
+
+			// Le coureur entre en charge, dossard 42, sandwich à la main ; la piste défile.
+			const run = at('on', 0.39);
+			tl.fromTo('#s8-runner', {x: 700}, {x: 0, duration: 0.6, ease: 'power3.out'}, run);
+			tl.fromTo('#s8-cable', {opacity: 0}, {opacity: 1, duration: 0.2}, run + 0.3);
+			const strides = Math.max(1, Math.floor((dur - run) / 0.3));
+			tl.fromTo('#s8-leg-a', {rotation: -28, svgOrigin: '390 880'}, {rotation: 28, duration: 0.15, ease: 'sine.inOut', yoyo: true, repeat: strides * 2 - 1}, run);
+			tl.fromTo('#s8-leg-b', {rotation: 28, svgOrigin: '450 880'}, {rotation: -28, duration: 0.15, ease: 'sine.inOut', yoyo: true, repeat: strides * 2 - 1}, run);
+			tl.fromTo('#s8-arm-a', {rotation: 20, svgOrigin: '335 700'}, {rotation: -20, duration: 0.15, ease: 'sine.inOut', yoyo: true, repeat: strides * 2 - 1}, run);
+			kit.loop(tl, '#s8-runner', {y: -16}, run + 0.6, dur, 0.3);
+			tl.fromTo('.s8-dash', {x: 0}, {x: -250, duration: 0.4, ease: 'none', repeat: Math.max(0, Math.floor((dur - run) / 0.4) - 1)}, run);
+			tl.fromTo('#s8-cones', {x: 0}, {x: -1700, duration: dur - run, ease: 'none'}, run);
+
+			// Banderole « MARATHON » sur le mot.
+			const mara = at('marathon', 0.55);
+			kit.drop(tl, '#s8-banner', mara - 0.15, {height: 400});
+			kit.drop(tl, '#s8-banner-text', mara - 0.15, {height: 400});
+
+			// « manger » : il croque le sandwich (une bouchée apparaît).
+			const bite = at('manger', 0.82);
+			tl.to('#s8-arm-b', {rotation: -35, svgOrigin: '505 700', duration: 0.2, ease: 'power2.out', yoyo: true, repeat: 1}, bite - 0.2);
+			tl.fromTo('#s8-bite', {attr: {r: 0}}, {attr: {r: 26}, duration: 0.12, ease: 'power2.out'}, bite);
+			tl.to('#s8-sandwich', {scaleX: 1.15, scaleY: 0.85, transformOrigin: '50% 50%', duration: 0.08, yoyo: true, repeat: 1}, bite);
+
+			window.__timelines['s8'] = tl;
+		})();
+	</script>
+</template>

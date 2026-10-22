@@ -6,6 +6,7 @@ import {Avatar} from '../../components/Avatar';
 import {WordCaptions} from '../../components/WordCaptions';
 import {type AlignedSentence, type AlignedWord, alignToPauses, detectPauses} from '../../lib/align';
 import {parseScript, type ScriptSentence} from '../../lib/script';
+import {assignScenes} from './scene-plan';
 import {atelierExtras, SOFT_SPRING, VIDEO} from '../../theme';
 import {SceneProvider, STAGE} from './atelier';
 import {Scene1Hook} from './scenes/Scene1Hook';
@@ -20,36 +21,7 @@ import {Scene9Question} from './scenes/Scene9Question';
 
 const AUDIO = 'audio/astuces-001.wav';
 
-// Chaque scène commence à la première phrase (après la scène précédente) contenant un de ses mots-clés.
-const SCENES: {component: React.FC; keywords: string[]}[] = [
-	{component: Scene1Hook, keywords: []},
-	{component: Scene2Coupe, keywords: ['ce qui se passe', 'courant']},
-	{component: Scene3Chargeur, keywords: ['heures sup', 'transpire']},
-	{component: Scene4Table, keywords: ['table']},
-	{component: Scene5Sauna, keywords: ['couette', 'sauna']},
-	{component: Scene6Lithium, keywords: ['lithium', 'capacite']},
-	{component: Scene7Cartes, keywords: ['trois gestes', 'surface dure']},
-	{component: Scene8Marathon, keywords: ['match', 'marathon']},
-	{component: Scene9Question, keywords: ['tu charges ou', 'commentaire']},
-];
-
-const normalize = (s: string) =>
-	s
-		.toLowerCase()
-		.normalize('NFD')
-		.replace(/[̀-ͯ]/g, '')
-		.replace(/[’]/g, "'");
-
-export const assignScenes = (sentences: ScriptSentence[]): number[] => {
-	const starts = [0];
-	for (let k = 1; k < SCENES.length; k++) {
-		const from = starts[k - 1] + 1;
-		const found = sentences.findIndex((s, i) => i >= from && SCENES[k].keywords.some((kw) => normalize(s.text).includes(kw)));
-		// Mot-clé introuvable : on avance d'une phrase, sans dépasser la fin.
-		starts.push(found === -1 ? Math.min(from, sentences.length - 1) : found);
-	}
-	return starts;
-};
+const SCENES: React.FC[] = [Scene1Hook, Scene2Coupe, Scene3Chargeur, Scene4Table, Scene5Sauna, Scene6Lithium, Scene7Cartes, Scene8Marathon, Scene9Question];
 
 export type Astuces001Props = {
 	sentences: ScriptSentence[] | null;
@@ -132,7 +104,7 @@ export const Astuces001: React.FC<Astuces001Props> = ({sentences, timings, words
 				if (nowMs < range.startMs - FADE_MS || nowMs > range.endMs + FADE_MS) {
 					return null;
 				}
-				const Scene = SCENES[k].component;
+				const Scene = SCENES[k];
 				const fade = Math.min(
 					interpolate(nowMs, [range.startMs - FADE_MS, range.startMs + FADE_MS], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}),
 					interpolate(nowMs, [range.endMs - FADE_MS, range.endMs + FADE_MS], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}),

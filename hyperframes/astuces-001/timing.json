@@ -1,0 +1,3801 @@
+{
+	"durationSec": 55.52,
+	"scenes": [
+		{
+			"start": 0,
+			"end": 8.39
+		},
+		{
+			"start": 8.39,
+			"end": 20.6
+		},
+		{
+			"start": 20.6,
+			"end": 24.41
+		},
+		{
+			"start": 24.41,
+			"end": 26.9
+		},
+		{
+			"start": 26.9,
+			"end": 32.62
+		},
+		{
+			"start": 32.62,
+			"end": 38.69
+		},
+		{
+			"start": 38.69,
+			"end": 47.89
+		},
+		{
+			"start": 47.89,
+			"end": 52.11
+		},
+		{
+			"start": 52.11,
+			"end": 55.52
+		}
+	],
+	"sentences": [
+		{
+			"text": "Tu charges ton téléphone dans ton lit ?",
+			"emotion": "faussement solennel",
+			"pose": "choque",
+			"start": 0.36,
+			"end": 1.59
+		},
+		{
+			"text": "Arrête.",
+			"emotion": "sec",
+			"pose": "choque",
+			"start": 2.19,
+			"end": 3.13
+		},
+		{
+			"text": "Ton téléphone n'est pas un chat : il n'a pas besoin de dormir sous la couette.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 3.75,
+			"end": 7.02
+		},
+		{
+			"text": "Tu sais ce qui se passe quand il charge ?",
+			"emotion": "curieux, plus bas",
+			"pose": "reflechit",
+			"start": 8.39,
+			"end": 9.6
+		},
+		{
+			"text": "Le courant ne va pas tout entier dans la batterie.",
+			"emotion": "pédagogue",
+			"pose": "explique",
+			"start": 10.78,
+			"end": 12.8
+		},
+		{
+			"text": "Une partie se perd dans le câble, dans le chargeur, et dans la batterie elle-même.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 13.48,
+			"end": 17
+		},
+		{
+			"text": "Cette partie perdue devient de la chaleur.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 17.87,
+			"end": 19.85
+		},
+		{
+			"text": "En gros, ton chargeur fait des heures sup, et il transpire.",
+			"emotion": "riant",
+			"pose": "rit",
+			"start": 20.6,
+			"end": 23.44
+		},
+		{
+			"text": "Sur une table, la chaleur s'échappe dans l'air.",
+			"emotion": "posé",
+			"pose": "explique",
+			"start": 24.41,
+			"end": 26.32
+		},
+		{
+			"text": "Sous la couette, elle reste coincée.",
+			"emotion": "taquin",
+			"pose": "content",
+			"start": 26.9,
+			"end": 28.36
+		},
+		{
+			"text": "Ton téléphone fait un sauna, sans l'avoir demandé !",
+			"emotion": "faussement choqué",
+			"pose": "choque",
+			"start": 29.25,
+			"end": 31.75
+		},
+		{
+			"text": "Et la chaleur, c'est l'ennemie des batteries au lithium : plus elles chauffent souvent, plus elles perdent de la capacité.",
+			"emotion": "sérieux",
+			"pose": "explique",
+			"start": 32.62,
+			"end": 37.68
+		},
+		{
+			"text": "Alors, trois gestes.",
+			"emotion": "énergique, il compte",
+			"pose": "explique",
+			"start": 38.69,
+			"end": 39.81
+		},
+		{
+			"text": "Une : une surface dure, à l'air libre.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 40.34,
+			"end": 42.66
+		},
+		{
+			"text": "Deux : la coque enlevée s'il chauffe.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 43.2,
+			"end": 45.16
+		},
+		{
+			"text": "Trois : pas de jeu pendant la charge.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 45.71,
+			"end": 47.24
+		},
+		{
+			"text": "Oui, même pas un petit match !",
+			"emotion": "indigné, puis rire",
+			"pose": "choque",
+			"start": 47.89,
+			"end": 49.14
+		},
+		{
+			"text": "On ne fait pas courir un marathon à quelqu'un qui est en train de manger.",
+			"emotion": "rire",
+			"pose": "rit",
+			"start": 49.54,
+			"end": 51.59
+		},
+		{
+			"text": "Et toi, tu charges où ?",
+			"emotion": "souriant, face caméra",
+			"pose": "content",
+			"start": 52.11,
+			"end": 54.16
+		},
+		{
+			"text": "Dis-le en commentaire.",
+			"emotion": null,
+			"pose": "content",
+			"start": 54.64,
+			"end": 55.2
+		}
+	],
+	"words": [
+		{
+			"text": "Tu",
+			"start": 0.36,
+			"end": 0.439,
+			"sentence": 0
+		},
+		{
+			"text": "charges",
+			"start": 0.439,
+			"end": 0.717,
+			"sentence": 0
+		},
+		{
+			"text": "ton",
+			"start": 0.717,
+			"end": 0.836,
+			"sentence": 0
+		},
+		{
+			"text": "téléphone",
+			"start": 0.836,
+			"end": 1.193,
+			"sentence": 0
+		},
+		{
+			"text": "dans",
+			"start": 1.193,
+			"end": 1.352,
+			"sentence": 0
+		},
+		{
+			"text": "ton",
+			"start": 1.352,
+			"end": 1.471,
+			"sentence": 0
+		},
+		{
+			"text": "lit ?",
+			"start": 1.471,
+			"end": 1.59,
+			"sentence": 0
+		},
+		{
+			"text": "Arrête.",
+			"start": 2.19,
+			"end": 3.13,
+			"sentence": 1
+		},
+		{
+			"text": "Ton",
+			"start": 3.75,
+			"end": 4.162,
+			"sentence": 2
+		},
+		{
+			"text": "téléphone",
+			"start": 4.162,
+			"end": 4.586,
+			"sentence": 2
+		},
+		{
+			"text": "n'est",
+			"start": 4.586,
+			"end": 4.775,
+			"sentence": 2
+		},
+		{
+			"text": "pas",
+			"start": 4.775,
+			"end": 4.917,
+			"sentence": 2
+		},
+		{
+			"text": "un",
+			"start": 4.917,
+			"end": 5.011,
+			"sentence": 2
+		},
+		{
+			"text": "chat :",
+			"start": 5.011,
+			"end": 5.2,
+			"sentence": 2
+		},
+		{
+			"text": "il",
+			"start": 5.73,
+			"end": 5.806,
+			"sentence": 2
+		},
+		{
+			"text": "n'a",
+			"start": 5.806,
+			"end": 5.882,
+			"sentence": 2
+		},
+		{
+			"text": "pas",
+			"start": 5.882,
+			"end": 5.996,
+			"sentence": 2
+		},
+		{
+			"text": "besoin",
+			"start": 5.996,
+			"end": 6.223,
+			"sentence": 2
+		},
+		{
+			"text": "de",
+			"start": 6.223,
+			"end": 6.299,
+			"sentence": 2
+		},
+		{
+			"text": "dormir",
+			"start": 6.299,
+			"end": 6.527,
+			"sentence": 2
+		},
+		{
+			"text": "sous",
+			"start": 6.527,
+			"end": 6.679,
+			"sentence": 2
+		},
+		{
+			"text": "la",
+			"start": 6.679,
+			"end": 6.754,
+			"sentence": 2
+		},
+		{
+			"text": "couette.",
+			"start": 6.754,
+			"end": 7.02,
+			"sentence": 2
+		},
+		{
+			"text": "Tu",
+			"start": 8.39,
+			"end": 8.468,
+			"sentence": 3
+		},
+		{
+			"text": "sais",
+			"start": 8.468,
+			"end": 8.624,
+			"sentence": 3
+		},
+		{
+			"text": "ce",
+			"start": 8.624,
+			"end": 8.702,
+			"sentence": 3
+		},
+		{
+			"text": "qui",
+			"start": 8.702,
+			"end": 8.819,
+			"sentence": 3
+		},
+		{
+			"text": "se",
+			"start": 8.819,
+			"end": 8.897,
+			"sentence": 3
+		},
+		{
+			"text": "passe",
+			"start": 8.897,
+			"end": 9.093,
+			"sentence": 3
+		},
+		{
+			"text": "quand",
+			"start": 9.093,
+			"end": 9.288,
+			"sentence": 3
+		},
+		{
+			"text": "il",
+			"start": 9.288,
+			"end": 9.366,
+			"sentence": 3
+		},
+		{
+			"text": "charge ?",
+			"start": 9.366,
+			"end": 9.6,
+			"sentence": 3
+		},
+		{
+			"text": "Le",
+			"start": 10.78,
+			"end": 10.881,
+			"sentence": 4
+		},
+		{
+			"text": "courant",
+			"start": 10.881,
+			"end": 11.235,
+			"sentence": 4
+		},
+		{
+			"text": "ne",
+			"start": 11.235,
+			"end": 11.336,
+			"sentence": 4
+		},
+		{
+			"text": "va",
+			"start": 11.336,
+			"end": 11.437,
+			"sentence": 4
+		},
+		{
+			"text": "pas",
+			"start": 11.437,
+			"end": 11.588,
+			"sentence": 4
+		},
+		{
+			"text": "tout",
+			"start": 11.588,
+			"end": 11.79,
+			"sentence": 4
+		},
+		{
+			"text": "entier",
+			"start": 11.79,
+			"end": 12.093,
+			"sentence": 4
+		},
+		{
+			"text": "dans",
+			"start": 12.093,
+			"end": 12.295,
+			"sentence": 4
+		},
+		{
+			"text": "la",
+			"start": 12.295,
+			"end": 12.396,
+			"sentence": 4
+		},
+		{
+			"text": "batterie.",
+			"start": 12.396,
+			"end": 12.8,
+			"sentence": 4
+		},
+		{
+			"text": "Une",
+			"start": 13.48,
+			"end": 13.624,
+			"sentence": 5
+		},
+		{
+			"text": "partie",
+			"start": 13.624,
+			"end": 13.913,
+			"sentence": 5
+		},
+		{
+			"text": "se",
+			"start": 13.913,
+			"end": 14.009,
+			"sentence": 5
+		},
+		{
+			"text": "perd",
+			"start": 14.009,
+			"end": 14.201,
+			"sentence": 5
+		},
+		{
+			"text": "dans",
+			"start": 14.201,
+			"end": 14.393,
+			"sentence": 5
+		},
+		{
+			"text": "le",
+			"start": 14.393,
+			"end": 14.49,
+			"sentence": 5
+		},
+		{
+			"text": "câble,",
+			"start": 14.49,
+			"end": 14.73,
+			"sentence": 5
+		},
+		{
+			"text": "dans",
+			"start": 15.05,
+			"end": 15.224,
+			"sentence": 5
+		},
+		{
+			"text": "le",
+			"start": 15.224,
+			"end": 15.311,
+			"sentence": 5
+		},
+		{
+			"text": "chargeur,",
+			"start": 15.311,
+			"end": 15.66,
+			"sentence": 5
+		},
+		{
+			"text": "et",
+			"start": 16.11,
+			"end": 16.184,
+			"sentence": 5
+		},
+		{
+			"text": "dans",
+			"start": 16.184,
+			"end": 16.333,
+			"sentence": 5
+		},
+		{
+			"text": "la",
+			"start": 16.333,
+			"end": 16.407,
+			"sentence": 5
+		},
+		{
+			"text": "batterie",
+			"start": 16.407,
+			"end": 16.703,
+			"sentence": 5
+		},
+		{
+			"text": "elle-même.",
+			"start": 16.703,
+			"end": 17,
+			"sentence": 5
+		},
+		{
+			"text": "Cette",
+			"start": 17.87,
+			"end": 18.101,
+			"sentence": 6
+		},
+		{
+			"text": "partie",
+			"start": 18.101,
+			"end": 18.379,
+			"sentence": 6
+		},
+		{
+			"text": "perdue",
+			"start": 18.379,
+			"end": 18.657,
+			"sentence": 6
+		},
+		{
+			"text": "devient",
+			"start": 18.657,
+			"end": 19.341,
+			"sentence": 6
+		},
+		{
+			"text": "de",
+			"start": 19.341,
+			"end": 19.433,
+			"sentence": 6
+		},
+		{
+			"text": "la",
+			"start": 19.433,
+			"end": 19.526,
+			"sentence": 6
+		},
+		{
+			"text": "chaleur.",
+			"start": 19.526,
+			"end": 19.85,
+			"sentence": 6
+		},
+		{
+			"text": "En",
+			"start": 20.6,
+			"end": 20.694,
+			"sentence": 7
+		},
+		{
+			"text": "gros,",
+			"start": 20.694,
+			"end": 20.882,
+			"sentence": 7
+		},
+		{
+			"text": "ton",
+			"start": 20.882,
+			"end": 21.023,
+			"sentence": 7
+		},
+		{
+			"text": "chargeur",
+			"start": 21.023,
+			"end": 21.768,
+			"sentence": 7
+		},
+		{
+			"text": "fait",
+			"start": 21.768,
+			"end": 21.956,
+			"sentence": 7
+		},
+		{
+			"text": "des",
+			"start": 21.956,
+			"end": 22.097,
+			"sentence": 7
+		},
+		{
+			"text": "heures",
+			"start": 22.097,
+			"end": 22.379,
+			"sentence": 7
+		},
+		{
+			"text": "sup,",
+			"start": 22.379,
+			"end": 22.52,
+			"sentence": 7
+		},
+		{
+			"text": "et",
+			"start": 22.98,
+			"end": 23.051,
+			"sentence": 7
+		},
+		{
+			"text": "il",
+			"start": 23.051,
+			"end": 23.122,
+			"sentence": 7
+		},
+		{
+			"text": "transpire.",
+			"start": 23.122,
+			"end": 23.44,
+			"sentence": 7
+		},
+		{
+			"text": "Sur",
+			"start": 24.41,
+			"end": 24.552,
+			"sentence": 8
+		},
+		{
+			"text": "une",
+			"start": 24.552,
+			"end": 24.694,
+			"sentence": 8
+		},
+		{
+			"text": "table,",
+			"start": 24.694,
+			"end": 24.93,
+			"sentence": 8
+		},
+		{
+			"text": "la",
+			"start": 25.26,
+			"end": 25.345,
+			"sentence": 8
+		},
+		{
+			"text": "chaleur",
+			"start": 25.345,
+			"end": 25.642,
+			"sentence": 8
+		},
+		{
+			"text": "s'échappe",
+			"start": 25.642,
+			"end": 25.981,
+			"sentence": 8
+		},
+		{
+			"text": "dans",
+			"start": 25.981,
+			"end": 26.15,
+			"sentence": 8
+		},
+		{
+			"text": "l'air.",
+			"start": 26.15,
+			"end": 26.32,
+			"sentence": 8
+		},
+		{
+			"text": "Sous",
+			"start": 26.9,
+			"end": 27.304,
+			"sentence": 9
+		},
+		{
+			"text": "la",
+			"start": 27.304,
+			"end": 27.381,
+			"sentence": 9
+		},
+		{
+			"text": "couette,",
+			"start": 27.381,
+			"end": 27.65,
+			"sentence": 9
+		},
+		{
+			"text": "elle",
+			"start": 27.91,
+			"end": 28.023,
+			"sentence": 9
+		},
+		{
+			"text": "reste",
+			"start": 28.023,
+			"end": 28.163,
+			"sentence": 9
+		},
+		{
+			"text": "coincée.",
+			"start": 28.163,
+			"end": 28.36,
+			"sentence": 9
+		},
+		{
+			"text": "Ton",
+			"start": 29.25,
+			"end": 29.741,
+			"sentence": 10
+		},
+		{
+			"text": "téléphone",
+			"start": 29.741,
+			"end": 30.253,
+			"sentence": 10
+		},
+		{
+			"text": "fait",
+			"start": 30.253,
+			"end": 30.481,
+			"sentence": 10
+		},
+		{
+			"text": "un",
+			"start": 30.481,
+			"end": 30.595,
+			"sentence": 10
+		},
+		{
+			"text": "sauna,",
+			"start": 30.595,
+			"end": 30.88,
+			"sentence": 10
+		},
+		{
+			"text": "sans",
+			"start": 31.19,
+			"end": 31.322,
+			"sentence": 10
+		},
+		{
+			"text": "l'avoir",
+			"start": 31.322,
+			"end": 31.519,
+			"sentence": 10
+		},
+		{
+			"text": "demandé !",
+			"start": 31.519,
+			"end": 31.75,
+			"sentence": 10
+		},
+		{
+			"text": "Et",
+			"start": 32.62,
+			"end": 32.704,
+			"sentence": 11
+		},
+		{
+			"text": "la",
+			"start": 32.704,
+			"end": 32.787,
+			"sentence": 11
+		},
+		{
+			"text": "chaleur,",
+			"start": 32.787,
+			"end": 33.08,
+			"sentence": 11
+		},
+		{
+			"text": "c'est",
+			"start": 33.56,
+			"end": 33.731,
+			"sentence": 11
+		},
+		{
+			"text": "l'ennemie",
+			"start": 33.731,
+			"end": 34.073,
+			"sentence": 11
+		},
+		{
+			"text": "des",
+			"start": 34.073,
+			"end": 34.201,
+			"sentence": 11
+		},
+		{
+			"text": "batteries",
+			"start": 34.201,
+			"end": 34.585,
+			"sentence": 11
+		},
+		{
+			"text": "au",
+			"start": 34.585,
+			"end": 34.671,
+			"sentence": 11
+		},
+		{
+			"text": "lithium :",
+			"start": 34.671,
+			"end": 34.97,
+			"sentence": 11
+		},
+		{
+			"text": "plus",
+			"start": 35.52,
+			"end": 35.624,
+			"sentence": 11
+		},
+		{
+			"text": "elles",
+			"start": 35.624,
+			"end": 35.754,
+			"sentence": 11
+		},
+		{
+			"text": "chauffent",
+			"start": 35.754,
+			"end": 35.988,
+			"sentence": 11
+		},
+		{
+			"text": "souvent,",
+			"start": 35.988,
+			"end": 36.17,
+			"sentence": 11
+		},
+		{
+			"text": "plus",
+			"start": 36.64,
+			"end": 36.789,
+			"sentence": 11
+		},
+		{
+			"text": "elles",
+			"start": 36.789,
+			"end": 36.974,
+			"sentence": 11
+		},
+		{
+			"text": "perdent",
+			"start": 36.974,
+			"end": 37.234,
+			"sentence": 11
+		},
+		{
+			"text": "de",
+			"start": 37.234,
+			"end": 37.309,
+			"sentence": 11
+		},
+		{
+			"text": "la",
+			"start": 37.309,
+			"end": 37.383,
+			"sentence": 11
+		},
+		{
+			"text": "capacité.",
+			"start": 37.383,
+			"end": 37.68,
+			"sentence": 11
+		},
+		{
+			"text": "Alors,",
+			"start": 38.69,
+			"end": 38.83,
+			"sentence": 12
+		},
+		{
+			"text": "trois",
+			"start": 39.37,
+			"end": 39.57,
+			"sentence": 12
+		},
+		{
+			"text": "gestes.",
+			"start": 39.57,
+			"end": 39.81,
+			"sentence": 12
+		},
+		{
+			"text": "Une :",
+			"start": 40.34,
+			"end": 40.5,
+			"sentence": 13
+		},
+		{
+			"text": "une",
+			"start": 41.13,
+			"end": 41.271,
+			"sentence": 13
+		},
+		{
+			"text": "surface",
+			"start": 41.271,
+			"end": 41.601,
+			"sentence": 13
+		},
+		{
+			"text": "dure,",
+			"start": 41.601,
+			"end": 41.79,
+			"sentence": 13
+		},
+		{
+			"text": "à",
+			"start": 42.19,
+			"end": 42.237,
+			"sentence": 13
+		},
+		{
+			"text": "l'air",
+			"start": 42.237,
+			"end": 42.425,
+			"sentence": 13
+		},
+		{
+			"text": "libre.",
+			"start": 42.425,
+			"end": 42.66,
+			"sentence": 13
+		},
+		{
+			"text": "Deux :",
+			"start": 43.2,
+			"end": 43.44,
+			"sentence": 14
+		},
+		{
+			"text": "la",
+			"start": 43.92,
+			"end": 44,
+			"sentence": 14
+		},
+		{
+			"text": "coque",
+			"start": 44,
+			"end": 44.2,
+			"sentence": 14
+		},
+		{
+			"text": "enlevée",
+			"start": 44.2,
+			"end": 44.48,
+			"sentence": 14
+		},
+		{
+			"text": "s'il",
+			"start": 44.48,
+			"end": 44.88,
+			"sentence": 14
+		},
+		{
+			"text": "chauffe.",
+			"start": 44.88,
+			"end": 45.16,
+			"sentence": 14
+		},
+		{
+			"text": "Trois :",
+			"start": 45.71,
+			"end": 45.95,
+			"sentence": 15
+		},
+		{
+			"text": "pas",
+			"start": 46.52,
+			"end": 46.614,
+			"sentence": 15
+		},
+		{
+			"text": "de",
+			"start": 46.614,
+			"end": 46.677,
+			"sentence": 15
+		},
+		{
+			"text": "jeu",
+			"start": 46.677,
+			"end": 46.77,
+			"sentence": 15
+		},
+		{
+			"text": "pendant",
+			"start": 46.77,
+			"end": 46.99,
+			"sentence": 15
+		},
+		{
+			"text": "la",
+			"start": 46.99,
+			"end": 47.052,
+			"sentence": 15
+		},
+		{
+			"text": "charge.",
+			"start": 47.052,
+			"end": 47.24,
+			"sentence": 15
+		},
+		{
+			"text": "Oui,",
+			"start": 47.89,
+			"end": 47.94,
+			"sentence": 16
+		},
+		{
+			"text": "même",
+			"start": 48.2,
+			"end": 48.398,
+			"sentence": 16
+		},
+		{
+			"text": "pas",
+			"start": 48.398,
+			"end": 48.546,
+			"sentence": 16
+		},
+		{
+			"text": "un",
+			"start": 48.546,
+			"end": 48.645,
+			"sentence": 16
+		},
+		{
+			"text": "petit",
+			"start": 48.645,
+			"end": 48.893,
+			"sentence": 16
+		},
+		{
+			"text": "match !",
+			"start": 48.893,
+			"end": 49.14,
+			"sentence": 16
+		},
+		{
+			"text": "On",
+			"start": 49.54,
+			"end": 49.612,
+			"sentence": 17
+		},
+		{
+			"text": "ne",
+			"start": 49.612,
+			"end": 49.684,
+			"sentence": 17
+		},
+		{
+			"text": "fait",
+			"start": 49.684,
+			"end": 49.828,
+			"sentence": 17
+		},
+		{
+			"text": "pas",
+			"start": 49.828,
+			"end": 49.936,
+			"sentence": 17
+		},
+		{
+			"text": "courir",
+			"start": 49.936,
+			"end": 50.151,
+			"sentence": 17
+		},
+		{
+			"text": "un",
+			"start": 50.151,
+			"end": 50.223,
+			"sentence": 17
+		},
+		{
+			"text": "marathon",
+			"start": 50.223,
+			"end": 50.511,
+			"sentence": 17
+		},
+		{
+			"text": "à",
+			"start": 50.511,
+			"end": 50.547,
+			"sentence": 17
+		},
+		{
+			"text": "quelqu'un",
+			"start": 50.547,
+			"end": 50.835,
+			"sentence": 17
+		},
+		{
+			"text": "qui",
+			"start": 50.835,
+			"end": 50.943,
+			"sentence": 17
+		},
+		{
+			"text": "est",
+			"start": 50.943,
+			"end": 51.051,
+			"sentence": 17
+		},
+		{
+			"text": "en",
+			"start": 51.051,
+			"end": 51.122,
+			"sentence": 17
+		},
+		{
+			"text": "train",
+			"start": 51.122,
+			"end": 51.302,
+			"sentence": 17
+		},
+		{
+			"text": "de",
+			"start": 51.302,
+			"end": 51.374,
+			"sentence": 17
+		},
+		{
+			"text": "manger.",
+			"start": 51.374,
+			"end": 51.59,
+			"sentence": 17
+		},
+		{
+			"text": "Et",
+			"start": 52.11,
+			"end": 52.134,
+			"sentence": 18
+		},
+		{
+			"text": "toi,",
+			"start": 52.134,
+			"end": 52.17,
+			"sentence": 18
+		},
+		{
+			"text": "tu",
+			"start": 53.12,
+			"end": 53.238,
+			"sentence": 18
+		},
+		{
+			"text": "charges",
+			"start": 53.238,
+			"end": 54.042,
+			"sentence": 18
+		},
+		{
+			"text": "où ?",
+			"start": 54.042,
+			"end": 54.16,
+			"sentence": 18
+		},
+		{
+			"text": "Dis-le",
+			"start": 54.64,
+			"end": 54.796,
+			"sentence": 19
+		},
+		{
+			"text": "en",
+			"start": 54.796,
+			"end": 54.858,
+			"sentence": 19
+		},
+		{
+			"text": "commentaire.",
+			"start": 54.858,
+			"end": 55.2,
+			"sentence": 19
+		}
+	],
+	"captionPages": [
+		[
+			{
+				"text": "Tu",
+				"start": 0.36,
+				"end": 0.439
+			},
+			{
+				"text": "charges",
+				"start": 0.439,
+				"end": 0.717
+			},
+			{
+				"text": "ton",
+				"start": 0.717,
+				"end": 0.836
+			},
+			{
+				"text": "téléphone",
+				"start": 0.836,
+				"end": 1.193
+			}
+		],
+		[
+			{
+				"text": "dans",
+				"start": 1.193,
+				"end": 1.352
+			},
+			{
+				"text": "ton",
+				"start": 1.352,
+				"end": 1.471
+			},
+			{
+				"text": "lit ?",
+				"start": 1.471,
+				"end": 1.59
+			}
+		],
+		[
+			{
+				"text": "Arrête.",
+				"start": 2.19,
+				"end": 3.13
+			}
+		],
+		[
+			{
+				"text": "Ton",
+				"start": 3.75,
+				"end": 4.162
+			},
+			{
+				"text": "téléphone",
+				"start": 4.162,
+				"end": 4.586
+			},
+			{
+				"text": "n'est",
+				"start": 4.586,
+				"end": 4.775
+			},
+			{
+				"text": "pas",
+				"start": 4.775,
+				"end": 4.917
+			}
+		],
+		[
+			{
+				"text": "un",
+				"start": 4.917,
+				"end": 5.011
+			},
+			{
+				"text": "chat :",
+				"start": 5.011,
+				"end": 5.2
+			},
+			{
+				"text": "il",
+				"start": 5.73,
+				"end": 5.806
+			},
+			{
+				"text": "n'a",
+				"start": 5.806,
+				"end": 5.882
+			}
+		],
+		[
+			{
+				"text": "pas",
+				"start": 5.882,
+				"end": 5.996
+			},
+			{
+				"text": "besoin",
+				"start": 5.996,
+				"end": 6.223
+			},
+			{
+				"text": "de",
+				"start": 6.223,
+				"end": 6.299
+			},
+			{
+				"text": "dormir",
+				"start": 6.299,
+				"end": 6.527
+			}
+		],
+		[
+			{
+				"text": "sous",
+				"start": 6.527,
+				"end": 6.679
+			},
+			{
+				"text": "la",
+				"start": 6.679,
+				"end": 6.754
+			},
+			{
+				"text": "couette.",
+				"start": 6.754,
+				"end": 7.02
+			}
+		],
+		[
+			{
+				"text": "Tu",
+				"start": 8.39,
+				"end": 8.468
+			},
+			{
+				"text": "sais",
+				"start": 8.468,
+				"end": 8.624
+			},
+			{
+				"text": "ce",
+				"start": 8.624,
+				"end": 8.702
+			}
+		],
+		[
+			{
+				"text": "qui",
+				"start": 8.702,
+				"end": 8.819
+			},
+			{
+				"text": "se",
+				"start": 8.819,
+				"end": 8.897
+			},
+			{
+				"text": "passe",
+				"start": 8.897,
+				"end": 9.093
+			}
+		],
+		[
+			{
+				"text": "quand",
+				"start": 9.093,
+				"end": 9.288
+			},
+			{
+				"text": "il",
+				"start": 9.288,
+				"end": 9.366
+			},
+			{
+				"text": "charge ?",
+				"start": 9.366,
+				"end": 9.6
+			}
+		],
+		[
+			{
+				"text": "Le",
+				"start": 10.78,
+				"end": 10.881
+			},
+			{
+				"text": "courant",
+				"start": 10.881,
+				"end": 11.235
+			},
+			{
+				"text": "ne",
+				"start": 11.235,
+				"end": 11.336
+			}
+		],
+		[
+			{
+				"text": "va",
+				"start": 11.336,
+				"end": 11.437
+			},
+			{
+				"text": "pas",
+				"start": 11.437,
+				"end": 11.588
+			},
+			{
+				"text": "tout",
+				"start": 11.588,
+				"end": 11.79
+			},
+			{
+				"text": "entier",
+				"start": 11.79,
+				"end": 12.093
+			}
+		],
+		[
+			{
+				"text": "dans",
+				"start": 12.093,
+				"end": 12.295
+			},
+			{
+				"text": "la",
+				"start": 12.295,
+				"end": 12.396
+			},
+			{
+				"text": "batterie.",
+				"start": 12.396,
+				"end": 12.8
+			}
+		],
+		[
+			{
+				"text": "Une",
+				"start": 13.48,
+				"end": 13.624
+			},
+			{
+				"text": "partie",
+				"start": 13.624,
+				"end": 13.913
+			},
+			{
+				"text": "se",
+				"start": 13.913,
+				"end": 14.009
+			},
+			{
+				"text": "perd",
+				"start": 14.009,
+				"end": 14.201
+			}
+		],
+		[
+			{
+				"text": "dans",
+				"start": 14.201,
+				"end": 14.393
+			},
+			{
+				"text": "le",
+				"start": 14.393,
+				"end": 14.49
+			},
+			{
+				"text": "câble,",
+				"start": 14.49,
+				"end": 14.73
+			},
+			{
+				"text": "dans",
+				"start": 15.05,
+				"end": 15.224
+			}
+		],
+		[
+			{
+				"text": "le",
+				"start": 15.224,
+				"end": 15.311
+			},
+			{
+				"text": "chargeur,",
+				"start": 15.311,
+				"end": 15.66
+			},
+			{
+				"text": "et",
+				"start": 16.11,
+				"end": 16.184
+			},
+			{
+				"text": "dans",
+				"start": 16.184,
+				"end": 16.333
+			}
+		],
+		[
+			{
+				"text": "la",
+				"start": 16.333,
+				"end": 16.407
+			},
+			{
+				"text": "batterie",
+				"start": 16.407,
+				"end": 16.703
+			},
+			{
+				"text": "elle-même.",
+				"start": 16.703,
+				"end": 17
+			}
+		],
+		[
+			{
+				"text": "Cette",
+				"start": 17.87,
+				"end": 18.101
+			},
+			{
+				"text": "partie",
+				"start": 18.101,
+				"end": 18.379
+			},
+			{
+				"text": "perdue",
+				"start": 18.379,
+				"end": 18.657
+			},
+			{
+				"text": "devient",
+				"start": 18.657,
+				"end": 19.341
+			}
+		],
+		[
+			{
+				"text": "de",
+				"start": 19.341,
+				"end": 19.433
+			},
+			{
+				"text": "la",
+				"start": 19.433,
+				"end": 19.526
+			},
+			{
+				"text": "chaleur.",
+				"start": 19.526,
+				"end": 19.85
+			}
+		],
+		[
+			{
+				"text": "En",
+				"start": 20.6,
+				"end": 20.694
+			},
+			{
+				"text": "gros,",
+				"start": 20.694,
+				"end": 20.882
+			},
+			{
+				"text": "ton",
+				"start": 20.882,
+				"end": 21.023
+			},
+			{
+				"text": "chargeur",
+				"start": 21.023,
+				"end": 21.768
+			}
+		],
+		[
+			{
+				"text": "fait",
+				"start": 21.768,
+				"end": 21.956
+			},
+			{
+				"text": "des",
+				"start": 21.956,
+				"end": 22.097
+			},
+			{
+				"text": "heures",
+				"start": 22.097,
+				"end": 22.379
+			},
+			{
+				"text": "sup,",
+				"start": 22.379,
+				"end": 22.52
+			}
+		],
+		[
+			{
+				"text": "et",
+				"start": 22.98,
+				"end": 23.051
+			},
+			{
+				"text": "il",
+				"start": 23.051,
+				"end": 23.122
+			},
+			{
+				"text": "transpire.",
+				"start": 23.122,
+				"end": 23.44
+			}
+		],
+		[
+			{
+				"text": "Sur",
+				"start": 24.41,
+				"end": 24.552
+			},
+			{
+				"text": "une",
+				"start": 24.552,
+				"end": 24.694
+			},
+			{
+				"text": "table,",
+				"start": 24.694,
+				"end": 24.93
+			},
+			{
+				"text": "la",
+				"start": 25.26,
+				"end": 25.345
+			}
+		],
+		[
+			{
+				"text": "chaleur",
+				"start": 25.345,
+				"end": 25.642
+			},
+			{
+				"text": "s'échappe",
+				"start": 25.642,
+				"end": 25.981
+			},
+			{
+				"text": "dans",
+				"start": 25.981,
+				"end": 26.15
+			},
+			{
+				"text": "l'air.",
+				"start": 26.15,
+				"end": 26.32
+			}
+		],
+		[
+			{
+				"text": "Sous",
+				"start": 26.9,
+				"end": 27.304
+			},
+			{
+				"text": "la",
+				"start": 27.304,
+				"end": 27.381
+			},
+			{
+				"text": "couette,",
+				"start": 27.381,
+				"end": 27.65
+			}
+		],
+		[
+			{
+				"text": "elle",
+				"start": 27.91,
+				"end": 28.023
+			},
+			{
+				"text": "reste",
+				"start": 28.023,
+				"end": 28.163
+			},
+			{
+				"text": "coincée.",
+				"start": 28.163,
+				"end": 28.36
+			}
+		],
+		[
+			{
+				"text": "Ton",
+				"start": 29.25,
+				"end": 29.741
+			},
+			{
+				"text": "téléphone",
+				"start": 29.741,
+				"end": 30.253
+			},
+			{
+				"text": "fait",
+				"start": 30.253,
+				"end": 30.481
+			},
+			{
+				"text": "un",
+				"start": 30.481,
+				"end": 30.595
+			}
+		],
+		[
+			{
+				"text": "sauna,",
+				"start": 30.595,
+				"end": 30.88
+			},
+			{
+				"text": "sans",
+				"start": 31.19,
+				"end": 31.322
+			},
+			{
+				"text": "l'avoir",
+				"start": 31.322,
+				"end": 31.519
+			},
+			{
+				"text": "demandé !",
+				"start": 31.519,
+				"end": 31.75
+			}
+		],
+		[
+			{
+				"text": "Et",
+				"start": 32.62,
+				"end": 32.704
+			},
+			{
+				"text": "la",
+				"start": 32.704,
+				"end": 32.787
+			},
+			{
+				"text": "chaleur,",
+				"start": 32.787,
+				"end": 33.08
+			},
+			{
+				"text": "c'est",
+				"start": 33.56,
+				"end": 33.731
+			}
+		],
+		[
+			{
+				"text": "l'ennemie",
+				"start": 33.731,
+				"end": 34.073
+			},
+			{
+				"text": "des",
+				"start": 34.073,
+				"end": 34.201
+			},
+			{
+				"text": "batteries",
+				"start": 34.201,
+				"end": 34.585
+			},
+			{
+				"text": "au",
+				"start": 34.585,
+				"end": 34.671
+			}
+		],
+		[
+			{
+				"text": "lithium :",
+				"start": 34.671,
+				"end": 34.97
+			},
+			{
+				"text": "plus",
+				"start": 35.52,
+				"end": 35.624
+			},
+			{
+				"text": "elles",
+				"start": 35.624,
+				"end": 35.754
+			},
+			{
+				"text": "chauffent",
+				"start": 35.754,
+				"end": 35.988
+			}
+		],
+		[
+			{
+				"text": "souvent,",
+				"start": 35.988,
+				"end": 36.17
+			},
+			{
+				"text": "plus",
+				"start": 36.64,
+				"end": 36.789
+			},
+			{
+				"text": "elles",
+				"start": 36.789,
+				"end": 36.974
+			},
+			{
+				"text": "perdent",
+				"start": 36.974,
+				"end": 37.234
+			}
+		],
+		[
+			{
+				"text": "de",
+				"start": 37.234,
+				"end": 37.309
+			},
+			{
+				"text": "la",
+				"start": 37.309,
+				"end": 37.383
+			},
+			{
+				"text": "capacité.",
+				"start": 37.383,
+				"end": 37.68
+			}
+		],
+		[
+			{
+				"text": "Alors,",
+				"start": 38.69,
+				"end": 38.83
+			},
+			{
+				"text": "trois",
+				"start": 39.37,
+				"end": 39.57
+			},
+			{
+				"text": "gestes.",
+				"start": 39.57,
+				"end": 39.81
+			}
+		],
+		[
+			{
+				"text": "Une :",
+				"start": 40.34,
+				"end": 40.5
+			},
+			{
+				"text": "une",
+				"start": 41.13,
+				"end": 41.271
+			},
+			{
+				"text": "surface",
+				"start": 41.271,
+				"end": 41.601
+			},
+			{
+				"text": "dure,",
+				"start": 41.601,
+				"end": 41.79
+			}
+		],
+		[
+			{
+				"text": "à",
+				"start": 42.19,
+				"end": 42.237
+			},
+			{
+				"text": "l'air",
+				"start": 42.237,
+				"end": 42.425
+			},
+			{
+				"text": "libre.",
+				"start": 42.425,
+				"end": 42.66
+			}
+		],
+		[
+			{
+				"text": "Deux :",
+				"start": 43.2,
+				"end": 43.44
+			},
+			{
+				"text": "la",
+				"start": 43.92,
+				"end": 44
+			},
+			{
+				"text": "coque",
+				"start": 44,
+				"end": 44.2
+			}
+		],
+		[
+			{
+				"text": "enlevée",
+				"start": 44.2,
+				"end": 44.48
+			},
+			{
+				"text": "s'il",
+				"start": 44.48,
+				"end": 44.88
+			},
+			{
+				"text": "chauffe.",
+				"start": 44.88,
+				"end": 45.16
+			}
+		],
+		[
+			{
+				"text": "Trois :",
+				"start": 45.71,
+				"end": 45.95
+			},
+			{
+				"text": "pas",
+				"start": 46.52,
+				"end": 46.614
+			},
+			{
+				"text": "de",
+				"start": 46.614,
+				"end": 46.677
+			},
+			{
+				"text": "jeu",
+				"start": 46.677,
+				"end": 46.77
+			}
+		],
+		[
+			{
+				"text": "pendant",
+				"start": 46.77,
+				"end": 46.99
+			},
+			{
+				"text": "la",
+				"start": 46.99,
+				"end": 47.052
+			},
+			{
+				"text": "charge.",
+				"start": 47.052,
+				"end": 47.24
+			}
+		],
+		[
+			{
+				"text": "Oui,",
+				"start": 47.89,
+				"end": 47.94
+			},
+			{
+				"text": "même",
+				"start": 48.2,
+				"end": 48.398
+			},
+			{
+				"text": "pas",
+				"start": 48.398,
+				"end": 48.546
+			}
+		],
+		[
+			{
+				"text": "un",
+				"start": 48.546,
+				"end": 48.645
+			},
+			{
+				"text": "petit",
+				"start": 48.645,
+				"end": 48.893
+			},
+			{
+				"text": "match !",
+				"start": 48.893,
+				"end": 49.14
+			}
+		],
+		[
+			{
+				"text": "On",
+				"start": 49.54,
+				"end": 49.612
+			},
+			{
+				"text": "ne",
+				"start": 49.612,
+				"end": 49.684
+			},
+			{
+				"text": "fait",
+				"start": 49.684,
+				"end": 49.828
+			},
+			{
+				"text": "pas",
+				"start": 49.828,
+				"end": 49.936
+			}
+		],
+		[
+			{
+				"text": "courir",
+				"start": 49.936,
+				"end": 50.151
+			},
+			{
+				"text": "un",
+				"start": 50.151,
+				"end": 50.223
+			},
+			{
+				"text": "marathon",
+				"start": 50.223,
+				"end": 50.511
+			},
+			{
+				"text": "à",
+				"start": 50.511,
+				"end": 50.547
+			}
+		],
+		[
+			{
+				"text": "quelqu'un",
+				"start": 50.547,
+				"end": 50.835
+			},
+			{
+				"text": "qui",
+				"start": 50.835,
+				"end": 50.943
+			},
+			{
+				"text": "est",
+				"start": 50.943,
+				"end": 51.051
+			},
+			{
+				"text": "en",
+				"start": 51.051,
+				"end": 51.122
+			}
+		],
+		[
+			{
+				"text": "train",
+				"start": 51.122,
+				"end": 51.302
+			},
+			{
+				"text": "de",
+				"start": 51.302,
+				"end": 51.374
+			},
+			{
+				"text": "manger.",
+				"start": 51.374,
+				"end": 51.59
+			}
+		],
+		[
+			{
+				"text": "Et",
+				"start": 52.11,
+				"end": 52.134
+			},
+			{
+				"text": "toi,",
+				"start": 52.134,
+				"end": 52.17
+			},
+			{
+				"text": "tu",
+				"start": 53.12,
+				"end": 53.238
+			}
+		],
+		[
+			{
+				"text": "charges",
+				"start": 53.238,
+				"end": 54.042
+			},
+			{
+				"text": "où ?",
+				"start": 54.042,
+				"end": 54.16
+			}
+		],
+		[
+			{
+				"text": "Dis-le",
+				"start": 54.64,
+				"end": 54.796
+			},
+			{
+				"text": "en",
+				"start": 54.796,
+				"end": 54.858
+			},
+			{
+				"text": "commentaire.",
+				"start": 54.858,
+				"end": 55.2
+			}
+		]
+	],
+	"mouth": [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.24,
+		0.68,
+		0.87,
+		0.96,
+		1,
+		1,
+		1,
+		0.85,
+		0.63,
+		0.4,
+		0,
+		1,
+		1,
+		0.63,
+		0.25,
+		1,
+		1,
+		1,
+		1,
+		0.69,
+		0.33,
+		0.54,
+		1,
+		1,
+		1,
+		1,
+		1,
+		1,
+		1,
+		0.34,
+		0.51,
+		1,
+		1,
+		1,
+		1,
+		0.85,
+		0.89,
+		0.58,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.14,
+		0.89,
+		1,
+		1,
+		1,
+		0.86,
+		0,
+		0.29,
+		0.37,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.93,
+		0.99,
+		0.76,
+		1,
+		0.8,
+		0,
+		0,
+		0.09,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.7,
+		0.82,
+		0.43,
+		0.06,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.31,
+		0.98,
+		1,
+		1,
+		0.49,
+		0.35,
+		1,
+		0.9,
+		1,
+		1,
+		0.81,
+		0.19,
+		0.26,
+		1,
+		1,
+		0.89,
+		0.95,
+		1,
+		1,
+		0.97,
+		0.21,
+		0,
+		0.89,
+		1,
+		0.98,
+		0.81,
+		0.99,
+		1,
+		0.9,
+		0.56,
+		0.69,
+		0.65,
+		0.56,
+		0.91,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.16,
+		0.82,
+		1,
+		1,
+		1,
+		0.91,
+		0,
+		0,
+		1,
+		1,
+		0.99,
+		0.72,
+		0.98,
+		1,
+		1,
+		0.75,
+		0.85,
+		1,
+		1,
+		1,
+		1,
+		1,
+		0.9,
+		1,
+		1,
+		0.88,
+		1,
+		1,
+		0.91,
+		0.44,
+		0.58,
+		0.46,
+		0.79,
+		0.73,
+		0.82,
+		0.53,
+		0.01,
+		0.4,
+		0.97,
+		0.67,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.29,
+		0.43,
+		0.39,
+		0.65,
+		1,
+		0.87,
+		0.88,
+		0.15,
+		0.3,
+		0.67,
+		0.74,
+		0.94,
+		0.64,
+		0,
+		0,
+		0.83,
+		0.89,
+		0.76,
+		0.54,
+		0.8,
+		0.61,
+		0,
+		0.6,
+		0.92,
+		0.66,
+		0.21,
+		0.74,
+		0.96,
+		0.61,
+		0.65,
+		0.73,
+		0.83,
+		0.88,
+		0.89,
+		0.74,
+		0.48,
+		0.39,
+		0.09,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.04,
+		0.09,
+		0.08,
+		0.05,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.97,
+		1,
+		1,
+		0.77,
+		0,
+		0.51,
+		0.43,
+		1,
+		0.94,
+		0.9,
+		1,
+		1,
+		0.92,
+		0.62,
+		0,
+		0,
+		0.91,
+		1,
+		0.83,
+		0.85,
+		1,
+		0.73,
+		0,
+		0.97,
+		0.93,
+		0.66,
+		0,
+		0,
+		0,
+		0,
+		0.5,
+		0.64,
+		0.9,
+		0.68,
+		0,
+		0,
+		0.47,
+		0.96,
+		0.79,
+		0.91,
+		0.62,
+		0,
+		0.42,
+		0.55,
+		0.46,
+		0.48,
+		1,
+		1,
+		0.55,
+		0.9,
+		0.89,
+		0.88,
+		0.87,
+		0.8,
+		0.29,
+		0.81,
+		0.61,
+		0,
+		0.16,
+		0.28,
+		0.13,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.73,
+		1,
+		0.83,
+		0.07,
+		0.48,
+		1,
+		0.58,
+		0.36,
+		0,
+		0.11,
+		0.84,
+		0.74,
+		0.8,
+		0.46,
+		0.81,
+		0.13,
+		0,
+		0.71,
+		1,
+		1,
+		0.86,
+		0.56,
+		0.75,
+		0.64,
+		0.68,
+		0.45,
+		0,
+		0,
+		0.24,
+		0.97,
+		1,
+		1,
+		1,
+		1,
+		0.78,
+		1,
+		0.97,
+		0.75,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.12,
+		0.12,
+		0.68,
+		0.71,
+		0.49,
+		0.45,
+		0.57,
+		0.68,
+		0.85,
+		0.87,
+		0.49,
+		0.41,
+		0.49,
+		0.87,
+		1,
+		1,
+		1,
+		1,
+		1,
+		0.78,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.74,
+		0.9,
+		0.92,
+		0.79,
+		0.42,
+		0.38,
+		0.98,
+		1,
+		1,
+		1,
+		0.98,
+		0.7,
+		1,
+		0.89,
+		0.29,
+		0.52,
+		0.36,
+		0.78,
+		0.97,
+		0.96,
+		0.88,
+		0.87,
+		0.99,
+		0.88,
+		0.72,
+		0.69,
+		0.54,
+		0.06,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.49,
+		0.58,
+		0.7,
+		0,
+		0,
+		0,
+		0.61,
+		1,
+		0.88,
+		0.53,
+		0.24,
+		0,
+		0.26,
+		0.47,
+		1,
+		0.79,
+		0,
+		0,
+		1,
+		1,
+		0.9,
+		0.58,
+		0.73,
+		0.76,
+		0.91,
+		0.73,
+		0.09,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.82,
+		0.94,
+		0.62,
+		0.82,
+		1,
+		0.99,
+		0.83,
+		0.8,
+		0.84,
+		0.78,
+		0.68,
+		0.53,
+		0.78,
+		0.77,
+		0.85,
+		0.76,
+		0.98,
+		0.9,
+		0.68,
+		0.72,
+		0.67,
+		0.51,
+		0.28,
+		0.17,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		1,
+		1,
+		0.7,
+		0.47,
+		0,
+		0,
+		0,
+		0,
+		0.47,
+		0.96,
+		1,
+		1,
+		0.52,
+		0.84,
+		1,
+		1,
+		1,
+		0.49,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.36,
+		0.92,
+		1,
+		0.89,
+		0.61,
+		0.68,
+		0.94,
+		1,
+		0.93,
+		0.73,
+		0.77,
+		1,
+		0.94,
+		0.21,
+		0.21,
+		0.13,
+		0.97,
+		0.7,
+		0.69,
+		0.94,
+		0.84,
+		0.74,
+		0.99,
+		0.9,
+		0.24,
+		0.71,
+		0.79,
+		0.47,
+		1,
+		0.56,
+		0,
+		0.01,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.71,
+		0.95,
+		0.75,
+		0,
+		0.41,
+		0.58,
+		0.9,
+		0.49,
+		0.29,
+		0,
+		0.14,
+		0.5,
+		0.36,
+		0.29,
+		0.1,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.01,
+		0.42,
+		0.48,
+		0.82,
+		0.28,
+		0.78,
+		0.91,
+		0.91,
+		0.61,
+		0,
+		0.68,
+		1,
+		1,
+		0.96,
+		0.8,
+		0.94,
+		0.65,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.34,
+		0.44,
+		0.39,
+		0.51,
+		0.75,
+		0.68,
+		0.64,
+		0.82,
+		0.74,
+		1,
+		1,
+		1,
+		0.3,
+		0.61,
+		0.58,
+		0.67,
+		0.93,
+		0.66,
+		0.8,
+		0.62,
+		1,
+		1,
+		0,
+		0.56,
+		0.45,
+		1,
+		1,
+		1,
+		1,
+		0.99,
+		0.69,
+		0.57,
+		0.38,
+		0.1,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.04,
+		0.62,
+		0.27,
+		0.16,
+		0.15,
+		0,
+		0,
+		0,
+		0,
+		0.27,
+		0.59,
+		0.4,
+		0,
+		0.53,
+		0.26,
+		0.68,
+		0,
+		0,
+		0.97,
+		1,
+		1,
+		0,
+		0.3,
+		0.32,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.67,
+		0.58,
+		0.81,
+		0.67,
+		0.84,
+		0.42,
+		0.28,
+		0,
+		0.59,
+		1,
+		0.97,
+		0.91,
+		0.64,
+		0.34,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.79,
+		0.91,
+		0.1,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.05,
+		0.43,
+		0.43,
+		0.48,
+		0,
+		0.07,
+		1,
+		1,
+		0.61,
+		0.94,
+		0.87,
+		0,
+		0,
+		0.72,
+		1,
+		1,
+		0.89,
+		0.69,
+		0.57,
+		0,
+		0,
+		0,
+		0.09,
+		1,
+		1,
+		0.92,
+		0.79,
+		0.78,
+		0.67,
+		0.75,
+		0.72,
+		0.8,
+		0.8,
+		1,
+		1,
+		1,
+		0.98,
+		1,
+		1,
+		0.95,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.22,
+		0.61,
+		0.59,
+		0.76,
+		1,
+		1,
+		1,
+		0.52,
+		1,
+		1,
+		0.6,
+		0.86,
+		0.9,
+		1,
+		1,
+		0.67,
+		0.76,
+		0.53,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.66,
+		1,
+		0.84,
+		0.95,
+		0.81,
+		0.74,
+		0.73,
+		0.99,
+		1,
+		1,
+		1,
+		1,
+		1,
+		0.9,
+		0.24,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.06,
+		0.11,
+		0.19,
+		0.14,
+		0.07,
+		0,
+		0,
+		0,
+		0.16,
+		0.52,
+		0.55,
+		0.88,
+		0.91,
+		0.78,
+		1,
+		1,
+		1,
+		1,
+		1,
+		1,
+		0.98,
+		0.97,
+		1,
+		1,
+		0.86,
+		0.45,
+		0,
+		0,
+		0.4,
+		0.61,
+		1,
+		0.9,
+		0.79,
+		1,
+		0.86,
+		0.23,
+		0.47,
+		0.47,
+		0.76,
+		0.97,
+		1,
+		0.79,
+		0.77,
+		0.7,
+		0.14,
+		0,
+		0.4,
+		0.8,
+		0.89,
+		0.42,
+		0.41,
+		0.14,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.12,
+		0.58,
+		1,
+		1,
+		1,
+		0.78,
+		0.63,
+		0.51,
+		0.48,
+		1,
+		0.94,
+		0.11,
+		0.35,
+		0.55,
+		0.45,
+		0.69,
+		0.87,
+		0.86,
+		1,
+		1,
+		0.61,
+		0.01,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.3,
+		0.14,
+		0.73,
+		1,
+		1,
+		0.92,
+		0.31,
+		0,
+		0,
+		0.42,
+		1,
+		1,
+		1,
+		0.75,
+		0.69,
+		0.96,
+		0.93,
+		0.97,
+		0.58,
+		0,
+		0.35,
+		0.84,
+		0,
+		0.58,
+		0.45,
+		0.3,
+		0.34,
+		0.43,
+		0.15,
+		0,
+		0,
+		0.18,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.74,
+		0.91,
+		0.96,
+		1,
+		0.74,
+		0.2,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.7,
+		0.58,
+		0.68,
+		0.96,
+		1,
+		1,
+		1,
+		0.92,
+		0.93,
+		0.96,
+		0.32,
+		0.45,
+		0.67,
+		0.52,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		1,
+		1,
+		1,
+		0.95,
+		0.71,
+		0.07,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		1,
+		1,
+		1,
+		0.88,
+		0.91,
+		0.8,
+		1,
+		0.25,
+		0.32,
+		0.37,
+		1,
+		0.87,
+		0.53,
+		0.4,
+		0.22,
+		0.55,
+		0.93,
+		0.98,
+		0.98,
+		0.47,
+		0.01,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.35,
+		1,
+		1,
+		0.96,
+		1,
+		0.79,
+		0.42,
+		0.23,
+		0.54,
+		0.75,
+		0.89,
+		0.68,
+		0.8,
+		0.89,
+		0.68,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.43,
+		0.54,
+		0.53,
+		1,
+		1,
+		1,
+		0.94,
+		0.23,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.49,
+		0.83,
+		0.81,
+		0.33,
+		0,
+		0.22,
+		0.65,
+		1,
+		1,
+		0,
+		0.39,
+		0.94,
+		1,
+		1,
+		0.94,
+		0.79,
+		0.45,
+		0.9,
+		1,
+		0.83,
+		0.2,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.12,
+		0.15,
+		0.23,
+		0.51,
+		0.37,
+		0.47,
+		0.38,
+		0.96,
+		1,
+		0.83,
+		0.24,
+		0.34,
+		0.1,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.32,
+		0.47,
+		0.31,
+		0.8,
+		1,
+		1,
+		0.81,
+		0.39,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.65,
+		1,
+		1,
+		0.8,
+		0.59,
+		0.61,
+		0.87,
+		1,
+		0.47,
+		0.45,
+		1,
+		1,
+		1,
+		1,
+		0.96,
+		0.93,
+		0.62,
+		0.49,
+		0.5,
+		0.85,
+		0.68,
+		0.41,
+		0.24,
+		0.11,
+		0.07,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.25,
+		0.75,
+		0.28,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.79,
+		0.91,
+		0.53,
+		0.28,
+		0,
+		0.74,
+		0.34,
+		0.45,
+		0,
+		0.57,
+		0.87,
+		0.82,
+		0,
+		0.09,
+		1,
+		1,
+		0.96,
+		0.87,
+		0.72,
+		0,
+		0.36,
+		0.41,
+		0.82,
+		0.92,
+		0.98,
+		0.58,
+		0,
+		0.33,
+		0.2,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.8,
+		0.83,
+		0.22,
+		0.79,
+		0.7,
+		0.19,
+		1,
+		0.89,
+		0.11,
+		0.39,
+		0.63,
+		0.91,
+		1,
+		1,
+		0.71,
+		0.58,
+		0.79,
+		0.72,
+		0.94,
+		1,
+		1,
+		0.92,
+		0.45,
+		0.84,
+		0.97,
+		0.27,
+		0,
+		0.07,
+		0.76,
+		1,
+		1,
+		1,
+		0.91,
+		0.62,
+		0.19,
+		0.58,
+		0.82,
+		0.04,
+		0.24,
+		0.76,
+		0.91,
+		0.73,
+		0.21,
+		0.73,
+		0.54,
+		0.05,
+		0.84,
+		0.69,
+		0.39,
+		0.11,
+		0.16,
+		0.81,
+		0.79,
+		0.82,
+		0.69,
+		0.66,
+		0.72,
+		0.73,
+		0.66,
+		0.31,
+		0.5,
+		0.42,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.51,
+		0.46,
+		0.21,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.4,
+		0.99,
+		0.89,
+		0.29,
+		0.32,
+		0.87,
+		1,
+		1,
+		0.79,
+		0.49,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.09,
+		0.82,
+		0.82,
+		0.6,
+		0.82,
+		1,
+		1,
+		0.82,
+		0.8,
+		0.95,
+		1,
+		0.66,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0.55,
+		0.79,
+		0.96,
+		0.93,
+		1,
+		1,
+		1,
+		0.79,
+		0,
+		0.35,
+		1,
+		0.76,
+		0.69,
+		0.57,
+		0,
+		0.76,
+		0.68,
+		0.21,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	]
+}

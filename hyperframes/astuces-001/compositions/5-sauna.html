@@ -1,0 +1,114 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s5-label {
+			left: 110px;
+			top: 190px;
+			font-size: 56px;
+		}
+	</style>
+	<div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div class="stage" id="s5-stage">
+			<div class="cam">
+				<!-- Fond : la chambre de nuit qui se réchauffe, fenêtre embuée. -->
+				<div class="bg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<rect x="-100" y="0" width="1280" height="1180" fill="#3B2F45" opacity="0.28" />
+						<rect id="s5-warm" x="-100" y="0" width="1280" height="1180" fill="#F08A4B" opacity="0" />
+						<g transform="translate(680 330)">
+							<rect width="280" height="300" rx="26" fill="#8C6957" />
+							<rect x="20" y="20" width="240" height="260" rx="14" fill="#2B3445" />
+							<rect id="s5-fog" x="20" y="20" width="240" height="260" rx="14" fill="#FFFFFF" opacity="0" />
+						</g>
+					</svg>
+				</div>
+				<!-- Objets : couette, chaleur coincée, téléphone en serviette. -->
+				<div class="mid">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<defs>
+							<filter id="s5-soft" x="-30%" y="-30%" width="160%" height="160%">
+								<feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#3C1E14" flood-opacity="0.25" />
+							</filter>
+						</defs>
+						<g id="s5-phone">
+							<rect x="250" y="560" width="220" height="380" rx="44" fill="#BFC5CC" stroke="#141414" stroke-width="6" />
+							<rect x="268" y="578" width="184" height="344" rx="32" fill="#2B3445" />
+							<ellipse cx="320" cy="690" rx="16" ry="20" fill="#FFFFFF" />
+							<ellipse cx="400" cy="690" rx="16" ry="20" fill="#FFFFFF" />
+							<ellipse cx="300" cy="740" rx="24" ry="13" fill="#F08A4B" />
+							<ellipse cx="420" cy="740" rx="24" ry="13" fill="#F08A4B" />
+							<path d="M 335 770 Q 360 790 385 770" stroke="#FFFFFF" stroke-width="8" fill="none" stroke-linecap="round" />
+							<g id="s5-towel">
+								<path d="M 236 610 Q 230 470 360 470 Q 490 470 484 610 Z" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+								<path d="M 250 560 H 470 M 246 590 H 474" stroke="#7CC8F0" stroke-width="12" />
+								<circle cx="470" cy="490" r="38" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+							</g>
+							<g transform="translate(470 660)"><path id="s5-sweat" d="M 0 -26 Q 20 0 0 18 Q -20 0 0 -26 Z" fill="#7CC8F0" /></g>
+						</g>
+						<g id="s5-duvet" filter="url(#s5-soft)">
+							<path d="M 60 1120 Q 40 860 200 830 Q 360 780 560 830 Q 660 860 650 1120 Z" fill="#EFE6F7" />
+							<path d="M 130 950 Q 360 900 600 960" stroke="#D9CBEA" stroke-width="12" fill="none" stroke-linecap="round" />
+						</g>
+						<!-- Chaleur coincée : les vagues rebondissent sous la couette. -->
+						<g stroke="#F08A4B" stroke-width="14" stroke-linecap="round" fill="none">
+							<path class="s5-trap" d="M 170 1060 q 25 -26 50 0 t 50 0 t 50 0" />
+							<path class="s5-trap" d="M 360 1070 q 25 -26 50 0 t 50 0 t 50 0" />
+							<path class="s5-trap" d="M 260 1000 q 25 -26 50 0 t 50 0 t 50 0" />
+						</g>
+					</svg>
+					<div id="s5-label" class="label">sauna (non demandé)</div>
+				</div>
+				<!-- Premier plan : nuages de vapeur flous. -->
+				<div class="fg">
+					<svg class="layer" viewBox="0 0 1080 1920">
+						<g fill="#FFFFFF" opacity="0.85">
+							<circle class="s5-steam" cx="120" cy="800" r="70" />
+							<circle class="s5-steam" cx="330" cy="760" r="90" />
+							<circle class="s5-steam" cx="540" cy="820" r="60" />
+							<circle class="s5-steam" cx="230" cy="900" r="55" />
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const K = 4;
+			const tl = gsap.timeline({paused: true});
+			const {dur} = kit.scene(K);
+			const stage = document.getElementById('s5-stage');
+			const at = (prefix, f, nth) => kit.word(K, prefix, f, nth);
+
+			kit.enterExit(tl, stage, dur, {from: 'down'});
+			kit.parallax(tl, stage, dur, {bg: 20, mid: 40, fg: 130, zoom: 1.08, dir: -1});
+
+			// La couette tombe sur le téléphone (écrasement), la pièce se réchauffe peu à peu.
+			kit.drop(tl, '#s5-duvet', 0.05, {height: 500});
+			tl.fromTo('#s5-warm', {opacity: 0}, {opacity: 0.3, duration: dur, ease: 'power1.in'}, 0);
+			tl.fromTo('#s5-fog', {opacity: 0}, {opacity: 0.6, duration: dur * 0.8, ease: 'power1.inOut'}, 0.5);
+
+			// « coincée » : la chaleur monte et retombe sous la couette.
+			const stuck = at('coincee', 0.22);
+			document.querySelectorAll('.s5-trap').forEach((wave, i) => {
+				const cycles = Math.max(1, Math.floor((dur - stuck) / 0.7));
+				tl.fromTo(wave, {y: 0, opacity: 0}, {y: -70, opacity: 1, duration: 0.35, ease: 'power2.out', yoyo: true, repeat: cycles, delay: i * 0.15}, stuck - 0.3);
+			});
+
+			// Le téléphone sort la tête en serviette sur « téléphone ».
+			const out = at('telephone', 0.5);
+			tl.fromTo('#s5-phone', {y: 320}, {y: 0, duration: 0.55, ease: 'back.out(2)'}, out - 0.2);
+			tl.fromTo('#s5-towel', {y: -60, rotation: -8, svgOrigin: '360 540'}, {y: 0, rotation: 0, duration: 0.5, ease: 'bounce.out'}, out + 0.1);
+			kit.rise(tl, '.s5-steam', out, dur, {dy: -320, cycle: 1.6});
+
+			// Étiquette « sauna », goutte de sueur sur « demandé ».
+			kit.stamp(tl, '#s5-label', at('sauna', 0.65));
+			kit.rise(tl, '#s5-sweat', at('demande', 0.8) - 0.1, dur, {dy: 90, cycle: 0.8});
+
+			window.__timelines['s5'] = tl;
+		})();
+	</script>
+</template>
