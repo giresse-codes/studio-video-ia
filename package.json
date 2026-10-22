@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "remotion studio",
     "typecheck": "tsc --noEmit",
-    "render:style-tests": "tsx scripts/render-style-tests.ts"
+    "render:style-tests": "tsx scripts/render-style-tests.ts",
+    "nouvelle-video": "tsx kit/outils/nouvelle-video.ts",
+    "preparer": "tsx kit/outils/preparer.ts",
+    "verifier": "tsx kit/outils/verifier.ts"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.537",
@@ -21,8 +24,12 @@
     "remotion": "4.0.537"
   },
   "devDependencies": {
+    "@fontsource/inter": "5.2.8",
+    "@fontsource/poppins": "5.2.7",
     "@types/node": "22.18.0",
     "@types/react": "19.1.12",
+    "gsap": "3.14.2",
+    "playwright-core": "1.56.1",
     "tsx": "4.20.5",
     "typescript": "5.9.3"
   }

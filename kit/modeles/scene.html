@@ -1,0 +1,41 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div id="root" data-composition-id="{{ID}}" data-width="1080" data-height="1920">
+		<div class="stage" id="{{ID}}-stage">
+			<div class="cam">
+				<div class="punch">
+					<!-- Plan 1, le fond : décor en dégradé jusqu'à y = 1500 (pas de bande vide). -->
+					<div class="fond">
+						<div class="decor"></div>
+					</div>
+					<!-- Plan 2, les objets : l'objet principal, gros et détaillé, centré sur la cible de video.json. -->
+					<div class="objets">
+						<div id="{{ID}}-objet" class="carte" style="left: 140px; top: 420px; width: 620px; height: 620px"></div>
+						<div id="{{ID}}-etiquette" class="etiquette" style="left: 160px; top: 260px">mot clé</div>
+					</div>
+					<!-- Plan 3, le premier plan : flou, il passe vite (feuillage, objet proche). -->
+					<div class="avant">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<ellipse cx="40" cy="1320" rx="90" ry="200" fill="#5E8C61" transform="rotate(-20 40 1320)" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('{{ID}}');
+			// Toujours lier les heures à un mot : S.ancre('@mot'). Exemples :
+			kit.pop(S.tl, '#{{ID}}-objet', 0);
+			// kit.tampon(S.tl, '#{{ID}}-etiquette', S.ancre('@mot'));
+			// S.zoomMot('@mot');
+			S.fin();
+		})();
+	</script>
+</template>

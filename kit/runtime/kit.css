@@ -1,0 +1,124 @@
+/* Look du studio (STYLE.md) : dégradés doux, ombres, cartes arrondies, trois plans, textes lisibles.
+   Copié dans chaque vidéo par `npm run preparer`. Polices embarquées (OFL), mêmes fichiers pour le rendu et la vérification. */
+@font-face {
+	font-family: 'Kit Inter';
+	font-weight: 800;
+	src: url('fonts/inter-800.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Kit Inter';
+	font-weight: 700;
+	src: url('fonts/inter-700.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Kit Poppins';
+	font-weight: 800;
+	src: url('fonts/poppins-800.woff2') format('woff2');
+}
+
+:root {
+	/* Palette « Atelier » (STYLE.md), en dégradés. */
+	--mur-haut: #e6c7b4;
+	--mur-bas: #d2ab96;
+	--sol-haut: #c3b5df;
+	--sol-bas: #9f8fc7;
+	--verre: #7cc8f0;
+	--metal: #bfc5cc;
+	--encre: #1a1a1a;
+	--etiquette-texte: #8ee3ff;
+	--ombre: 0 30px 60px rgba(60, 30, 20, 0.28), 0 8px 18px rgba(60, 30, 20, 0.18);
+}
+
+/* Une scène : .stage > .cam (travelling) > .punch (zoom sur le mot) > .fond / .objets / .avant. */
+.stage,
+.cam,
+.punch,
+.fond,
+.objets,
+.avant {
+	position: absolute;
+	inset: 0;
+}
+.cam {
+	transform-origin: 50% 42%;
+}
+/* Premier plan : flou, il passe vite devant la caméra. */
+.avant {
+	filter: blur(7px);
+}
+/* Calque SVG plein cadre, coordonnées de l'image (1080 x 1920). */
+.calque {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: visible;
+}
+/* Décor par défaut : mur et sol en dégradé, jusqu'au bas de la scène (y = 1500). */
+.decor {
+	position: absolute;
+	left: -200px;
+	right: -200px;
+	top: 0;
+	height: 1500px;
+	background: linear-gradient(180deg, var(--mur-haut) 0%, var(--mur-bas) 62%, var(--sol-haut) 62%, var(--sol-bas) 100%);
+}
+
+.carte {
+	position: absolute;
+	border-radius: 40px;
+	background: linear-gradient(160deg, #ffffff 0%, #f1ebe6 100%);
+	box-shadow: var(--ombre);
+}
+.etiquette {
+	position: absolute;
+	padding: 14px 32px 18px;
+	border-radius: 24px;
+	background: linear-gradient(180deg, #2a2a2a 0%, #141414 100%);
+	color: var(--etiquette-texte);
+	font-family: 'Kit Inter';
+	font-weight: 800;
+	font-size: 56px;
+	white-space: nowrap;
+	box-shadow: var(--ombre);
+}
+.titre {
+	position: absolute;
+	left: 80px;
+	width: 870px;
+	text-align: center;
+	font-family: 'Kit Poppins';
+	font-weight: 800;
+	font-size: 104px;
+	line-height: 1.05;
+	color: var(--encre);
+}
+.titre span {
+	display: inline-block;
+}
+
+/* Sous-titres : pastille dans la zone sûre (80 px gauche, 130 px droite, 380 px bas). */
+.st-zone {
+	position: absolute;
+	left: 80px;
+	width: 870px;
+	bottom: 380px;
+	text-align: center;
+}
+.st-pastille {
+	display: inline-block;
+	max-width: 870px;
+	padding: 12px 30px 16px;
+	border-radius: 34px;
+	background: rgba(20, 20, 20, 0.82);
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+	font-family: 'Kit Inter';
+	font-weight: 800;
+	font-size: 56px;
+	line-height: 1.22;
+	color: #ffffff;
+}
+.st-mot {
+	white-space: pre-wrap;
+}

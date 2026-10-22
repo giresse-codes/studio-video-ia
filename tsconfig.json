@@ -13,5 +13,5 @@
 		"forceConsistentCasingInFileNames": true,
 		"noUnusedLocals": true
 	},
-	"include": ["src", "scripts", "remotion.config.ts"]
+	"include": ["src", "scripts", "kit", "remotion.config.ts"]
 }

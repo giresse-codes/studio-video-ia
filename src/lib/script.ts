@@ -1,7 +1,7 @@
 import type {AvatarPose} from '../components/Avatar';
 
-// Script d'une vidéo : texte lu par le narrateur, avec des balises entre crochets
-// (« [choqué] », « [ton pédagogue] », « [pause] »…). Les balises ne sont jamais
+// Script d'une vidéo : texte lu par le narrateur, avec des indications entre crochets ou parenthèses
+// (« [choqué] », « (ton pédagogue) », « [pause] »…). Les indications ne sont jamais
 // affichées ; celles qui décrivent une émotion choisissent la pose de l'avatar.
 
 export type ScriptSentence = {
@@ -45,7 +45,7 @@ const spokenText = (markdown: string) =>
 		.filter((line) => !/^\s*(#|>)/.test(line))
 		.join(' ');
 
-const TAG = /\[([^\]]*)\]/g;
+const TAG = /\[([^\]]*)\]|\(([^)]*)\)/g;
 
 // Mots lus : la ponctuation isolée par l'espace française (« lit ? », « Une : ») reste collée au mot.
 const toWords = (text: string) =>
@@ -69,7 +69,7 @@ export const parseScript = (markdown: string): ScriptSentence[] => {
 	// « [indigné, puis rire] » : une émotion par phrase, dans l'ordre.
 	let queued: {emotion: string; pose: AvatarPose}[] = [];
 	for (const chunk of chunks) {
-		const tags = [...chunk.matchAll(TAG)].map((m) => m[1].trim()).filter(Boolean);
+		const tags = [...chunk.matchAll(TAG)].map((m) => (m[1] ?? m[2]).trim()).filter(Boolean);
 		const clean = chunk.replace(TAG, ' ').replace(/\s+/g, ' ').trim();
 		const steps = tags.flatMap((tag) =>
 			tag

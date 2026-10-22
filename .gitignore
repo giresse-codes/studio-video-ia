@@ -4,3 +4,8 @@ node_modules/
 # Copie générée de la voix (scripts/hyperframes-astuces-001.ts)
 hyperframes/*/assets/audio/
 hyperframes/*/.hyperframes/
+
+# Fichiers produits par npm run preparer / verifier (régénérables)
+hyperframes/*/assets/kit/
+hyperframes/*/assets/sons/
+hyperframes/*/.verification-sous-titres.html
