@@ -2,7 +2,7 @@
 // Crée le script, la vidéo HyperFrames (video.json, modèle d'ancres, première scène vide) et dit quoi faire ensuite.
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
-import {CHAINES, type Chaine, HYPERFRAMES_VERSION} from '../config';
+import {CHAINES, type Chaine, DUREE, HYPERFRAMES_VERSION, REBOND} from '../config';
 
 const RACINE = path.resolve(import.meta.dirname, '../..');
 const modele = (nom: string, valeurs: Record<string, string | number>) =>
@@ -35,7 +35,7 @@ const crees: string[] = [];
 
 ecrireSiAbsent(
 	script,
-	modele('script.md', {CHAINE: regles.nom, NUMERO: numero, TITRE: titre, DUREE_MIN: regles.dureeSec[0], DUREE_MAX: regles.dureeSec[1], MOTS_MIN: regles.mots[0], MOTS_MAX: regles.mots[1]}),
+	modele('script.md', {CHAINE: regles.nom, NUMERO: numero, TITRE: titre, DUREE_MIN: DUREE.minSec, MOTS_PAR_S: String(DUREE.motsParSeconde).replace('.', ','), REBOND_DES: REBOND.desSec, REBOND_MIN: REBOND.toutesLesSec[0], REBOND_MAX: REBOND.toutesLesSec[1]}),
 	crees,
 );
 ecrireSiAbsent(
@@ -85,7 +85,7 @@ ecrireSiAbsent(
 
 console.log(crees.map((f) => `+ ${f}`).join('\n'));
 console.log(`
-Suite pour ${id} (${regles.nom}, ${regles.dureeSec[0]}–${regles.dureeSec[1]} s, ${regles.mots[0]}–${regles.mots[1]} mots) :
+Suite pour ${id} (${regles.nom}, durée libre de ${DUREE.minSec} s à ${DUREE.maxSec / 60} min, repère ${DUREE.motsParSeconde} mots/s) :
   1. écrire le script : ${script}
   2. déposer la voix (WAV) : ${audio}
   3. découper en scènes dans ${dossier}/video.json (une scène = un fichier, début sur un @mot) et planifier ${dossier}/ancres.md

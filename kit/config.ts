@@ -3,13 +3,27 @@
 
 export type Chaine = 'astuces' | 'devsteach';
 
-export const CHAINES: Record<Chaine, {nom: string; dureeSec: [number, number]; mots: [number, number]}> = {
-	astuces: {nom: 'Astuces', dureeSec: [25, 35], mots: [65, 85]},
-	devsteach: {nom: 'DevsTeach', dureeSec: [35, 50], mots: [90, 120]},
+export const CHAINES: Record<Chaine, {nom: string}> = {
+	astuces: {nom: 'Astuces'},
+	devsteach: {nom: 'DevsTeach'},
 };
 
-// Accélération maximale de la voix (atempo), seulement après avoir proposé de couper le texte.
-export const ATEMPO_MAX = 1.1;
+// La durée suit le contenu : pas de plafond fixe, seulement des repères.
+export const DUREE = {
+	minSec: 20,
+	maxSec: 180,
+	// Budget indicatif pour écrire le script.
+	motsParSeconde: 2.5,
+} as const;
+
+// Au-delà de 45 s, un rebond d'attention (décor, question, gag, annonce de la suite) toutes les 15 à 20 s.
+export const REBOND = {desSec: 45, toutesLesSec: [15, 20] as [number, number]} as const;
+
+// Signalés par npm run verifier.
+export const SIGNAUX = {
+	silenceMaxSec: 0.6,
+	sceneSansNouveauteMaxSec: 6,
+} as const;
 
 export const FORMAT = {largeur: 1080, hauteur: 1920, ips: 30} as const;
 

@@ -7,9 +7,10 @@ Règles pour toutes les vidéos à venir. Les valeurs chiffrées sont aussi dans
 - Astuces #1 reste en Remotion (`src/`) ; on n'y touche pas.
 
 ## Durée
-- Astuces : 25 à 35 s, soit 65 à 85 mots. DevsTeach : 35 à 50 s, soit 90 à 120 mots.
-- La durée de la vidéo est celle de l'audio.
-- Si l'audio dépasse : proposer d'abord de couper le texte. Accélérer seulement en dernier recours, avec `atempo` 1,1 au maximum.
+- La durée suit le contenu : de 20 s à 3 min, sans plafond fixe par chaîne. La durée de la vidéo est celle de l'audio.
+- Budget indicatif pour écrire le script : 2,5 mots par seconde.
+- Aucune phrase ne sert de remplissage : chacune apporte une information, une image ou une blague.
+- Pour toute vidéo de plus de 45 s : un « rebond d'attention » toutes les 15 à 20 s (changement de décor, nouvelle question, gag ou annonce de la suite).
 
 ## Mise en page (1080x1920, 30 i/s)
 - La scène remplit l'image de y = 0 à y = 1500, sans bande vide. Sous 1500 px, le sol continue en dégradé (zone couverte par l'interface des applis).
@@ -33,6 +34,7 @@ Règles pour toutes les vidéos à venir. Les valeurs chiffrées sont aussi dans
 - Animations : rebond, écrasement et étirement, apparition en cascade, flèches et traits qui se dessinent. Pas d'apparition sèche.
 
 ## Synchronisation
+- `npm run verifier` affiche la durée et signale seulement : un silence de plus de 0,6 s, une scène de plus de 6 s sans nouvel élément visuel, une ancre à plus de 150 ms de son mot.
 - Chaque événement visuel ou sonore est lié à un mot du script par une ancre `@mot`. Il se déclenche à l'heure Whisper de ce mot, à ±150 ms près.
 - Si Whisper est indisponible, on utilise l'heure estimée (calage sur les pauses de la voix), et la vérification le signale.
 - Syntaxe des ancres : `@mot`, `@mot#2`, `@chauff*`, `@mot+0.1`, `@0`. Détail dans `kit/outils/ancres.ts`.

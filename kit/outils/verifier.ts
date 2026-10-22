@@ -1,49 +1,54 @@
 // npm run verifier -- <video>      (ex. : npm run verifier -- astuces-002)
-// Contrôles : durée et nombre de mots, sous-titres dans la zone sûre, écart de chaque ancre < 150 ms,
-// puis une image par ancre dans docs/verifications/<video>/ (depuis out/<video>.mp4 s'il existe, sinon capture HyperFrames).
+// Affiche la durée, puis signale seulement :
+//   (a) un silence de plus de 0,6 s dans la voix,
+//   (b) une scène qui reste plus de 6 s sans nouvel élément visuel (aucune ancre entre deux moments),
+//   (c) une ancre à plus de 150 ms de son mot (ou périmée, ou introuvable).
+// Extrait aussi une image par ancre dans docs/verifications/<video>/.
+// Option --zone-sure : mesure en plus les sous-titres dans la zone sûre (navigateur, polices du rendu).
 import {execFileSync, spawnSync} from 'node:child_process';
 import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {chromium} from 'playwright-core';
+import {detectPauses} from '../../src/lib/align';
 import {parseScript} from '../../src/lib/script';
-import {ATEMPO_MAX, CHAINES, ETIQUETTE_MIN_PX, FORMAT, HYPERFRAMES_VERSION, SOUS_TITRES, SYNCHRO, ZONE_SURE} from '../config';
+import {DUREE, FORMAT, HYPERFRAMES_VERSION, REBOND, SIGNAUX, SOUS_TITRES, SYNCHRO, ZONE_SURE} from '../config';
 import {ancresDansCode, normaliser, resoudreAncre} from './ancres';
 import {lireWav} from './minutage';
 import {chargerVideo, dossierVideo} from './video';
 
-type Resultat = {controle: string; ok: boolean; details: string[]; avertissement?: boolean};
+type Resultat = {controle: string; ok: boolean; details: string[]};
 
 const r2 = (x: number) => Math.round(x * 100) / 100;
+const sec = (x: number) => `${x.toFixed(2)} s`;
 
-const controlerDuree = (id: string): Resultat => {
+// Durée : affichée, jamais jugée (elle suit le contenu). Le budget de 2,5 mots/s est un repère.
+const afficherDuree = (id: string): Resultat => {
 	const video = chargerVideo(id);
-	const regles = CHAINES[video.chaine];
 	const mots = parseScript(readFileSync(video.script, 'utf8')).flatMap((p) => p.words).length;
-	const details = [`script : ${mots} mots (cible ${regles.mots[0]}–${regles.mots[1]})`];
+	const details = [`script : ${mots} mots, soit environ ${Math.round(mots / DUREE.motsParSeconde)} s au rythme indicatif de ${DUREE.motsParSeconde} mots/s`];
 	if (!existsSync(video.audio)) {
 		return {controle: 'Durée', ok: false, details: [...details, `audio absent : ${video.audio}`]};
 	}
 	const {echantillons, frequence} = lireWav(video.audio);
 	const duree = echantillons.length / frequence;
-	details.unshift(`audio : ${r2(duree)} s (cible ${regles.dureeSec[0]}–${regles.dureeSec[1]} s)`);
-	let ok = duree >= regles.dureeSec[0] && duree <= regles.dureeSec[1] && mots >= regles.mots[0] && mots <= regles.mots[1];
-	if (duree > regles.dureeSec[1]) {
-		const aCouper = Math.ceil(mots * (1 - regles.dureeSec[1] / duree));
-		const tempo = duree / regles.dureeSec[1];
-		details.push(`trop long de ${r2(duree - regles.dureeSec[1])} s : proposer d'abord de couper environ ${aCouper} mots dans le script, puis réenregistrer`);
-		details.push(
-			tempo <= ATEMPO_MAX
-				? `en dernier recours seulement : ffmpeg -i ${video.audio} -af atempo=${r2(tempo)} (max ${ATEMPO_MAX})`
-				: `accélérer ne suffit pas (il faudrait atempo=${r2(tempo)} > ${ATEMPO_MAX}) : couper est obligatoire`,
-		);
-	} else if (duree < regles.dureeSec[0]) {
-		details.push(`trop court de ${r2(regles.dureeSec[0] - duree)} s : étoffer l'explication`);
+	details.unshift(`audio : ${sec(duree)} (${r2(mots / duree)} mots/s)`);
+	if (duree > REBOND.desSec) {
+		details.push(`plus de ${REBOND.desSec} s : prévoir un rebond d'attention toutes les ${REBOND.toutesLesSec[0]} à ${REBOND.toutesLesSec[1]} s (environ ${Math.floor(duree / REBOND.toutesLesSec[1])} à ${Math.floor(duree / REBOND.toutesLesSec[0])})`);
 	}
-	if (mots > regles.mots[1] && duree <= regles.dureeSec[1]) {
-		details.push(`plus de ${regles.mots[1]} mots : le débit risque d'être trop rapide`);
-		ok = false;
-	}
-	return {controle: 'Durée', ok, details};
+	return {controle: 'Durée', ok: true, details};
+};
+
+// (a) Silences de plus de 0,6 s dans la voix (y compris au début et à la fin).
+const controlerSilences = (id: string): Resultat => {
+	const video = chargerVideo(id);
+	if (!existsSync(video.audio)) return {controle: 'Silences', ok: false, details: [`audio absent : ${video.audio}`]};
+	const {echantillons, frequence} = lireWav(video.audio);
+	const silences = detectPauses(echantillons, frequence, {minPauseMs: SIGNAUX.silenceMaxSec * 1000}).filter((p) => p.endMs - p.startMs > SIGNAUX.silenceMaxSec * 1000);
+	return {
+		controle: 'Silences',
+		ok: silences.length === 0,
+		details: silences.length === 0 ? [`aucun silence de plus de ${SIGNAUX.silenceMaxSec} s`] : silences.map((p) => `silence de ${sec((p.endMs - p.startMs) / 1000)} à ${sec(p.startMs / 1000)}`),
+	};
 };
 
 // Chrome utilisé par HyperFrames (mêmes polices, même moteur que le rendu), ou KIT_NAVIGATEUR.
@@ -57,6 +62,7 @@ const cheminNavigateur = () => {
 	return chemin;
 };
 
+// Option --zone-sure : sous-titres mesurés dans un navigateur avec les polices du rendu.
 const controlerSousTitres = async (id: string): Promise<Resultat> => {
 	const dossier = dossierVideo(id);
 	const fichier = path.join(dossier, 'compositions/sous-titres.html');
@@ -102,20 +108,20 @@ const controlerSousTitres = async (id: string): Promise<Resultat> => {
 };
 
 type AncreVerifiee = {scene: string; ancre: string; mot: string; motSec: number; sec: number; ecart: number};
+type SceneMinutage = {id: string; fichier: string; debut: number; fin: number};
 
-const controlerAncres = (id: string): {resultat: Resultat; ancres: AncreVerifiee[]; avertissements: Resultat} => {
-	const video = chargerVideo(id);
+const lireMinutage = (id: string) => {
+	const fichier = path.join(dossierVideo(id), 'minutage.json');
+	if (!existsSync(fichier)) throw new Error('minutage.json absent : lancer npm run preparer');
+	return JSON.parse(readFileSync(fichier, 'utf8'));
+};
+
+// (c) Écart de chaque ancre à son mot, après arrondi à l'image (et préparation à jour).
+const controlerAncres = (id: string): {resultat: Resultat; ancres: AncreVerifiee[]} => {
 	const dossier = dossierVideo(id);
-	const fichierMinutage = path.join(dossier, 'minutage.json');
-	if (!existsSync(fichierMinutage)) {
-		const r: Resultat = {controle: 'Ancres', ok: false, details: ['minutage.json absent : lancer npm run preparer']};
-		return {resultat: r, ancres: [], avertissements: {controle: 'Bonnes pratiques', ok: true, details: []}};
-	}
-	const minutage = JSON.parse(readFileSync(fichierMinutage, 'utf8'));
+	const minutage = lireMinutage(id);
 	const mots = minutage.mots.map((w: {texte: string; start: number; end: number}) => ({text: w.texte, start: w.start, end: w.end}));
-	const index = readFileSync(path.join(dossier, 'index.html'), 'utf8');
-	const kit = JSON.parse(/window\.KIT = (\{.*\});/.exec(index)?.[1] ?? '{}');
-
+	const kit = JSON.parse(/window\.KIT = (\{.*\});/.exec(readFileSync(path.join(dossier, 'index.html'), 'utf8'))?.[1] ?? '{}');
 	const details: string[] = [
 		minutage.source === 'whisper'
 			? 'heures des mots : Whisper'
@@ -123,21 +129,17 @@ const controlerAncres = (id: string): {resultat: Resultat; ancres: AncreVerifiee
 	];
 	const ancres: AncreVerifiee[] = [];
 	let ok = true;
-	const avert: string[] = [];
-	for (const scene of minutage.scenes as {id: string; fichier: string; debut: number}[]) {
-		const code = readFileSync(path.join(dossier, scene.fichier), 'utf8');
-		const brutes = ancresDansCode(code);
-		if (brutes.length === 0) avert.push(`${scene.id} : aucune ancre @mot dans le code`);
-		for (const brute of brutes) {
+	for (const scene of minutage.scenes as SceneMinutage[]) {
+		for (const brute of ancresDansCode(readFileSync(path.join(dossier, scene.fichier), 'utf8'))) {
 			try {
 				const a = resoudreAncre(brute, mots, scene.debut);
 				const image = Math.round(a.sec * FORMAT.ips) / FORMAT.ips;
 				const ecart = Math.abs(image - a.motSec);
 				const prepare = kit.ancres?.[`${scene.id}|${brute}`];
 				ancres.push({scene: scene.id, ancre: brute, mot: a.motTrouve, motSec: a.motSec, sec: image, ecart});
-				if (ecart >= SYNCHRO.ecartMaxSec) {
+				if (ecart > SYNCHRO.ecartMaxSec) {
 					ok = false;
-					details.push(`${scene.id} ${brute} : écart ${Math.round(ecart * 1000)} ms ≥ ${SYNCHRO.ecartMaxSec * 1000} ms`);
+					details.push(`${scene.id} ${brute} : écart ${Math.round(ecart * 1000)} ms > ${SYNCHRO.ecartMaxSec * 1000} ms`);
 				}
 				if (prepare === undefined || Math.abs(prepare - a.sec) > 0.001) {
 					ok = false;
@@ -148,28 +150,31 @@ const controlerAncres = (id: string): {resultat: Resultat; ancres: AncreVerifiee
 				details.push(`${scene.id} : ${(e as Error).message}`);
 			}
 		}
-		// Heures écrites à la main (position de tween numérique > 0) : à remplacer par une ancre.
-		code.split('\n').forEach((ligne, n) => {
-			const m = /(?:tl|kit)\.\w+\(.*,\s*(\d+(?:\.\d+)?)\s*\)\s*;?\s*$/.exec(ligne);
-			if (m && Number(m[1]) > 0) avert.push(`${scene.fichier}:${n + 1} : heure ${m[1]} s écrite à la main, la lier à un mot (S.ancre('@mot'))`);
-		});
-		// Textes trop petits dans la scène.
-		for (const m of code.matchAll(/font-size:\s*(\d+)px/g)) {
-			if (Number(m[1]) < ETIQUETTE_MIN_PX) avert.push(`${scene.fichier} : texte de ${m[1]} px (< ${ETIQUETTE_MIN_PX} px)`);
-		}
-	}
-	// Première seconde : action à 0 s et son à 0,2 s.
-	const premiere = readFileSync(path.join(dossier, video.scenes[0].fichier), 'utf8');
-	if (!/,\s*0\s*\)|ancre\(\s*['"`]@0/.test(premiere)) avert.push(`${video.scenes[0].fichier} : aucune animation à 0 s (l'action doit commencer tout de suite)`);
-	if (!minutage.bruitages.some((b: {sec: number}) => Math.abs(b.sec - SYNCHRO.premierSonSec) < 0.01)) {
-		ok = false;
-		details.push(`aucun son à ${SYNCHRO.premierSonSec} s`);
 	}
 	details.splice(1, 0, `${ancres.length} ancres, écart maximal ${ancres.length ? Math.round(Math.max(...ancres.map((a) => a.ecart)) * 1000) : 0} ms (seuil ${SYNCHRO.ecartMaxSec * 1000} ms)`);
+	return {resultat: {controle: 'Ancres', ok, details}, ancres};
+};
+
+// (b) Nouveaux éléments : le début de la scène, puis chaque ancre (un élément apparaît, bouge ou zoome sur un mot).
+// Un trou de plus de 6 s entre deux de ces moments, ou jusqu'à la fin de la scène, est signalé.
+const controlerNouveautes = (id: string, ancres: AncreVerifiee[]): Resultat => {
+	const minutage = lireMinutage(id);
+	const details: string[] = [];
+	for (const scene of minutage.scenes as SceneMinutage[]) {
+		const moments = [scene.debut, ...ancres.filter((a) => a.scene === scene.id).map((a) => a.sec), scene.fin]
+			.filter((t) => t >= scene.debut - 0.001 && t <= scene.fin + 0.001)
+			.sort((x, y) => x - y);
+		for (let i = 1; i < moments.length; i++) {
+			const trou = moments[i] - moments[i - 1];
+			if (trou > SIGNAUX.sceneSansNouveauteMaxSec) {
+				details.push(`${scene.id} : ${sec(trou)} sans nouvel élément, de ${sec(moments[i - 1])} à ${sec(moments[i])}`);
+			}
+		}
+	}
 	return {
-		resultat: {controle: 'Ancres', ok, details},
-		ancres,
-		avertissements: {controle: 'Bonnes pratiques', ok: true, avertissement: avert.length > 0, details: avert},
+		controle: 'Nouveaux éléments',
+		ok: details.length === 0,
+		details: details.length === 0 ? [`aucune scène ne reste plus de ${SIGNAUX.sceneSansNouveauteMaxSec} s sans nouvel élément`] : details,
 	};
 };
 
@@ -204,20 +209,22 @@ const extraireImages = (id: string, ancres: AncreVerifiee[]): Resultat => {
 };
 
 const id = process.argv[2];
-if (!id) {
-	console.error('Usage : npm run verifier -- <video>   (ex. : astuces-002)');
+const zoneSure = process.argv.includes('--zone-sure');
+if (!id || id.startsWith('--')) {
+	console.error('Usage : npm run verifier -- <video> [--zone-sure]   (ex. : astuces-002)');
 	process.exit(1);
 }
 const resultats: Resultat[] = [];
 try {
-	resultats.push(controlerDuree(id));
-	resultats.push(await controlerSousTitres(id));
-	const {resultat, ancres, avertissements} = controlerAncres(id);
+	resultats.push(afficherDuree(id));
+	resultats.push(controlerSilences(id));
+	const {resultat, ancres} = controlerAncres(id);
+	resultats.push(controlerNouveautes(id, ancres));
 	resultats.push(resultat);
-	resultats.push(extraireImages(id, ancres));
-	resultats.push(avertissements);
+	if (zoneSure) resultats.push(await controlerSousTitres(id));
+	const images = extraireImages(id, ancres);
 
-	const lignes = resultats.flatMap((r) => [`${r.ok ? (r.avertissement ? '⚠' : '✓') : '✗'} ${r.controle}`, ...r.details.map((d) => `    ${d}`)]);
+	const lignes = [...resultats, images].flatMap((r) => [`${r.ok ? '✓' : '✗'} ${r.controle}`, ...r.details.map((d) => `    ${d}`)]);
 	const tableau = ancres.map((a) => `| ${a.scene} | \`${a.ancre}\` | ${a.mot} | ${a.motSec.toFixed(2)} | ${a.sec.toFixed(2)} | ${Math.round(a.ecart * 1000)} |`);
 	mkdirSync(path.join('docs/verifications', id), {recursive: true});
 	writeFileSync(
@@ -230,4 +237,5 @@ try {
 	console.error(`✗ ${(e as Error).message}`);
 	process.exit(1);
 }
+// Échec seulement si un signal (a), (b) ou (c) est levé (ou --zone-sure en faute).
 process.exit(resultats.every((r) => r.ok) ? 0 : 1);
