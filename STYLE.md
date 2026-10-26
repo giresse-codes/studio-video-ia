@@ -34,7 +34,7 @@ Règles pour toutes les vidéos à venir. Les valeurs chiffrées sont aussi dans
 - Animations : rebond, écrasement et étirement, apparition en cascade, flèches et traits qui se dessinent. Pas d'apparition sèche.
 
 ## Synchronisation
-- `npm run verifier` affiche la durée et signale seulement : un silence de plus de 0,6 s, une scène de plus de 6 s sans nouvel élément visuel, une ancre à plus de 150 ms de son mot.
+- `npm run verifier` affiche la durée et signale seulement : un silence de plus de 0,6 s, une scène de plus de 6 s sans nouvel élément visuel, une ancre à plus de 150 ms de son mot, un élément important à moins de 60 px d'un bord.
 - Chaque événement visuel ou sonore est lié à un mot du script par une ancre `@mot`. Il se déclenche à l'heure Whisper de ce mot, à ±150 ms près.
 - Si Whisper est indisponible, on utilise l'heure estimée (calage sur les pauses de la voix), et la vérification le signale.
 - Syntaxe des ancres : `@mot`, `@mot#2`, `@chauff*`, `@mot+0.1`, `@0`. Détail dans `kit/outils/ancres.ts`.
@@ -66,6 +66,20 @@ Règles pour toutes les vidéos à venir. Les valeurs chiffrées sont aussi dans
 - Étiquettes noires #1A1A1A avec texte bleu clair #8EE3FF, qui apparaissent quand le terme est dit.
 - Caméra : zoom sur la pièce, puis dézoom final sur l'ensemble.
 - Usage : expliquer comment un objet fonctionne.
+
+## Style 3D « pâte à modeler »
+- Outil : Three.js dans HyperFrames (`kit/runtime/kit3d.js`, modèle : `hyperframes/test-3d`). Rendu logiciel accepté (environ 13 s de rendu par seconde de vidéo, contre 6 s en 2D).
+- Quand l'utiliser : les scènes « comment ça marche » où l'on entre dans un objet, et les vues en coupe (l'intérieur d'un téléphone, d'un serveur, d'un mur, d'une batterie). Une seule grosse scène 3D par vidéo suffit souvent.
+- Quand rester en 2D : les listes et étapes numérotées, les missions et tutoriels pas à pas, le code (style « Écran code »), les comparaisons chiffrées (style « Schéma »).
+- Formes simples : boîtes arrondies, cylindres, sphères (`D.boite`, `D.cylindre`, `D.sphere`). Matériaux mats (`MeshStandardMaterial`, rugosité 0,85 ou plus, aucun métal), couleurs pastel de STYLE.md.
+- Lumière douce : `HemisphereLight` et `DirectionalLight` avec ombres floues ; une lueur locale (four, écran) si l'objet en a une.
+- Coupes : plan de coupe (`D.coupe`) pour ouvrir une face et montrer l'intérieur.
+- Pas de modèle téléchargé, sauf CC0 (Kenney, par exemple) quand le téléchargement fonctionne ; sinon tout se construit en code. Hasard toujours semé.
+- Mouvements de pâte à modeler : l'objet sort du sol ou se pose avec écrasement et rebond, sans entrer par un bord du cadre.
+- Rendu déterministe : chaque image se calcule à partir de son numéro (événement `hf-seek` arrondi à l'image), jamais avec une horloge.
+- Caméra : travelling lent (100 à 112 %) et zoom rapide sur le mot clé (`D.zoomMot('@mot', [x, y, z])`), avec les mêmes ancres que la 2D.
+- Composition : la 3D est en fond plein cadre ; par-dessus, l'avatar 2D, les étiquettes (qui suivent les objets 3D, `D.suivre`) et les sous-titres, dans la zone sûre habituelle.
+- Marge : aucun élément important (objet 3D marqué `D.important`, étiquette, titre, chiffre) à moins de 60 px d'un bord, contrôlé par `npm run verifier`.
 
 ## Style 3 « Écran code » (sombre)
 - Fond #0E1422, texte #E8EEF7, accent doré #FFC857, vert #3DDC97, violet #9B8CFF.

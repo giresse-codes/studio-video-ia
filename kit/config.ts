@@ -23,6 +23,8 @@ export const REBOND = {desSec: 45, toutesLesSec: [15, 20] as [number, number]} a
 export const SIGNAUX = {
 	silenceMaxSec: 0.6,
 	sceneSansNouveauteMaxSec: 6,
+	// Un élément important (étiquette, titre, chiffre, data-important, objet 3D marqué) reste à cette distance des bords.
+	margeBordsPx: 60,
 } as const;
 
 export const FORMAT = {largeur: 1080, hauteur: 1920, ips: 30} as const;

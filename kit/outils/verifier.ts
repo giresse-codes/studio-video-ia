@@ -2,7 +2,8 @@
 // Affiche la durée, puis signale seulement :
 //   (a) un silence de plus de 0,6 s dans la voix,
 //   (b) une scène qui reste plus de 6 s sans nouvel élément visuel (aucune ancre entre deux moments),
-//   (c) une ancre à plus de 150 ms de son mot (ou périmée, ou introuvable).
+//   (c) une ancre à plus de 150 ms de son mot (ou périmée, ou introuvable),
+//   (d) un élément important à moins de 60 px d'un bord (mesuré dans l'aperçu HyperFrames, 2D et 3D).
 // Extrait aussi une image par ancre dans docs/verifications/<video>/.
 // Option --zone-sure : mesure en plus les sous-titres dans la zone sûre (navigateur, polices du rendu).
 import {execFileSync, spawnSync} from 'node:child_process';
@@ -11,7 +12,7 @@ import path from 'node:path';
 import {chromium} from 'playwright-core';
 import {detectPauses} from '../../src/lib/align';
 import {parseScript} from '../../src/lib/script';
-import {DUREE, FORMAT, HYPERFRAMES_VERSION, REBOND, SIGNAUX, SOUS_TITRES, SYNCHRO, ZONE_SURE} from '../config';
+import {DUREE, FORMAT, HYPERFRAMES_VERSION, MOUVEMENT, REBOND, SIGNAUX, SOUS_TITRES, SYNCHRO, ZONE_SURE} from '../config';
 import {ancresDansCode, normaliser, resoudreAncre} from './ancres';
 import {lireWav} from './minutage';
 import {chargerVideo, dossierVideo} from './video';
@@ -178,6 +179,67 @@ const controlerNouveautes = (id: string, ancres: AncreVerifiee[]): Resultat => {
 	};
 };
 
+// (d) Bords : on ouvre la vidéo dans l'aperçu HyperFrames (même runtime que le rendu), on se place à chaque ancre
+// (+0,3 s) et toutes les 0,5 s, hors transitions, et on mesure les éléments importants :
+// étiquettes, titres, chiffres, [data-important] en 2D ; objets marqués kit3d.important() en 3D.
+const controlerBords = async (id: string, ancres: AncreVerifiee[]): Promise<Resultat> => {
+	const minutage = lireMinutage(id);
+	const scenes = minutage.scenes as SceneMinutage[];
+	const marge = SIGNAUX.margeBordsPx;
+	const t = MOUVEMENT.transitionSec;
+	const enTransition = (x: number) => scenes.some((s, k) => (k > 0 && x >= s.debut - 0.05 && x <= s.debut + t + 0.05) || (k < scenes.length - 1 && x >= s.fin - 0.05 && x <= s.fin + t + 0.05));
+	const instants = [...new Set([...ancres.map((a) => Math.round((a.sec + 0.3) * 10) / 10), ...Array.from({length: Math.floor(minutage.dureeSec / 0.5)}, (_, i) => (i + 1) * 0.5)])]
+		.filter((x) => x < minutage.dureeSec - 0.05 && !enTransition(x))
+		.sort((x, y) => x - y);
+
+	const hf = (args: string[]) => spawnSync('npx', ['--yes', `hyperframes@${HYPERFRAMES_VERSION}`, 'preview', dossierVideo(id), ...args, '--json'], {encoding: 'utf8'});
+	const lancement = hf(['--background', '--no-open']);
+	const etat = JSON.parse((lancement.stdout || '{}').trim().split('\n').pop() || '{}');
+	if (!etat.ok) return {controle: 'Bords', ok: false, details: [`aperçu HyperFrames impossible : ${(lancement.stderr || lancement.stdout).trim().split('\n').pop()}`]};
+	const navigateur = await chromium.launch({executablePath: cheminNavigateur()});
+	const fautes = new Map<string, string[]>();
+	try {
+		const page = await navigateur.newPage({viewport: {width: FORMAT.largeur, height: FORMAT.hauteur}});
+		await page.goto(`${etat.result.serverUrl}/api/projects/${path.basename(dossierVideo(id))}/preview`);
+		await page.waitForFunction('window.__player && typeof window.__player.renderSeek === "function"', null, {timeout: 90000});
+		for (const instant of instants) {
+			await page.evaluate(`(async () => { window.__player.renderSeek(${instant}); if (window.__hfWaitForSeekCompletion) await window.__hfWaitForSeekCompletion(${instant}); })()`);
+			await page.waitForTimeout(80);
+			// Chaîne de code évaluée telle quelle dans la page (pas de fonction compilée par tsx).
+			const boites = (await page.evaluate(`(() => {
+				const visible = (el) => { let o = 1; for (let n = el; n && n.nodeType === 1; n = n.parentElement) { const cs = getComputedStyle(n); if (cs.visibility === 'hidden' || cs.display === 'none') return 0; o *= parseFloat(cs.opacity); } return o; };
+				const dom = [...document.querySelectorAll('[data-important], .etiquette, .titre, .chiffre')]
+					.filter((el) => visible(el) > 0.5)
+					.map((el) => { const b = el.getBoundingClientRect(); return {nom: el.id || el.className, x0: b.left, y0: b.top, x1: b.right, y1: b.bottom}; });
+				const trois = Object.entries(window.__kit3d || {}).flatMap(([scene, v]) => {
+					const hote = document.getElementById(scene);
+					if (!hote || visible(hote) < 0.5) return [];
+					return v.boites.filter((b) => !b.vide).map((b) => ({...b, nom: scene + ' : ' + b.nom + ' (3D)'}));
+				});
+				return [...dom, ...trois];
+			})()`)) as {nom: string; x0: number; y0: number; x1: number; y1: number}[];
+			for (const b of boites) {
+				const cote = [b.x0 < marge && 'gauche', b.x1 > FORMAT.largeur - marge && 'droite', b.y0 < marge && 'haut', b.y1 > FORMAT.hauteur - marge && 'bas'].filter(Boolean);
+				if (cote.length > 0) {
+					const cle = `${b.nom} (${cote.join(', ')})`;
+					fautes.set(cle, [...(fautes.get(cle) ?? []), instant.toFixed(1)]);
+				}
+			}
+		}
+	} finally {
+		await navigateur.close();
+		if (etat.result?.state === 'started') hf(['--stop']);
+	}
+	return {
+		controle: 'Bords',
+		ok: fautes.size === 0,
+		details: [
+			`${instants.length} instants mesurés (ancres et toutes les 0,5 s, hors transitions), marge ${marge} px`,
+			...[...fautes].map(([nom, ts]) => `${nom} à moins de ${marge} px du bord à ${ts.slice(0, 6).join(', ')} s${ts.length > 6 ? '…' : ''}`),
+		],
+	};
+};
+
 // Une image par ancre, 0,3 s après l'événement (le mouvement est engagé).
 const extraireImages = (id: string, ancres: AncreVerifiee[]): Resultat => {
 	const sortie = path.join('docs/verifications', id);
@@ -222,6 +284,7 @@ try {
 	const {resultat, ancres} = controlerAncres(id);
 	resultats.push(controlerNouveautes(id, ancres));
 	resultats.push(resultat);
+	resultats.push(await controlerBords(id, ancres));
 	if (zoneSure) resultats.push(await controlerSousTitres(id));
 	const images = extraireImages(id, ancres);
 

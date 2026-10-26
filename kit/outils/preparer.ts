@@ -239,7 +239,8 @@ export const preparer = (id: string, {whisper = process.env.KIT_WHISPER !== 'non
 
 	// Kit d'exécution, polices, GSAP, avatar, sons, voix.
 	const kit = path.join(dossier, 'assets/kit');
-	for (const f of ['kit.js', 'kit.css']) copier(path.join(RACINE, 'kit/runtime', f), path.join(kit, f));
+	for (const f of ['kit.js', 'kit.css', 'kit3d.js']) copier(path.join(RACINE, 'kit/runtime', f), path.join(kit, f));
+	copier(path.join(RACINE, 'node_modules/three/build/three.min.js'), path.join(kit, 'three.min.js'));
 	copier(path.join(RACINE, 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2'), path.join(kit, 'fonts/inter-800.woff2'));
 	copier(path.join(RACINE, 'node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2'), path.join(kit, 'fonts/inter-700.woff2'));
 	copier(path.join(RACINE, 'node_modules/@fontsource/poppins/files/poppins-latin-800-normal.woff2'), path.join(kit, 'fonts/poppins-800.woff2'));

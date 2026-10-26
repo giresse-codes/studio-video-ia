@@ -66,6 +66,18 @@
 .avant {
 	filter: blur(7px);
 }
+/* Toile de la scène 3D : plein cadre, sous les éléments 2D. */
+.toile3d {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1080px;
+	height: 1920px;
+}
+/* Étiquette qui suit un objet 3D (kit3d.suivre) : centrée sur le point suivi. */
+.suit {
+	transform: translate(-50%, -100%);
+}
 /* Calque SVG plein cadre, coordonnées de l'image (1080 x 1920). */
 .calque {
 	position: absolute;

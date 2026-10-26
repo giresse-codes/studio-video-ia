@@ -11,12 +11,12 @@ Studio de vidéos animées verticales pour deux chaînes françaises : **DevsTea
 5. Découper en scènes dans `video.json` : un fichier par scène, chacune commence sur un mot (`"debut": "@chaleur"`).
 6. Dans chaque scène, lier chaque événement à un mot : `S.ancre('@chaleur')`, `S.zoomMot('@lithium')` (modèle : `kit/modeles/scene.html`).
 7. `npm run preparer -- astuces-002` : heures des mots (Whisper, sinon estimation), sous-titres, avatar, bruitages, transitions.
-8. `npm run verifier -- astuces-002` : durée, silences > 0,6 s, scènes > 6 s sans nouveauté, ancres > 150 ms, une image par ancre (`docs/verifications/`).
+8. `npm run verifier -- astuces-002` : durée, silences > 0,6 s, scènes > 6 s sans nouveauté, ancres > 150 ms, bords < 60 px, une image par ancre (`docs/verifications/`).
 9. Corriger ce qui est signalé, relancer 7 et 8, puis rendre : `cd hyperframes/astuces-002 && npm run render` (→ `out/astuces-002.mp4`).
 10. Règles de travail : [CLAUDE.md](CLAUDE.md). Styles et chiffres : [STYLE.md](STYLE.md) et `kit/config.ts`.
 
 ## Structure
 
 - `channels/<chaine>/scripts/` : scripts ; `public/audio/` : voix off ; `hyperframes/<chaine>-<numero>/` : vidéos HyperFrames.
-- `kit/` : outils (`outils/`), code partagé par les scènes (`runtime/` : animations, transitions, avatar, look), modèles (`modeles/`).
+- `kit/` : outils (`outils/`), code partagé par les scènes (`runtime/` : animations, transitions, avatar, look, 3D), modèles (`modeles/`).
 - `src/` : version Remotion (Astuces #1) ; `docs/` : comparaisons et vérifications ; `out/` : rendus (non versionnés).

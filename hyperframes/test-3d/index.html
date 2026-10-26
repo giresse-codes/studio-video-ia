@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- Généré par npm run preparer à partir de video.json : ne pas modifier à la main. -->
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=1080, height=1920" />
+		<script src="assets/kit/gsap.min.js"></script>
+		<script src="assets/kit/kit.js"></script>
+		<link rel="stylesheet" href="assets/kit/kit.css" />
+		<script>
+			window.KIT = {"fps":30,"duree":5,"source":"estimation","transitionSec":0.4,"travelling":[1,1.12],"zoomMot":{"echelle":1.25,"dureeSec":0.25},"scenes":[{"id":"s1","debut":0,"fin":5,"transition":"zoom","cible":[430,760]}],"ancres":{"s1|@serveur":0.595,"s1|@pizzeria":3.278,"s1|@part":0,"s1|@ordinateur":1.131,"s1|@dort":4.23,"s1|@jamais":4.502},"poses":[{"t":0,"pose":"explique"},{"t":2.87,"pose":"rit"}],"bouche":[0,0.32,1,1,1,0.67,0.71,0.53,1,1,0.94,0.93,1,0.82,0.9,0.88,0.75,0.92,1,0.8,0.67,0.4,0.59,0.92,0.94,0.82,0.58,0.3,0.12,0,0,0,0,0,0,0.59,0.78,0.76,0.81,1,0.76,0.67,0.3,0.77,0.93,0.92,1,0.95,0.5,0,0.66,1,0.98,0.8,0.14,0.08,0,0,0,0.47,0.74,0.88,0.89,0.7,0.76,0.96,1,0.83,1,1,0.73,0.86,0.82,0.7,0.62,0.53,0.43,0,0,0,0,0,0,0,0,0,0.36,0.68,0.78,0.75,0.62,0.37,1,0.98,1,1,0.93,0.26,0.26,0.94,0.96,0.52,0.59,0.81,1,1,1,1,1,1,1,1,1,0.64,0.38,0.1,0,0,0,0,0,0.69,0.67,0.43,0.97,0.87,0.78,0.84,0.95,0.8,0.58,1,1,1,0.81,0.67,0.62,0.66,0.57,0.6,0.91,1,0.99,0.79,0.76,0.75,0.73,0.39,0,0],"avatar":{"cote":"droite","tenue":"#3D7FD9","largeur":597,"hauteur":896,"gauche":523,"haut":904}};
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				width: 1080px;
+				height: 1920px;
+				overflow: hidden;
+				background: #9f8fc7;
+			}
+			/* Sous la scène (y > 1500) : le sol continue en dégradé, jamais de bande vide. */
+			#socle {
+				position: absolute;
+				inset: 0;
+				background: var(--socle);
+			}
+			/* Léger grain sur toute l'image. */
+			#grain {
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
+				opacity: 0.07;
+				mix-blend-mode: multiply;
+			}
+		</style>
+	</head>
+	<body class="theme-schema">
+		<div data-hf-id="hf-mklp" id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+			<div data-hf-id="hf-30wg" id="socle" data-layout-ignore></div>
+			<div data-hf-id="hf-8bwy" id="s1" class="clip" data-composition-id="s1" data-composition-src="compositions/s1-serveur3d.html" data-start="0" data-duration="5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+			<div data-hf-id="hf-wc32" id="avatar" class="clip" data-composition-id="avatar" data-composition-src="compositions/avatar.html" data-start="0" data-duration="5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 40"></div>
+			<div data-hf-id="hf-5pxt" id="sous-titres" class="clip" data-composition-id="sous-titres" data-composition-src="compositions/sous-titres.html" data-start="0" data-duration="5" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 50"></div>
+			<svg data-hf-id="hf-be1d" id="grain" viewBox="0 0 1080 1920" data-layout-ignore style="z-index: 60">
+				<filter data-hf-id="hf-m4ma" id="grain-filtre"><feTurbulence data-hf-id="hf-l760" id="grain-bruit" type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="1" /></filter>
+				<rect data-hf-id="hf-dyx5" width="100%" height="100%" filter="url(#grain-filtre)" />
+			</svg>
+			<audio data-hf-id="hf-tgo8" id="voix" class="clip" src="assets/audio/voix.wav" data-start="0" data-track-index="4" data-volume="1"></audio>
+			<audio data-hf-id="hf-7nr6" id="son-1" class="clip" src="assets/sons/pop-1.wav" data-start="0.2" data-duration="0.18" data-track-index="5" data-volume="0.74"></audio><!-- premier son -->
+			<audio data-hf-id="hf-zwn1" id="son-2" class="clip" src="assets/sons/pop-1.wav" data-start="0.595" data-duration="0.18" data-track-index="6" data-volume="0.74"></audio><!-- @serveur (s1) -->
+			<audio data-hf-id="hf-cz4q" id="son-3" class="clip" src="assets/sons/boing.wav" data-start="3.278" data-duration="0.45" data-track-index="7" data-volume="0.74"></audio><!-- @pizzeria (s1) -->
+			<audio data-hf-id="hf-xdie" id="son-4" class="clip" src="assets/sons/ding-2.wav" data-start="4.502" data-duration="0.498" data-track-index="5" data-volume="0.74"></audio><!-- @jamais (s1) -->
+		</div>
+		<script>
+			(function () {
+				const tl = gsap.timeline({paused: true});
+				// Grain qui change 12 fois par seconde, graine tirée du temps (rendu identique à chaque fois).
+				const bruit = document.getElementById('grain-bruit');
+				const horloge = {t: 0};
+				tl.fromTo(horloge, {t: 0}, {t: 5, duration: 5, ease: 'none', onUpdate: () => bruit.setAttribute('seed', 1 + (Math.floor(horloge.t * 12) % 97))}, 0);
+				window.__timelines = window.__timelines || {};
+				window.__timelines['main'] = tl;
+			})();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,262 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s1-trois {
+			left: 790px;
+			top: 190px;
+		}
+		#s1-ouvert {
+			position: relative;
+			background: linear-gradient(180deg, #1f8f2a 0%, #16701f 100%);
+			color: #ffffff;
+		}
+		#s1-suit-ouvert,
+		#s1-suit-zzz {
+			position: absolute;
+		}
+		#s1-zzz {
+			position: relative;
+			font-size: 110px;
+			color: #fff6dd;
+		}
+		#s1-barre {
+			position: absolute;
+			left: -20px;
+			top: 60px;
+			width: 300px;
+			height: 22px;
+			border-radius: 11px;
+			background: #e5383b;
+		}
+	</style>
+	<div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-jkxd" class="stage" id="s1-stage">
+			<!-- Scène 3D plein cadre (fond, objets, premier plan sont des profondeurs 3D). -->
+			<canvas data-hf-id="hf-qrxj" id="s1-toile" class="toile3d" width="1080" height="1920"></canvas>
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond"></div>
+					<!-- Par-dessus la 3D : étiquettes 2D qui suivent les objets, gros chiffre. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-90pe" id="s1-trois" class="chiffre" data-important>3</div>
+						<div data-hf-id="hf-i1hv" id="s1-suit-ouvert" class="suit"><div data-hf-id="hf-aaw2" id="s1-ouvert" class="etiquette" data-important>OUVERT 24h/24</div></div>
+						<div data-hf-id="hf-gpik" id="s1-suit-zzz" class="suit">
+							<div data-hf-id="hf-af8k" id="s1-zzz" class="police-titre">Zzz<div data-hf-id="hf-rhdu" id="s1-barre"></div></div>
+						</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="assets/kit/three.min.js"></script>
+	<script src="assets/kit/kit3d.js"></script>
+	<script>
+		(function () {
+			const S = kit.scene('s1', {travelling: false});
+			const tl = S.tl;
+			const D = kit3d.creer(S, {
+				toile: 's1-toile',
+				ciel: '#2A3A5C',
+				brouillard: {couleur: '#2A3A5C', de: 18, a: 42},
+				camera: {de: [0.4, 2.9, 15.5], a: [-0.6, 2.7, 15.5], cible: [-0.2, 2.2, 0], fov: 38},
+			});
+			const {THREE, scene} = D;
+
+			// Nuit : lumière froide, sol de la rue.
+			D.hemi.color.set('#C9D6FF');
+			D.hemi.groundColor.set('#3B3F5C');
+			D.hemi.intensity = 0.55;
+			D.soleil.color.set('#DCE6FF');
+			D.soleil.intensity = 0.55;
+			D.soleil.position.set(5, 10, 8);
+			D.sol('#7D7FA8');
+			const trottoir = D.boite(30, 0.25, 4, {rayon: 0.08, couleur: '#A6A3C4'});
+			trottoir.position.set(0, 0.12, 3.2);
+			scene.add(trottoir);
+
+			// Plan du fond : lune, étoiles (positions semées), immeubles aux fenêtres allumées.
+			let graine = 7;
+			const hasard = () => {
+				graine = (graine * 1664525 + 1013904223) % 4294967296;
+				return graine / 4294967296;
+			};
+			const lune = D.sphere(1.1, {materiau: D.mat('#FFF6DD', {emissive: '#FFF6DD', intensite: 0.9})});
+			lune.position.set(4.5, 11, -14);
+			lune.castShadow = false;
+			scene.add(lune);
+			const etoiles = [];
+			for (let i = 0; i < 36; i++) {
+				const e = D.sphere(0.06 + hasard() * 0.05, {materiau: D.mat('#FFF6DD', {emissive: '#FFF6DD', intensite: 1})});
+				e.position.set(-9 + hasard() * 18, 7 + hasard() * 9, -16 - hasard() * 3);
+				e.castShadow = false;
+				etoiles.push(e);
+				scene.add(e);
+			}
+			D.animer(etoiles, (liste, t) => liste.forEach((e, i) => e.scale.setScalar(0.7 + 0.3 * Math.sin(t * 3 + i * 1.7))));
+			[
+				[-6.5, 5, -9, 2.6],
+				[-3.8, 7, -11, 2.2],
+				[3.2, 6, -10, 2.8],
+				[6.4, 4.5, -8.5, 2.4],
+			].forEach(([x, h, z, l]) => {
+				const b = D.boite(l, h, 2, {rayon: 0.15, couleur: '#3B4A6E'});
+				b.position.set(x, h / 2, z);
+				scene.add(b);
+				for (let k = 0; k < 6; k++) {
+					const f = D.boite(0.35, 0.45, 0.05, {rayon: 0.04, materiau: D.mat('#FFD27A', {emissive: '#FFD27A', intensite: hasard() > 0.4 ? 0.9 : 0.05})});
+					f.position.set(x - l / 4 + (k % 2) * (l / 2), 1 + Math.floor(k / 2) * 1.3, z + 1.03);
+					scene.add(f);
+				}
+			});
+
+			// Plan des objets : l'ordinateur-pizzeria, vu en coupe (façade retirée par un plan de coupe).
+			const coupe = D.coupe([0, 0, -1], 0.55);
+			const serveur = new THREE.Group();
+			serveur.position.set(-1.0, 0.25, 0);
+			const TAILLE = 0.8;
+			const corps = D.boite(2.6, 4, 2.2, {rayon: 0.22, materiau: D.mat('blanc', {coupe})});
+			corps.material.side = THREE.DoubleSide;
+			corps.position.y = 2;
+			serveur.add(corps);
+			// Intérieur : étagères de serveur avec voyants, puis le four.
+			const voyants = [];
+			[3.3, 2.75].forEach((y) => {
+				const etagere = D.boite(2.1, 0.4, 1.6, {rayon: 0.06, couleur: 'metal'});
+				etagere.position.set(0, y, -0.1);
+				serveur.add(etagere);
+				for (let k = 0; k < 4; k++) {
+					const v = D.sphere(0.06, {materiau: D.mat('#6FCF7A', {emissive: '#6FCF7A', intensite: 1})});
+					v.position.set(-0.75 + k * 0.22, y, 0.72);
+					voyants.push(v);
+					serveur.add(v);
+				}
+			});
+			D.animer(voyants, (liste, t) => liste.forEach((v, i) => (v.material.emissiveIntensity = (Math.floor(t * 4) + i) % 2 ? 1.2 : 0.15)));
+			const four = D.boite(2.1, 1.7, 1.6, {rayon: 0.2, couleur: 'rouge'});
+			four.position.set(0, 1.25, -0.1);
+			serveur.add(four);
+			const bouche = new THREE.Mesh(new THREE.CircleGeometry(0.55, 40, 0, Math.PI), D.mat('#2A2A33', {rugosite: 1}));
+			bouche.position.set(0, 0.85, 0.71);
+			serveur.add(bouche);
+			const feu = [];
+			[
+				[0, 1.02, 0.8, 0.24],
+				[-0.24, 0.96, 0.82, 0.16],
+				[0.24, 0.98, 0.82, 0.17],
+			].forEach(([x, y, z, r]) => {
+				const f = D.sphere(r, {materiau: D.mat('#FFB347', {emissive: '#FF8A3C', intensite: 1.4})});
+				f.position.set(x, y, z);
+				f.castShadow = false;
+				feu.push(f);
+				serveur.add(f);
+			});
+			const lueur = new THREE.PointLight('#FF9A4D', 1.6, 7, 2);
+			lueur.position.set(0, 1.1, 1.4);
+			serveur.add(lueur);
+			// Le feu danse : intensité et taille, fonctions du temps seul.
+			D.animer(feu, (liste, t) => {
+				const vacille = 1 + 0.22 * Math.sin(t * 13) + 0.12 * Math.sin(t * 21 + 1);
+				liste.forEach((f, i) => f.scale.setScalar(vacille * (1 + 0.1 * Math.sin(t * 17 + i))));
+				lueur.intensity = 1.4 * vacille;
+			});
+			// Store rayé et enseigne.
+			const store = new THREE.Group();
+			for (let k = 0; k < 7; k++) {
+				const bande = D.boite(0.42, 0.08, 1.1, {rayon: 0.03, couleur: k % 2 ? 'blanc' : 'rouge'});
+				bande.position.set(-1.26 + k * 0.42, 0, 0);
+				store.add(bande);
+			}
+			store.position.set(0, 4.05, 1.3);
+			store.rotation.x = 0.45;
+			serveur.add(store);
+			const enseigne = D.boite(2.5, 0.55, 0.14, {rayon: 0.06, couleur: '#2EB82E'});
+			enseigne.position.set(0, 4.75, 0.9);
+			serveur.add(enseigne);
+			// Toque de chef (gag), sur le toit.
+			const toque = D.groupe(D.cylindre(0.42, 0.45, {couleur: 'blanc'}), D.sphere(0.32, {couleur: 'blanc'}), D.sphere(0.3, {couleur: 'blanc'}), D.sphere(0.3, {couleur: 'blanc'}));
+			toque.children[1].position.set(0, 0.45, 0);
+			toque.children[2].position.set(-0.3, 0.35, 0);
+			toque.children[3].position.set(0.3, 0.35, 0);
+			toque.position.set(0.6, 4.25, -0.3);
+			serveur.add(toque);
+			scene.add(serveur);
+
+			// La commande : un ticket qui vole jusqu'au four.
+			const ticket = D.boite(1.3, 0.75, 0.08, {rayon: 0.04, couleur: '#FFF6DD'});
+			scene.add(ticket);
+
+			// Premier plan : réverbère tout près de la caméra (parallaxe forte).
+			const lampadaire = D.groupe(D.cylindre(0.09, 6, {couleur: '#2A2A33'}), D.sphere(0.32, {materiau: D.mat('#FFD27A', {emissive: '#FFD27A', intensite: 1.2})}));
+			lampadaire.children[0].position.y = 3;
+			lampadaire.children[1].position.y = 6.1;
+			lampadaire.position.set(2.2, 0, 8.5);
+			scene.add(lampadaire);
+
+			// Gestes « pâte à modeler » calculés à partir du temps : chute, écrasement, rebond.
+			const chute = (t, t0, hauteur) => {
+				const dt = t - t0;
+				if (dt < 0) return {y: hauteur, sx: 1, sy: 1, visible: false};
+				if (dt < 0.38) {
+					const p = dt / 0.38;
+					return {y: hauteur * (1 - p * p * p), sx: 0.92, sy: 1.1, visible: true};
+				}
+				const r = dt - 0.38;
+				const ecrase = 0.2 * Math.exp(-r * 7) * Math.cos(r * 18);
+				return {y: 0, sx: 1 + ecrase, sy: 1 - ecrase, visible: true};
+			};
+			const tServeur = S.ancre('@serveur');
+			const tPizzeria = S.ancre('@pizzeria');
+			const tPart = S.ancre('@part');
+			// La pizzeria sort du sol comme de la pâte : elle grandit, dépasse, s'écrase et se pose (sans sortir du cadre).
+			const pousse = (t, t0) => {
+				const dt = t - t0;
+				if (dt < 0) return {sy: 0, sx: 1, visible: false};
+				const sy = 1 - Math.exp(-6 * dt) * Math.cos(12 * dt);
+				return {sy: Math.max(0.01, sy), sx: 1 + 0.15 * Math.exp(-6 * dt) * Math.sin(12 * dt), visible: true};
+			};
+			D.animer(serveur, (g, t) => {
+				const c = pousse(t, tServeur - 0.1);
+				g.visible = c.visible;
+				g.position.y = 0.25;
+				g.scale.set(TAILLE * c.sx, TAILLE * c.sy, TAILLE * c.sx);
+			});
+			D.animer(toque, (g, t) => {
+				const c = chute(t, tPizzeria, 1.2);
+				g.visible = c.visible;
+				g.position.y = 4.25 + c.y;
+				g.scale.set(c.sx, c.sy, c.sx);
+			});
+			const depart = new THREE.Vector3(2.0, 2.8, 8);
+			const arrivee = new THREE.Vector3(-1.0, 0.95, 0.75);
+			D.animer(ticket, (m, t) => {
+				const p = Math.min(1, Math.max(0, (t - tPart) / (tServeur + 0.5 - tPart)));
+				m.position.lerpVectors(depart, arrivee, p);
+				m.position.y += Math.sin(p * Math.PI) * 1.6;
+				m.rotation.set(p * 2.5, p * 6, 0.3);
+				m.scale.setScalar(p > 0.92 ? Math.max(0.01, (1 - p) / 0.08) : 1);
+			});
+
+			// Caméra : zoom rapide sur « serveur », puis sur « pizzeria » (le four).
+			D.zoomMot('@serveur', [-1.0, 2.2, 0.4]);
+			D.zoomMot('@pizzeria', [-1.0, 2.5, 0.6]);
+
+			// Étiquettes 2D qui suivent les objets 3D.
+			D.suivre('#s1-suit-ouvert', [-1.0, 4.3, 0.7], [0, 0]);
+			D.suivre('#s1-suit-zzz', [0.7, 3.3, 0], [0, 0]);
+			D.important('ordinateur-pizzeria', serveur);
+
+			// Éléments 2D, liés aux mêmes ancres @mot que la 2D.
+			kit.pop(tl, '#s1-trois', S.ancre('@serveur'));
+			kit.tampon(tl, '#s1-ouvert', S.ancre('@ordinateur'));
+			kit.pop(tl, '#s1-zzz', S.ancre('@dort'));
+			tl.fromTo('#s1-barre', {scaleX: 0, transformOrigin: '0% 50%'}, {scaleX: 1, duration: 0.25, ease: 'power2.out'}, S.ancre('@jamais'));
+
+			D.demarrer();
+			S.fin();
+		})();
+	</script>
+</template>

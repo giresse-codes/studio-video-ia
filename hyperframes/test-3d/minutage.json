@@ -1,0 +1,179 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 5,
+	"voixCreteDb": -2.615,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-serveur3d.html",
+			"debut": 0,
+			"fin": 5,
+			"transition": "zoom",
+			"cible": [
+				430,
+				760
+			],
+			"ancreDebut": "@0"
+		}
+	],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@serveur",
+			"mot": "serveur,",
+			"motSec": 0.595,
+			"sec": 0.595
+		},
+		{
+			"scene": "s1",
+			"ancre": "@pizzeria",
+			"mot": "pizzeria :",
+			"motSec": 3.278,
+			"sec": 3.278
+		},
+		{
+			"scene": "s1",
+			"ancre": "@part",
+			"mot": "part",
+			"motSec": 0,
+			"sec": 0
+		},
+		{
+			"scene": "s1",
+			"ancre": "@ordinateur",
+			"mot": "ordinateur",
+			"motSec": 1.131,
+			"sec": 1.131
+		},
+		{
+			"scene": "s1",
+			"ancre": "@dort",
+			"mot": "dort",
+			"motSec": 4.23,
+			"sec": 4.23
+		},
+		{
+			"scene": "s1",
+			"ancre": "@jamais",
+			"mot": "jamais.",
+			"motSec": 4.502,
+			"sec": 4.502
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 0.595,
+			"son": "pop-1",
+			"cause": "@serveur (s1)"
+		},
+		{
+			"sec": 3.278,
+			"son": "boing",
+			"cause": "@pizzeria (s1)"
+		},
+		{
+			"sec": 4.502,
+			"son": "ding-2",
+			"cause": "@jamais (s1)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "part vers le serveur, un ordinateur toujours allumé.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 0,
+			"end": 2.56
+		},
+		{
+			"texte": "C'est la pizzeria : elle ne dort jamais.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 2.87,
+			"end": 4.91
+		}
+	],
+	"mots": [
+		{
+			"texte": "part",
+			"start": 0,
+			"end": 0.238
+		},
+		{
+			"texte": "vers",
+			"start": 0.238,
+			"end": 0.476
+		},
+		{
+			"texte": "le",
+			"start": 0.476,
+			"end": 0.595
+		},
+		{
+			"texte": "serveur,",
+			"start": 0.595,
+			"end": 1.012
+		},
+		{
+			"texte": "un",
+			"start": 1.012,
+			"end": 1.131
+		},
+		{
+			"texte": "ordinateur",
+			"start": 1.131,
+			"end": 1.727
+		},
+		{
+			"texte": "toujours",
+			"start": 1.727,
+			"end": 2.203
+		},
+		{
+			"texte": "allumé.",
+			"start": 2.203,
+			"end": 2.56
+		},
+		{
+			"texte": "C'est",
+			"start": 2.87,
+			"end": 3.142
+		},
+		{
+			"texte": "la",
+			"start": 3.142,
+			"end": 3.278
+		},
+		{
+			"texte": "pizzeria :",
+			"start": 3.278,
+			"end": 3.822
+		},
+		{
+			"texte": "elle",
+			"start": 3.822,
+			"end": 4.094
+		},
+		{
+			"texte": "ne",
+			"start": 4.094,
+			"end": 4.23
+		},
+		{
+			"texte": "dort",
+			"start": 4.23,
+			"end": 4.502
+		},
+		{
+			"texte": "jamais.",
+			"start": 4.502,
+			"end": 4.91
+		}
+	]
+}

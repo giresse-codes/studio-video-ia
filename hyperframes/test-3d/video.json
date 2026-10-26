@@ -1,0 +1,15 @@
+{
+	"chaine": "devsteach",
+	"numero": "test",
+	"slug": "test-3d",
+	"script": "hyperframes/test-3d/script.md",
+	"audio": "public/audio/test-3d.wav",
+	"scenes": [{"id": "s1", "fichier": "compositions/s1-serveur3d.html", "debut": "@0", "transition": "zoom", "cible": [430, 760]}],
+	"bruitages": [
+		{"ancre": "@serveur", "son": "pop-1", "scene": "s1"},
+		{"ancre": "@pizzeria", "son": "boing", "scene": "s1"},
+		{"ancre": "@jamais", "son": "ding-2", "scene": "s1"}
+	],
+	"avatar": {"cote": "droite", "tenue": "bleue"},
+	"theme": "schema"
+}

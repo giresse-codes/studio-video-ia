@@ -27,7 +27,8 @@
 	const kit = {
 		// Prépare une scène : timeline, transitions, travelling lent, parallaxe des trois plans.
 		// Usage : const S = kit.scene('s2'); … S.fin();
-		scene(id) {
+		// Scène 3D : kit.scene('s2', {travelling: false}) — la caméra 3D fait le travelling (kit3d).
+		scene(id, {travelling = true} = {}) {
 			const scenes = K().scenes;
 			const k = scenes.findIndex((s) => s.id === id);
 			if (k === -1) throw new Error(`Scène ${id} absente de video.json : relancer npm run preparer`);
@@ -43,11 +44,13 @@
 			if (suivante) (TRANSITIONS[suivante.transition] || TRANSITIONS.zoom).sortie(tl, stage, dur, d);
 
 			// Travelling lent 100 → 112 % sur toute la scène, et dérive des plans à des vitesses différentes.
-			const [de, a] = K().travelling;
-			tl.fromTo(q('.cam'), {scale: de}, {scale: a, duration: dur + d, ease: 'sine.inOut'}, 0);
-			tl.fromTo(q('.fond'), {x: 0}, {x: -24, duration: dur + d, ease: 'sine.inOut'}, 0);
-			tl.fromTo(q('.objets'), {x: 0}, {x: -50, duration: dur + d, ease: 'sine.inOut'}, 0);
-			tl.fromTo(q('.avant'), {x: 0}, {x: -130, duration: dur + d, ease: 'sine.inOut'}, 0);
+			if (travelling) {
+				const [de, a] = K().travelling;
+				tl.fromTo(q('.cam'), {scale: de}, {scale: a, duration: dur + d, ease: 'sine.inOut'}, 0);
+				tl.fromTo(q('.fond'), {x: 0}, {x: -24, duration: dur + d, ease: 'sine.inOut'}, 0);
+				tl.fromTo(q('.objets'), {x: 0}, {x: -50, duration: dur + d, ease: 'sine.inOut'}, 0);
+				tl.fromTo(q('.avant'), {x: 0}, {x: -130, duration: dur + d, ease: 'sine.inOut'}, 0);
+			}
 
 			let zooms = 0;
 			const S = {

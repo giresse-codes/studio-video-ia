@@ -20,5 +20,5 @@ La voix off (un seul narrateur : ma voix ou celle d'AI Studio) est déposée dan
 6. Un changement d'image ou d'élément toutes les 1,5 à 3 s, rien de vide dans la première seconde, jamais de coupe sèche.
 7. Les scripts sont dans channels/<chaine>/scripts/ ; ne les modifie pas sans me le dire.
 8. Une vidéo se fait avec `npm run nouvelle-video`, `npm run preparer` puis `npm run verifier` ; corrige ce que la vérification signale
-   (silence de plus de 0,6 s, scène de plus de 6 s sans nouvel élément, ancre à plus de 150 ms) avant de rendre.
+   (silence de plus de 0,6 s, scène de plus de 6 s sans nouvel élément, ancre à plus de 150 ms, élément important à moins de 60 px d'un bord) avant de rendre.
 9. Après chaque vidéo : rends dans out/, liste ce qui est fait et ce qui reste, sans tout recopier.
