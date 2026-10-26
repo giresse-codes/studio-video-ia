@@ -1,0 +1,1483 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 52.271,
+	"voixCreteDb": -1.866,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-chrono.html",
+			"debut": 0,
+			"fin": 5.04,
+			"transition": "zoom",
+			"cible": [
+				430,
+				620
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-pizza.html",
+			"debut": 5.04,
+			"fin": 6.93,
+			"transition": "balayage",
+			"cible": [
+				430,
+				640
+			],
+			"ancreDebut": "@imagine"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-navigateur.html",
+			"debut": 6.93,
+			"fin": 11.41,
+			"transition": "zoom",
+			"cible": [
+				450,
+				640
+			],
+			"ancreDebut": "@etape"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-dns.html",
+			"debut": 11.41,
+			"fin": 18.17,
+			"transition": "balayage",
+			"cible": [
+				440,
+				640
+			],
+			"ancreDebut": "@etape"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-serveur.html",
+			"debut": 18.17,
+			"fin": 25.09,
+			"transition": "zoom",
+			"cible": [
+				430,
+				640
+			],
+			"ancreDebut": "@etape"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-fichiers.html",
+			"debut": 25.09,
+			"fin": 33.89,
+			"transition": "balayage",
+			"cible": [
+				450,
+				640
+			],
+			"ancreDebut": "@etape"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-page.html",
+			"debut": 33.89,
+			"fin": 36.93,
+			"transition": "zoom",
+			"cible": [
+				440,
+				640
+			],
+			"ancreDebut": "@assemble"
+		},
+		{
+			"id": "s8",
+			"fichier": "compositions/s8-mission.html",
+			"debut": 36.93,
+			"fin": 45.88,
+			"transition": "balayage",
+			"cible": [
+				440,
+				620
+			],
+			"ancreDebut": "@mission-0.2"
+		},
+		{
+			"id": "s9",
+			"fichier": "compositions/s9-fin.html",
+			"debut": 45.88,
+			"fin": 52.27102040816327,
+			"transition": "zoom",
+			"cible": [
+				440,
+				620
+			],
+			"ancreDebut": "@trouve"
+		}
+	],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@0",
+			"mot": "(début)",
+			"motSec": 0,
+			"sec": 0
+		},
+		{
+			"scene": "s1",
+			"ancre": "@seconde",
+			"mot": "seconde.",
+			"motSec": 1.337,
+			"sec": 1.337
+		},
+		{
+			"scene": "s1",
+			"ancre": "@mais",
+			"mot": "Mais",
+			"motSec": 2.26,
+			"sec": 2.26
+		},
+		{
+			"scene": "s1",
+			"ancre": "@quatre",
+			"mot": "quatre",
+			"motSec": 3.896,
+			"sec": 3.896
+		},
+		{
+			"scene": "s2",
+			"ancre": "@imagine",
+			"mot": "Imagine",
+			"motSec": 5.04,
+			"sec": 5.04
+		},
+		{
+			"scene": "s2",
+			"ancre": "@commandes",
+			"mot": "commandes",
+			"motSec": 5.603,
+			"sec": 5.603
+		},
+		{
+			"scene": "s2",
+			"ancre": "@pizza",
+			"mot": "pizza.",
+			"motSec": 6.166,
+			"sec": 6.166
+		},
+		{
+			"scene": "s3",
+			"ancre": "@tapes",
+			"mot": "tapes",
+			"motSec": 7.959,
+			"sec": 7.959
+		},
+		{
+			"scene": "s3",
+			"ancre": "@navigateur",
+			"mot": "navigateur,",
+			"motSec": 9.4,
+			"sec": 9.4
+		},
+		{
+			"scene": "s3",
+			"ancre": "@navigateur+0.1",
+			"mot": "navigateur,",
+			"motSec": 9.4,
+			"sec": 9.5
+		},
+		{
+			"scene": "s3",
+			"ancre": "@commandes",
+			"mot": "commandes.",
+			"motSec": 10.4,
+			"sec": 10.4
+		},
+		{
+			"scene": "s4",
+			"ancre": "@etape",
+			"mot": "Étape",
+			"motSec": 11.41,
+			"sec": 11.41
+		},
+		{
+			"scene": "s4",
+			"ancre": "@demande",
+			"mot": "demande",
+			"motSec": 12.471,
+			"sec": 12.471
+		},
+		{
+			"scene": "s4",
+			"ancre": "@annuaire",
+			"mot": "annuaire,",
+			"motSec": 13.227,
+			"sec": 13.227
+		},
+		{
+			"scene": "s4",
+			"ancre": "@dns",
+			"mot": "DNS,",
+			"motSec": 13.983,
+			"sec": 13.983
+		},
+		{
+			"scene": "s4",
+			"ancre": "@trouve",
+			"mot": "trouve",
+			"motSec": 14.513,
+			"sec": 14.513
+		},
+		{
+			"scene": "s4",
+			"ancre": "@repond",
+			"mot": "répond",
+			"motSec": 16.262,
+			"sec": 16.262
+		},
+		{
+			"scene": "s4",
+			"ancre": "@chiffres",
+			"mot": "chiffres.",
+			"motSec": 17.243,
+			"sec": 17.243
+		},
+		{
+			"scene": "s5",
+			"ancre": "@etape",
+			"mot": "Étape",
+			"motSec": 18.17,
+			"sec": 18.17
+		},
+		{
+			"scene": "s5",
+			"ancre": "@commande",
+			"mot": "commande",
+			"motSec": 19.228,
+			"sec": 19.228
+		},
+		{
+			"scene": "s5",
+			"ancre": "@part",
+			"mot": "part",
+			"motSec": 19.701,
+			"sec": 19.701
+		},
+		{
+			"scene": "s5",
+			"ancre": "@serveur",
+			"mot": "serveur,",
+			"motSec": 20.291,
+			"sec": 20.291
+		},
+		{
+			"scene": "s5",
+			"ancre": "@ordinateur",
+			"mot": "ordinateur",
+			"motSec": 20.823,
+			"sec": 20.823
+		},
+		{
+			"scene": "s5",
+			"ancre": "@allume",
+			"mot": "allumé.",
+			"motSec": 21.886,
+			"sec": 21.886
+		},
+		{
+			"scene": "s5",
+			"ancre": "@pizzeria",
+			"mot": "pizzeria :",
+			"motSec": 22.958,
+			"sec": 22.958
+		},
+		{
+			"scene": "s5",
+			"ancre": "@dort",
+			"mot": "dort",
+			"motSec": 23.91,
+			"sec": 23.91
+		},
+		{
+			"scene": "s5",
+			"ancre": "@jamais",
+			"mot": "jamais.",
+			"motSec": 24.182,
+			"sec": 24.182
+		},
+		{
+			"scene": "s6",
+			"ancre": "@etape",
+			"mot": "Étape",
+			"motSec": 25.09,
+			"sec": 25.09
+		},
+		{
+			"scene": "s6",
+			"ancre": "@fichiers",
+			"mot": "fichiers.",
+			"motSec": 27.046,
+			"sec": 27.046
+		},
+		{
+			"scene": "s6",
+			"ancre": "@html",
+			"mot": "HTML",
+			"motSec": 28.016,
+			"sec": 28.016
+		},
+		{
+			"scene": "s6",
+			"ancre": "@structure",
+			"mot": "structure,",
+			"motSec": 28.744,
+			"sec": 28.744
+		},
+		{
+			"scene": "s6",
+			"ancre": "@css",
+			"mot": "CSS",
+			"motSec": 29.546,
+			"sec": 29.546
+		},
+		{
+			"scene": "s6",
+			"ancre": "@style",
+			"mot": "style,",
+			"motSec": 30.201,
+			"sec": 30.201
+		},
+		{
+			"scene": "s6",
+			"ancre": "@javascript",
+			"mot": "JavaScript",
+			"motSec": 30.711,
+			"sec": 30.711
+		},
+		{
+			"scene": "s6",
+			"ancre": "@actions",
+			"mot": "actions.",
+			"motSec": 32.26,
+			"sec": 32.26
+		},
+		{
+			"scene": "s7",
+			"ancre": "@assemble",
+			"mot": "assemble",
+			"motSec": 33.89,
+			"sec": 33.89
+		},
+		{
+			"scene": "s7",
+			"ancre": "@tout",
+			"mot": "tout,",
+			"motSec": 34.29,
+			"sec": 34.29
+		},
+		{
+			"scene": "s7",
+			"ancre": "@pizza",
+			"mot": "pizza",
+			"motSec": 34.985,
+			"sec": 34.985
+		},
+		{
+			"scene": "s7",
+			"ancre": "@arrive",
+			"mot": "arrive :",
+			"motSec": 35.292,
+			"sec": 35.292
+		},
+		{
+			"scene": "s7",
+			"ancre": "@page",
+			"mot": "page.",
+			"motSec": 36.15,
+			"sec": 36.15
+		},
+		{
+			"scene": "s8",
+			"ancre": "@mission",
+			"mot": "mission :",
+			"motSec": 37.13,
+			"sec": 37.13
+		},
+		{
+			"scene": "s8",
+			"ancre": "@ordinateur",
+			"mot": "ordinateur,",
+			"motSec": 37.828,
+			"sec": 37.828
+		},
+		{
+			"scene": "s8",
+			"ancre": "@fais",
+			"mot": "fais",
+			"motSec": 38.526,
+			"sec": 38.526
+		},
+		{
+			"scene": "s8",
+			"ancre": "@clic",
+			"mot": "clic",
+			"motSec": 38.945,
+			"sec": 38.945
+		},
+		{
+			"scene": "s8",
+			"ancre": "@droit",
+			"mot": "droit",
+			"motSec": 39.225,
+			"sec": 39.225
+		},
+		{
+			"scene": "s8",
+			"ancre": "@inspecter",
+			"mot": "Inspecter ».",
+			"motSec": 40.482,
+			"sec": 40.482
+		},
+		{
+			"scene": "s8",
+			"ancre": "@telephone",
+			"mot": "téléphone,",
+			"motSec": 41.82,
+			"sec": 41.82
+		},
+		{
+			"scene": "s8",
+			"ancre": "@viewsource",
+			"mot": "view-source:",
+			"motSec": 43.176,
+			"sec": 43.176
+		},
+		{
+			"scene": "s8",
+			"ancre": "@adresse",
+			"mot": "l'adresse.",
+			"motSec": 44.725,
+			"sec": 44.725
+		},
+		{
+			"scene": "s9",
+			"ancre": "@titre",
+			"mot": "titre",
+			"motSec": 46.295,
+			"sec": 46.295
+		},
+		{
+			"scene": "s9",
+			"ancre": "@trouve#2",
+			"mot": "trouvé ?",
+			"motSec": 48.129,
+			"sec": 48.129
+		},
+		{
+			"scene": "s9",
+			"ancre": "@commentaire",
+			"mot": "commentaire.",
+			"motSec": 49.483,
+			"sec": 49.483
+		},
+		{
+			"scene": "s9",
+			"ancre": "@prochain",
+			"mot": "Prochain",
+			"motSec": 50.39,
+			"sec": 50.39
+		},
+		{
+			"scene": "s9",
+			"ancre": "@url",
+			"mot": "l'URL.",
+			"motSec": 51.661,
+			"sec": 51.661
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 1.337,
+			"son": "ding-1",
+			"cause": "@seconde (s1)"
+		},
+		{
+			"sec": 2.26,
+			"son": "boing",
+			"cause": "@mais (s1)"
+		},
+		{
+			"sec": 4.99,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 6.166,
+			"son": "pop-2",
+			"cause": "@pizza (s2)"
+		},
+		{
+			"sec": 6.88,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 9.4,
+			"son": "pop-1",
+			"cause": "@navigateur (s3)"
+		},
+		{
+			"sec": 11.36,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 13.983,
+			"son": "ding-2",
+			"cause": "@dns (s4)"
+		},
+		{
+			"sec": 16.262,
+			"son": "tic",
+			"cause": "@repond (s4)"
+		},
+		{
+			"sec": 18.12,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 20.291,
+			"son": "pop-1",
+			"cause": "@serveur (s5)"
+		},
+		{
+			"sec": 23.91,
+			"son": "boing",
+			"cause": "@dort (s5)"
+		},
+		{
+			"sec": 25.04,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 27.046,
+			"son": "pop-2",
+			"cause": "@fichiers (s6)"
+		},
+		{
+			"sec": 32.26,
+			"son": "boing",
+			"cause": "@actions (s6)"
+		},
+		{
+			"sec": 33.84,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		},
+		{
+			"sec": 36.15,
+			"son": "ding-1",
+			"cause": "@page (s7)"
+		},
+		{
+			"sec": 36.88,
+			"son": "whoosh-1",
+			"cause": "transition vers s8"
+		},
+		{
+			"sec": 37.13,
+			"son": "ding-2",
+			"cause": "@mission (s8)"
+		},
+		{
+			"sec": 38.945,
+			"son": "tic",
+			"cause": "@clic (s8)"
+		},
+		{
+			"sec": 45.83,
+			"son": "whoosh-2",
+			"cause": "transition vers s9"
+		},
+		{
+			"sec": 46.295,
+			"son": "ding-1",
+			"cause": "@titre (s9)"
+		},
+		{
+			"sec": 49.483,
+			"son": "pop-2",
+			"cause": "@commentaire (s9)"
+		},
+		{
+			"sec": 51.661,
+			"son": "ding-2",
+			"cause": "@url (s9)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Tu ouvres un site en une seconde.",
+			"emotion": "étonné",
+			"pose": "surpris",
+			"start": 0,
+			"end": 1.83
+		},
+		{
+			"texte": "Mais pendant cette seconde, il se passe quatre étapes.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 2.26,
+			"end": 4.51
+		},
+		{
+			"texte": "Imagine que tu commandes une pizza.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 5.04,
+			"end": 6.4
+		},
+		{
+			"texte": "Étape un : tu tapes l'adresse du site.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 6.93,
+			"end": 8.9
+		},
+		{
+			"texte": "Ton navigateur, c'est toi qui commandes.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 9.25,
+			"end": 10.85
+		},
+		{
+			"texte": "Étape deux : il demande à un annuaire, le DNS, où se trouve le site.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 11.41,
+			"end": 15.42
+		},
+		{
+			"texte": "L'annuaire répond avec une adresse en chiffres.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 15.86,
+			"end": 17.6
+		},
+		{
+			"texte": "Étape trois : la commande part vers le serveur, un ordinateur toujours allumé.",
+			"emotion": null,
+			"pose": "surpris",
+			"start": 18.17,
+			"end": 22.24
+		},
+		{
+			"texte": "C'est la pizzeria : elle ne dort jamais.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 22.55,
+			"end": 24.59
+		},
+		{
+			"texte": "Étape quatre : le serveur renvoie des fichiers.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 25.09,
+			"end": 27.47
+		},
+		{
+			"texte": "Le HTML pour la structure, le CSS pour le style, le JavaScript pour les actions.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 27.87,
+			"end": 32.77
+		},
+		{
+			"texte": "Ton navigateur assemble tout, et la pizza arrive : ta page.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 33.24,
+			"end": 36.47
+		},
+		{
+			"texte": "Ta mission : sur ordinateur, fais un clic droit sur un site, puis « Inspecter ».",
+			"emotion": "énergique",
+			"pose": "content",
+			"start": 36.99,
+			"end": 41.11
+		},
+		{
+			"texte": "Sur téléphone, écris view-source: devant l'adresse.",
+			"emotion": null,
+			"pose": "content",
+			"start": 41.53,
+			"end": 45.5
+		},
+		{
+			"texte": "Trouve le titre de la page dans le code.",
+			"emotion": null,
+			"pose": "content",
+			"start": 45.88,
+			"end": 47.49
+		},
+		{
+			"texte": "Tu l'as trouvé ?",
+			"emotion": null,
+			"pose": "content",
+			"start": 47.92,
+			"end": 48.38
+		},
+		{
+			"texte": "Dis-moi quel site en commentaire.",
+			"emotion": null,
+			"pose": "content",
+			"start": 48.76,
+			"end": 49.98
+		},
+		{
+			"texte": "Prochain épisode : l'URL.",
+			"emotion": null,
+			"pose": "content",
+			"start": 50.39,
+			"end": 52
+		}
+	],
+	"mots": [
+		{
+			"texte": "Tu",
+			"start": 0,
+			"end": 0.141
+		},
+		{
+			"texte": "ouvres",
+			"start": 0.141,
+			"end": 0.563
+		},
+		{
+			"texte": "un",
+			"start": 0.563,
+			"end": 0.704
+		},
+		{
+			"texte": "site",
+			"start": 0.704,
+			"end": 0.985
+		},
+		{
+			"texte": "en",
+			"start": 0.985,
+			"end": 1.126
+		},
+		{
+			"texte": "une",
+			"start": 1.126,
+			"end": 1.337
+		},
+		{
+			"texte": "seconde.",
+			"start": 1.337,
+			"end": 1.83
+		},
+		{
+			"texte": "Mais",
+			"start": 2.26,
+			"end": 2.465
+		},
+		{
+			"texte": "pendant",
+			"start": 2.465,
+			"end": 2.823
+		},
+		{
+			"texte": "cette",
+			"start": 2.823,
+			"end": 3.078
+		},
+		{
+			"texte": "seconde,",
+			"start": 3.078,
+			"end": 3.436
+		},
+		{
+			"texte": "il",
+			"start": 3.436,
+			"end": 3.538
+		},
+		{
+			"texte": "se",
+			"start": 3.538,
+			"end": 3.641
+		},
+		{
+			"texte": "passe",
+			"start": 3.641,
+			"end": 3.896
+		},
+		{
+			"texte": "quatre",
+			"start": 3.896,
+			"end": 4.203
+		},
+		{
+			"texte": "étapes.",
+			"start": 4.203,
+			"end": 4.51
+		},
+		{
+			"texte": "Imagine",
+			"start": 5.04,
+			"end": 5.368
+		},
+		{
+			"texte": "que",
+			"start": 5.368,
+			"end": 5.509
+		},
+		{
+			"texte": "tu",
+			"start": 5.509,
+			"end": 5.603
+		},
+		{
+			"texte": "commandes",
+			"start": 5.603,
+			"end": 6.025
+		},
+		{
+			"texte": "une",
+			"start": 6.025,
+			"end": 6.166
+		},
+		{
+			"texte": "pizza.",
+			"start": 6.166,
+			"end": 6.4
+		},
+		{
+			"texte": "Étape",
+			"start": 6.93,
+			"end": 7.287
+		},
+		{
+			"texte": "un :",
+			"start": 7.287,
+			"end": 7.43
+		},
+		{
+			"texte": "tu",
+			"start": 7.86,
+			"end": 7.959
+		},
+		{
+			"texte": "tapes",
+			"start": 7.959,
+			"end": 8.207
+		},
+		{
+			"texte": "l'adresse",
+			"start": 8.207,
+			"end": 8.603
+		},
+		{
+			"texte": "du",
+			"start": 8.603,
+			"end": 8.702
+		},
+		{
+			"texte": "site.",
+			"start": 8.702,
+			"end": 8.9
+		},
+		{
+			"texte": "Ton",
+			"start": 9.25,
+			"end": 9.4
+		},
+		{
+			"texte": "navigateur,",
+			"start": 9.4,
+			"end": 9.9
+		},
+		{
+			"texte": "c'est",
+			"start": 9.9,
+			"end": 10.1
+		},
+		{
+			"texte": "toi",
+			"start": 10.1,
+			"end": 10.25
+		},
+		{
+			"texte": "qui",
+			"start": 10.25,
+			"end": 10.4
+		},
+		{
+			"texte": "commandes.",
+			"start": 10.4,
+			"end": 10.85
+		},
+		{
+			"texte": "Étape",
+			"start": 11.41,
+			"end": 11.671
+		},
+		{
+			"texte": "deux :",
+			"start": 11.671,
+			"end": 11.88
+		},
+		{
+			"texte": "il",
+			"start": 12.32,
+			"end": 12.471
+		},
+		{
+			"texte": "demande",
+			"start": 12.471,
+			"end": 13
+		},
+		{
+			"texte": "à",
+			"start": 13,
+			"end": 13.076
+		},
+		{
+			"texte": "un",
+			"start": 13.076,
+			"end": 13.227
+		},
+		{
+			"texte": "annuaire,",
+			"start": 13.227,
+			"end": 13.832
+		},
+		{
+			"texte": "le",
+			"start": 13.832,
+			"end": 13.983
+		},
+		{
+			"texte": "DNS,",
+			"start": 13.983,
+			"end": 14.21
+		},
+		{
+			"texte": "où",
+			"start": 14.21,
+			"end": 14.361
+		},
+		{
+			"texte": "se",
+			"start": 14.361,
+			"end": 14.513
+		},
+		{
+			"texte": "trouve",
+			"start": 14.513,
+			"end": 14.966
+		},
+		{
+			"texte": "le",
+			"start": 14.966,
+			"end": 15.118
+		},
+		{
+			"texte": "site.",
+			"start": 15.118,
+			"end": 15.42
+		},
+		{
+			"texte": "L'annuaire",
+			"start": 15.86,
+			"end": 16.262
+		},
+		{
+			"texte": "répond",
+			"start": 16.262,
+			"end": 16.529
+		},
+		{
+			"texte": "avec",
+			"start": 16.529,
+			"end": 16.708
+		},
+		{
+			"texte": "une",
+			"start": 16.708,
+			"end": 16.842
+		},
+		{
+			"texte": "adresse",
+			"start": 16.842,
+			"end": 17.154
+		},
+		{
+			"texte": "en",
+			"start": 17.154,
+			"end": 17.243
+		},
+		{
+			"texte": "chiffres.",
+			"start": 17.243,
+			"end": 17.6
+		},
+		{
+			"texte": "Étape",
+			"start": 18.17,
+			"end": 18.43
+		},
+		{
+			"texte": "trois :",
+			"start": 18.43,
+			"end": 18.69
+		},
+		{
+			"texte": "la",
+			"start": 19.11,
+			"end": 19.228
+		},
+		{
+			"texte": "commande",
+			"start": 19.228,
+			"end": 19.701
+		},
+		{
+			"texte": "part",
+			"start": 19.701,
+			"end": 19.937
+		},
+		{
+			"texte": "vers",
+			"start": 19.937,
+			"end": 20.173
+		},
+		{
+			"texte": "le",
+			"start": 20.173,
+			"end": 20.291
+		},
+		{
+			"texte": "serveur,",
+			"start": 20.291,
+			"end": 20.705
+		},
+		{
+			"texte": "un",
+			"start": 20.705,
+			"end": 20.823
+		},
+		{
+			"texte": "ordinateur",
+			"start": 20.823,
+			"end": 21.413
+		},
+		{
+			"texte": "toujours",
+			"start": 21.413,
+			"end": 21.886
+		},
+		{
+			"texte": "allumé.",
+			"start": 21.886,
+			"end": 22.24
+		},
+		{
+			"texte": "C'est",
+			"start": 22.55,
+			"end": 22.822
+		},
+		{
+			"texte": "la",
+			"start": 22.822,
+			"end": 22.958
+		},
+		{
+			"texte": "pizzeria :",
+			"start": 22.958,
+			"end": 23.502
+		},
+		{
+			"texte": "elle",
+			"start": 23.502,
+			"end": 23.774
+		},
+		{
+			"texte": "ne",
+			"start": 23.774,
+			"end": 23.91
+		},
+		{
+			"texte": "dort",
+			"start": 23.91,
+			"end": 24.182
+		},
+		{
+			"texte": "jamais.",
+			"start": 24.182,
+			"end": 24.59
+		},
+		{
+			"texte": "Étape",
+			"start": 25.09,
+			"end": 25.372
+		},
+		{
+			"texte": "quatre :",
+			"start": 25.372,
+			"end": 25.71
+		},
+		{
+			"texte": "le",
+			"start": 26.04,
+			"end": 26.146
+		},
+		{
+			"texte": "serveur",
+			"start": 26.146,
+			"end": 26.517
+		},
+		{
+			"texte": "renvoie",
+			"start": 26.517,
+			"end": 26.887
+		},
+		{
+			"texte": "des",
+			"start": 26.887,
+			"end": 27.046
+		},
+		{
+			"texte": "fichiers.",
+			"start": 27.046,
+			"end": 27.47
+		},
+		{
+			"texte": "Le",
+			"start": 27.87,
+			"end": 28.016
+		},
+		{
+			"texte": "HTML",
+			"start": 28.016,
+			"end": 28.307
+		},
+		{
+			"texte": "pour",
+			"start": 28.307,
+			"end": 28.599
+		},
+		{
+			"texte": "la",
+			"start": 28.599,
+			"end": 28.744
+		},
+		{
+			"texte": "structure,",
+			"start": 28.744,
+			"end": 29.4
+		},
+		{
+			"texte": "le",
+			"start": 29.4,
+			"end": 29.546
+		},
+		{
+			"texte": "CSS",
+			"start": 29.546,
+			"end": 29.764
+		},
+		{
+			"texte": "pour",
+			"start": 29.764,
+			"end": 30.056
+		},
+		{
+			"texte": "le",
+			"start": 30.056,
+			"end": 30.201
+		},
+		{
+			"texte": "style,",
+			"start": 30.201,
+			"end": 30.566
+		},
+		{
+			"texte": "le",
+			"start": 30.566,
+			"end": 30.711
+		},
+		{
+			"texte": "JavaScript",
+			"start": 30.711,
+			"end": 31.75
+		},
+		{
+			"texte": "pour",
+			"start": 31.75,
+			"end": 32.041
+		},
+		{
+			"texte": "les",
+			"start": 32.041,
+			"end": 32.26
+		},
+		{
+			"texte": "actions.",
+			"start": 32.26,
+			"end": 32.77
+		},
+		{
+			"texte": "Ton",
+			"start": 33.24,
+			"end": 33.39
+		},
+		{
+			"texte": "navigateur",
+			"start": 33.39,
+			"end": 33.89
+		},
+		{
+			"texte": "assemble",
+			"start": 33.89,
+			"end": 34.29
+		},
+		{
+			"texte": "tout,",
+			"start": 34.29,
+			"end": 34.49
+		},
+		{
+			"texte": "et",
+			"start": 34.74,
+			"end": 34.863
+		},
+		{
+			"texte": "la",
+			"start": 34.863,
+			"end": 34.985
+		},
+		{
+			"texte": "pizza",
+			"start": 34.985,
+			"end": 35.292
+		},
+		{
+			"texte": "arrive :",
+			"start": 35.292,
+			"end": 35.66
+		},
+		{
+			"texte": "ta",
+			"start": 35.99,
+			"end": 36.15
+		},
+		{
+			"texte": "page.",
+			"start": 36.15,
+			"end": 36.47
+		},
+		{
+			"texte": "Ta",
+			"start": 36.99,
+			"end": 37.13
+		},
+		{
+			"texte": "mission :",
+			"start": 37.13,
+			"end": 37.618
+		},
+		{
+			"texte": "sur",
+			"start": 37.618,
+			"end": 37.828
+		},
+		{
+			"texte": "ordinateur,",
+			"start": 37.828,
+			"end": 38.526
+		},
+		{
+			"texte": "fais",
+			"start": 38.526,
+			"end": 38.806
+		},
+		{
+			"texte": "un",
+			"start": 38.806,
+			"end": 38.945
+		},
+		{
+			"texte": "clic",
+			"start": 38.945,
+			"end": 39.225
+		},
+		{
+			"texte": "droit",
+			"start": 39.225,
+			"end": 39.574
+		},
+		{
+			"texte": "sur",
+			"start": 39.574,
+			"end": 39.783
+		},
+		{
+			"texte": "un",
+			"start": 39.783,
+			"end": 39.923
+		},
+		{
+			"texte": "site,",
+			"start": 39.923,
+			"end": 40.202
+		},
+		{
+			"texte": "puis «",
+			"start": 40.202,
+			"end": 40.482
+		},
+		{
+			"texte": "Inspecter ».",
+			"start": 40.482,
+			"end": 41.11
+		},
+		{
+			"texte": "Sur",
+			"start": 41.53,
+			"end": 41.82
+		},
+		{
+			"texte": "téléphone,",
+			"start": 41.82,
+			"end": 42.692
+		},
+		{
+			"texte": "écris",
+			"start": 42.692,
+			"end": 43.176
+		},
+		{
+			"texte": "view-source:",
+			"start": 43.176,
+			"end": 44.144
+		},
+		{
+			"texte": "devant",
+			"start": 44.144,
+			"end": 44.725
+		},
+		{
+			"texte": "l'adresse.",
+			"start": 44.725,
+			"end": 45.5
+		},
+		{
+			"texte": "Trouve",
+			"start": 45.88,
+			"end": 46.192
+		},
+		{
+			"texte": "le",
+			"start": 46.192,
+			"end": 46.295
+		},
+		{
+			"texte": "titre",
+			"start": 46.295,
+			"end": 46.555
+		},
+		{
+			"texte": "de",
+			"start": 46.555,
+			"end": 46.659
+		},
+		{
+			"texte": "la",
+			"start": 46.659,
+			"end": 46.763
+		},
+		{
+			"texte": "page",
+			"start": 46.763,
+			"end": 46.971
+		},
+		{
+			"texte": "dans",
+			"start": 46.971,
+			"end": 47.178
+		},
+		{
+			"texte": "le",
+			"start": 47.178,
+			"end": 47.282
+		},
+		{
+			"texte": "code.",
+			"start": 47.282,
+			"end": 47.49
+		},
+		{
+			"texte": "Tu",
+			"start": 47.92,
+			"end": 48.004
+		},
+		{
+			"texte": "l'as",
+			"start": 48.004,
+			"end": 48.129
+		},
+		{
+			"texte": "trouvé ?",
+			"start": 48.129,
+			"end": 48.38
+		},
+		{
+			"texte": "Dis-moi",
+			"start": 48.76,
+			"end": 49.031
+		},
+		{
+			"texte": "quel",
+			"start": 49.031,
+			"end": 49.212
+		},
+		{
+			"texte": "site",
+			"start": 49.212,
+			"end": 49.393
+		},
+		{
+			"texte": "en",
+			"start": 49.393,
+			"end": 49.483
+		},
+		{
+			"texte": "commentaire.",
+			"start": 49.483,
+			"end": 49.98
+		},
+		{
+			"texte": "Prochain",
+			"start": 50.39,
+			"end": 51.068
+		},
+		{
+			"texte": "épisode :",
+			"start": 51.068,
+			"end": 51.661
+		},
+		{
+			"texte": "l'URL.",
+			"start": 51.661,
+			"end": 52
+		}
+	]
+}

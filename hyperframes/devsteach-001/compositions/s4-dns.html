@@ -1,0 +1,139 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s4-deux {
+			left: 130px;
+			top: 150px;
+		}
+		#s4-question {
+			position: absolute;
+			left: 110px;
+			top: 1050px;
+			font-size: 56px;
+			color: #141414;
+		}
+		#s4-etiquette {
+			left: 470px;
+			top: 140px;
+			font-size: 72px;
+		}
+		#s4-ip {
+			position: absolute;
+			left: 140px;
+			top: 1200px;
+			font-size: 64px;
+			color: #141414;
+		}
+	</style>
+	<div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+		<div class="stage" id="s4-stage">
+			<div class="cam">
+				<div class="punch">
+					<!-- Fond : bibliothèque. -->
+					<div class="fond">
+						<div class="decor"></div>
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<g fill="#E6D7BC">
+								<rect x="40" y="300" width="1000" height="22" rx="8" />
+								<rect x="40" y="620" width="1000" height="22" rx="8" />
+							</g>
+							<g opacity="0.55">
+								<rect x="60" y="200" width="40" height="100" rx="6" fill="#7CC8F0" />
+								<rect x="110" y="220" width="36" height="80" rx="6" fill="#E5383B" />
+								<rect x="900" y="520" width="40" height="100" rx="6" fill="#2EB82E" />
+								<rect x="950" y="540" width="36" height="80" rx="6" fill="#FFC857" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : l'annuaire géant, le petit navigateur qui demande, la réponse en chiffres. -->
+					<div class="objets">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<defs>
+								<filter id="s4-ombre" x="-20%" y="-20%" width="140%" height="140%">
+									<feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#141414" flood-opacity="0.2" />
+								</filter>
+							</defs>
+							<g id="s4-livre" filter="url(#s4-ombre)">
+								<rect x="400" y="250" width="520" height="640" rx="30" fill="#2EB82E" stroke="#141414" stroke-width="12" />
+								<rect x="400" y="250" width="70" height="640" rx="20" fill="#259A25" stroke="#141414" stroke-width="12" />
+								<rect x="900" y="275" width="34" height="590" rx="10" fill="#FFF6DD" stroke="#141414" stroke-width="8" />
+								<!-- Visage de l'annuaire. -->
+								<ellipse cx="610" cy="560" rx="30" ry="38" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+								<ellipse cx="790" cy="560" rx="30" ry="38" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+								<circle cx="618" cy="566" r="14" fill="#141414" />
+								<circle cx="798" cy="566" r="14" fill="#141414" />
+								<path d="M 640 690 Q 700 730 760 690" stroke="#141414" stroke-width="12" fill="none" stroke-linecap="round" />
+							</g>
+							<!-- Pages qui défilent quand il cherche. -->
+							<g id="s4-pages">
+								<rect class="s4-page" x="905" y="300" width="120" height="540" rx="12" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+								<rect class="s4-page" x="905" y="300" width="120" height="540" rx="12" fill="#FFF6DD" stroke="#141414" stroke-width="6" />
+							</g>
+							<g id="s4-nav" filter="url(#s4-ombre)">
+								<rect x="100" y="760" width="250" height="200" rx="26" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+								<path d="M 100 810 H 350" stroke="#141414" stroke-width="8" />
+								<circle cx="180" cy="880" r="14" fill="#141414" />
+								<circle cx="270" cy="880" r="14" fill="#141414" />
+							</g>
+							<g id="s4-bulle-q" filter="url(#s4-ombre)">
+								<path d="M 90 1030 H 560 Q 590 1030 590 1060 V 1130 Q 590 1160 560 1160 H 160 L 120 1200 L 128 1160 H 90 Q 60 1160 60 1130 V 1060 Q 60 1030 90 1030 Z" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+							</g>
+							<g id="s4-bulle-r" filter="url(#s4-ombre)">
+								<path d="M 110 1180 H 640 Q 670 1180 670 1210 V 1290 Q 670 1320 640 1320 H 110 Q 80 1320 80 1290 V 1210 Q 80 1180 110 1180 Z" fill="#FFC857" stroke="#141414" stroke-width="8" />
+							</g>
+							<path id="s4-fleche" d="M 400 760 C 330 700 320 650 360 600" fill="none" stroke="#E5383B" stroke-width="14" stroke-linecap="round" />
+						</svg>
+						<div id="s4-question" class="police-code">monsite.fr ?</div>
+						<div id="s4-ip" class="police-code"></div>
+						<div id="s4-deux" class="chiffre">2</div>
+						<div id="s4-etiquette" class="etiquette">DNS</div>
+					</div>
+					<!-- Premier plan : lunettes de lecture et marque-page, flous. -->
+					<div class="avant">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<g fill="none" stroke="#141414" stroke-width="12">
+								<circle cx="960" cy="140" r="70" />
+								<circle cx="1110" cy="140" r="70" />
+							</g>
+							<rect x="-30" y="1250" width="60" height="220" rx="10" fill="#E5383B" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s4');
+			const tl = S.tl;
+
+			// « demande » : le petit navigateur pose sa question.
+			kit.pop(tl, '#s4-nav', S.ancre('@etape'));
+			kit.pop(tl, '#s4-bulle-q, #s4-question', S.ancre('@demande'));
+
+			// « annuaire » : l'annuaire géant tombe et s'écrase un peu.
+			kit.chute(tl, '#s4-livre', S.ancre('@annuaire'), {hauteur: 520});
+
+			// « DNS » : étiquette, gros chiffre 2, zoom.
+			kit.tampon(tl, '#s4-etiquette', S.ancre('@dns'));
+			kit.pop(tl, '#s4-deux', S.ancre('@dns'));
+			S.zoomMot('@dns', [500, 640]);
+
+			// « trouve » : il feuillette ses pages.
+			document.querySelectorAll('.s4-page').forEach((page, i) => {
+				tl.fromTo(page, {scaleX: 1, transformOrigin: '0% 50%'}, {scaleX: -1, duration: 0.3, ease: 'power2.inOut', repeat: 3, delay: i * 0.15}, S.ancre('@trouve'));
+			});
+
+			// « répond » : la réponse en chiffres s'écrit, flèche de retour vers le navigateur.
+			kit.pop(tl, '#s4-bulle-r', S.ancre('@repond'));
+			kit.frappe(tl, '#s4-ip', '203.0.113.7', S.ancre('@repond') + 0.2, 0.7);
+			kit.trace(tl, '#s4-fleche', S.ancre('@repond'), 0.5);
+			tl.to('#s4-ip', {scale: 1.15, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1, transformOrigin: '0% 50%'}, S.ancre('@chiffres'));
+
+			S.fin();
+		})();
+	</script>
+</template>

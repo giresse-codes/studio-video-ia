@@ -1,0 +1,186 @@
+{
+	"chaine": "devsteach",
+	"numero": "001",
+	"slug": "ouvrir-un-site",
+	"script": "channels/devsteach/scripts/001-ouvrir-un-site.md",
+	"audio": "public/audio/devsteach-001.wav",
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-chrono.html",
+			"debut": "@0",
+			"transition": "zoom",
+			"cible": [
+				430,
+				620
+			]
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-pizza.html",
+			"debut": "@imagine",
+			"transition": "balayage",
+			"cible": [
+				430,
+				640
+			]
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-navigateur.html",
+			"debut": "@etape",
+			"transition": "zoom",
+			"cible": [
+				450,
+				640
+			]
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-dns.html",
+			"debut": "@etape",
+			"transition": "balayage",
+			"cible": [
+				440,
+				640
+			]
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-serveur.html",
+			"debut": "@etape",
+			"transition": "zoom",
+			"cible": [
+				430,
+				640
+			]
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-fichiers.html",
+			"debut": "@etape",
+			"transition": "balayage",
+			"cible": [
+				450,
+				640
+			]
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-page.html",
+			"debut": "@assemble",
+			"transition": "zoom",
+			"cible": [
+				440,
+				640
+			]
+		},
+		{
+			"id": "s8",
+			"fichier": "compositions/s8-mission.html",
+			"debut": "@mission-0.2",
+			"transition": "balayage",
+			"cible": [
+				440,
+				620
+			]
+		},
+		{
+			"id": "s9",
+			"fichier": "compositions/s9-fin.html",
+			"debut": "@trouve",
+			"transition": "zoom",
+			"cible": [
+				440,
+				620
+			]
+		}
+	],
+	"bruitages": [
+		{
+			"ancre": "@seconde",
+			"son": "ding-1",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@mais",
+			"son": "boing",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@pizza",
+			"son": "pop-2",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@navigateur",
+			"son": "pop-1",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@dns",
+			"son": "ding-2",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@repond",
+			"son": "tic",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@serveur",
+			"son": "pop-1",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@dort",
+			"son": "boing",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@fichiers",
+			"son": "pop-2",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@actions",
+			"son": "boing",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@page",
+			"son": "ding-1",
+			"scene": "s7"
+		},
+		{
+			"ancre": "@mission",
+			"son": "ding-2",
+			"scene": "s8"
+		},
+		{
+			"ancre": "@clic",
+			"son": "tic",
+			"scene": "s8"
+		},
+		{
+			"ancre": "@titre",
+			"son": "ding-1",
+			"scene": "s9"
+		},
+		{
+			"ancre": "@commentaire",
+			"son": "pop-2",
+			"scene": "s9"
+		},
+		{
+			"ancre": "@url",
+			"son": "ding-2",
+			"scene": "s9"
+		}
+	],
+	"avatar": {
+		"cote": "droite",
+		"tenue": "bleue"
+	},
+	"theme": "schema"
+}

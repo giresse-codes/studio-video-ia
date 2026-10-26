@@ -6,7 +6,7 @@
 // Extrait aussi une image par ancre dans docs/verifications/<video>/.
 // Option --zone-sure : mesure en plus les sous-titres dans la zone sûre (navigateur, polices du rendu).
 import {execFileSync, spawnSync} from 'node:child_process';
-import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {chromium} from 'playwright-core';
 import {detectPauses} from '../../src/lib/align';
@@ -184,11 +184,12 @@ const extraireImages = (id: string, ancres: AncreVerifiee[]): Resultat => {
 	rmSync(sortie, {recursive: true, force: true});
 	mkdirSync(sortie, {recursive: true});
 	const instants = ancres.map((a) => Math.round((a.sec + 0.3) * 1000) / 1000);
-	const nom = (a: AncreVerifiee, i: number) => `${String(i + 1).padStart(2, '0')}-${a.scene}-${normaliser(a.ancre) || 'debut'}.png`;
+	// JPEG de bonne qualité : une vidéo produit des dizaines d'images, le PNG alourdirait le dépôt.
+	const nom = (a: AncreVerifiee, i: number) => `${String(i + 1).padStart(2, '0')}-${a.scene}-${normaliser(a.ancre) || 'debut'}.jpg`;
 	const rendu = path.join('out', `${id}.mp4`);
 	if (ancres.length === 0) return {controle: 'Images', ok: false, details: ['aucune ancre : aucune image']};
 	if (existsSync(rendu)) {
-		ancres.forEach((a, i) => execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', String(instants[i]), '-i', rendu, '-frames:v', '1', path.join(sortie, nom(a, i))]));
+		ancres.forEach((a, i) => execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', String(instants[i]), '-i', rendu, '-frames:v', '1', '-q:v', '3', path.join(sortie, nom(a, i))]));
 		return {controle: 'Images', ok: true, details: [`${ancres.length} images extraites de ${rendu} dans ${sortie}/`]};
 	}
 	// Pas encore rendue : capture des instants dans le projet HyperFrames (même moteur que le rendu).
@@ -203,7 +204,7 @@ const extraireImages = (id: string, ancres: AncreVerifiee[]): Resultat => {
 		const proche = fichiers
 			.map((f) => ({f, t: Number(/at-([\d.]+)s/.exec(f)?.[1])}))
 			.sort((x, y) => Math.abs(x.t - instants[i]) - Math.abs(y.t - instants[i]))[0];
-		if (proche) copyFileSync(path.join(absolu, proche.f), path.join(sortie, nom(a, i)));
+		if (proche) execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', path.join(absolu, proche.f), '-q:v', '3', path.join(sortie, nom(a, i))]);
 	});
 	return {controle: 'Images', ok: true, details: [`${ancres.length} images capturées (vidéo pas encore rendue) dans ${sortie}/`]};
 };

@@ -1,0 +1,96 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s7-etiquette {
+			left: 300px;
+			top: 1060px;
+			font-size: 72px;
+		}
+	</style>
+	<div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div class="stage" id="s7-stage">
+			<div class="cam">
+				<div class="punch">
+					<!-- Fond : comptoir de livraison. -->
+					<div class="fond">
+						<div class="decor"></div>
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<rect x="-100" y="900" width="1280" height="60" fill="#C9B07E" />
+							<g fill="#E6D7BC">
+								<circle cx="150" cy="200" r="60" />
+								<circle cx="960" cy="280" r="80" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : les trois morceaux qui s'assemblent, le carton de pizza qui s'ouvre sur la page. -->
+					<div class="objets">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<defs>
+								<filter id="s7-ombre" x="-20%" y="-20%" width="140%" height="140%">
+									<feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#141414" flood-opacity="0.2" />
+								</filter>
+							</defs>
+							<g id="s7-carton" filter="url(#s7-ombre)">
+								<rect x="150" y="560" width="720" height="360" rx="20" fill="#D9B47C" stroke="#141414" stroke-width="12" />
+								<rect x="180" y="590" width="660" height="300" rx="12" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+							</g>
+							<!-- La page dans le carton : bandeau, image, texte, bouton. -->
+							<g id="s7-page">
+								<rect x="210" y="615" width="600" height="60" rx="12" fill="#2EB82E" />
+								<rect x="210" y="695" width="250" height="170" rx="14" fill="#EBDDBB" stroke="#141414" stroke-width="5" />
+								<rect x="490" y="705" width="300" height="26" rx="13" fill="#141414" />
+								<rect x="490" y="750" width="260" height="20" rx="10" fill="#B9B2A6" />
+								<rect x="490" y="785" width="280" height="20" rx="10" fill="#B9B2A6" />
+								<rect x="490" y="825" width="160" height="40" rx="20" fill="#E5383B" />
+							</g>
+							<!-- Couvercle du carton, qui s'ouvre vers le haut. -->
+							<g id="s7-couvercle">
+								<rect x="150" y="560" width="720" height="360" rx="20" fill="#E8C690" stroke="#141414" stroke-width="12" />
+								<circle cx="510" cy="740" r="90" fill="none" stroke="#E5383B" stroke-width="14" />
+								<path d="M 470 740 L 550 700 L 550 780 Z" fill="#E5383B" />
+							</g>
+							<!-- Les trois morceaux (squelette, vêtements, muscles) qui volent vers le carton. -->
+							<g id="s7-morceaux">
+								<g class="s7-morceau"><circle cx="160" cy="300" r="50" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><path d="M 160 350 V 440" stroke="#141414" stroke-width="8" /></g>
+								<g class="s7-morceau"><path d="M 470 260 L 510 230 Q 535 250 560 230 L 600 260 L 585 300 L 570 292 V 400 H 500 V 292 L 485 300 Z" fill="#7CC8F0" stroke="#141414" stroke-width="7" /></g>
+								<g class="s7-morceau"><path d="M 780 400 Q 790 320 840 300 Q 830 270 860 250 Q 890 245 895 275 Q 890 300 870 310 Q 930 330 930 400 Z" fill="#F08A7A" stroke="#141414" stroke-width="7" /></g>
+							</g>
+						</svg>
+						<div id="s7-etiquette" class="etiquette">ta page</div>
+					</div>
+					<!-- Premier plan : boîtes de pizza empilées, floues. -->
+					<div class="avant">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<rect x="-80" y="1180" width="320" height="70" rx="10" fill="#D9B47C" stroke="#141414" stroke-width="6" />
+							<rect x="-60" y="1250" width="320" height="70" rx="10" fill="#E8C690" stroke="#141414" stroke-width="6" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// « assemble tout » : les trois morceaux volent dans le carton.
+			kit.cascade(tl, '.s7-morceau', S.ancre('@assemble'), 0.1);
+			tl.to('.s7-morceau', {x: (i) => [330, 0, -330][i], y: 380, scale: 0.3, opacity: 0, duration: 0.45, ease: 'power3.in', stagger: 0.08}, S.ancre('@tout') + 0.3);
+			kit.chute(tl, '#s7-carton, #s7-couvercle', S.ancre('@assemble'), {hauteur: 300});
+
+			// « la pizza arrive » : le couvercle s'ouvre…
+			tl.fromTo('#s7-couvercle', {scaleY: 1, transformOrigin: '50% 0%'}, {scaleY: -0.35, duration: 0.45, ease: 'back.out(1.6)', immediateRender: false}, S.ancre('@pizza'));
+
+			// … « ta page » : la page est dedans, prête.
+			kit.cascade(tl, '#s7-page rect', S.ancre('@arrive'), 0.05);
+			kit.tampon(tl, '#s7-etiquette', S.ancre('@page'));
+			S.zoomMot('@page', [510, 740]);
+
+			S.fin();
+		})();
+	</script>
+</template>

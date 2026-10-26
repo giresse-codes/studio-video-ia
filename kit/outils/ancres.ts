@@ -1,5 +1,5 @@
 // Ancres : chaque événement visuel ou sonore est lié à un mot du script.
-//   @mot        première occurrence du mot dans la scène (accents et ponctuation ignorés)
+//   @mot        première occurrence du mot dans la scène (accents, ponctuation et élision l' d' qu' ignorés)
 //   @mot#2      deuxième occurrence dans la scène
 //   @chauff*    premier mot qui commence par « chauff »
 //   @mot+0.1    décalage en secondes (ici 100 ms après le mot ; -0.1 pour avant)
@@ -17,11 +17,13 @@ export type AncreResolue = Ancre & {
 	motTrouve: string;
 };
 
+// Minuscules, sans accents ni ponctuation, sans élision : « l'URL. » → « url », « Étape » → « etape ».
 export const normaliser = (s: string) =>
 	s
 		.toLowerCase()
 		.normalize('NFD')
 		.replace(/[̀-ͯ]/g, '')
+		.replace(/^(?:l|d|j|m|n|s|t|c|qu|jusqu|lorsqu|puisqu)['’]/, '')
 		.replace(/[^a-z0-9]/g, '');
 
 const MOTIF = /^@([^#+\-\s]+?)(\*)?(?:#(\d+))?([+-]\d+(?:\.\d+)?)?$/;

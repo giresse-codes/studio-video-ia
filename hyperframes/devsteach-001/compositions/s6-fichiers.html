@@ -1,0 +1,139 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s6-quatre {
+			left: 130px;
+			top: 110px;
+		}
+		.s6-nom {
+			position: absolute;
+			top: 470px;
+			width: 270px;
+			text-align: center;
+			font-size: 64px;
+			color: #141414;
+		}
+		#s6-structure,
+		#s6-style,
+		#s6-actions {
+			top: 900px;
+		}
+		#s6-structure {
+			left: 70px;
+		}
+		#s6-style {
+			left: 300px;
+			top: 1010px;
+		}
+		#s6-actions {
+			left: 110px;
+			top: 1120px;
+		}
+	</style>
+	<div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+		<div class="stage" id="s6-stage">
+			<div class="cam">
+				<div class="punch">
+					<!-- Fond : tableau de cours, croquis à la craie. -->
+					<div class="fond">
+						<div class="decor"></div>
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<g fill="none" stroke="#E6DCCB" stroke-width="6" stroke-linecap="round">
+								<path d="M 420 140 q 40 -40 80 0 t 80 0" />
+								<path d="M 760 120 l 40 40 m 0 -40 l -40 40" />
+								<circle cx="960" cy="300" r="40" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : trois fichiers-personnages. -->
+					<div class="objets">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<defs>
+								<filter id="s6-ombre" x="-20%" y="-20%" width="140%" height="140%">
+									<feDropShadow dx="0" dy="22" stdDeviation="16" flood-color="#141414" flood-opacity="0.18" />
+								</filter>
+							</defs>
+							<!-- Fichier HTML : le squelette. -->
+							<g id="s6-html" filter="url(#s6-ombre)">
+								<path d="M 70 440 H 290 L 340 490 V 860 H 70 Z" fill="#FFFFFF" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+								<path d="M 290 440 V 490 H 340" fill="#EBDDBB" stroke="#141414" stroke-width="8" stroke-linejoin="round" />
+							</g>
+							<g fill="none" stroke="#141414" stroke-width="9" stroke-linecap="round">
+								<circle class="s6-os" cx="205" cy="590" r="34" />
+								<path class="s6-os" d="M 205 624 V 760" />
+								<path class="s6-os" d="M 165 660 Q 205 645 245 660 M 165 690 Q 205 675 245 690 M 170 720 Q 205 705 240 720" />
+								<path class="s6-os" d="M 205 650 L 140 720 M 205 650 L 270 720 M 205 760 L 160 840 M 205 760 L 250 840" />
+							</g>
+							<!-- Fichier CSS : les vêtements. -->
+							<g id="s6-css" filter="url(#s6-ombre)">
+								<path d="M 380 440 H 600 L 650 490 V 860 H 380 Z" fill="#FFFFFF" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+								<path d="M 600 440 V 490 H 650" fill="#EBDDBB" stroke="#141414" stroke-width="8" stroke-linejoin="round" />
+							</g>
+							<g id="s6-tshirt">
+								<path d="M 450 600 L 490 570 Q 515 590 540 570 L 580 600 L 565 640 L 550 632 V 760 H 480 V 632 L 465 640 Z" fill="#7CC8F0" stroke="#141414" stroke-width="8" stroke-linejoin="round" />
+								<circle cx="515" cy="670" r="16" fill="#FFC857" stroke="#141414" stroke-width="5" />
+								<path d="M 470 800 H 560 L 552 840 H 478 Z" fill="#E5383B" stroke="#141414" stroke-width="6" />
+							</g>
+							<!-- Fichier JavaScript : les muscles. -->
+							<g id="s6-js" filter="url(#s6-ombre)">
+								<path d="M 690 300 H 910 L 960 350 V 720 H 690 Z" fill="#FFFFFF" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+								<path d="M 910 300 V 350 H 960" fill="#EBDDBB" stroke="#141414" stroke-width="8" stroke-linejoin="round" />
+							</g>
+							<!-- Bras plié, biceps gonflé : les muscles du site. -->
+							<g id="s6-bras">
+								<path d="M 720 660 L 850 650 L 870 500" stroke="#141414" stroke-width="62" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M 720 660 L 850 650 L 870 500" stroke="#F08A7A" stroke-width="44" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+								<ellipse cx="790" cy="618" rx="58" ry="44" fill="#F08A7A" stroke="#141414" stroke-width="8" />
+								<path d="M 765 600 Q 790 585 815 600" stroke="#141414" stroke-width="5" fill="none" stroke-linecap="round" />
+								<circle cx="872" cy="482" r="38" fill="#F08A7A" stroke="#141414" stroke-width="8" />
+							</g>
+						</svg>
+						<div class="s6-nom police-titre" style="left: 70px; top: 470px">HTML</div>
+						<div class="s6-nom police-titre" style="left: 380px; top: 470px">CSS</div>
+						<div class="s6-nom police-titre" style="left: 690px; top: 330px">JS</div>
+						<div id="s6-structure" class="etiquette">structure</div>
+						<div id="s6-style" class="etiquette">style</div>
+						<div id="s6-actions" class="etiquette">actions</div>
+						<div id="s6-quatre" class="chiffre">4</div>
+					</div>
+					<!-- Premier plan : trombone et crayon, flous. -->
+					<div class="avant">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<path d="M 980 40 V 220 Q 980 260 1020 260 Q 1060 260 1060 220 V 70" stroke="#9AA3AD" stroke-width="16" fill="none" stroke-linecap="round" />
+							<rect x="-80" y="1320" width="300" height="50" rx="10" fill="#FFC857" stroke="#141414" stroke-width="6" transform="rotate(-12 70 1345)" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s6');
+			const tl = S.tl;
+
+			// « Étape quatre » : gros chiffre 4 ; « fichiers » : trois fichiers en cascade.
+			kit.pop(tl, '#s6-quatre', S.ancre('@etape'));
+			kit.cascade(tl, '#s6-html, #s6-css, #s6-js, .s6-nom', S.ancre('@fichiers'), 0.1);
+
+			// « HTML » : le squelette se dessine (structure).
+			kit.trace(tl, '.s6-os', S.ancre('@html'), 0.6);
+			kit.tampon(tl, '#s6-structure', S.ancre('@structure'));
+			S.zoomMot('@html', [205, 650]);
+
+			// « CSS » : les vêtements (style).
+			kit.pop(tl, '#s6-tshirt', S.ancre('@css'));
+			kit.tampon(tl, '#s6-style', S.ancre('@style'));
+
+			// « JavaScript » : les muscles, qui se contractent sur « actions ».
+			kit.pop(tl, '#s6-bras', S.ancre('@javascript'));
+			kit.tampon(tl, '#s6-actions', S.ancre('@actions'));
+			tl.to('#s6-bras', {scaleX: 1.15, scaleY: 0.9, transformOrigin: '20% 100%', duration: 0.12, ease: 'power2.out', yoyo: true, repeat: 3}, S.ancre('@actions') + 0.3);
+
+			S.fin();
+		})();
+	</script>
+</template>

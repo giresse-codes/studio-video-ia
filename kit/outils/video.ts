@@ -16,7 +16,10 @@ export type Video = {
 	scenes: {id: string; fichier: string; debut: string; transition?: 'zoom' | 'balayage'; cible: [number, number]}[];
 	// Bruitages de gags, liés à un mot.
 	bruitages?: {ancre: string; son: string; scene?: string}[];
-	avatar?: {cote?: 'droite' | 'gauche'};
+	// Tenue de l'avatar : blanche (par défaut) ou bleue.
+	avatar?: {cote?: 'droite' | 'gauche'; tenue?: 'blanche' | 'bleue'};
+	// Palette de la vidéo (STYLE.md) : « atelier » (par défaut) ou « schema ». Le style « Écran code » s'utilise dans une scène.
+	theme?: 'atelier' | 'schema';
 };
 
 export const dossierVideo = (id: string) => path.join('hyperframes', id);

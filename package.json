@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@fontsource/inter": "5.2.8",
+    "@fontsource/jetbrains-mono": "5.2.8",
     "@fontsource/poppins": "5.2.7",
     "@types/node": "22.18.0",
     "@types/react": "19.1.12",

@@ -15,6 +15,11 @@
 	font-weight: 800;
 	src: url('fonts/poppins-800.woff2') format('woff2');
 }
+@font-face {
+	font-family: 'Kit Mono';
+	font-weight: 500;
+	src: url('fonts/jetbrains-mono-500.woff2') format('woff2');
+}
 
 :root {
 	/* Palette « Atelier » (STYLE.md), en dégradés. */
@@ -27,6 +32,21 @@
 	--encre: #1a1a1a;
 	--etiquette-texte: #8ee3ff;
 	--ombre: 0 30px 60px rgba(60, 30, 20, 0.28), 0 8px 18px rgba(60, 30, 20, 0.18);
+	/* Sous la scène (y > 1500) : le sol continue. */
+	--socle: linear-gradient(180deg, #d2ab96 0%, #c3b5df 55%, #8a79b8 100%);
+}
+/* Palette « Schéma » (STYLE.md) : fond blanc, encre noire, aplats beige, accents vert et rouge. */
+.theme-schema {
+	--mur-haut: #ffffff;
+	--mur-bas: #f5efe4;
+	--sol-haut: #ebddbb;
+	--sol-bas: #dcc79c;
+	--encre: #141414;
+	--vert: #2eb82e;
+	--rouge: #e5383b;
+	--beige: #ebddbb;
+	--ombre: 0 26px 50px rgba(20, 20, 20, 0.16), 0 6px 14px rgba(20, 20, 20, 0.12);
+	--socle: linear-gradient(180deg, #ebddbb 0%, #dcc79c 60%, #c9b07e 100%);
 }
 
 /* Une scène : .stage > .cam (travelling) > .punch (zoom sur le mot) > .fond / .objets / .avant. */
@@ -96,6 +116,88 @@
 }
 .titre span {
 	display: inline-block;
+}
+
+/* Polices par classe : les scènes ne nomment jamais une police elles-mêmes (règle du lint HyperFrames). */
+.police-titre {
+	font-family: 'Kit Poppins';
+	font-weight: 800;
+}
+.police-texte {
+	font-family: 'Kit Inter';
+	font-weight: 800;
+}
+.police-code {
+	font-family: 'Kit Mono';
+	font-weight: 500;
+}
+
+/* Style « Schéma » : chiffre énorme, encre épaisse. */
+.chiffre {
+	position: absolute;
+	font-family: 'Kit Poppins';
+	font-weight: 800;
+	font-size: 300px;
+	line-height: 1;
+	color: var(--vert, #2eb82e);
+	-webkit-text-stroke: 18px var(--encre);
+	paint-order: stroke fill;
+}
+
+/* Style « Écran code » (STYLE.md) : fenêtre d'éditeur sombre, le code s'écrit ligne par ligne. */
+.ecran-code {
+	position: absolute;
+	border-radius: 34px;
+	background: linear-gradient(180deg, #16203a 0%, #0e1422 100%);
+	box-shadow: var(--ombre);
+	overflow: hidden;
+}
+.ecran-code .barre {
+	height: 70px;
+	background: #1b2540;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding-left: 30px;
+}
+.ecran-code .barre i {
+	width: 22px;
+	height: 22px;
+	border-radius: 11px;
+	background: #e5383b;
+}
+.ecran-code .barre i:nth-child(2) {
+	background: #ffc857;
+}
+.ecran-code .barre i:nth-child(3) {
+	background: #3ddc97;
+}
+.ecran-code .code {
+	padding: 26px 34px;
+	font-family: 'Kit Mono';
+	font-weight: 500;
+	font-size: 48px;
+	line-height: 1.5;
+	color: #e8eef7;
+	white-space: pre;
+}
+.code .balise {
+	color: #9b8cff;
+}
+.code .texte {
+	color: #3ddc97;
+}
+.code .attribut {
+	color: #ffc857;
+}
+/* Surligneur posé sur un mot ou une ligne (largeur animée de 0 à 100 %) : cadre jaune et fond léger,
+   pour que le texte dessous reste lisible. */
+.surligne {
+	position: absolute;
+	box-sizing: border-box;
+	border-radius: 12px;
+	border: 6px solid #ffd23f;
+	background: rgba(255, 210, 63, 0.16);
 }
 
 /* Sous-titres : pastille dans la zone sûre (80 px gauche, 130 px droite, 380 px bas). */

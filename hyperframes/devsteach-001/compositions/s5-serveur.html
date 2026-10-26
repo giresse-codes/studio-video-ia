@@ -1,0 +1,137 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s5-trois {
+			left: 130px;
+			top: 150px;
+		}
+		#s5-ouvert {
+			left: 110px;
+			top: 1060px;
+			background: linear-gradient(180deg, #3fd03f 0%, #2eb82e 100%);
+			color: #ffffff;
+		}
+		#s5-zzz {
+			position: absolute;
+			left: 780px;
+			top: 200px;
+			font-size: 110px;
+			color: #141414;
+		}
+	</style>
+	<div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div class="stage" id="s5-stage">
+			<div class="cam">
+				<div class="punch">
+					<!-- Fond : rue de nuit, lune et étoiles (la pizzeria ne ferme jamais). -->
+					<div class="fond">
+						<div class="decor"></div>
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<rect x="-100" y="0" width="1280" height="930" fill="#22304D" opacity="0.88" />
+							<circle cx="900" cy="150" r="60" fill="#FFF6DD" />
+							<circle cx="925" cy="135" r="52" fill="#2A3A5C" />
+							<g fill="#FFF6DD">
+								<circle class="s5-etoile" cx="620" cy="110" r="6" />
+								<circle class="s5-etoile" cx="760" cy="240" r="5" />
+								<circle class="s5-etoile" cx="1000" cy="320" r="6" />
+								<circle class="s5-etoile" cx="560" cy="300" r="4" />
+							</g>
+							<g fill="#1A2540">
+								<rect x="-40" y="560" width="200" height="370" />
+								<rect x="880" y="480" width="240" height="450" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : le ticket de commande, l'ordinateur-pizzeria. -->
+					<div class="objets">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<defs>
+								<filter id="s5-ombre" x="-20%" y="-20%" width="140%" height="140%">
+									<feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#000000" flood-opacity="0.3" />
+								</filter>
+								<radialGradient id="s5-four">
+									<stop offset="0" stop-color="#FFC857" />
+									<stop offset="1" stop-color="#E5383B" />
+								</radialGradient>
+							</defs>
+							<path id="s5-trajet" d="M 160 1000 C 220 800 300 700 390 650" fill="none" stroke="#FFC857" stroke-width="12" stroke-linecap="round" stroke-dasharray="4 26" />
+							<g id="s5-ticket">
+								<rect x="100" y="960" width="200" height="110" rx="12" fill="#FFF6DD" stroke="#141414" stroke-width="7" />
+								<path d="M 130 995 H 270 M 130 1030 H 230" stroke="#141414" stroke-width="7" stroke-linecap="round" />
+							</g>
+							<g id="s5-serveur" filter="url(#s5-ombre)">
+								<rect x="340" y="400" width="420" height="560" rx="36" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<rect x="380" y="450" width="340" height="40" rx="12" fill="#EBDDBB" stroke="#141414" stroke-width="6" />
+								<rect x="380" y="510" width="340" height="40" rx="12" fill="#EBDDBB" stroke="#141414" stroke-width="6" />
+								<!-- Bouche du four à pizza. -->
+								<path id="s5-four-bouche" d="M 410 860 V 760 Q 410 640 550 640 Q 690 640 690 760 V 860 Z" fill="#2A2A2A" stroke="#141414" stroke-width="10" />
+								<circle id="s5-led" cx="700" cy="590" r="20" fill="#2EB82E" stroke="#141414" stroke-width="6" />
+							</g>
+							<path id="s5-feu" d="M 430 860 V 770 Q 430 660 550 660 Q 670 660 670 770 V 860 Z" fill="url(#s5-four)" opacity="0" />
+							<!-- Store rayé de pizzeria. -->
+							<g id="s5-store">
+								<path d="M 310 330 H 790 L 820 420 H 280 Z" fill="#FFFFFF" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+								<g fill="#E5383B">
+									<path d="M 340 330 H 400 L 400 420 H 320 Z" />
+									<path d="M 460 330 H 520 L 525 420 H 455 Z" />
+									<path d="M 580 330 H 640 L 650 420 H 580 Z" />
+									<path d="M 700 330 H 760 L 785 420 H 705 Z" />
+								</g>
+							</g>
+							<!-- Toque de chef sur l'ordinateur (gag). -->
+							<g id="s5-toque">
+								<rect x="480" y="230" width="140" height="70" rx="10" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+								<path d="M 470 240 Q 430 160 500 150 Q 520 90 570 120 Q 620 90 640 150 Q 700 170 630 240 Z" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+							</g>
+							<path id="s5-barre" d="M 770 330 L 1010 200" stroke="#E5383B" stroke-width="18" stroke-linecap="round" />
+						</svg>
+						<div id="s5-zzz" class="police-titre">Zzz</div>
+						<div id="s5-trois" class="chiffre">3</div>
+						<div id="s5-ouvert" class="etiquette">OUVERT 24h/24</div>
+					</div>
+					<!-- Premier plan : réverbère flou. -->
+					<div class="avant">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<rect x="20" y="0" width="34" height="760" fill="#141414" />
+							<ellipse cx="37" cy="120" rx="110" ry="60" fill="#FFC857" opacity="0.6" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+			document.querySelectorAll('.s5-etoile').forEach((e, i) => kit.boucle(tl, e, {opacity: 0.2}, S.ancre('@etape') + i * 0.3, S.dur, 1.2 + i * 0.2));
+
+			// « part » : le ticket de commande file le long du trajet vers le serveur.
+			kit.pop(tl, '#s5-ticket', S.ancre('@commande'));
+			tl.to('#s5-ticket', {x: 260, y: -330, scale: 0.4, opacity: 0, duration: 0.6, ease: 'power2.in'}, S.ancre('@part') + 0.3);
+
+			// « serveur » : l'ordinateur-pizzeria arrive, gros chiffre 3, « ouvert 24h/24 ».
+			kit.chute(tl, '#s5-serveur', S.ancre('@serveur'), {hauteur: 500});
+			kit.pop(tl, '#s5-trois', S.ancre('@serveur'));
+			S.zoomMot('@serveur', [500, 640]);
+			kit.tampon(tl, '#s5-ouvert', S.ancre('@ordinateur'));
+
+			// « allumé » : la lumière du serveur clignote, toujours allumée.
+			kit.boucle(tl, '#s5-led', {opacity: 0.3}, S.ancre('@allume'), S.dur, 0.6);
+
+			// « pizzeria » : store rayé, four qui s'allume, toque de chef (gag).
+			kit.chute(tl, '#s5-store', S.ancre('@pizzeria'), {hauteur: 300});
+			tl.fromTo('#s5-feu', {opacity: 0}, {opacity: 1, duration: 0.4, ease: 'power2.out'}, S.ancre('@pizzeria'));
+			kit.chute(tl, '#s5-toque', S.ancre('@pizzeria') + 0.3, {hauteur: 260});
+
+			// « dort jamais » : des « Zzz » apparaissent… et sont barrés.
+			kit.pop(tl, '#s5-zzz', S.ancre('@dort'));
+			kit.trace(tl, '#s5-barre', S.ancre('@jamais'), 0.25, 'power2.out');
+
+			S.fin();
+		})();
+	</script>
+</template>

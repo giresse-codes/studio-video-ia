@@ -72,10 +72,13 @@ Règles pour toutes les vidéos à venir. Les valeurs chiffrées sont aussi dans
 - Une fenêtre d'éditeur arrondie à côté d'une illustration plate d'un objet du quotidien ; le code s'écrit ligne par ligne.
 - Usage : DevsTeach.
 
+Une vidéo choisit sa palette de fond dans `video.json` (`"theme": "schema"` ou `"atelier"`, par défaut) ; le style « Écran code » s'utilise dans une scène (classe `ecran-code` du kit).
+
 ## Avatar
 - Personnage original : jeune adulte en 2D plate, silhouette simple, grande tête, lunettes rondes noires, cheveux bouclés brun foncé, haut blanc à manches longues, pantalon bleu #2F5FA7, chaussures noires. Peau #C68A5E, contour noir #141414 de 6 px. Ni logo ni marque.
 - Composant : `kit/runtime/avatar.html` (HyperFrames, copié dans chaque vidéo). La version Remotion `src/components/Avatar.tsx` reste pour Astuces #1.
 - Poses : « neutre », « explique » (main levée), « montre » (bras tendu vers le centre, index pointé), « surpris », « choque » (mains sur les joues), « reflechit » (main au menton), « rit » (sursauts, mains sur le ventre), « content » (mains sur les hanches).
-- La pose suit l'indication de chaque phrase du script. Changement de pose en douceur, avec un léger écrasement puis un rebond. Respiration lente, clignement toutes les 3,5 s environ.
+- La pose suit l'indication de chaque phrase du script ; une phrase sans indication prend la pose « explique ». Changement de pose en douceur, avec un léger écrasement puis un rebond. Respiration lente, clignement toutes les 3,5 s environ.
+- Tenue : blanche par défaut (Astuces), bleue pour DevsTeach (`"avatar": {"tenue": "bleue"}` dans `video.json`).
 - Bouche : elle suit le volume de la voix et reste fermée dans les silences.
 - Placement : à droite par défaut ; `"avatar": {"cote": "gauche"}` dans `video.json` le place à gauche, retourné.

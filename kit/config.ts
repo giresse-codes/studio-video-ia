@@ -43,6 +43,12 @@ export const SOUS_TITRES = {
 
 export const ETIQUETTE_MIN_PX = 56;
 
+// Couleur du haut de l'avatar selon sa tenue.
+export const TENUES = {blanche: '#FFFFFF', bleue: '#3D7FD9'} as const;
+
+// Pose d'une phrase sans indication : le narrateur explique.
+export const POSE_PAR_DEFAUT = 'explique';
+
 // Avatar : 1,6 fois sa taille d'origine (373 x 560 px), à cheval sur le bas de la scène.
 export const AVATAR = {
 	echelle: 1.6,

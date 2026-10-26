@@ -5,7 +5,7 @@
 import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {pagesByWordCount} from '../../src/lib/caption-pages';
-import {AVATAR, FORMAT, MOUVEMENT, SCENE_BAS, SON, SOUS_TITRES, SYNCHRO} from '../config';
+import {AVATAR, FORMAT, MOUVEMENT, POSE_PAR_DEFAUT, SCENE_BAS, SON, SOUS_TITRES, SYNCHRO, TENUES} from '../config';
 import {ancresDansCode, type AncreResolue, resoudreAncre} from './ancres';
 import {calculerMinutage, type Minutage} from './minutage';
 import {CRETE_FICHIER_DB, genererSons, SONS} from './sons';
@@ -29,7 +29,8 @@ export const resoudre = (video: Video, minutage: Minutage): Preparation => {
 	const debuts: number[] = [];
 	video.scenes.forEach((s, k) => {
 		try {
-			debuts.push(k === 0 ? 0 : resoudreAncre(s.debut, minutage.mots, debuts[k - 1]).sec);
+			// Une scène commence après la précédente : « @etape » désigne le « étape » suivant, pas le même.
+			debuts.push(k === 0 ? 0 : resoudreAncre(s.debut, minutage.mots, debuts[k - 1] + 0.1).sec);
 		} catch (e) {
 			erreurs.push(`${s.id} (début) : ${(e as Error).message}`);
 			debuts.push(debuts[k - 1] ?? 0);
@@ -186,7 +187,7 @@ const ecrireIndex = (p: Preparation, kitData: object) => {
 			#socle {
 				position: absolute;
 				inset: 0;
-				background: linear-gradient(180deg, #d2ab96 0%, #c3b5df 55%, #8a79b8 100%);
+				background: var(--socle);
 			}
 			/* Léger grain sur toute l'image. */
 			#grain {
@@ -198,7 +199,7 @@ const ecrireIndex = (p: Preparation, kitData: object) => {
 			}
 		</style>
 	</head>
-	<body>
+	<body class="theme-${p.video.theme ?? 'atelier'}">
 		<div id="root" data-composition-id="main" data-start="0" data-duration="${duree}" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}">
 			<div id="socle" data-layout-ignore></div>
 ${hotes}
@@ -242,6 +243,7 @@ export const preparer = (id: string, {whisper = process.env.KIT_WHISPER !== 'non
 	copier(path.join(RACINE, 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2'), path.join(kit, 'fonts/inter-800.woff2'));
 	copier(path.join(RACINE, 'node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2'), path.join(kit, 'fonts/inter-700.woff2'));
 	copier(path.join(RACINE, 'node_modules/@fontsource/poppins/files/poppins-latin-800-normal.woff2'), path.join(kit, 'fonts/poppins-800.woff2'));
+	copier(path.join(RACINE, 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2'), path.join(kit, 'fonts/jetbrains-mono-500.woff2'));
 	copier(path.join(RACINE, 'node_modules/gsap/dist/gsap.min.js'), path.join(kit, 'gsap.min.js'));
 	copier(path.join(RACINE, 'kit/runtime/avatar.html'), path.join(dossier, 'compositions/avatar.html'));
 	genererSons(path.join(dossier, 'assets/sons'), [...new Set(p.bruitages.map((b) => b.son))]);
@@ -257,10 +259,12 @@ export const preparer = (id: string, {whisper = process.env.KIT_WHISPER !== 'non
 		zoomMot: MOUVEMENT.zoomMot,
 		scenes: p.scenes.map((s) => ({id: s.id, debut: r(s.debut), fin: r(s.fin), transition: s.transition, cible: s.cible})),
 		ancres: Object.fromEntries(p.ancres.map((a) => [`${a.scene}|${a.brute}`, r(a.sec)])),
-		poses: minutage.phrases.map((ph) => ({t: r(ph.start), pose: ph.pose})),
+		// Une indication vaut pour sa phrase ; sans indication, le narrateur explique.
+		poses: minutage.phrases.map((ph) => ({t: r(ph.start), pose: ph.emotion ? ph.pose : POSE_PAR_DEFAUT})),
 		bouche: minutage.bouche,
 		avatar: {
 			cote: video.avatar?.cote ?? 'droite',
+			tenue: TENUES[video.avatar?.tenue ?? 'blanche'],
 			largeur: AVATAR.largeur,
 			hauteur: AVATAR.hauteur,
 			gauche: gaucheAvatar,

@@ -1,0 +1,106 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s2-bouton {
+			position: absolute;
+			left: 200px;
+			top: 900px;
+			width: 380px;
+			height: 110px;
+			border-radius: 55px;
+			background: linear-gradient(180deg, #3fd03f 0%, #2eb82e 100%);
+			border: 8px solid #141414;
+			box-sizing: border-box;
+			text-align: center;
+			font-size: 56px;
+			line-height: 92px;
+			color: #ffffff;
+		}
+	</style>
+	<div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div class="stage" id="s2-stage">
+			<div class="cam">
+				<div class="punch">
+					<!-- Fond : carrelage de cuisine. -->
+					<div class="fond">
+						<div class="decor"></div>
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<defs>
+								<pattern id="s2-carreaux" width="120" height="120" patternUnits="userSpaceOnUse">
+									<rect width="120" height="120" fill="#FFFFFF" />
+									<rect width="60" height="60" fill="#F3EADB" />
+									<rect x="60" y="60" width="60" height="60" fill="#F3EADB" />
+								</pattern>
+							</defs>
+							<rect x="-100" y="0" width="1280" height="920" fill="url(#s2-carreaux)" />
+						</svg>
+					</div>
+					<!-- Objets : le téléphone qui commande, la pizza. -->
+					<div class="objets">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<defs>
+								<filter id="s2-ombre" x="-20%" y="-20%" width="140%" height="140%">
+									<feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#141414" flood-opacity="0.2" />
+								</filter>
+							</defs>
+							<g id="s2-telephone" filter="url(#s2-ombre)">
+								<rect x="150" y="230" width="480" height="900" rx="70" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<rect x="180" y="300" width="420" height="760" rx="36" fill="#F7F1E6" />
+								<rect x="330" y="255" width="120" height="20" rx="10" fill="#141414" />
+								<rect x="210" y="330" width="360" height="90" rx="22" fill="#E5383B" />
+								<text x="390" y="393" text-anchor="middle" class="police-titre" font-size="60" fill="#FFFFFF">PIZZA</text>
+							</g>
+							<!-- Pizza : pâte, sauce, mozzarella, olives, basilic. -->
+							<g id="s2-pizza">
+								<circle cx="390" cy="640" r="170" fill="#E9B872" stroke="#141414" stroke-width="10" />
+								<circle cx="390" cy="640" r="140" fill="#E5383B" />
+								<g fill="#FFF6DD">
+									<ellipse cx="330" cy="590" rx="40" ry="30" />
+									<ellipse cx="450" cy="610" rx="36" ry="28" />
+									<ellipse cx="380" cy="700" rx="44" ry="30" />
+									<ellipse cx="300" cy="690" rx="26" ry="22" />
+								</g>
+								<g fill="#141414">
+									<circle cx="400" cy="560" r="12" />
+									<circle cx="470" cy="690" r="12" />
+									<circle cx="320" cy="640" r="11" />
+								</g>
+								<g fill="#2EB82E">
+									<ellipse cx="420" cy="650" rx="22" ry="12" transform="rotate(-30 420 650)" />
+									<ellipse cx="350" cy="740" rx="20" ry="11" transform="rotate(25 350 740)" />
+								</g>
+							</g>
+						</svg>
+						<div id="s2-bouton" class="police-texte">Commander</div>
+					</div>
+					<!-- Premier plan : feuilles de basilic et piment, flous. -->
+					<div class="avant">
+						<svg class="calque" viewBox="0 0 1080 1920">
+							<ellipse cx="960" cy="140" rx="120" ry="60" fill="#2EB82E" transform="rotate(-35 960 140)" />
+							<ellipse cx="1040" cy="260" rx="90" ry="44" fill="#279C27" transform="rotate(20 1040 260)" />
+							<path d="M 20 1180 Q 120 1120 160 1240 Q 90 1260 20 1180 Z" fill="#E5383B" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s2');
+			const tl = S.tl;
+
+			// Le téléphone glisse avec la transition ; le bouton s'enfonce sur « commandes ».
+			kit.pop(tl, '#s2-bouton', S.ancre('@imagine'));
+			tl.to('#s2-bouton', {y: 14, duration: 0.08, ease: 'power2.out', yoyo: true, repeat: 1}, S.ancre('@commandes'));
+
+			// « pizza » : la pizza tombe sur l'écran avec un rebond.
+			kit.chute(tl, '#s2-pizza', S.ancre('@pizza'), {hauteur: 420});
+
+			S.fin();
+		})();
+	</script>
+</template>

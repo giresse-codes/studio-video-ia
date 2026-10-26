@@ -107,6 +107,14 @@
 			});
 		},
 
+		// Texte qui s'écrit lettre par lettre (frappe), sur la durée donnée.
+		frappe(tl, cible, texte, t, duree = 0.6) {
+			const el = typeof cible === 'string' ? document.querySelector(cible) : cible;
+			const etat = {n: 0};
+			el.textContent = '';
+			tl.fromTo(etat, {n: 0}, {n: texte.length, duration: duree, ease: 'none', onUpdate: () => (el.textContent = texte.slice(0, Math.round(etat.n)))}, t);
+		},
+
 		// Cascade : chaque élément entre `ecart` secondes après le précédent.
 		cascade(tl, cibles, t, ecart = 0.08) {
 			tl.fromTo(cibles, {opacity: 0, y: 40, scale: 0.6}, {opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'back.out(2)', stagger: ecart}, t);

@@ -1,0 +1,266 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+		}
+		/* Taille et position posées par le script à partir de window.KIT.avatar (kit/config.ts). */
+		#av-box {
+			position: absolute;
+		}
+		#av-svg {
+			overflow: visible;
+		}
+	</style>
+	<div id="root" data-composition-id="avatar" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+		<div id="av-box">
+			<svg id="av-svg" viewBox="0 0 400 600">
+				<ellipse id="av-shadow" cx="200" cy="584" rx="120" ry="12" fill="#141414" opacity="0.12" />
+				<g id="av-figure">
+					<g id="av-legs">
+						<path d="M 140 430 L 260 430 L 257 566 L 207 566 L 200 478 L 193 566 L 143 566 Z" fill="#2F5FA7" stroke="#141414" stroke-width="6" stroke-linejoin="round" />
+						<ellipse cx="166" cy="572" rx="34" ry="13" fill="#141414" />
+						<ellipse cx="234" cy="572" rx="34" ry="13" fill="#141414" />
+					</g>
+					<g id="av-body">
+						<rect x="186" y="238" width="28" height="50" fill="#C68A5E" stroke="#141414" stroke-width="6" />
+						<path id="av-haut" d="M 128 304 Q 128 280 156 278 L 244 278 Q 272 280 272 304 L 264 446 L 136 446 Z" fill="#FFFFFF" stroke="#141414" stroke-width="6" stroke-linejoin="round" />
+						<path d="M 178 279 Q 200 304 222 279" fill="#C68A5E" stroke="#141414" stroke-width="5" stroke-linejoin="round" />
+					</g>
+					<g id="av-head">
+						<g id="av-curls-back"></g>
+						<circle cx="113" cy="176" r="17" fill="#C68A5E" stroke="#141414" stroke-width="6" />
+						<circle cx="287" cy="176" r="17" fill="#C68A5E" stroke="#141414" stroke-width="6" />
+						<ellipse cx="200" cy="162" rx="86" ry="92" fill="#C68A5E" stroke="#141414" stroke-width="6" />
+						<g id="av-curls-front"></g>
+						<g id="av-cheeks" opacity="0">
+							<ellipse cx="148" cy="206" rx="16" ry="9" fill="#E58C6E" />
+							<ellipse cx="252" cy="206" rx="16" ry="9" fill="#E58C6E" />
+						</g>
+						<g stroke="#141414" stroke-width="7" stroke-linecap="round">
+							<line id="av-brow-l" x1="146" y1="128" x2="182" y2="128" />
+							<line id="av-brow-r" x1="218" y1="128" x2="254" y2="128" />
+						</g>
+						<ellipse id="av-eye-l" cx="166" cy="166" rx="7" ry="9" fill="#141414" />
+						<ellipse id="av-eye-r" cx="234" cy="166" rx="7" ry="9" fill="#141414" />
+						<path id="av-happy-l" d="M 156 170 Q 166 156 176 170" stroke="#141414" stroke-width="5" stroke-linecap="round" fill="none" opacity="0" />
+						<path id="av-happy-r" d="M 224 170 Q 234 156 244 170" stroke="#141414" stroke-width="5" stroke-linecap="round" fill="none" opacity="0" />
+						<g fill="none" stroke="#141414" stroke-width="6">
+							<circle cx="166" cy="166" r="27" />
+							<circle cx="234" cy="166" r="27" />
+							<path d="M 193 162 Q 200 156 207 162" />
+							<line x1="139" y1="162" x2="118" y2="158" />
+							<line x1="261" y1="162" x2="282" y2="158" />
+						</g>
+						<path d="M 200 182 Q 192 200 202 202" fill="none" stroke="#141414" stroke-width="5" stroke-linecap="round" />
+						<path id="av-mouth" d="" stroke="#141414" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+					</g>
+					<g id="av-arms">
+						<g id="av-arm-back">
+							<path class="ink" fill="none" stroke="#141414" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" />
+							<path class="cloth" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+							<g class="finger" opacity="0">
+								<line stroke="#141414" stroke-width="15" stroke-linecap="round" />
+								<line stroke="#C68A5E" stroke-width="6" stroke-linecap="round" />
+							</g>
+							<circle class="hand" r="16" fill="#C68A5E" stroke="#141414" stroke-width="5" />
+						</g>
+						<g id="av-arm-front">
+							<path class="ink" fill="none" stroke="#141414" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" />
+							<path class="cloth" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+							<g class="finger" opacity="0">
+								<line stroke="#141414" stroke-width="15" stroke-linecap="round" />
+								<line stroke="#C68A5E" stroke-width="6" stroke-linecap="round" />
+							</g>
+							<circle class="hand" r="16" fill="#C68A5E" stroke="#141414" stroke-width="5" />
+						</g>
+					</g>
+				</g>
+			</svg>
+		</div>
+	</div>
+	<script>
+		(function () {
+			// Avatar du studio (même personnage que src/components/Avatar.tsx), dessiné à partir du temps seul.
+			// Copié dans chaque vidéo par `npm run preparer` ; données dans window.KIT.
+			const KIT = window.KIT;
+			const FPS = KIT.fps;
+			const A = KIT.avatar;
+			const box = document.getElementById('av-box');
+			box.style.left = `${A.gauche}px`;
+			box.style.top = `${A.haut}px`;
+			box.style.width = `${A.largeur}px`;
+			box.style.height = `${A.hauteur}px`;
+			// À gauche, le dessin est retourné pour regarder vers le centre.
+			if (A.cote === 'gauche') box.style.transform = 'scaleX(-1)';
+			// Tenue (haut et manches) : blanche ou bleue selon video.json.
+			document.getElementById('av-haut').setAttribute('fill', A.tenue);
+			document.querySelectorAll('#av-svg .cloth').forEach((m) => m.setAttribute('stroke', A.tenue));
+			const svg = document.getElementById('av-svg');
+			svg.setAttribute('width', A.largeur);
+			svg.setAttribute('height', A.hauteur);
+			const NS = 'http://www.w3.org/2000/svg';
+			const $ = (id) => document.getElementById(id);
+
+			const NEUTRAL = {
+				frontHand: [124, 442], backHand: [276, 442], frontPointing: 0, headTilt: 0, bodyLift: 0, browRaise: 0, browTilt: 0,
+				eyeScale: 1, happyEyes: 0, lookX: 0, lookY: 0, mouthWidth: 42, mouthCurve: 6, mouthOpen: 0, mouthShift: 0, blush: 0, laugh: 0,
+			};
+			const POSES = {
+				neutre: NEUTRAL,
+				explique: {...NEUTRAL, backHand: [336, 206], headTilt: 4, browRaise: 5, mouthWidth: 48, mouthCurve: 9},
+				montre: {...NEUTRAL, frontHand: [-4, 236], frontPointing: 1, headTilt: -6, browRaise: 4, lookX: -5, mouthWidth: 48, mouthCurve: 10},
+				surpris: {...NEUTRAL, frontHand: [70, 252], backHand: [330, 252], bodyLift: 10, browRaise: 14, eyeScale: 1.35, mouthWidth: 26, mouthCurve: 0, mouthOpen: 22},
+				choque: {...NEUTRAL, frontHand: [124, 214], backHand: [276, 214], bodyLift: 6, browRaise: 18, eyeScale: 1.5, mouthWidth: 34, mouthCurve: -4, mouthOpen: 30},
+				reflechit: {...NEUTRAL, backHand: [222, 252], headTilt: 7, browRaise: 2, browTilt: 7, lookX: 5, lookY: -5, mouthWidth: 30, mouthCurve: -2, mouthShift: 10},
+				rit: {...NEUTRAL, frontHand: [178, 404], backHand: [226, 404], headTilt: -7, browRaise: 8, happyEyes: 1, mouthWidth: 64, mouthCurve: 18, mouthOpen: 24, blush: 1, laugh: 1},
+				content: {...NEUTRAL, frontHand: [156, 398], backHand: [244, 398], bodyLift: 4, browRaise: 6, happyEyes: 1, mouthWidth: 62, mouthCurve: 16, mouthOpen: 10, blush: 1},
+			};
+
+			const mix = (a, b, t) => {
+				const out = {};
+				for (const k in a) {
+					out[k] = Array.isArray(a[k]) ? [a[k][0] + (b[k][0] - a[k][0]) * t, a[k][1] + (b[k][1] - a[k][1]) * t] : a[k] + (b[k] - a[k]) * t;
+				}
+				return out;
+			};
+
+			// Cheveux : cercles fusionnés (contour puis remplissage).
+			const curls = (group, list) => {
+				for (const pass of [true, false]) {
+					for (const [cx, cy, r] of list) {
+						const c = document.createElementNS(NS, 'circle');
+						c.setAttribute('cx', cx);
+						c.setAttribute('cy', cy);
+						c.setAttribute('r', r);
+						c.setAttribute('fill', '#2A1B14');
+						if (pass) {
+							c.setAttribute('stroke', '#141414');
+							c.setAttribute('stroke-width', 12);
+						}
+						group.appendChild(c);
+					}
+				}
+			};
+			curls($('av-curls-back'), [[112, 150, 30], [118, 108, 32], [142, 76, 34], [178, 58, 34], [220, 56, 34], [258, 72, 34], [284, 104, 32], [290, 148, 30]]);
+			curls($('av-curls-front'), [[140, 96, 22], [170, 82, 24], [202, 78, 24], [234, 84, 23], [262, 100, 21]]);
+
+			// Bras à deux segments : coude le plus bas des deux solutions.
+			const UPPER = 80, FORE = 75;
+			const setArm = (g, sx, sy, hx, hy, pointing) => {
+				const dx = hx - sx, dy = hy - sy;
+				const reach = Math.min(Math.max(Math.hypot(dx, dy), Math.abs(UPPER - FORE) + 1), UPPER + FORE - 0.5);
+				const to = Math.atan2(dy, dx);
+				const bend = Math.acos((UPPER * UPPER + reach * reach - FORE * FORE) / (2 * UPPER * reach));
+				const a = Math.sin(to + bend) > Math.sin(to - bend) ? to + bend : to - bend;
+				const ex = sx + UPPER * Math.cos(a), ey = sy + UPPER * Math.sin(a);
+				const px = sx + reach * Math.cos(to), py = sy + reach * Math.sin(to);
+				const d = `M ${sx} ${sy} L ${ex} ${ey} L ${px} ${py}`;
+				g.querySelector('.ink').setAttribute('d', d);
+				g.querySelector('.cloth').setAttribute('d', d);
+				const hand = g.querySelector('.hand');
+				hand.setAttribute('cx', px);
+				hand.setAttribute('cy', py);
+				const dir = Math.atan2(py - ey, px - ex);
+				const finger = g.querySelector('.finger');
+				finger.setAttribute('opacity', pointing);
+				finger.querySelectorAll('line').forEach((l) => {
+					l.setAttribute('x1', px);
+					l.setAttribute('y1', py);
+					l.setAttribute('x2', px + 26 * Math.cos(dir));
+					l.setAttribute('y2', py + 26 * Math.sin(dir));
+				});
+			};
+
+			const mouthPath = (width, curve, open, shift) => {
+				const x0 = 200 + shift - width / 2, x1 = 200 + shift + width / 2, cx = 200 + shift, y = 226 - curve * 0.5;
+				if (open < 1.5) {
+					return {d: `M ${x0} ${y} Q ${cx} ${y + curve * 1.6} ${x1} ${y}`, fill: 'none'};
+				}
+				return {d: `M ${x0} ${y} Q ${cx} ${y + curve * 0.5 - open * 0.3} ${x1} ${y} Q ${cx} ${y + curve * 1.6 + open * 1.6} ${x0} ${y} Z`, fill: '#6B1F2A'};
+			};
+
+			// Pose de chaque phrase (indications du script), un peu avant son début.
+			const keys = KIT.poses.map((p) => ({t: p.t - 0.15, pose: p.pose}));
+
+			// Regard : vers l'objet principal de la scène en cours (cible de video.json), en 0,4 s.
+			const tete = {x: A.gauche + A.largeur * 0.5, y: A.haut + A.hauteur * (160 / 600)};
+			const versCible = (cible) => {
+				let dx = cible[0] - tete.x;
+				const dy = cible[1] - tete.y;
+				if (A.cote === 'gauche') dx = -dx;
+				const d = Math.hypot(dx, dy) || 1;
+				return {x: (6 * dx) / d, y: (4 * dy) / d, tilt: (5 * dx) / d};
+			};
+			const regard = (t) => {
+				let k = 0;
+				KIT.scenes.forEach((s, j) => {
+					if (t >= s.debut) k = j;
+				});
+				const actuel = versCible(KIT.scenes[k].cible);
+				if (k === 0) return actuel;
+				const avant = versCible(KIT.scenes[k - 1].cible);
+				const f = easeOut((t - KIT.scenes[k].debut) / 0.4);
+				return {x: avant.x + (actuel.x - avant.x) * f, y: avant.y + (actuel.y - avant.y) * f, tilt: avant.tilt + (actuel.tilt - avant.tilt) * f};
+			};
+			const easeOut = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+
+			// Prise de jeu au changement de pose : léger écrasement, puis rebond.
+			const take = (dt) => (dt < 0 ? 1 : dt < 0.15 ? 1 - 0.06 * Math.sin((Math.PI * dt) / 0.15) : dt < 0.45 ? 1 + 0.035 * Math.sin((Math.PI * (dt - 0.15)) / 0.3) : 1);
+
+			const render = (t) => {
+				let i = 0;
+				keys.forEach((k, j) => {
+					if (t >= k.t) i = j;
+				});
+				const dt = t - keys[i].t;
+				const p = i > 0 ? mix(POSES[keys[i - 1].pose], POSES[keys[i].pose], easeOut(dt / 0.47)) : POSES[keys[0].pose];
+				const frame = Math.floor(t * FPS);
+
+				const breath = Math.sin(t * Math.PI * 0.8) * 3;
+				const phase = frame % Math.round(FPS * 3.5);
+				const blink = phase < 4 ? [0, 0.5, 1, 0.5][phase] : 0;
+				const laugh = Math.abs(Math.sin(t * Math.PI * 4)) * 6 * p.laugh;
+				const lift = -p.bodyLift - breath - laugh;
+				const squash = take(dt);
+				const r = regard(t);
+
+				$('av-figure').setAttribute('transform', `translate(200 584) scale(${2 - squash} ${squash}) translate(-200 -584)`);
+				$('av-shadow').setAttribute('rx', 120 - p.bodyLift * 2);
+				$('av-legs').setAttribute('transform', `translate(0 ${-p.bodyLift})`);
+				$('av-body').setAttribute('transform', `translate(0 ${lift})`);
+				$('av-arms').setAttribute('transform', `translate(0 ${lift})`);
+				$('av-head').setAttribute('transform', `translate(0 ${lift * 1.2}) rotate(${p.headTilt + r.tilt} 200 250)`);
+				setArm($('av-arm-back'), 260, 292, p.backHand[0], p.backHand[1] - lift, 0);
+				setArm($('av-arm-front'), 140, 292, p.frontHand[0], p.frontHand[1] - lift, p.frontPointing);
+
+				$('av-cheeks').setAttribute('opacity', 0.35 * p.blush);
+				$('av-brow-l').setAttribute('transform', `translate(0 ${-p.browRaise}) rotate(${-p.browTilt * 0.4} 164 128)`);
+				$('av-brow-r').setAttribute('transform', `translate(0 ${-p.browRaise}) rotate(${-p.browTilt} 236 128)`);
+				const open = (1 - p.happyEyes) * (1 - blink);
+				for (const [id, cx] of [['av-eye-l', 166], ['av-eye-r', 234]]) {
+					const e = $(id);
+					e.setAttribute('cx', cx + p.lookX + r.x);
+					e.setAttribute('cy', 166 + p.lookY + r.y);
+					e.setAttribute('rx', 7 * p.eyeScale);
+					e.setAttribute('ry', 9 * p.eyeScale * Math.max(open, 0.08));
+				}
+				$('av-happy-l').setAttribute('opacity', p.happyEyes);
+				$('av-happy-r').setAttribute('opacity', p.happyEyes);
+
+				// Bouche : suit le volume de la voix (enveloppe précalculée par image).
+				const level = KIT.bouche[Math.min(KIT.bouche.length - 1, Math.max(0, frame))] || 0;
+				const m = mouthPath(Math.max(p.mouthWidth * 0.8, 30), p.mouthCurve * 0.6, Math.max(level * 28, p.mouthOpen), p.mouthShift);
+				$('av-mouth').setAttribute('d', m.d);
+				$('av-mouth').setAttribute('fill', m.fill);
+			};
+
+			const clock = {t: 0};
+			const tl = gsap.timeline({paused: true});
+			tl.fromTo(clock, {t: 0}, {t: KIT.duree, duration: KIT.duree, ease: 'none', onUpdate: () => render(clock.t)}, 0);
+			render(0);
+			window.__timelines['avatar'] = tl;
+		})();
+	</script>
+</template>
