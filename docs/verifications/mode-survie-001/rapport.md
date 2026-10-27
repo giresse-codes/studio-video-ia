@@ -14,7 +14,7 @@
 ✓ Bords
     107 instants mesurés (ancres et toutes les 0,5 s, hors transitions), marge 60 px
 ✓ Images
-    46 images capturées (vidéo pas encore rendue) dans docs/verifications/mode-survie-001/
+    46 images extraites de out/mode-survie-001.mp4 dans docs/verifications/mode-survie-001/
 ```
 
 | Scène | Ancre | Mot | Mot (s) | Événement (s) | Écart (ms) |
