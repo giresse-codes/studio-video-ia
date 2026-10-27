@@ -14,7 +14,7 @@
 ✓ Bords
     105 instants mesurés (ancres et toutes les 0,5 s, hors transitions), marge 60 px
 ✓ Images
-    38 images capturées (vidéo pas encore rendue) dans docs/verifications/astuces-002/
+    38 images extraites de out/astuces-002.mp4 dans docs/verifications/astuces-002/
 ```
 
 | Scène | Ancre | Mot | Mot (s) | Événement (s) | Écart (ms) |
