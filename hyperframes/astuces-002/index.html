@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- Généré par npm run preparer à partir de video.json : ne pas modifier à la main. -->
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=1080, height=1920" />
+		<script src="assets/kit/gsap.min.js"></script>
+		<script src="assets/kit/kit.js"></script>
+		<link rel="stylesheet" href="assets/kit/kit.css" />
+		<script>
+			window.KIT = {"fps":30,"duree":39.567,"source":"estimation","transitionSec":0.4,"travelling":[1,1.12],"zoomMot":{"echelle":1.25,"dureeSec":0.25},"scenes":[{"id":"s1","debut":0,"fin":4.75,"transition":"zoom","cible":[360,680]},{"id":"s2","debut":4.75,"fin":11.855,"transition":"balayage","cible":[700,480]},{"id":"s3","debut":11.855,"fin":15.19,"transition":"zoom","cible":[420,520]},{"id":"s4","debut":15.19,"fin":24.6,"transition":"balayage","cible":[440,600]},{"id":"s5","debut":24.6,"fin":29.32,"transition":"zoom","cible":[470,560]},{"id":"s6","debut":29.32,"fin":34.86,"transition":"balayage","cible":[420,600]},{"id":"s7","debut":34.86,"fin":39.567,"transition":"zoom","cible":[330,700]}],"calques":[],"ancres":{"s1|@0":0,"s1|@bloque":1.432,"s1|@respire":2.3,"s1|@clique":3.458,"s1|@pas":3.933,"s2|@envoie":6.72,"s2|@message":7.425,"s2|@numeros":8.659,"s2|@attendes":10.206,"s2|@colis":11.148,"s3|@peche":12.355,"s3|@lance":13.123,"s3|@hamecon":13.429,"s3|@attend":14.376,"s4|@cliques":15.423,"s4|@faux":16.843,"s4|@ressemble":17.434,"s4|@vrai":18.025,"s4|@demande":18.897,"s4|@frais":20.097,"s4|@carte":20.697,"s4|@pretexte":22.351,"s4|@carte#2":23.366,"s4|@veut":23.839,"s5|@lien":25.752,"s5|@bizarre":25.995,"s5|@urgence":26.956,"s5|@frais":27.925,"s5|@minuscules":28.233,"s6|@pas":30.011,"s6|@supprimes":30.849,"s6|@signales":32.079,"s6|@33700":33.877,"s7|@wifi":36.224,"s7|@rame":36.437,"s7|@pourquoi":35.64,"s7|@chambre":36.968,"s7|@toi":37.974},"poses":[{"t":0,"pose":"explique"},{"t":2.3,"pose":"explique"},{"t":3.3,"pose":"explique"},{"t":4.75,"pose":"explique"},{"t":6.25,"pose":"explique"},{"t":11.82,"pose":"rit"},{"t":15.19,"pose":"explique"},{"t":21.43,"pose":"explique"},{"t":24.6,"pose":"explique"},{"t":29.32,"pose":"explique"},{"t":30.66,"pose":"explique"},{"t":34.86,"pose":"content"},{"t":37.85,"pose":"explique"}],"bouche":[0,0,0,0,0.88,1,1,1,1,0.94,0.84,0.75,0.64,1,1,1,1,0.98,0.72,0.75,0,0.45,1,1,0.72,0.87,1,0.77,0.48,1,0.94,0.28,0.75,1,0.88,0.43,0.77,1,1,0.82,0.87,0.87,1,1,0.73,0.84,1,1,0.87,0,0.52,0.79,0.97,0.61,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.58,0.68,0.94,0.95,0.81,0.83,0.79,0.48,0,0.53,0.77,0.75,0.57,0.48,0.41,0.26,0.19,0.06,0.1,0.03,0,0,0,0,0,0,0,0,0,0,0.62,0.96,0.98,0.98,1,0.75,0,0,0,0.55,0.6,0.66,0.94,1,0.21,0,0.49,0.53,0,0,0,0.44,1,0.99,0.67,0.67,0.15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.6,0.9,0.88,1,1,1,1,1,1,0.63,0.58,0.99,1,0.9,0.91,0.8,0.68,0.71,0.72,0.92,0.7,0.6,0.57,0.34,0.42,0.25,0.24,0.35,0.3,0.13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.5,1,1,0.92,0.69,0,0.61,1,1,1,1,1,1,0.76,0.83,1,1,0.9,0.76,0.81,0.74,0.55,1,0.94,0.97,1,1,1,1,1,1,1,1,1,1,0.74,0.78,0.83,0.62,0.95,1,1,1,0.98,0.76,0.81,0.64,0,0.68,1,0.9,0.82,0.87,1,1,1,1,0.98,0.98,1,1,1,0.92,0.89,0.92,0.89,0.83,1,1,1,0.65,0.95,1,0.99,1,0.99,0.96,0.93,0.94,0.84,0.8,0.53,0.8,0.82,0.54,0.16,0,0,0,0,0,0,0,0,0,0.84,1,0.95,1,1,0.92,0.92,0.15,0.12,1,1,0.91,1,1,1,0.98,0.31,0.97,1,0.38,0.54,0.61,0.98,1,0.94,0.7,0,0.92,1,1,0.98,0.91,0.83,0.81,0.74,0.72,0.84,0.73,0.77,1,1,1,1,0.99,1,1,1,1,1,0.94,0.93,0.82,0,0.56,1,0.98,0.71,0.81,0.81,0.62,0.22,0,0,0,0,0,0,0,0,0,0,0,0.25,0.47,0.73,1,0.86,0.76,0.31,1,0.88,0.62,0.72,0.97,1,1,0.77,0.27,0,0.99,1,0.96,0.93,0.92,0.54,0.68,0.69,0.64,0.42,0,0,0,0.03,0.1,0.18,0.16,0.04,0.14,0.12,0.12,0.86,1,0.96,0.96,1,1,1,1,1,0.78,0.76,0.47,1,1,0.96,1,0.77,0.8,0.8,0.7,1,1,1,0.94,0.63,0.37,0,0,0,0,0,0,0,0,1,1,0.91,0.93,0.88,1,1,0.93,0.11,0,0.76,0.93,0.59,0.17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.52,0.82,0.84,0.95,1,0.78,0.68,0.94,1,0.32,0.15,0.42,0.93,1,0.95,0.63,0,0,0.28,0.34,0.07,0,0,0,0,0,0,0.27,0.64,0.72,1,1,1,0.87,0.93,1,1,0.76,0.64,0.77,0.69,0.8,1,0.74,1,1,0.82,0.51,0.57,0.57,0.42,1,0.98,0.76,0.79,0.82,0.79,0.65,0.79,0.82,0.1,0.13,0.44,0,0.26,0.46,0.97,0.99,0.72,0.7,1,1,0.8,0.84,0.8,0.56,1,1,0.98,0.83,0.86,1,1,0.81,0.59,0.75,0.67,0.71,0.92,0.89,0.81,0.67,0.13,0,0,0,0,0,0,0,0,0,0.51,1,1,1,0.85,0.63,0,1,1,0.87,1,1,1,1,1,1,1,0.94,0.85,1,0.71,0.24,0,1,1,0.86,0.74,1,1,0.63,0.85,0.82,0.39,0,0,0,0.4,0.91,0.81,0,0.11,0.39,0.77,0.85,0.6,0.55,0.49,0.34,0.45,0.78,0.92,0.89,0.89,0.85,0.77,0.95,0.51,0.2,0,0.74,0.81,0.54,0,0.35,0.71,0.68,0.47,0.37,0.08,0,0,0,0.24,0,0,0,0,0,0,0,0,0,0,0,0,0,0.79,0.83,0.74,1,0.91,0.6,0.62,0.53,0.76,1,1,1,1,1,0.97,0.7,0.74,0.59,1,0.92,0.51,0.55,1,0.92,0.58,0.19,0.7,0.74,0.87,0.36,0,0.65,0.86,0.58,0.05,0.18,0.5,0.53,0,0.18,0,0,0,0,0,0,0,0,0.43,0.66,0.97,0.82,0.05,0.69,1,0.74,0,0,0,0.59,1,0.95,0.69,0.5,0.38,0.19,0,0.35,0,0,0.26,0.7,0.73,0.56,0.42,0.38,0.46,0.61,0.31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.76,0.91,0.64,1,1,0.83,0.79,0.81,0.82,0.59,0.81,0.89,0.71,0.58,0.53,0.47,0.28,0.04,0,0,0,0,0,0,0,0,0,0,0,0,0,0.96,0.98,0.96,0.91,0.95,0.85,1,1,1,0.96,0.83,0.95,0.99,0.86,0.89,1,1,1,0.98,0.94,0.85,0.78,0.69,0.49,0.05,0,0,0,0,0,0,0,0,0.83,0.93,0.93,0.99,1,1,0.81,0.84,0.86,0.84,0.98,1,1,0.95,0.88,0.82,0.68,0.46,0.61,0.65,0.59,0.41,0,0,0,0,0,0,0,0,0.7,0.66,1,0.89,0.72,0.6,0.55,0.41,0.66,0.52,0.94,0.93,0.88,0.89,0.87,0.84,0.9,0.97,0.96,0.96,0.96,0.89,0.79,0.64,0.63,0.56,0,0.04,0.36,0.57,0.61,0.41,0.37,0.23,0.05,0,0,0,0,0,0,0,0,0,0,0,0,0.39,0.63,0.79,1,1,0.98,0.99,0.87,0.08,0,0,0.53,0.69,0.44,1,1,0.05,0,0.42,0.62,0,0,0,1,1,0.73,0.57,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.54,0.79,0.64,0.73,0.75,0.7,1,0.96,0.41,0.47,0.81,0.72,1,1,1,1,0.99,0.91,0.95,0.69,0.05,0,0,0,0,0,0.56,1,0.66,0.33,0.71,0.98,0.79,0.87,0.89,0.78,1,1,1,1,1,1,1,1,1,1,1,1,1,0.72,0.81,0.74,0.54,1,1,1,1,0.99,0.7,0.67,0.63,0,0,0.95,0.89,0.59,0,0,0.65,0.83,0.64,1,0.99,0.91,0.48,0.57,0.67,0.36,1,0.95,0.68,0.76,0.74,0.71,0.84,1,0.97,0.41,0,0.23,0.17,0,0,0.77,0.82,0.81,0.97,1,0.91,0.66,0.91,0.96,0.89,0.7,0.69,0.79,0.71,0.37,0.47,0.57,0.18,0,0,0,0,0,0,0,0,0,0,0,0,0,0.15,0.25,1,0.99,0.76,1,1,1,0.96,1,1,1,0.9,0.62,0,0,0,0,0,0,0,0,0,0,0,0.56,1,1,0.5,0.11,0.34,1,1,0.95,0.11,0,1,1,1,1,1,1,0.87,0.67,0.51,0.46,0.43,0.98,1,0.98,0.7,0.75,0.99,1,1,0.97,0.92,0.93,0.9,0.79,0.98,0.97,0.89,0.84,0.95,0.79,0.58,0.63,0.57,0.71,0.85,0.77,0.69,0.63,0.57,0.44,0.18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.65,1,0.87,0.55,0.88,1,1,1,0.75,0.52,0,0,0,0,0,0,0,0,0,0.37,0.9,1,0.97,1,1,0.8,1,1,0.93,0.93,1,1,0.95,1,1,0.78,0.68,0.52,0.74,1,1,0.92,0.78,0.55,0,0,0,0,0,0,0,0,0],"avatar":{"cote":"droite","tenue":"#FFFFFF","largeur":597,"hauteur":896,"gauche":523,"haut":904}};
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				width: 1080px;
+				height: 1920px;
+				overflow: hidden;
+				background: #9f8fc7;
+			}
+			/* Sous la scène (y > 1500) : le sol continue en dégradé, jamais de bande vide. */
+			#socle {
+				position: absolute;
+				inset: 0;
+				background: var(--socle);
+			}
+			/* Léger grain sur toute l'image. */
+			#grain {
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
+				opacity: 0.07;
+				mix-blend-mode: multiply;
+			}
+		</style>
+	</head>
+	<body class="theme-schema">
+		<div data-hf-id="hf-syy6" id="root" data-composition-id="main" data-start="0" data-duration="39.567" data-width="1080" data-height="1920">
+			<div data-hf-id="hf-30wg" id="socle" data-layout-ignore></div>
+			<div data-hf-id="hf-dyx6" id="s1" class="clip" data-composition-id="s1" data-composition-src="compositions/s1-sms.html" data-start="0" data-duration="5.15" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+			<div data-hf-id="hf-iru6" id="s2" class="clip" data-composition-id="s2" data-composition-src="compositions/s2-milliers.html" data-start="4.75" data-duration="7.505" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 3"></div>
+			<div data-hf-id="hf-t7iv" id="s3" class="clip" data-composition-id="s3" data-composition-src="compositions/s3-peche.html" data-start="11.855" data-duration="3.735" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 4"></div>
+			<div data-hf-id="hf-7v9u" id="s4" class="clip" data-composition-id="s4" data-composition-src="compositions/s4-faux-site.html" data-start="15.19" data-duration="9.81" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 5"></div>
+			<div data-hf-id="hf-hk87" id="s5" class="clip" data-composition-id="s5" data-composition-src="compositions/s5-signes.html" data-start="24.6" data-duration="5.12" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 6"></div>
+			<div data-hf-id="hf-9wet" id="s6" class="clip" data-composition-id="s6" data-composition-src="compositions/s6-signaler.html" data-start="29.32" data-duration="5.94" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 7"></div>
+			<div data-hf-id="hf-wodh" id="s7" class="clip" data-composition-id="s7" data-composition-src="compositions/s7-demain.html" data-start="34.86" data-duration="4.707" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 8"></div>
+			<div data-hf-id="hf-ubdh" id="avatar" class="clip" data-composition-id="avatar" data-composition-src="compositions/avatar.html" data-start="0" data-duration="39.567" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 40"></div>
+			<div data-hf-id="hf-m9ik" id="sous-titres" class="clip" data-composition-id="sous-titres" data-composition-src="compositions/sous-titres.html" data-start="0" data-duration="39.567" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 50"></div>
+			<svg data-hf-id="hf-be1d" id="grain" viewBox="0 0 1080 1920" data-layout-ignore style="z-index: 60">
+				<filter data-hf-id="hf-m4ma" id="grain-filtre"><feTurbulence data-hf-id="hf-l760" id="grain-bruit" type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="1" /></filter>
+				<rect data-hf-id="hf-dyx5" width="100%" height="100%" filter="url(#grain-filtre)" />
+			</svg>
+			<audio data-hf-id="hf-tgo8" id="voix" class="clip" src="assets/audio/voix.wav" data-start="0" data-track-index="4" data-volume="1"></audio>
+			<audio data-hf-id="hf-jlts" id="son-1" class="clip" src="assets/sons/pop-1.wav" data-start="0.2" data-duration="0.18" data-track-index="5" data-volume="0.805"></audio><!-- premier son -->
+			<audio data-hf-id="hf-agy1" id="son-2" class="clip" src="assets/sons/ding-1.wav" data-start="1.432" data-duration="0.9" data-track-index="6" data-volume="0.805"></audio><!-- @bloque (s1) -->
+			<audio data-hf-id="hf-ajug" id="son-3" class="clip" src="assets/sons/boing.wav" data-start="3.933" data-duration="0.45" data-track-index="7" data-volume="0.805"></audio><!-- @pas (s1) -->
+			<audio data-hf-id="hf-h2w1" id="son-4" class="clip" src="assets/sons/whoosh-1.wav" data-start="4.7" data-duration="0.43" data-track-index="5" data-volume="0.805"></audio><!-- transition vers s2 -->
+			<audio data-hf-id="hf-w3he" id="son-5" class="clip" src="assets/sons/pop-2.wav" data-start="6.72" data-duration="0.2" data-track-index="6" data-volume="0.805"></audio><!-- @envoie (s2) -->
+			<audio data-hf-id="hf-lejs" id="son-6" class="clip" src="assets/sons/ding-2.wav" data-start="8.659" data-duration="0.8" data-track-index="7" data-volume="0.805"></audio><!-- @numeros (s2) -->
+			<audio data-hf-id="hf-euq3" id="son-7" class="clip" src="assets/sons/pop-1.wav" data-start="11.148" data-duration="0.18" data-track-index="5" data-volume="0.805"></audio><!-- @colis (s2) -->
+			<audio data-hf-id="hf-emfi" id="son-8" class="clip" src="assets/sons/whoosh-2.wav" data-start="11.805" data-duration="0.51" data-track-index="6" data-volume="0.805"></audio><!-- transition vers s3 -->
+			<audio data-hf-id="hf-trdz" id="son-9" class="clip" src="assets/sons/pop-1.wav" data-start="13.429" data-duration="0.18" data-track-index="7" data-volume="0.805"></audio><!-- @hamecon (s3) -->
+			<audio data-hf-id="hf-msp5" id="son-10" class="clip" src="assets/sons/boing.wav" data-start="14.376" data-duration="0.45" data-track-index="5" data-volume="0.805"></audio><!-- @attend (s3) -->
+			<audio data-hf-id="hf-26n1" id="son-11" class="clip" src="assets/sons/whoosh-3.wav" data-start="15.14" data-duration="0.59" data-track-index="6" data-volume="0.805"></audio><!-- transition vers s4 -->
+			<audio data-hf-id="hf-osov" id="son-12" class="clip" src="assets/sons/ding-1.wav" data-start="16.843" data-duration="0.9" data-track-index="7" data-volume="0.805"></audio><!-- @faux (s4) -->
+			<audio data-hf-id="hf-i7fb" id="son-13" class="clip" src="assets/sons/tic.wav" data-start="20.097" data-duration="0.06" data-track-index="5" data-volume="0.805"></audio><!-- @frais (s4) -->
+			<audio data-hf-id="hf-2z2r" id="son-14" class="clip" src="assets/sons/ding-2.wav" data-start="22.351" data-duration="0.8" data-track-index="6" data-volume="0.805"></audio><!-- @pretexte (s4) -->
+			<audio data-hf-id="hf-1xcp" id="son-15" class="clip" src="assets/sons/boing.wav" data-start="23.366" data-duration="0.45" data-track-index="7" data-volume="0.805"></audio><!-- @carte#2 (s4) -->
+			<audio data-hf-id="hf-le7h" id="son-16" class="clip" src="assets/sons/whoosh-1.wav" data-start="24.55" data-duration="0.43" data-track-index="5" data-volume="0.805"></audio><!-- transition vers s5 -->
+			<audio data-hf-id="hf-5dyl" id="son-17" class="clip" src="assets/sons/pop-1.wav" data-start="25.752" data-duration="0.18" data-track-index="6" data-volume="0.805"></audio><!-- @lien (s5) -->
+			<audio data-hf-id="hf-rxem" id="son-18" class="clip" src="assets/sons/pop-2.wav" data-start="26.956" data-duration="0.2" data-track-index="7" data-volume="0.805"></audio><!-- @urgence (s5) -->
+			<audio data-hf-id="hf-14jd" id="son-19" class="clip" src="assets/sons/pop-1.wav" data-start="28.233" data-duration="0.18" data-track-index="5" data-volume="0.805"></audio><!-- @minuscules (s5) -->
+			<audio data-hf-id="hf-nvel" id="son-20" class="clip" src="assets/sons/whoosh-2.wav" data-start="29.27" data-duration="0.51" data-track-index="6" data-volume="0.805"></audio><!-- transition vers s6 -->
+			<audio data-hf-id="hf-l1h6" id="son-21" class="clip" src="assets/sons/pop-2.wav" data-start="30.849" data-duration="0.2" data-track-index="7" data-volume="0.805"></audio><!-- @supprimes (s6) -->
+			<audio data-hf-id="hf-hkgo" id="son-22" class="clip" src="assets/sons/ding-1.wav" data-start="33.877" data-duration="0.9" data-track-index="5" data-volume="0.805"></audio><!-- @33700 (s6) -->
+			<audio data-hf-id="hf-jh2z" id="son-23" class="clip" src="assets/sons/whoosh-3.wav" data-start="34.81" data-duration="0.59" data-track-index="6" data-volume="0.805"></audio><!-- transition vers s7 -->
+			<audio data-hf-id="hf-agso" id="son-24" class="clip" src="assets/sons/boing.wav" data-start="36.437" data-duration="0.45" data-track-index="7" data-volume="0.805"></audio><!-- @rame (s7) -->
+		</div>
+		<script>
+			(function () {
+				const tl = gsap.timeline({paused: true});
+				// Grain qui change 12 fois par seconde, graine tirée du temps (rendu identique à chaque fois).
+				const bruit = document.getElementById('grain-bruit');
+				const horloge = {t: 0};
+				tl.fromTo(horloge, {t: 0}, {t: 39.567, duration: 39.567, ease: 'none', onUpdate: () => bruit.setAttribute('seed', 1 + (Math.floor(horloge.t * 12) % 97))}, 0);
+				window.__timelines = window.__timelines || {};
+				window.__timelines['main'] = tl;
+			})();
+		</script>
+	</body>
+</html>

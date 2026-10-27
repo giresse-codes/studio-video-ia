@@ -1,0 +1,163 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s4-fenetre {
+			position: absolute;
+			left: 130px;
+			top: 230px;
+			width: 620px;
+			height: 760px;
+			border-radius: 34px;
+			background: #ffffff;
+			border: 10px solid #141414;
+			box-sizing: border-box;
+			overflow: hidden;
+			box-shadow: var(--ombre);
+		}
+		#s4-fenetre .barre {
+			height: 84px;
+			background: #f3eee4;
+			border-bottom: 8px solid #141414;
+			padding: 14px 20px;
+			box-sizing: border-box;
+		}
+		#s4-fenetre .url {
+			height: 48px;
+			border-radius: 24px;
+			background: #ffffff;
+			border: 5px solid #141414;
+			box-sizing: border-box;
+			padding: 0 18px;
+			font-size: 30px;
+			line-height: 38px;
+			color: #141414;
+		}
+		#s4-logo {
+			margin: 34px 30px 0;
+			font-size: 58px;
+			color: #2f5fa7;
+		}
+		.s4-ligne {
+			margin: 20px 30px 0;
+			height: 26px;
+			border-radius: 13px;
+			background: #d9d2c4;
+		}
+		#s4-frais {
+			margin: 40px 30px 0;
+			font-size: 52px;
+			color: #141414;
+		}
+		#s4-carte-champ {
+			margin: 22px 30px 0;
+			height: 80px;
+			border-radius: 18px;
+			border: 6px solid #141414;
+			box-sizing: border-box;
+			font-size: 34px;
+			line-height: 68px;
+			padding-left: 20px;
+			color: #8a8275;
+		}
+		#s4-faux {
+			left: 470px;
+			top: 190px;
+			background: linear-gradient(180deg, #e5383b 0%, #b8262a 100%);
+			color: #ffffff;
+		}
+		#s4-pretexte {
+			left: 260px;
+			top: 1020px;
+		}
+	</style>
+	<div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-f3hs" class="stage" id="s4-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-2sp1" stroke="#E6DCCB" stroke-width="3">
+								<path data-hf-id="hf-k5tf" d="M 0 240 H 1080 M 0 480 H 1080 M 0 720 H 1080" />
+								<path data-hf-id="hf-vwgu" d="M 240 0 V 920 M 480 0 V 920 M 720 0 V 920 M 960 0 V 920" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : le faux site de livraison (marque inventée), la loupe sur ses défauts, l'aimant qui aspire la carte. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-xibs" id="s4-fenetre">
+							<div data-hf-id="hf-uwsg" class="barre"><div data-hf-id="hf-0k9m" class="url police-code">colis-suivi-fr.xyz</div></div>
+							<div data-hf-id="hf-jhd2" id="s4-logo" class="police-titre">Livraizon</div>
+							<div data-hf-id="hf-s7d5" class="s4-ligne" style="width: 480px"></div>
+							<div data-hf-id="hf-02ox" class="s4-ligne" style="width: 400px"></div>
+							<div data-hf-id="hf-1db1" class="s4-ligne" style="width: 440px"></div>
+							<div data-hf-id="hf-mlyk" id="s4-frais" class="police-titre">Frais : 1,99 €</div>
+							<div data-hf-id="hf-e8dg" id="s4-carte-champ" class="police-texte">N° de carte…</div>
+						</div>
+						<svg data-hf-id="hf-hose" class="calque" viewBox="0 0 1080 1920">
+							<!-- Défauts entourés : l'adresse bizarre, la faute dans le nom. -->
+							<ellipse data-hf-id="hf-iq8c" class="s4-rond" cx="440" cy="278" rx="310" ry="44" fill="none" stroke="#E5383B" stroke-width="10" />
+							<path data-hf-id="hf-b72m" class="s4-souligne" d="M 378 438 L 432 438" stroke="#E5383B" stroke-width="10" stroke-linecap="round" />
+							<g data-hf-id="hf-f4ct" transform="translate(640 420)">
+								<g data-hf-id="hf-xph0" id="s4-loupe" opacity="0">
+									<circle data-hf-id="hf-smxl" cx="0" cy="0" r="80" fill="#7CC8F0" fill-opacity="0.25" stroke="#141414" stroke-width="14" />
+									<path data-hf-id="hf-l480" d="M 56 56 L 130 130" stroke="#141414" stroke-width="26" stroke-linecap="round" />
+								</g>
+							</g>
+							<!-- La carte bancaire, puis l'aimant de l'arnaqueur (gag). -->
+							<g data-hf-id="hf-79ap" transform="translate(320 1220)">
+								<g data-hf-id="hf-r19e" id="s4-carte" opacity="0">
+									<rect data-hf-id="hf-okbj" x="-150" y="-90" width="300" height="180" rx="22" fill="#2EB82E" stroke="#141414" stroke-width="10" />
+									<rect data-hf-id="hf-gfvo" x="-118" y="-48" width="66" height="50" rx="10" fill="#FFC857" stroke="#141414" stroke-width="6" />
+									<rect data-hf-id="hf-cdno" x="-118" y="40" width="200" height="18" rx="9" fill="#141414" />
+								</g>
+							</g>
+							<g data-hf-id="hf-jc9e" transform="translate(860 700)">
+								<g data-hf-id="hf-7bop" id="s4-aimant" opacity="0">
+									<path data-hf-id="hf-lllv" d="M -70 -110 L -70 20 A 70 70 0 0 0 70 20 L 70 -110 L 30 -110 L 30 20 A 30 30 0 0 1 -30 20 L -30 -110 Z" fill="#E5383B" stroke="#141414" stroke-width="10" stroke-linejoin="round" transform="rotate(180)" />
+									<rect data-hf-id="hf-a4u1" x="-70" y="80" width="40" height="34" fill="#BFC5CC" stroke="#141414" stroke-width="8" />
+									<rect data-hf-id="hf-m2rw" x="30" y="80" width="40" height="34" fill="#BFC5CC" stroke="#141414" stroke-width="8" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-p56o" id="s4-faux" class="etiquette">FAUX</div>
+						<div data-hf-id="hf-dsiy" id="s4-pretexte" class="etiquette">PRÉTEXTE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s4');
+			const tl = S.tl;
+
+			// Début (« cliques ») : le faux site s'ouvre.
+			kit.pop(tl, '#s4-fenetre', S.ancre('@cliques'));
+			// « faux » : tampon rouge ; « ressemble » : la loupe passe sur les défauts.
+			kit.tampon(tl, '#s4-faux', S.ancre('@faux'));
+			const loupe = S.ancre('@ressemble');
+			kit.pop(tl, '#s4-loupe', loupe);
+			tl.to('#s4-loupe', {x: -200, y: -140, duration: 0.5, ease: 'power2.inOut'}, loupe + 0.3);
+			kit.trace(tl, '.s4-rond', loupe + 0.5, 0.4);
+			tl.to('#s4-loupe', {x: -230, y: -10, duration: 0.4, ease: 'power2.inOut'}, S.ancre('@vrai'));
+			kit.trace(tl, '.s4-souligne', S.ancre('@vrai') + 0.3, 0.25);
+			tl.to(['#s4-loupe', '#s4-faux'], {opacity: 0, duration: 0.2}, S.ancre('@demande'));
+			// « frais » : les petits frais s'allument ; « carte » : la carte bancaire arrive.
+			tl.fromTo('#s4-frais', {color: '#141414'}, {color: '#E5383B', duration: 0.15, yoyo: true, repeat: 3}, S.ancre('@frais'));
+			S.zoomMot('@frais', [400, 820]);
+			kit.pop(tl, '#s4-carte', S.ancre('@carte'));
+			// « prétexte » : les frais ne servent qu'à ça ; « carte » (2e) : l'aimant aspire la carte (gag).
+			kit.tampon(tl, '#s4-pretexte', S.ancre('@pretexte'));
+			kit.pop(tl, '#s4-aimant', S.ancre('@carte#2') - 0.1);
+			tl.to('#s4-carte', {x: 420, y: -380, rotation: 25, scale: 0.7, duration: 0.5, ease: 'power3.in'}, S.ancre('@carte#2'));
+			tl.to('#s4-aimant', {x: 18, duration: 0.05, yoyo: true, repeat: 5}, S.ancre('@veut'));
+
+			S.fin();
+		})();
+	</script>
+</template>

@@ -1,0 +1,99 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s5-titre {
+			top: 170px;
+			left: 160px;
+			width: 760px;
+			font-size: 92px;
+		}
+		.s5-signe {
+			left: 200px;
+			width: 640px;
+			height: 180px;
+			display: flex;
+			align-items: center;
+			gap: 30px;
+			padding-left: 30px;
+			box-sizing: border-box;
+			border: 8px solid #141414;
+		}
+		.s5-signe b {
+			font-size: 130px;
+			line-height: 1;
+			color: #2eb82e;
+			-webkit-text-stroke: 10px #141414;
+			paint-order: stroke fill;
+		}
+		.s5-signe span {
+			max-width: 350px;
+			font-size: 56px;
+			line-height: 1.05;
+			color: #141414;
+		}
+	</style>
+	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-cr05" class="stage" id="s5-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-2sp1" stroke="#E6DCCB" stroke-width="3">
+								<path data-hf-id="hf-k5tf" d="M 0 240 H 1080 M 0 480 H 1080 M 0 720 H 1080" />
+								<path data-hf-id="hf-vwgu" d="M 240 0 V 920 M 480 0 V 920 M 720 0 V 920 M 960 0 V 920" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : les trois signes, une carte par mot. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-b3dn" id="s5-titre" class="titre">3 signes</div>
+						<div data-hf-id="hf-3drd" id="s5-1" class="carte s5-signe" style="top: 330px"><b data-hf-id="hf-m623" class="police-titre">1</b><span data-hf-id="hf-ls6b" class="police-titre">Lien bizarre</span></div>
+						<div data-hf-id="hf-23cv" id="s5-2" class="carte s5-signe" style="top: 540px"><b data-hf-id="hf-lrr2" class="police-titre">2</b><span data-hf-id="hf-rroz" class="police-titre">Urgence</span></div>
+						<div data-hf-id="hf-gi1h" id="s5-3" class="carte s5-signe" style="top: 750px"><b data-hf-id="hf-ldg1" class="police-titre">3</b><span data-hf-id="hf-3l71" class="police-titre">Frais minuscules</span></div>
+						<svg data-hf-id="hf-hose" class="calque" viewBox="0 0 1080 1920">
+							<!-- Petits pictos à droite de chaque carte : maillon tordu, réveil, pièce minuscule. -->
+							<g data-hf-id="hf-xoh1" id="s5-p1" opacity="0">
+								<rect data-hf-id="hf-f3cp" x="700" y="380" width="70" height="44" rx="22" fill="none" stroke="#E5383B" stroke-width="12" transform="rotate(-25 735 402)" />
+								<rect data-hf-id="hf-lymy" x="730" y="410" width="70" height="44" rx="22" fill="none" stroke="#E5383B" stroke-width="12" transform="rotate(20 765 432)" />
+							</g>
+							<g data-hf-id="hf-an9e" id="s5-p2" opacity="0">
+								<circle data-hf-id="hf-2smd" cx="745" cy="630" r="48" fill="#FFFFFF" stroke="#E5383B" stroke-width="12" />
+								<path data-hf-id="hf-o6en" d="M 745 630 V 600 M 745 630 L 768 645" stroke="#141414" stroke-width="8" stroke-linecap="round" />
+							</g>
+							<g data-hf-id="hf-95r3" id="s5-p3" opacity="0">
+								<circle data-hf-id="hf-mbla" cx="745" cy="840" r="16" fill="#FFC857" stroke="#141414" stroke-width="6" />
+								<circle data-hf-id="hf-l8u3" cx="745" cy="840" r="46" fill="none" stroke="#E5383B" stroke-width="10" />
+							</g>
+						</svg>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+
+			kit.cascade(tl, '#s5-titre', 0);
+			// Une carte par signe, sur le mot.
+			kit.pop(tl, '#s5-1', S.ancre('@lien'));
+			kit.pop(tl, '#s5-p1', S.ancre('@bizarre'));
+			kit.pop(tl, '#s5-2', S.ancre('@urgence'));
+			kit.pop(tl, '#s5-p2', S.ancre('@urgence') + 0.15);
+			tl.to('#s5-p2', {rotation: 8, svgOrigin: '745 630', duration: 0.05, yoyo: true, repeat: 7}, S.ancre('@urgence') + 0.4);
+			kit.pop(tl, '#s5-3', S.ancre('@frais'));
+			kit.pop(tl, '#s5-p3', S.ancre('@minuscules'));
+			// Le titre s'efface avant le zoom sur le 3e signe.
+			tl.to('#s5-titre', {opacity: 0, y: -20, duration: 0.25, ease: 'power2.in'}, S.ancre('@frais'));
+			S.zoomMot('@minuscules', [540, 840]);
+
+			S.fin();
+		})();
+	</script>
+</template>

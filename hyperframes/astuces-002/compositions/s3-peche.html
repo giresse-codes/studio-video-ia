@@ -1,0 +1,95 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s3-titre {
+			top: 180px;
+			left: 220px;
+			width: 640px;
+			font-size: 84px;
+		}
+		#s3-sms {
+			position: absolute;
+			left: 470px;
+			top: 800px;
+			padding: 12px 22px 16px;
+			border-radius: 22px 22px 22px 6px;
+			background: #e5383b;
+			border: 6px solid #141414;
+			font-size: 40px;
+			color: #ffffff;
+			white-space: nowrap;
+		}
+	</style>
+	<div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-nz6b" class="stage" id="s3-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<!-- Fond : ciel et mer de téléphones. -->
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<path data-hf-id="hf-is45" d="M -100 660 Q 0 630 100 660 T 300 660 T 500 660 T 700 660 T 900 660 T 1100 660 T 1300 660 L 1300 1500 L -100 1500 Z" fill="#7CC8F0" opacity="0.45" />
+							<g data-hf-id="hf-vjfe" opacity="0.5">
+								<rect data-hf-id="hf-pezx" x="120" y="820" width="70" height="120" rx="14" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+								<rect data-hf-id="hf-vlba" x="300" y="900" width="70" height="120" rx="14" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+								<rect data-hf-id="hf-m260" x="480" y="800" width="70" height="120" rx="14" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+								<rect data-hf-id="hf-23ed" x="880" y="760" width="70" height="120" rx="14" fill="#FFFFFF" stroke="#141414" stroke-width="6" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : l'arnaqueur dans sa barque, sa canne, l'hameçon en forme de SMS. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-d64h" id="s3-titre" class="titre">C'est de la pêche</div>
+						<svg data-hf-id="hf-hose" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-k6sk" id="s3-barque">
+								<path data-hf-id="hf-caar" d="M 110 600 L 520 600 L 470 690 L 160 690 Z" fill="#B8854A" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+								<!-- L'arnaqueur : silhouette comique, capuche, lunettes noires. -->
+								<g data-hf-id="hf-bidi" id="s3-arnaqueur">
+									<path data-hf-id="hf-xkyw" d="M 230 600 L 250 470 Q 300 440 350 470 L 370 600 Z" fill="#3A3A44" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+									<circle data-hf-id="hf-aouu" cx="300" cy="420" r="62" fill="#3A3A44" stroke="#141414" stroke-width="10" />
+									<circle data-hf-id="hf-i3p1" cx="300" cy="430" r="40" fill="#C68A5E" />
+									<rect data-hf-id="hf-ve1w" x="266" y="414" width="68" height="20" rx="8" fill="#141414" />
+									<path data-hf-id="hf-mt97" d="M 290 452 Q 304 460 318 452" fill="none" stroke="#141414" stroke-width="6" stroke-linecap="round" />
+								</g>
+							</g>
+							<g data-hf-id="hf-p0fr" id="s3-canne">
+								<path data-hf-id="hf-jwki" d="M 350 520 L 600 330" stroke="#141414" stroke-width="12" stroke-linecap="round" />
+								<path data-hf-id="hf-3l8f" id="s3-fil" d="M 600 330 L 600 790" stroke="#141414" stroke-width="4" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-9cqa" id="s3-sms" class="police-texte">Colis bloqué !</div>
+						<div data-hf-id="hf-u5gf" id="s3-attend" class="etiquette" style="left: 210px; top: 910px">… il attend</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant">
+						<svg data-hf-id="hf-i33f" class="calque" viewBox="0 0 1080 1920">
+							<path data-hf-id="hf-gqa8" d="M -80 1420 Q 60 1300 200 1420" fill="none" stroke="#7CC8F0" stroke-width="40" stroke-linecap="round" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s3');
+			const tl = S.tl;
+
+			// Début : la barque tangue doucement, le titre arrive sur « pêche ».
+			kit.boucle(tl, '#s3-barque', {y: 8, rotation: 1.2, svgOrigin: '315 645'}, 0, S.dur, 1.6);
+			kit.cascade(tl, '#s3-titre', S.ancre('@peche'));
+			// « lance » : coup de canne, le fil se déroule ; « hameçon » : le faux SMS au bout du fil.
+			tl.fromTo('#s3-canne', {rotation: 0, svgOrigin: '350 520'}, {rotation: -14, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1}, S.ancre('@lance'));
+			kit.trace(tl, '#s3-fil', S.ancre('@lance') + 0.1, 0.35, 'power2.out');
+			S.zoomMot('@lance', [540, 420]);
+			kit.chute(tl, '#s3-sms', S.ancre('@hamecon'), {hauteur: 200});
+						// « attend » : il s'adosse, bras croisés, et patiente (gag).
+			tl.to('#s3-arnaqueur', {rotation: -10, svgOrigin: '300 600', duration: 0.3, ease: 'back.out(2)'}, S.ancre('@attend'));
+			kit.tampon(tl, '#s3-attend', S.ancre('@attend'));
+
+			S.fin();
+		})();
+	</script>
+</template>

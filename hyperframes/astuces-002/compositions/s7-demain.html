@@ -1,0 +1,80 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s7-demain {
+			left: 170px;
+			top: 220px;
+		}
+		#s7-question {
+			top: 250px;
+			left: 160px;
+			width: 760px;
+			font-size: 92px;
+		}
+	</style>
+	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-kbvr" class="stage" id="s7-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la box wifi, l'escargot du wifi qui rame (gag), puis la question. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-4h7t" id="s7-demain" class="etiquette">DEMAIN</div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-6hq1" id="s7-box">
+								<rect data-hf-id="hf-7ha4" x="150" y="620" width="340" height="150" rx="30" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<circle data-hf-id="hf-23x2" cx="220" cy="695" r="16" fill="#2EB82E" />
+								<circle data-hf-id="hf-qcjr" cx="270" cy="695" r="16" fill="#2EB82E" />
+								<g data-hf-id="hf-81l7" id="s7-ondes" fill="none" stroke="#141414" stroke-width="12" stroke-linecap="round">
+									<path data-hf-id="hf-k7if" d="M 280 560 Q 320 520 360 560" />
+									<path data-hf-id="hf-luoh" d="M 250 520 Q 320 450 390 520" />
+									<path data-hf-id="hf-8xyq" d="M 220 480 Q 320 380 420 480" />
+								</g>
+							</g>
+							<g data-hf-id="hf-vrwo" transform="translate(330 900)">
+								<g data-hf-id="hf-wbj6" id="s7-escargot" opacity="0">
+									<path data-hf-id="hf-y7ly" d="M -110 40 Q -40 20 60 40 L 90 10 L 110 20 L 80 50 Q 0 70 -120 60 Z" fill="#C68A5E" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+									<circle data-hf-id="hf-hcu7" cx="-20" cy="0" r="60" fill="#FFC857" stroke="#141414" stroke-width="10" />
+									<path data-hf-id="hf-p2f1" d="M -20 0 m -30 0 a 30 30 0 1 1 30 30" fill="none" stroke="#141414" stroke-width="8" />
+									<path data-hf-id="hf-s528" d="M 92 12 L 100 -40 M 104 16 L 124 -30" stroke="#141414" stroke-width="8" stroke-linecap="round" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-te09" id="s7-question" class="titre"><span data-hf-id="hf-r19w">Tu en as déjà</span> <span data-hf-id="hf-u0km">reçu un ?</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// « Demain » : l'annonce de l'épisode suivant.
+			kit.tampon(tl, '#s7-demain', 0);
+			// « wifi » : la box et ses ondes ; « rame » : l'escargot arrive avec l'antenne (gag).
+			kit.pop(tl, '#s7-box', S.ancre('@wifi') - 0.1);
+			kit.cascade(tl, '#s7-ondes path', S.ancre('@wifi'), 0.1);
+			kit.pop(tl, '#s7-escargot', S.ancre('@rame'));
+			tl.fromTo('#s7-escargot', {x: -40}, {x: 60, duration: 1.4, ease: 'none', immediateRender: false}, S.ancre('@rame') + 0.4);
+			S.zoomMot('@pourquoi', [330, 300]);
+			// « chambre » : on passe à la question ; elle reste jusqu'à la fin (2 s, le temps de la lire).
+			const chambre = S.ancre('@chambre');
+			tl.to(['#s7-demain', '#s7-box', '#s7-escargot'], {opacity: 0, y: -30, duration: 0.3, ease: 'power2.in'}, chambre);
+			tl.set('#s7-question', {opacity: 0}, 0);
+			tl.set('#s7-question', {opacity: 1}, chambre);
+			kit.cascade(tl, '#s7-question span', chambre, 0.25);
+			// « toi » : la question rebondit.
+			tl.to('#s7-question', {scale: 1.08, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1}, S.ancre('@toi'));
+
+			S.fin();
+		})();
+	</script>
+</template>

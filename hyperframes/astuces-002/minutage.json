@@ -1,0 +1,1178 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 39.567,
+	"voixCreteDb": -1.887,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-sms.html",
+			"debut": 0,
+			"fin": 4.75,
+			"transition": "zoom",
+			"cible": [
+				360,
+				680
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-milliers.html",
+			"debut": 4.75,
+			"fin": 11.855,
+			"transition": "balayage",
+			"cible": [
+				700,
+				480
+			],
+			"ancreDebut": "@voila"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-peche.html",
+			"debut": 11.855,
+			"fin": 15.19,
+			"transition": "zoom",
+			"cible": [
+				420,
+				520
+			],
+			"ancreDebut": "@peche-0.5"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-faux-site.html",
+			"debut": 15.19,
+			"fin": 24.6,
+			"transition": "balayage",
+			"cible": [
+				440,
+				600
+			],
+			"ancreDebut": "@si"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-signes.html",
+			"debut": 24.6,
+			"fin": 29.32,
+			"transition": "zoom",
+			"cible": [
+				470,
+				560
+			],
+			"ancreDebut": "@trois"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-signaler.html",
+			"debut": 29.32,
+			"fin": 34.86,
+			"transition": "balayage",
+			"cible": [
+				420,
+				600
+			],
+			"ancreDebut": "@tu"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-demain.html",
+			"debut": 34.86,
+			"fin": 39.56735416666667,
+			"transition": "zoom",
+			"cible": [
+				330,
+				700
+			],
+			"ancreDebut": "@demain"
+		}
+	],
+	"calques": [],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@0",
+			"mot": "(début)",
+			"motSec": 0,
+			"sec": 0
+		},
+		{
+			"scene": "s1",
+			"ancre": "@bloque",
+			"mot": "bloqué ?",
+			"motSec": 1.432,
+			"sec": 1.432
+		},
+		{
+			"scene": "s1",
+			"ancre": "@respire",
+			"mot": "Respire.",
+			"motSec": 2.3,
+			"sec": 2.3
+		},
+		{
+			"scene": "s1",
+			"ancre": "@clique",
+			"mot": "clique",
+			"motSec": 3.458,
+			"sec": 3.458
+		},
+		{
+			"scene": "s1",
+			"ancre": "@pas",
+			"mot": "pas.",
+			"motSec": 3.933,
+			"sec": 3.933
+		},
+		{
+			"scene": "s2",
+			"ancre": "@envoie",
+			"mot": "envoie",
+			"motSec": 6.72,
+			"sec": 6.72
+		},
+		{
+			"scene": "s2",
+			"ancre": "@message",
+			"mot": "message",
+			"motSec": 7.425,
+			"sec": 7.425
+		},
+		{
+			"scene": "s2",
+			"ancre": "@numeros",
+			"mot": "numéros,",
+			"motSec": 8.659,
+			"sec": 8.659
+		},
+		{
+			"scene": "s2",
+			"ancre": "@attendes",
+			"mot": "attendes",
+			"motSec": 10.206,
+			"sec": 10.206
+		},
+		{
+			"scene": "s2",
+			"ancre": "@colis",
+			"mot": "colis.",
+			"motSec": 11.148,
+			"sec": 11.148
+		},
+		{
+			"scene": "s3",
+			"ancre": "@peche",
+			"mot": "pêche :",
+			"motSec": 12.355,
+			"sec": 12.355
+		},
+		{
+			"scene": "s3",
+			"ancre": "@lance",
+			"mot": "lance",
+			"motSec": 13.123,
+			"sec": 13.123
+		},
+		{
+			"scene": "s3",
+			"ancre": "@hamecon",
+			"mot": "l'hameçon,",
+			"motSec": 13.429,
+			"sec": 13.429
+		},
+		{
+			"scene": "s3",
+			"ancre": "@attend",
+			"mot": "attend.",
+			"motSec": 14.376,
+			"sec": 14.376
+		},
+		{
+			"scene": "s4",
+			"ancre": "@cliques",
+			"mot": "cliques,",
+			"motSec": 15.423,
+			"sec": 15.423
+		},
+		{
+			"scene": "s4",
+			"ancre": "@faux",
+			"mot": "faux",
+			"motSec": 16.843,
+			"sec": 16.843
+		},
+		{
+			"scene": "s4",
+			"ancre": "@ressemble",
+			"mot": "ressemble",
+			"motSec": 17.434,
+			"sec": 17.434
+		},
+		{
+			"scene": "s4",
+			"ancre": "@vrai",
+			"mot": "vrai,",
+			"motSec": 18.025,
+			"sec": 18.025
+		},
+		{
+			"scene": "s4",
+			"ancre": "@demande",
+			"mot": "demande",
+			"motSec": 18.897,
+			"sec": 18.897
+		},
+		{
+			"scene": "s4",
+			"ancre": "@frais",
+			"mot": "frais",
+			"motSec": 20.097,
+			"sec": 20.097
+		},
+		{
+			"scene": "s4",
+			"ancre": "@carte",
+			"mot": "carte.",
+			"motSec": 20.697,
+			"sec": 20.697
+		},
+		{
+			"scene": "s4",
+			"ancre": "@pretexte",
+			"mot": "prétexte :",
+			"motSec": 22.351,
+			"sec": 22.351
+		},
+		{
+			"scene": "s4",
+			"ancre": "@carte#2",
+			"mot": "carte",
+			"motSec": 23.366,
+			"sec": 23.366
+		},
+		{
+			"scene": "s4",
+			"ancre": "@veut",
+			"mot": "veut.",
+			"motSec": 23.839,
+			"sec": 23.839
+		},
+		{
+			"scene": "s5",
+			"ancre": "@lien",
+			"mot": "lien",
+			"motSec": 25.752,
+			"sec": 25.752
+		},
+		{
+			"scene": "s5",
+			"ancre": "@bizarre",
+			"mot": "bizarre,",
+			"motSec": 25.995,
+			"sec": 25.995
+		},
+		{
+			"scene": "s5",
+			"ancre": "@urgence",
+			"mot": "urgence,",
+			"motSec": 26.956,
+			"sec": 26.956
+		},
+		{
+			"scene": "s5",
+			"ancre": "@frais",
+			"mot": "frais",
+			"motSec": 27.925,
+			"sec": 27.925
+		},
+		{
+			"scene": "s5",
+			"ancre": "@minuscules",
+			"mot": "minuscules.",
+			"motSec": 28.233,
+			"sec": 28.233
+		},
+		{
+			"scene": "s6",
+			"ancre": "@pas",
+			"mot": "pas.",
+			"motSec": 30.011,
+			"sec": 30.011
+		},
+		{
+			"scene": "s6",
+			"ancre": "@supprimes",
+			"mot": "supprimes,",
+			"motSec": 30.849,
+			"sec": 30.849
+		},
+		{
+			"scene": "s6",
+			"ancre": "@signales",
+			"mot": "signales",
+			"motSec": 32.079,
+			"sec": 32.079
+		},
+		{
+			"scene": "s6",
+			"ancre": "@33700",
+			"mot": "33700.",
+			"motSec": 33.877,
+			"sec": 33.877
+		},
+		{
+			"scene": "s7",
+			"ancre": "@wifi",
+			"mot": "wifi",
+			"motSec": 36.224,
+			"sec": 36.224
+		},
+		{
+			"scene": "s7",
+			"ancre": "@rame",
+			"mot": "rame",
+			"motSec": 36.437,
+			"sec": 36.437
+		},
+		{
+			"scene": "s7",
+			"ancre": "@pourquoi",
+			"mot": "pourquoi",
+			"motSec": 35.64,
+			"sec": 35.64
+		},
+		{
+			"scene": "s7",
+			"ancre": "@chambre",
+			"mot": "chambre.",
+			"motSec": 36.968,
+			"sec": 36.968
+		},
+		{
+			"scene": "s7",
+			"ancre": "@toi",
+			"mot": "toi,",
+			"motSec": 37.974,
+			"sec": 37.974
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 1.432,
+			"son": "ding-1",
+			"cause": "@bloque (s1)"
+		},
+		{
+			"sec": 3.933,
+			"son": "boing",
+			"cause": "@pas (s1)"
+		},
+		{
+			"sec": 4.7,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 6.72,
+			"son": "pop-2",
+			"cause": "@envoie (s2)"
+		},
+		{
+			"sec": 8.659,
+			"son": "ding-2",
+			"cause": "@numeros (s2)"
+		},
+		{
+			"sec": 11.148,
+			"son": "pop-1",
+			"cause": "@colis (s2)"
+		},
+		{
+			"sec": 11.805,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 13.429,
+			"son": "pop-1",
+			"cause": "@hamecon (s3)"
+		},
+		{
+			"sec": 14.376,
+			"son": "boing",
+			"cause": "@attend (s3)"
+		},
+		{
+			"sec": 15.14,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 16.843,
+			"son": "ding-1",
+			"cause": "@faux (s4)"
+		},
+		{
+			"sec": 20.097,
+			"son": "tic",
+			"cause": "@frais (s4)"
+		},
+		{
+			"sec": 22.351,
+			"son": "ding-2",
+			"cause": "@pretexte (s4)"
+		},
+		{
+			"sec": 23.366,
+			"son": "boing",
+			"cause": "@carte#2 (s4)"
+		},
+		{
+			"sec": 24.55,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 25.752,
+			"son": "pop-1",
+			"cause": "@lien (s5)"
+		},
+		{
+			"sec": 26.956,
+			"son": "pop-2",
+			"cause": "@urgence (s5)"
+		},
+		{
+			"sec": 28.233,
+			"son": "pop-1",
+			"cause": "@minuscules (s5)"
+		},
+		{
+			"sec": 29.27,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 30.849,
+			"son": "pop-2",
+			"cause": "@supprimes (s6)"
+		},
+		{
+			"sec": 33.877,
+			"son": "ding-1",
+			"cause": "@33700 (s6)"
+		},
+		{
+			"sec": 34.81,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		},
+		{
+			"sec": 36.437,
+			"son": "boing",
+			"cause": "@rame (s7)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Un SMS te dit que ton colis est bloqué ?",
+			"emotion": "direct",
+			"pose": "explique",
+			"start": 0,
+			"end": 1.79
+		},
+		{
+			"texte": "Respire.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 2.3,
+			"end": 2.8
+		},
+		{
+			"texte": "Ne clique pas.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 3.3,
+			"end": 4.17
+		},
+		{
+			"texte": "Voilà comment ça marche.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 4.75,
+			"end": 5.68
+		},
+		{
+			"texte": "Quelqu'un envoie ce même message à des milliers de numéros, en espérant que tu attendes vraiment un colis.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 6.25,
+			"end": 11.41
+		},
+		{
+			"texte": "C'est de la pêche : il lance l'hameçon, et il attend.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 11.82,
+			"end": 14.64
+		},
+		{
+			"texte": "Si tu cliques, tu arrives sur un faux site qui ressemble au vrai, et il te demande de payer de petits frais avec ta carte.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 15.19,
+			"end": 20.97
+		},
+		{
+			"texte": "Ces frais ne sont qu'un prétexte : c'est ta carte qu'il veut.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 21.43,
+			"end": 24.05
+		},
+		{
+			"texte": "Trois signes : un lien bizarre, une urgence, des frais minuscules.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 24.6,
+			"end": 28.85
+		},
+		{
+			"texte": "Tu ne cliques pas.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 29.32,
+			"end": 30.2
+		},
+		{
+			"texte": "Tu supprimes, et tu signales le message au 33700.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 30.66,
+			"end": 34.35
+		},
+		{
+			"texte": "Demain : pourquoi ton wifi rame dans la chambre.",
+			"emotion": "souriant",
+			"pose": "content",
+			"start": 34.86,
+			"end": 37.34
+		},
+		{
+			"texte": "Et toi, tu en as déjà reçu un ?",
+			"emotion": null,
+			"pose": "content",
+			"start": 37.85,
+			"end": 39.29
+		}
+	],
+	"mots": [
+		{
+			"texte": "Un",
+			"start": 0,
+			"end": 0.119
+		},
+		{
+			"texte": "SMS",
+			"start": 0.119,
+			"end": 0.298
+		},
+		{
+			"texte": "te",
+			"start": 0.298,
+			"end": 0.418
+		},
+		{
+			"texte": "dit",
+			"start": 0.418,
+			"end": 0.597
+		},
+		{
+			"texte": "que",
+			"start": 0.597,
+			"end": 0.776
+		},
+		{
+			"texte": "ton",
+			"start": 0.776,
+			"end": 0.955
+		},
+		{
+			"texte": "colis",
+			"start": 0.955,
+			"end": 1.253
+		},
+		{
+			"texte": "est",
+			"start": 1.253,
+			"end": 1.432
+		},
+		{
+			"texte": "bloqué ?",
+			"start": 1.432,
+			"end": 1.79
+		},
+		{
+			"texte": "Respire.",
+			"start": 2.3,
+			"end": 2.8
+		},
+		{
+			"texte": "Ne",
+			"start": 3.3,
+			"end": 3.458
+		},
+		{
+			"texte": "clique",
+			"start": 3.458,
+			"end": 3.933
+		},
+		{
+			"texte": "pas.",
+			"start": 3.933,
+			"end": 4.17
+		},
+		{
+			"texte": "Voilà",
+			"start": 4.75,
+			"end": 4.983
+		},
+		{
+			"texte": "comment",
+			"start": 4.983,
+			"end": 5.308
+		},
+		{
+			"texte": "ça",
+			"start": 5.308,
+			"end": 5.401
+		},
+		{
+			"texte": "marche.",
+			"start": 5.401,
+			"end": 5.68
+		},
+		{
+			"texte": "Quelqu'un",
+			"start": 6.25,
+			"end": 6.72
+		},
+		{
+			"texte": "envoie",
+			"start": 6.72,
+			"end": 7.073
+		},
+		{
+			"texte": "ce",
+			"start": 7.073,
+			"end": 7.19
+		},
+		{
+			"texte": "même",
+			"start": 7.19,
+			"end": 7.425
+		},
+		{
+			"texte": "message",
+			"start": 7.425,
+			"end": 7.836
+		},
+		{
+			"texte": "à",
+			"start": 7.836,
+			"end": 7.895
+		},
+		{
+			"texte": "des",
+			"start": 7.895,
+			"end": 8.071
+		},
+		{
+			"texte": "milliers",
+			"start": 8.071,
+			"end": 8.541
+		},
+		{
+			"texte": "de",
+			"start": 8.541,
+			"end": 8.659
+		},
+		{
+			"texte": "numéros,",
+			"start": 8.659,
+			"end": 9.07
+		},
+		{
+			"texte": "en",
+			"start": 9.42,
+			"end": 9.525
+		},
+		{
+			"texte": "espérant",
+			"start": 9.525,
+			"end": 9.944
+		},
+		{
+			"texte": "que",
+			"start": 9.944,
+			"end": 10.101
+		},
+		{
+			"texte": "tu",
+			"start": 10.101,
+			"end": 10.206
+		},
+		{
+			"texte": "attendes",
+			"start": 10.206,
+			"end": 10.624
+		},
+		{
+			"texte": "vraiment",
+			"start": 10.624,
+			"end": 11.043
+		},
+		{
+			"texte": "un",
+			"start": 11.043,
+			"end": 11.148
+		},
+		{
+			"texte": "colis.",
+			"start": 11.148,
+			"end": 11.41
+		},
+		{
+			"texte": "C'est",
+			"start": 11.82,
+			"end": 12.088
+		},
+		{
+			"texte": "de",
+			"start": 12.088,
+			"end": 12.222
+		},
+		{
+			"texte": "la",
+			"start": 12.222,
+			"end": 12.355
+		},
+		{
+			"texte": "pêche :",
+			"start": 12.355,
+			"end": 12.69
+		},
+		{
+			"texte": "il",
+			"start": 13,
+			"end": 13.123
+		},
+		{
+			"texte": "lance",
+			"start": 13.123,
+			"end": 13.429
+		},
+		{
+			"texte": "l'hameçon,",
+			"start": 13.429,
+			"end": 13.92
+		},
+		{
+			"texte": "et",
+			"start": 14.2,
+			"end": 14.288
+		},
+		{
+			"texte": "il",
+			"start": 14.288,
+			"end": 14.376
+		},
+		{
+			"texte": "attend.",
+			"start": 14.376,
+			"end": 14.64
+		},
+		{
+			"texte": "Si",
+			"start": 15.19,
+			"end": 15.306
+		},
+		{
+			"texte": "tu",
+			"start": 15.306,
+			"end": 15.423
+		},
+		{
+			"texte": "cliques,",
+			"start": 15.423,
+			"end": 15.83
+		},
+		{
+			"texte": "tu",
+			"start": 16.09,
+			"end": 16.198
+		},
+		{
+			"texte": "arrives",
+			"start": 16.198,
+			"end": 16.574
+		},
+		{
+			"texte": "sur",
+			"start": 16.574,
+			"end": 16.735
+		},
+		{
+			"texte": "un",
+			"start": 16.735,
+			"end": 16.843
+		},
+		{
+			"texte": "faux",
+			"start": 16.843,
+			"end": 17.058
+		},
+		{
+			"texte": "site",
+			"start": 17.058,
+			"end": 17.273
+		},
+		{
+			"texte": "qui",
+			"start": 17.273,
+			"end": 17.434
+		},
+		{
+			"texte": "ressemble",
+			"start": 17.434,
+			"end": 17.918
+		},
+		{
+			"texte": "au",
+			"start": 17.918,
+			"end": 18.025
+		},
+		{
+			"texte": "vrai,",
+			"start": 18.025,
+			"end": 18.24
+		},
+		{
+			"texte": "et",
+			"start": 18.57,
+			"end": 18.679
+		},
+		{
+			"texte": "il",
+			"start": 18.679,
+			"end": 18.788
+		},
+		{
+			"texte": "te",
+			"start": 18.788,
+			"end": 18.897
+		},
+		{
+			"texte": "demande",
+			"start": 18.897,
+			"end": 19.279
+		},
+		{
+			"texte": "de",
+			"start": 19.279,
+			"end": 19.388
+		},
+		{
+			"texte": "payer",
+			"start": 19.388,
+			"end": 19.661
+		},
+		{
+			"texte": "de",
+			"start": 19.661,
+			"end": 19.77
+		},
+		{
+			"texte": "petits",
+			"start": 19.77,
+			"end": 20.097
+		},
+		{
+			"texte": "frais",
+			"start": 20.097,
+			"end": 20.37
+		},
+		{
+			"texte": "avec",
+			"start": 20.37,
+			"end": 20.588
+		},
+		{
+			"texte": "ta",
+			"start": 20.588,
+			"end": 20.697
+		},
+		{
+			"texte": "carte.",
+			"start": 20.697,
+			"end": 20.97
+		},
+		{
+			"texte": "Ces",
+			"start": 21.43,
+			"end": 21.583
+		},
+		{
+			"texte": "frais",
+			"start": 21.583,
+			"end": 21.839
+		},
+		{
+			"texte": "ne",
+			"start": 21.839,
+			"end": 21.942
+		},
+		{
+			"texte": "sont",
+			"start": 21.942,
+			"end": 22.146
+		},
+		{
+			"texte": "qu'un",
+			"start": 22.146,
+			"end": 22.351
+		},
+		{
+			"texte": "prétexte :",
+			"start": 22.351,
+			"end": 22.76
+		},
+		{
+			"texte": "c'est",
+			"start": 23.05,
+			"end": 23.261
+		},
+		{
+			"texte": "ta",
+			"start": 23.261,
+			"end": 23.366
+		},
+		{
+			"texte": "carte",
+			"start": 23.366,
+			"end": 23.629
+		},
+		{
+			"texte": "qu'il",
+			"start": 23.629,
+			"end": 23.839
+		},
+		{
+			"texte": "veut.",
+			"start": 23.839,
+			"end": 24.05
+		},
+		{
+			"texte": "Trois",
+			"start": 24.6,
+			"end": 24.85
+		},
+		{
+			"texte": "signes :",
+			"start": 24.85,
+			"end": 25.15
+		},
+		{
+			"texte": "un",
+			"start": 25.63,
+			"end": 25.752
+		},
+		{
+			"texte": "lien",
+			"start": 25.752,
+			"end": 25.995
+		},
+		{
+			"texte": "bizarre,",
+			"start": 25.995,
+			"end": 26.42
+		},
+		{
+			"texte": "une",
+			"start": 26.74,
+			"end": 26.956
+		},
+		{
+			"texte": "urgence,",
+			"start": 26.956,
+			"end": 27.46
+		},
+		{
+			"texte": "des",
+			"start": 27.74,
+			"end": 27.925
+		},
+		{
+			"texte": "frais",
+			"start": 27.925,
+			"end": 28.233
+		},
+		{
+			"texte": "minuscules.",
+			"start": 28.233,
+			"end": 28.85
+		},
+		{
+			"texte": "Tu",
+			"start": 29.32,
+			"end": 29.446
+		},
+		{
+			"texte": "ne",
+			"start": 29.446,
+			"end": 29.571
+		},
+		{
+			"texte": "cliques",
+			"start": 29.571,
+			"end": 30.011
+		},
+		{
+			"texte": "pas.",
+			"start": 30.011,
+			"end": 30.2
+		},
+		{
+			"texte": "Tu",
+			"start": 30.66,
+			"end": 30.849
+		},
+		{
+			"texte": "supprimes,",
+			"start": 30.849,
+			"end": 31.701
+		},
+		{
+			"texte": "et",
+			"start": 31.701,
+			"end": 31.89
+		},
+		{
+			"texte": "tu",
+			"start": 31.89,
+			"end": 32.079
+		},
+		{
+			"texte": "signales",
+			"start": 32.079,
+			"end": 32.836
+		},
+		{
+			"texte": "le",
+			"start": 32.836,
+			"end": 33.025
+		},
+		{
+			"texte": "message",
+			"start": 33.025,
+			"end": 33.688
+		},
+		{
+			"texte": "au",
+			"start": 33.688,
+			"end": 33.877
+		},
+		{
+			"texte": "33700.",
+			"start": 33.877,
+			"end": 34.35
+		},
+		{
+			"texte": "Demain :",
+			"start": 34.86,
+			"end": 35.27
+		},
+		{
+			"texte": "pourquoi",
+			"start": 35.64,
+			"end": 36.065
+		},
+		{
+			"texte": "ton",
+			"start": 36.065,
+			"end": 36.224
+		},
+		{
+			"texte": "wifi",
+			"start": 36.224,
+			"end": 36.437
+		},
+		{
+			"texte": "rame",
+			"start": 36.437,
+			"end": 36.649
+		},
+		{
+			"texte": "dans",
+			"start": 36.649,
+			"end": 36.862
+		},
+		{
+			"texte": "la",
+			"start": 36.862,
+			"end": 36.968
+		},
+		{
+			"texte": "chambre.",
+			"start": 36.968,
+			"end": 37.34
+		},
+		{
+			"texte": "Et",
+			"start": 37.85,
+			"end": 37.974
+		},
+		{
+			"texte": "toi,",
+			"start": 37.974,
+			"end": 38.16
+		},
+		{
+			"texte": "tu",
+			"start": 38.48,
+			"end": 38.581
+		},
+		{
+			"texte": "en",
+			"start": 38.581,
+			"end": 38.683
+		},
+		{
+			"texte": "as",
+			"start": 38.683,
+			"end": 38.784
+		},
+		{
+			"texte": "déjà",
+			"start": 38.784,
+			"end": 38.986
+		},
+		{
+			"texte": "reçu",
+			"start": 38.986,
+			"end": 39.189
+		},
+		{
+			"texte": "un ?",
+			"start": 39.189,
+			"end": 39.29
+		}
+	]
+}

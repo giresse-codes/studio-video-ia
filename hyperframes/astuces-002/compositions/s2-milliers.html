@@ -1,0 +1,116 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s2-compteur {
+			left: 260px;
+			top: 720px;
+			font-size: 150px;
+		}
+		#s2-envoyer {
+			position: absolute;
+			left: 150px;
+			top: 470px;
+			width: 230px;
+			height: 70px;
+			border-radius: 35px;
+			background: linear-gradient(180deg, #ef5a5d 0%, #e5383b 100%);
+			border: 6px solid #141414;
+			box-sizing: border-box;
+			text-align: center;
+			font-size: 36px;
+			line-height: 58px;
+			color: #ffffff;
+		}
+		#s2-attend {
+			left: 200px;
+			top: 160px;
+			font-size: 56px;
+		}
+	</style>
+	<div data-hf-id="hf-bmd6" id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-1eiu" class="stage" id="s2-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-2sp1" stroke="#E6DCCB" stroke-width="3">
+								<path data-hf-id="hf-k5tf" d="M 0 240 H 1080 M 0 480 H 1080 M 0 720 H 1080" />
+								<path data-hf-id="hf-vwgu" d="M 240 0 V 920 M 480 0 V 920 M 720 0 V 920 M 960 0 V 920" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : l'ordinateur qui envoie à tout le monde, les téléphones qui reçoivent le même SMS, le compteur. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-hose" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-s9wf" id="s2-ordi">
+								<rect data-hf-id="hf-x60r" x="120" y="330" width="290" height="230" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="10" />
+								<path data-hf-id="hf-wpgd" d="M 90 560 L 440 560 L 470 600 L 60 600 Z" fill="#EBDDBB" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+							</g>
+							<g data-hf-id="hf-xkey" fill="#E5383B" stroke="#141414" stroke-width="5">
+								<rect data-hf-id="hf-ef95" class="s2-vol" x="400" y="420" width="56" height="40" rx="10" />
+								<rect data-hf-id="hf-qtn1" class="s2-vol" x="400" y="420" width="56" height="40" rx="10" />
+								<rect data-hf-id="hf-w2j8" class="s2-vol" x="400" y="420" width="56" height="40" rx="10" />
+							</g>
+							<g data-hf-id="hf-m0ts" id="s2-grille">
+								<g data-hf-id="hf-1jmt" class="s2-tel"><rect data-hf-id="hf-5e1f" x="490" y="280" width="120" height="190" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><rect data-hf-id="hf-9wdz" x="506" y="320" width="88" height="40" rx="12" fill="#E5383B" /></g>
+								<g data-hf-id="hf-yl89" class="s2-tel"><rect data-hf-id="hf-fhr1" x="650" y="280" width="120" height="190" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><rect data-hf-id="hf-co6i" x="666" y="320" width="88" height="40" rx="12" fill="#E5383B" /></g>
+								<g data-hf-id="hf-zs5c" class="s2-tel"><rect data-hf-id="hf-xw3r" x="810" y="280" width="120" height="190" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><rect data-hf-id="hf-dj1w" x="826" y="320" width="88" height="40" rx="12" fill="#E5383B" /></g>
+								<g data-hf-id="hf-zdub" class="s2-tel"><rect data-hf-id="hf-jozu" x="490" y="490" width="120" height="190" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><rect data-hf-id="hf-6jti" x="506" y="530" width="88" height="40" rx="12" fill="#E5383B" /></g>
+								<g data-hf-id="hf-xeb6" class="s2-tel"><rect data-hf-id="hf-n6i8" x="650" y="490" width="120" height="190" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><rect data-hf-id="hf-vxy7" x="666" y="530" width="88" height="40" rx="12" fill="#E5383B" /></g>
+								<g data-hf-id="hf-x005" class="s2-tel"><rect data-hf-id="hf-btqu" x="810" y="490" width="120" height="190" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="8" /><rect data-hf-id="hf-5zed" x="826" y="530" width="88" height="40" rx="12" fill="#E5383B" /></g>
+							</g>
+							<!-- Le téléphone de quelqu'un qui attend vraiment un colis : il s'allume en vert. -->
+							<rect data-hf-id="hf-wif5" id="s2-halo" x="636" y="476" width="148" height="218" rx="30" fill="none" stroke="#2EB82E" stroke-width="12" opacity="0" />
+							<g data-hf-id="hf-n3s0" transform="translate(710 630)">
+								<g data-hf-id="hf-9r9p" id="s2-colis" opacity="0">
+									<rect data-hf-id="hf-w9u0" x="-34" y="-30" width="68" height="56" rx="6" fill="#D9A866" stroke="#141414" stroke-width="6" />
+									<path data-hf-id="hf-ezaw" d="M 0 -30 V 26" stroke="#B8854A" stroke-width="10" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-s7qc" id="s2-envoyer" class="police-texte">À TOUS</div>
+						<div data-hf-id="hf-vitw" id="s2-compteur" class="chiffre">0</div>
+						<div data-hf-id="hf-htdg" id="s2-attend" class="etiquette">J'attends un colis !</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant">
+						<svg data-hf-id="hf-i33f" class="calque" viewBox="0 0 1080 1920">
+							<rect data-hf-id="hf-7mu9" x="-60" y="1180" width="220" height="300" rx="30" fill="#D9A866" stroke="#141414" stroke-width="8" transform="rotate(-12 50 1330)" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s2');
+			const tl = S.tl;
+
+			// Début : l'ordinateur et son bouton « à tous ».
+			kit.pop(tl, '#s2-ordi', 0.1);
+			kit.pop(tl, '#s2-envoyer', 0.25);
+			// « envoie » : le bouton s'enfonce, les SMS s'envolent.
+			const envoie = S.ancre('@envoie');
+			tl.to('#s2-envoyer', {y: 10, duration: 0.08, yoyo: true, repeat: 1}, envoie);
+			tl.fromTo('.s2-vol', {x: 0, y: 0, opacity: 0}, {keyframes: [{opacity: 1, duration: 0.05}, {x: (i) => [150, 310, 470][i], y: (i) => [-90, 130, -90][i], duration: 0.6, ease: 'power2.out'}, {opacity: 0, duration: 0.15}], stagger: 0.12}, envoie);
+			// « message » : le même SMS arrive partout, la grille se remplit (zoom).
+			kit.cascade(tl, '.s2-tel', S.ancre('@message'), 0.08);
+			S.zoomMot('@message', [700, 480]);
+			// « numéros » : le compteur grimpe jusqu'à 10 000.
+			const compteur = document.querySelector('#s2-compteur');
+			const n = {v: 0};
+			kit.pop(tl, '#s2-compteur', S.ancre('@numeros'));
+			tl.fromTo(n, {v: 0}, {v: 10000, duration: 1.2, ease: 'power2.out', onUpdate: () => (compteur.textContent = Math.round(n.v).toLocaleString('fr-FR'))}, S.ancre('@numeros'));
+			// « attendes » : un des téléphones s'allume en vert ; « colis » : c'est le bon moment pour l'arnaqueur.
+			tl.to('#s2-halo', {opacity: 1, duration: 0.2}, S.ancre('@attendes'));
+			kit.tampon(tl, '#s2-attend', S.ancre('@attendes'));
+			kit.pop(tl, '#s2-colis', S.ancre('@colis'));
+
+			S.fin();
+		})();
+	</script>
+</template>

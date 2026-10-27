@@ -1,0 +1,171 @@
+{
+	"chaine": "astuces",
+	"numero": "002",
+	"slug": "faux-sms-colis",
+	"script": "channels/astuces/scripts/002-faux-sms-colis.md",
+	"audio": "public/audio/astuces-002.wav",
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-sms.html",
+			"debut": "@0",
+			"transition": "zoom",
+			"cible": [
+				360,
+				680
+			]
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-milliers.html",
+			"debut": "@voila",
+			"transition": "balayage",
+			"cible": [
+				700,
+				480
+			]
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-peche.html",
+			"debut": "@peche-0.5",
+			"transition": "zoom",
+			"cible": [
+				420,
+				520
+			]
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-faux-site.html",
+			"debut": "@si",
+			"transition": "balayage",
+			"cible": [
+				440,
+				600
+			]
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-signes.html",
+			"debut": "@trois",
+			"transition": "zoom",
+			"cible": [
+				470,
+				560
+			]
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-signaler.html",
+			"debut": "@tu",
+			"transition": "balayage",
+			"cible": [
+				420,
+				600
+			]
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-demain.html",
+			"debut": "@demain",
+			"transition": "zoom",
+			"cible": [
+				330,
+				700
+			]
+		}
+	],
+	"bruitages": [
+		{
+			"ancre": "@bloque",
+			"son": "ding-1",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@pas",
+			"son": "boing",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@envoie",
+			"son": "pop-2",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@numeros",
+			"son": "ding-2",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@colis",
+			"son": "pop-1",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@hamecon",
+			"son": "pop-1",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@attend",
+			"son": "boing",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@faux",
+			"son": "ding-1",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@frais",
+			"son": "tic",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@pretexte",
+			"son": "ding-2",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@carte#2",
+			"son": "boing",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@lien",
+			"son": "pop-1",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@urgence",
+			"son": "pop-2",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@minuscules",
+			"son": "pop-1",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@supprimes",
+			"son": "pop-2",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@33700",
+			"son": "ding-1",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@rame",
+			"son": "boing",
+			"scene": "s7"
+		}
+	],
+	"avatar": {
+		"cote": "droite",
+		"tenue": "blanche"
+	},
+	"theme": "schema"
+}

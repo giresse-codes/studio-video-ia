@@ -25,7 +25,7 @@ const EMOTION_TO_POSE: [RegExp, AvatarPose][] = [
 	[/\bri(re|ant|eur|euse)|amus|hilar|moqu|blagu|esclaff/, 'rit'],
 	[/curieu|intrigu|perplex|pensi|reflech|songeu|interrog|mysteri/, 'reflechit'],
 	[/surpri|eton|stupef|inquiet|alarm/, 'surpris'],
-	[/pedago|expli|didact|serieu|pose|clair|assur|compt/, 'explique'],
+	[/pedago|expli|didact|serieu|pose|clair|assur|compt|direct/, 'explique'],
 	[/montr|design|point/, 'montre'],
 	[/content|joyeu|enthous|ravi|satisf|chaleureu|complic|souri|dynamiq|energ|enjou|taquin|malic/, 'content'],
 	[/neutre|calme|normal/, 'neutre'],

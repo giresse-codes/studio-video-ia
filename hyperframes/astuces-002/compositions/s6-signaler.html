@@ -1,0 +1,91 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s6-sms {
+			position: absolute;
+			left: 160px;
+			top: 500px;
+			width: 240px;
+			padding: 16px 20px 20px;
+			border-radius: 24px 24px 24px 6px;
+			background: #ebe6dc;
+			border: 6px solid #141414;
+			box-sizing: border-box;
+			font-size: 36px;
+			line-height: 1.2;
+			color: #141414;
+		}
+		#s6-numero {
+			left: 280px;
+			top: 180px;
+			font-size: 170px;
+		}
+	</style>
+	<div data-hf-id="hf-az72" id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-zg0a" class="stage" id="s6-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-2sp1" stroke="#E6DCCB" stroke-width="3">
+								<path data-hf-id="hf-k5tf" d="M 0 240 H 1080 M 0 480 H 1080 M 0 720 H 1080" />
+								<path data-hf-id="hf-vwgu" d="M 240 0 V 920 M 480 0 V 920 M 720 0 V 920 M 960 0 V 920" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : le téléphone, la corbeille, le numéro de signalement 33700. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-hose" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-s1l0" id="s6-tel">
+								<rect data-hf-id="hf-63l5" x="130" y="400" width="300" height="580" rx="50" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<rect data-hf-id="hf-u9iz" x="152" y="450" width="256" height="480" rx="26" fill="#F7F1E6" />
+							</g>
+							<g data-hf-id="hf-n0sa" stroke="#E5383B" stroke-width="18" stroke-linecap="round">
+								<path data-hf-id="hf-4ywe" class="s6-croix" d="M 170 520 L 390 660" />
+								<path data-hf-id="hf-7v7u" class="s6-croix" d="M 390 520 L 170 660" />
+							</g>
+							<g data-hf-id="hf-ev06" id="s6-corbeille" opacity="0">
+								<rect data-hf-id="hf-rrd0" x="540" y="600" width="170" height="200" rx="18" fill="#BFC5CC" stroke="#141414" stroke-width="10" />
+								<rect data-hf-id="hf-5d6g" x="520" y="570" width="210" height="34" rx="12" fill="#BFC5CC" stroke="#141414" stroke-width="10" />
+								<path data-hf-id="hf-8xqh" d="M 585 640 V 760 M 625 640 V 760 M 665 640 V 760" stroke="#141414" stroke-width="8" stroke-linecap="round" />
+							</g>
+							<path data-hf-id="hf-huop" id="s6-fleche" d="M 300 400 Q 320 330 380 330" fill="none" stroke="#2EB82E" stroke-width="14" stroke-linecap="round" />
+						</svg>
+						<div data-hf-id="hf-7ja5" id="s6-sms" class="police-texte">Colis bloqué. 1,99 €</div>
+						<div data-hf-id="hf-1bp8" id="s6-numero" class="chiffre">33700</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s6');
+			const tl = S.tl;
+
+			// Début : le téléphone et le SMS reviennent ; « pas » : on ne clique pas (rappel de la croix).
+			kit.pop(tl, '#s6-tel', 0);
+			kit.pop(tl, '#s6-sms', 0.15);
+			kit.trace(tl, '.s6-croix', S.ancre('@pas'), 0.3);
+			// « supprimes » : la corbeille, le SMS y tombe.
+			const supprimes = S.ancre('@supprimes');
+			kit.pop(tl, '#s6-corbeille', supprimes - 0.1);
+			tl.to('.s6-croix', {opacity: 0, duration: 0.15}, supprimes);
+			tl.to('#s6-sms', {x: 400, y: 120, rotation: 20, scale: 0.4, opacity: 0, duration: 0.55, ease: 'power2.in'}, supprimes + 0.1);
+			tl.to('#s6-corbeille', {rotation: -6, svgOrigin: '625 800', duration: 0.08, yoyo: true, repeat: 3}, supprimes + 0.6);
+			// « signales » : flèche verte vers le numéro ; « 33700 » : il arrive en grand.
+			kit.trace(tl, '#s6-fleche', S.ancre('@signales'), 0.4);
+			kit.pop(tl, '#s6-numero', S.ancre('@33700'));
+			// Le téléphone et la corbeille s'effacent : le numéro prend toute la place.
+			tl.to(['#s6-tel', '#s6-corbeille', '#s6-fleche'], {opacity: 0, duration: 0.25}, S.ancre('@33700'));
+			S.zoomMot('@33700', [540, 270]);
+
+			S.fin();
+		})();
+	</script>
+</template>
