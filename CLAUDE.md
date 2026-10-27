@@ -1,7 +1,8 @@
 # Studio vidéo IA : règles de travail
 
-Chaînes : DevsTeach (programmation et IA expliquées par des objets du quotidien)
-et Astuces (problèmes courants et solutions malignes).
+Chaînes : DevsTeach (programmation et IA expliquées par des objets du quotidien),
+Astuces (problèmes courants et solutions malignes) et Mode Survie (situations extrêmes, protocole en 3 règles ;
+voir channels/mode-survie/README.md).
 Public : France, français courant, ton d'un enseignant sympathique. Pas de jargon sans image.
 Format : vertical 1080x1920, 30 images par seconde. Durée libre de 20 s à 3 min, qui suit le contenu (repère : 2,5 mots par seconde).
 Une seule idée par vidéo. Aucune phrase de remplissage : chacune apporte une information, une image ou une blague.

@@ -1,11 +1,12 @@
 // Règles du studio, en chiffres. Lues par les outils (nouvelle-video, preparer, verifier) ;
 // STYLE.md et CLAUDE.md les décrivent en clair : les garder alignés.
 
-export type Chaine = 'astuces' | 'devsteach';
+export type Chaine = 'astuces' | 'devsteach' | 'mode-survie';
 
 export const CHAINES: Record<Chaine, {nom: string}> = {
 	astuces: {nom: 'Astuces'},
 	devsteach: {nom: 'DevsTeach'},
+	'mode-survie': {nom: 'Mode Survie'},
 };
 
 // La durée suit le contenu : pas de plafond fixe, seulement des repères.

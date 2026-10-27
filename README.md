@@ -1,6 +1,6 @@
 # studio-video-ia
 
-Studio de vidéos animées verticales pour deux chaînes françaises : **DevsTeach** (programmation et IA expliquées par des objets du quotidien) et **Astuces** (problèmes courants et solutions malignes). Moteur : HyperFrames (HTML + GSAP), avec l'outillage de `kit/`. Astuces #1 est en Remotion (`src/`).
+Studio de vidéos animées verticales pour trois chaînes françaises : **DevsTeach** (programmation et IA expliquées par des objets du quotidien), **Astuces** (problèmes courants et solutions malignes) et **Mode Survie** (situations extrêmes, protocole en 3 règles ; 30 scripts prêts dans `channels/mode-survie/scripts/`). Moteur : HyperFrames (HTML + GSAP), avec l'outillage de `kit/`. Astuces #1 est en Remotion (`src/`).
 
 ## Mode d'emploi
 
