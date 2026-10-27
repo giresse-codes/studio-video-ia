@@ -1,6 +1,10 @@
 # studio-video-ia
 
-Studio de vidéos animées verticales pour trois chaînes françaises : **DevsTeach** (programmation et IA expliquées par des objets du quotidien), **Astuces** (problèmes courants et solutions malignes) et **Mode Survie** (situations extrêmes, protocole en 3 règles ; 30 scripts prêts dans `channels/mode-survie/scripts/`). Moteur : HyperFrames (HTML + GSAP), avec l'outillage de `kit/`. Astuces #1 est en Remotion (`src/`).
+Studio de vidéos animées verticales pour trois chaînes françaises actives : **Astuces** (problèmes courants et solutions malignes ; 21 scripts), **DevsTeach** (programmation et IA expliquées par des objets du quotidien ; 19 scripts) et **Mode Survie** (situations extrêmes, protocole en 3 règles ; 30 scripts). Moteur : HyperFrames (HTML + GSAP), avec l'outillage de `kit/`. Astuces #1 est en Remotion (`src/`).
+
+## Commande « Fais <Chaîne> #N »
+
+Dis par exemple « Fais Astuces #2 » ou « Fais DevsTeach #5 » : Claude lit `STYLE.md`, `channels/<chaîne>/STYLE.md` et le script `channels/<chaîne>/scripts/<NNN>-<slug>.md` (voix off, bloc Écran, légende), puis déroule les étapes ci-dessous avec la voix `public/audio/<chaîne>-<NNN>.wav`. Détail dans [CLAUDE.md](CLAUDE.md).
 
 ## Mode d'emploi
 
@@ -13,10 +17,10 @@ Studio de vidéos animées verticales pour trois chaînes françaises : **DevsTe
 7. `npm run preparer -- astuces-002` : heures des mots (Whisper, sinon estimation), sous-titres, avatar, bruitages, transitions.
 8. `npm run verifier -- astuces-002` : durée, silences > 0,6 s, scènes > 6 s sans nouveauté, ancres > 150 ms, bords < 60 px, une image par ancre (`docs/verifications/`).
 9. Corriger ce qui est signalé, relancer 7 et 8, puis rendre : `cd hyperframes/astuces-002 && npm run render` (→ `out/astuces-002.mp4`).
-10. Règles de travail : [CLAUDE.md](CLAUDE.md). Styles et chiffres : [STYLE.md](STYLE.md) et `kit/config.ts`.
+10. Règles de travail : [CLAUDE.md](CLAUDE.md). Styles : [STYLE.md](STYLE.md) (règles communes) et `channels/<chaîne>/STYLE.md` ; chiffres : `kit/config.ts`.
 
 ## Structure
 
-- `channels/<chaine>/scripts/` : scripts ; `public/audio/` : voix off ; `hyperframes/<chaine>-<numero>/` : vidéos HyperFrames.
+- `channels/<chaine>/` : `STYLE.md` de la chaîne et `scripts/` (Astuces et DevsTeach découpés depuis `channels/scripts-complets.md`) ; `public/audio/` : voix off ; `hyperframes/<chaine>-<numero>/` : vidéos HyperFrames.
 - `kit/` : outils (`outils/`), code partagé par les scènes (`runtime/` : animations, transitions, avatar, look, 3D), modèles (`modeles/`).
 - `src/` : version Remotion (Astuces #1) ; `docs/` : comparaisons et vérifications ; `out/` : rendus (non versionnés).

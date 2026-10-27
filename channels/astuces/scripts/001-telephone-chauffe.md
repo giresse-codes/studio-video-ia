@@ -1,10 +1,15 @@
-[faussement solennel] Tu charges ton téléphone dans ton lit ? [sec] Arrête.
-[amusé] Ton téléphone n'est pas un chat : il n'a pas besoin de dormir sous la couette.
-[curieux, plus bas] Tu sais ce qui se passe quand il charge ?
-[pédagogue] Le courant ne va pas tout entier dans la batterie. Une partie se perd dans le câble, dans le chargeur, et dans la batterie elle-même. Cette partie perdue devient de la chaleur.
-[riant] En gros, ton chargeur fait des heures sup, et il transpire.
-[posé] Sur une table, la chaleur s'échappe dans l'air. [taquin] Sous la couette, elle reste coincée. [faussement choqué] Ton téléphone fait un sauna, sans l'avoir demandé !
-[sérieux] Et la chaleur, c'est l'ennemie des batteries au lithium : plus elles chauffent souvent, plus elles perdent de la capacité.
-[énergique, il compte] Alors, trois gestes. Une : une surface dure, à l'air libre. Deux : la coque enlevée s'il chauffe. Trois : pas de jeu pendant la charge.
-[indigné, puis rire] Oui, même pas un petit match ! On ne fait pas courir un marathon à quelqu'un qui est en train de manger.
-[souriant, face caméra] Et toi, tu charges où ? Dis-le en commentaire.
+# Astuces #001 : le téléphone qui charge dans le lit
+
+> Source : channels/scripts-complets.md. Les lignes « > » ne sont pas lues.
+> Écran : téléphone sous une couette avec « Zzz » et un thermomètre qui monte, texte « DANS TON LIT ? » dès 0 s. Coupe du téléphone avec une flèche dorée vers la batterie et des flèches rouges de chaleur perdue. Gag : chargeur qui transpire, badge « heures sup ». La chaleur part dans l'air sur une table, mais reste coincée sous la couette (gag du sauna, serviette sur la tête). Batterie qui perd de la capacité. Cartes 1, 2, 3. Teaser.
+> Légende de publication :
+>   Pourquoi ton téléphone chauffe en charge, et pourquoi la couette est un sauna pour lui. 3 gestes pour protéger ta batterie.
+>   Tu charges où, toi ? Dis-le en commentaire.
+>   #astuces #smartphone #batterie #humour #commentcamarche
+
+[direct] Tu charges ton téléphone dans ton lit ? Arrête.
+Quand tu charges, une partie du courant se perd dans le câble et le chargeur, et devient de la chaleur. [amusé] Ton chargeur transpire.
+Sur une table, la chaleur s'échappe. Sous la couette, elle reste coincée : un sauna pour téléphone.
+Or la chaleur use la batterie : elle perd de la capacité.
+Trois gestes : une surface dure, la coque enlevée, et pas de jeu pendant la charge.
+[souriant] Demain : ce SMS de colis qui veut ta carte bancaire. Et toi, tu charges où ?
