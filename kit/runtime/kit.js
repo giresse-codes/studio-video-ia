@@ -81,6 +81,41 @@
 			return S;
 		},
 
+		// Calque fixe sur toute la vidéo (video.json → calques) : horodatage, compte à rebours, jauge.
+		// Usage : const C = kit.calque('hud'); … C.fin();   Heures depuis 0 s : C.ancre('@minute').
+		calque(id) {
+			const data = (K().calques || []).find((c) => c.id === id);
+			if (!data) throw new Error(`Calque ${id} absent de video.json : relancer npm run preparer`);
+			const tl = gsap.timeline({paused: true});
+			const C = {
+				id,
+				tl,
+				dur: data.fin,
+				ancre(brute) {
+					const abs = K().ancres[`${id}|${brute}`];
+					if (abs === undefined) throw new Error(`Ancre ${brute} non préparée pour ${id} : relancer npm run preparer`);
+					return abs;
+				},
+				fin() {
+					window.__timelines = window.__timelines || {};
+					window.__timelines[id] = tl;
+				},
+			};
+			return C;
+		},
+
+		// Compte à rebours « m:ss » de `de` secondes, qui descend en temps réel de t0 à t1 (fonction du temps de la timeline).
+		compte(tl, cible, de, t0, t1) {
+			const el = typeof cible === 'string' ? document.querySelector(cible) : cible;
+			const etat = {s: de};
+			const ecrire = () => {
+				const s = Math.max(0, Math.ceil(etat.s - 1e-6));
+				el.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+			};
+			ecrire();
+			tl.fromTo(etat, {s: de}, {s: de - (t1 - t0), duration: t1 - t0, ease: 'none', onUpdate: ecrire}, t0);
+		},
+
 		// Apparition avec rebond, écrasement puis étirement.
 		pop(tl, cible, t, {echelle = 1} = {}) {
 			tl.fromTo(cible, {opacity: 0, scale: 0, transformOrigin: '50% 100%'}, {opacity: 1, scale: echelle, duration: 0.42, ease: 'back.out(2.4)'}, t);

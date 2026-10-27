@@ -16,10 +16,12 @@ export type Video = {
 	scenes: {id: string; fichier: string; debut: string; transition?: 'zoom' | 'balayage'; cible: [number, number]}[];
 	// Bruitages de gags, liés à un mot.
 	bruitages?: {ancre: string; son: string; scene?: string}[];
-	// Tenue de l'avatar : blanche (par défaut) ou bleue.
-	avatar?: {cote?: 'droite' | 'gauche'; tenue?: 'blanche' | 'bleue'};
-	// Palette de la vidéo (STYLE.md) : « atelier » (par défaut) ou « schema ». Le style « Écran code » s'utilise dans une scène.
-	theme?: 'atelier' | 'schema';
+	// Tenue de l'avatar : blanche (par défaut) ou bleue. `false` : vidéo sans avatar (Mode Survie).
+	avatar?: false | {cote?: 'droite' | 'gauche'; tenue?: 'blanche' | 'bleue'};
+	// Palette de la vidéo (STYLE.md de la chaîne) : « atelier » (par défaut), « schema » ou « alerte ». Le style « Écran code » s'utilise dans une scène.
+	theme?: 'atelier' | 'schema' | 'alerte';
+	// Calques fixes sur toute la vidéo, au-dessus des scènes (horodatage, compte à rebours, jauge…). Leurs ancres se lisent depuis 0 s.
+	calques?: {id: string; fichier: string}[];
 };
 
 export const dossierVideo = (id: string) => path.join('hyperframes', id);

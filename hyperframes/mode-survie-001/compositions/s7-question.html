@@ -1,0 +1,48 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-kbvr" class="stage" id="s7-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le brise-vitre et la question (la carte de fin est dans le calque hud). -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-zvg5" transform="translate(540 590) rotate(-35)">
+								<g data-hf-id="hf-cnj1" id="s7-outil">
+									<rect data-hf-id="hf-aaxk" x="-36" y="-20" width="72" height="300" rx="30" fill="#FF8A3D" stroke="#0B1220" stroke-width="12" />
+									<path data-hf-id="hf-ij24" d="M -120 -110 L 120 -110 L 120 -20 L -120 -20 Z" fill="#E5383B" stroke="#0B1220" stroke-width="12" stroke-linejoin="round" />
+									<path data-hf-id="hf-z6me" d="M -120 -110 L -160 -65 L -120 -20 Z" fill="#BFC5CC" stroke="#0B1220" stroke-width="10" stroke-linejoin="round" />
+									<path data-hf-id="hf-v82h" d="M 120 -110 L 160 -65 L 120 -20 Z" fill="#BFC5CC" stroke="#0B1220" stroke-width="10" stroke-linejoin="round" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-a733" id="s7-titre" class="titre" style="top: 860px; left: 160px; width: 760px; font-size: 92px"><span data-hf-id="hf-p8mp">Tu as un</span> <span data-hf-id="hf-wrom">brise-vitre ?</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// Le brise-vitre est là dès le début de la scène ; la question arrive mot à mot.
+			kit.pop(tl, '#s7-outil', 0);
+			kit.cascade(tl, '#s7-titre span', S.ancre('@toi'), 0.25);
+			// « brise-vitre » : il se balance, prêt à frapper.
+			tl.to('#s7-outil', {rotation: 14, transformOrigin: '50% 90%', duration: 0.2, ease: 'power2.out', yoyo: true, repeat: 1}, S.ancre('@brisevitre'));
+
+			S.fin();
+		})();
+	</script>
+</template>

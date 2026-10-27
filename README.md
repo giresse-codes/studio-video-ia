@@ -12,7 +12,7 @@ Dis par exemple « Fais Astuces #2 » ou « Fais DevsTeach #5 » : Claude lit `S
 2. `npm run nouvelle-video -- astuces 2 cable-abime` crée le script, `hyperframes/astuces-002/` (video.json, ancres.md, scène vide).
 3. Écrire le script dans `channels/astuces/scripts/002-cable-abime.md` : durée libre (20 s à 3 min, repère 2,5 mots/s), indications entre [crochets].
 4. Déposer la voix en WAV : `public/audio/astuces-002.wav` (ta voix ou AI Studio).
-5. Découper en scènes dans `video.json` : un fichier par scène, chacune commence sur un mot (`"debut": "@chaleur"`).
+5. Découper en scènes dans `video.json` : un fichier par scène, chacune commence sur un mot (`"debut": "@chaleur"`). Options : `"theme"` (`atelier`, `schema`, `alerte`), `"avatar": false` (sans avatar), `"calques"` (écran fixe sur toute la vidéo, ex. horodatage de Mode Survie, `kit.calque('hud')`).
 6. Dans chaque scène, lier chaque événement à un mot : `S.ancre('@chaleur')`, `S.zoomMot('@lithium')` (modèle : `kit/modeles/scene.html`).
 7. `npm run preparer -- astuces-002` : heures des mots (Whisper, sinon estimation), sous-titres, avatar, bruitages, transitions.
 8. `npm run verifier -- astuces-002` : durée, silences > 0,6 s, scènes > 6 s sans nouveauté, ancres > 150 ms, bords < 60 px, une image par ancre (`docs/verifications/`).

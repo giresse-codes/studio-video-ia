@@ -130,7 +130,7 @@ const controlerAncres = (id: string): {resultat: Resultat; ancres: AncreVerifiee
 	];
 	const ancres: AncreVerifiee[] = [];
 	let ok = true;
-	for (const scene of minutage.scenes as SceneMinutage[]) {
+	for (const scene of [...minutage.scenes, ...(minutage.calques ?? [])] as SceneMinutage[]) {
 		for (const brute of ancresDansCode(readFileSync(path.join(dossier, scene.fichier), 'utf8'))) {
 			try {
 				const a = resoudreAncre(brute, mots, scene.debut);

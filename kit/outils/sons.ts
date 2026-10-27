@@ -29,6 +29,11 @@ export const SONS: Record<string, Recette> = {
 	'ding-1': {dureeSec: 0.9, usage: 'carte, chiffre, réponse', filtre: ton('(0.6*sin(2*PI*1318*t)+0.3*sin(2*PI*2636*t)+0.15*sin(2*PI*3954*t))*exp(-t*5)', 0.9)},
 	'ding-2': {dureeSec: 0.8, usage: 'carte, chiffre (variante)', filtre: ton('(0.6*sin(2*PI*1568*t)+0.3*sin(2*PI*3136*t)+0.1*sin(2*PI*4704*t))*exp(-t*6)', 0.8)},
 	boing: {dureeSec: 0.45, usage: 'gag, rebond', filtre: ton('0.8*sin(2*PI*(180+120*sin(2*PI*9*t)*exp(-t*4))*t)*exp(-t*6)', 0.45)},
+	bip: {dureeSec: 0.16, usage: 'compte à rebours, carte de règle (Mode Survie)', filtre: ton('0.9*sin(2*PI*1046*t)*(1-exp(-t*400))*exp(-t*14)', 0.16)},
+	alerte: {dureeSec: 0.6, usage: 'danger, erreur à éviter (Mode Survie)', filtre: ton('0.7*sin(2*PI*(660-166*floor(t/0.3))*t)*(1-exp(-(t-0.3*floor(t/0.3))*300))*exp(-(t-0.3*floor(t/0.3))*5)', 0.6)},
+	impact: {dureeSec: 0.5, usage: 'choc, chute (Mode Survie)', filtre: ton('0.95*sin(2*PI*(55+140*exp(-t*18))*t)*exp(-t*9)', 0.5)},
+	eau: {dureeSec: 0.7, usage: 'plongeon, bulles (Mode Survie)', filtre: bruit(4, 0.7, 500, 700)},
+	verre: {dureeSec: 0.35, usage: 'vitre cassée (Mode Survie)', filtre: bruit(5, 0.35, 5200, 3000)},
 	tic: {dureeSec: 0.06, usage: 'texte qui s’écrit, petit détail', filtre: ton('0.9*sin(2*PI*2400*t)*exp(-t*90)', 0.06)},
 };
 

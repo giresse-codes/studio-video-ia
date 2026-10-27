@@ -1,0 +1,173 @@
+{
+	"chaine": "mode-survie",
+	"numero": "001",
+	"slug": "voiture-dans-l-eau",
+	"script": "channels/mode-survie/scripts/001-voiture-dans-l-eau.md",
+	"audio": "public/audio/mode-survie-001.wav",
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-chute.html",
+			"debut": "@0",
+			"transition": "zoom",
+			"cible": [
+				660,
+				960
+			]
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-portes.html",
+			"debut": "@pendant",
+			"transition": "balayage",
+			"cible": [
+				640,
+				920
+			]
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-ceinture.html",
+			"debut": "@regle",
+			"transition": "zoom",
+			"cible": [
+				620,
+				1050
+			]
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-fenetre.html",
+			"debut": "@regle",
+			"transition": "balayage",
+			"cible": [
+				600,
+				800
+			]
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-dehors.html",
+			"debut": "@regle",
+			"transition": "zoom",
+			"cible": [
+				660,
+				860
+			]
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-resume.html",
+			"debut": "@ceinture",
+			"transition": "balayage",
+			"cible": [
+				540,
+				760
+			]
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-question.html",
+			"debut": "@et",
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			]
+		}
+	],
+	"bruitages": [
+		{
+			"ancre": "@tombe",
+			"son": "impact",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@canal",
+			"son": "eau",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@minute",
+			"son": "bip"
+		},
+		{
+			"ancre": "@pousse",
+			"son": "eau",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@oublie",
+			"son": "alerte",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@secours",
+			"son": "bip",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@un",
+			"son": "bip",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@detache",
+			"son": "tic",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@deux",
+			"son": "bip",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@coin",
+			"son": "verre",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@pas",
+			"son": "alerte",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@trois",
+			"son": "bip",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@sortir",
+			"son": "eau",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@ceinture",
+			"son": "bip",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@fenetre",
+			"son": "bip",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@dehors",
+			"son": "bip",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@minute",
+			"son": "alerte",
+			"scene": "s6"
+		}
+	],
+	"avatar": false,
+	"theme": "alerte",
+	"calques": [
+		{
+			"id": "hud",
+			"fichier": "compositions/hud.html"
+		}
+	]
+}

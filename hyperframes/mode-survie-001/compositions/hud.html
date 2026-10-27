@@ -1,0 +1,65 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#hud-compte {
+			right: 130px;
+			top: 170px;
+		}
+		#hud-eau {
+			left: 80px;
+			top: 288px;
+			width: 870px;
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			gap: 26px;
+			font-size: 40px;
+			padding: 10px 22px 12px;
+		}
+		#hud-eau .jauge {
+			flex: 1;
+			margin-top: 0;
+		}
+	</style>
+	<!-- Écran fixe de Mode Survie (channels/mode-survie/STYLE.md) : horodatage, compte à rebours, niveau d'eau. -->
+	<div data-hf-id="hf-nhps" id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-r5pl" id="hud-heure" class="horodatage" data-important style="left: 80px; top: 170px"><span data-hf-id="hf-udmf" id="hud-point" class="point"></span>17:12 · CANAL</div>
+		<div data-hf-id="hf-ashl" id="hud-compte" class="compte" data-important>1:00</div>
+		<div data-hf-id="hf-y86m" id="hud-eau" class="donnee" data-important>NIVEAU D'EAU<div data-hf-id="hf-3y6g" class="jauge"><i data-hf-id="hf-rzlr" id="hud-niveau"></i></div></div>
+		<div data-hf-id="hf-oawk" id="hud-fin" class="avertissement" data-important style="left: 80px; top: 1170px; width: 870px; font-size: 40px">Ceci ne remplace pas une formation aux premiers secours. Urgence : 112.</div>
+	</div>
+	<script>
+		(function () {
+			const C = kit.calque('hud');
+			const tl = C.tl;
+
+			// 0 s : l'horodatage est là, le point rouge clignote toute la vidéo.
+			kit.pop(tl, '#hud-heure', 0);
+			kit.boucle(tl, '#hud-point', {opacity: 0.2}, 0, C.dur, 1);
+
+			// « minute » : le compte à rebours de 60 s démarre et descend en temps réel.
+			const minute = C.ancre('@minute');
+			kit.pop(tl, '#hud-compte', minute);
+			kit.compte(tl, '#hud-compte', 60, minute, C.dur);
+			// « seconde » puis « une minute » (résumé) : le compteur bat en rouge.
+			for (const t of [C.ancre('@seconde'), C.ancre('@minute#2')]) {
+				tl.to('#hud-compte', {scale: 1.18, color: '#E5383B', duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 1}, t);
+			}
+
+			// « flotte » : la carte NIVEAU D'EAU apparaît, la jauge monte jusqu'à la fin.
+			const flotte = C.ancre('@flotte');
+			kit.cascade(tl, '#hud-eau', flotte);
+			tl.fromTo('#hud-niveau', {scaleX: 0.12}, {scaleX: 0.94, duration: C.dur - flotte, ease: 'none'}, flotte);
+
+			// Résumé (« ceinture » n° 2) : la jauge laisse la place aux trois règles.
+			tl.to('#hud-eau', {opacity: 0, y: -20, duration: 0.3, ease: 'power2.in'}, C.ancre('@ceinture#2'));
+			// « trois mots » : la carte de fin arrive et reste jusqu'au bout.
+			kit.cascade(tl, '#hud-fin', C.ancre('@trois#2'));
+
+			C.fin();
+		})();
+	</script>
+</template>

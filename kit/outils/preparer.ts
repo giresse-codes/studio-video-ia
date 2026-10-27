@@ -1,6 +1,6 @@
 // npm run preparer -- <video>      (ex. : npm run preparer -- astuces-002)
 // Calcule l'heure de chaque mot, résout les ancres @mot des scènes, puis écrit dans hyperframes/<video>/ :
-// index.html (racine), compositions/sous-titres.html, compositions/avatar.html, assets/kit, assets/sons, assets/audio.
+// index.html (racine), compositions/sous-titres.html, compositions/avatar.html (sauf "avatar": false), assets/kit, assets/sons, assets/audio.
 // Options : KIT_WHISPER=non pour sauter Whisper (estimation directe, plus rapide).
 import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
@@ -18,6 +18,7 @@ export type Preparation = {
 	video: Video;
 	minutage: Minutage;
 	scenes: {id: string; fichier: string; debut: number; fin: number; transition: string; cible: [number, number]; ancreDebut: string}[];
+	calques: {id: string; fichier: string; debut: number; fin: number}[];
 	ancres: (AncreResolue & {scene: string})[];
 	bruitages: {sec: number; son: string; cause: string}[];
 };
@@ -46,8 +47,11 @@ export const resoudre = (video: Video, minutage: Minutage): Preparation => {
 		ancreDebut: k === 0 ? '@0' : s.debut,
 	}));
 
+	// Un calque dure toute la vidéo : ses ancres se cherchent depuis 0 s.
+	const calques = (video.calques ?? []).map((c) => ({id: c.id, fichier: c.fichier, debut: 0, fin: minutage.dureeSec}));
+
 	const ancres: Preparation['ancres'] = [];
-	for (const s of scenes) {
+	for (const s of [...scenes, ...calques]) {
 		const code = readFileSync(path.join(dossier, s.fichier), 'utf8');
 		for (const brute of ancresDansCode(code)) {
 			try {
@@ -77,7 +81,7 @@ export const resoudre = (video: Video, minutage: Minutage): Preparation => {
 		throw new Error(`Préparation impossible :\n- ${erreurs.join('\n- ')}`);
 	}
 	bruitages.sort((a, b) => a.sec - b.sec);
-	return {video, minutage, scenes, ancres, bruitages};
+	return {video, minutage, scenes, calques, ancres, bruitages};
 };
 
 const copier = (de: string, vers: string) => {
@@ -150,6 +154,16 @@ const ecrireIndex = (p: Preparation, kitData: object) => {
 			return `\t\t\t<div id="${s.id}" class="clip" data-composition-id="${s.id}" data-composition-src="${s.fichier}" data-start="${r(s.debut)}" data-duration="${r(dureeHote)}" data-track-index="1" data-track-kind="graphics" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}" style="z-index: ${k + 2}"></div>`;
 		})
 		.join('\n');
+	const calques = p.calques
+		.map(
+			(c, k) =>
+				`\t\t\t<div id="${c.id}" class="clip" data-composition-id="${c.id}" data-composition-src="${c.fichier}" data-start="0" data-duration="${duree}" data-track-index="${8 + k}" data-track-kind="graphics" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}" style="z-index: ${30 + k}"></div>`,
+		)
+		.join('\n');
+	const avatar =
+		p.video.avatar === false
+			? ''
+			: `\t\t\t<div id="avatar" class="clip" data-composition-id="avatar" data-composition-src="compositions/avatar.html" data-start="0" data-duration="${duree}" data-track-index="2" data-track-kind="graphics" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}" style="z-index: 40"></div>\n`;
 	// Volume : la crête de chaque bruitage tombe SON.sousLaVoixDb sous celle de la voix.
 	const volume = r(Math.min(3.98, 10 ** ((p.minutage.voixCreteDb - SON.sousLaVoixDb - CRETE_FICHIER_DB) / 20)));
 	const sons = p.bruitages
@@ -203,8 +217,7 @@ const ecrireIndex = (p: Preparation, kitData: object) => {
 		<div id="root" data-composition-id="main" data-start="0" data-duration="${duree}" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}">
 			<div id="socle" data-layout-ignore></div>
 ${hotes}
-			<div id="avatar" class="clip" data-composition-id="avatar" data-composition-src="compositions/avatar.html" data-start="0" data-duration="${duree}" data-track-index="2" data-track-kind="graphics" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}" style="z-index: 40"></div>
-			<div id="sous-titres" class="clip" data-composition-id="sous-titres" data-composition-src="compositions/sous-titres.html" data-start="0" data-duration="${duree}" data-track-index="3" data-track-kind="captions" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}" style="z-index: 50"></div>
+${calques ? `${calques}\n` : ''}${avatar}			<div id="sous-titres" class="clip" data-composition-id="sous-titres" data-composition-src="compositions/sous-titres.html" data-start="0" data-duration="${duree}" data-track-index="3" data-track-kind="captions" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}" style="z-index: 50"></div>
 			<svg id="grain" viewBox="0 0 ${FORMAT.largeur} ${FORMAT.hauteur}" data-layout-ignore style="z-index: 60">
 				<filter id="grain-filtre"><feTurbulence id="grain-bruit" type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="1" /></filter>
 				<rect width="100%" height="100%" filter="url(#grain-filtre)" />
@@ -246,11 +259,12 @@ export const preparer = (id: string, {whisper = process.env.KIT_WHISPER !== 'non
 	copier(path.join(RACINE, 'node_modules/@fontsource/poppins/files/poppins-latin-800-normal.woff2'), path.join(kit, 'fonts/poppins-800.woff2'));
 	copier(path.join(RACINE, 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2'), path.join(kit, 'fonts/jetbrains-mono-500.woff2'));
 	copier(path.join(RACINE, 'node_modules/gsap/dist/gsap.min.js'), path.join(kit, 'gsap.min.js'));
-	copier(path.join(RACINE, 'kit/runtime/avatar.html'), path.join(dossier, 'compositions/avatar.html'));
+	if (video.avatar !== false) copier(path.join(RACINE, 'kit/runtime/avatar.html'), path.join(dossier, 'compositions/avatar.html'));
 	genererSons(path.join(dossier, 'assets/sons'), [...new Set(p.bruitages.map((b) => b.son))]);
 	copier(video.audio, path.join(dossier, 'assets/audio/voix.wav'));
 
-	const gaucheAvatar = video.avatar?.cote === 'gauche' ? -AVATAR.horsCadre : FORMAT.largeur - AVATAR.largeur + AVATAR.horsCadre;
+	const reglagesAvatar = video.avatar === false ? {} : (video.avatar ?? {});
+	const gaucheAvatar = reglagesAvatar.cote === 'gauche' ? -AVATAR.horsCadre : FORMAT.largeur - AVATAR.largeur + AVATAR.horsCadre;
 	const kitData = {
 		fps: FORMAT.ips,
 		duree: r(minutage.dureeSec),
@@ -259,13 +273,14 @@ export const preparer = (id: string, {whisper = process.env.KIT_WHISPER !== 'non
 		travelling: MOUVEMENT.travelling,
 		zoomMot: MOUVEMENT.zoomMot,
 		scenes: p.scenes.map((s) => ({id: s.id, debut: r(s.debut), fin: r(s.fin), transition: s.transition, cible: s.cible})),
+		calques: p.calques.map((c) => ({id: c.id, debut: 0, fin: r(c.fin)})),
 		ancres: Object.fromEntries(p.ancres.map((a) => [`${a.scene}|${a.brute}`, r(a.sec)])),
 		// Une indication vaut pour sa phrase ; sans indication, le narrateur explique.
 		poses: minutage.phrases.map((ph) => ({t: r(ph.start), pose: ph.emotion ? ph.pose : POSE_PAR_DEFAUT})),
 		bouche: minutage.bouche,
 		avatar: {
-			cote: video.avatar?.cote ?? 'droite',
-			tenue: TENUES[video.avatar?.tenue ?? 'blanche'],
+			cote: reglagesAvatar.cote ?? 'droite',
+			tenue: TENUES[reglagesAvatar.tenue ?? 'blanche'],
 			largeur: AVATAR.largeur,
 			hauteur: AVATAR.hauteur,
 			gauche: gaucheAvatar,
@@ -284,6 +299,7 @@ export const preparer = (id: string, {whisper = process.env.KIT_WHISPER !== 'non
 				dureeSec: r(minutage.dureeSec),
 				voixCreteDb: r(minutage.voixCreteDb),
 				scenes: p.scenes,
+				calques: p.calques,
 				ancres: p.ancres.map((a) => ({scene: a.scene, ancre: a.brute, mot: a.motTrouve, motSec: r(a.motSec), sec: r(a.sec)})),
 				bruitages: p.bruitages.map((b) => ({...b, sec: r(b.sec)})),
 				phrases: minutage.phrases.map((ph) => ({texte: ph.text, emotion: ph.emotion, pose: ph.pose, start: r(ph.start), end: r(ph.end)})),

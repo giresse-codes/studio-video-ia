@@ -1,0 +1,1306 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 42.362,
+	"voixCreteDb": -2.339,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-chute.html",
+			"debut": 0,
+			"fin": 6.08,
+			"transition": "zoom",
+			"cible": [
+				660,
+				960
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-portes.html",
+			"debut": 6.08,
+			"fin": 16.21,
+			"transition": "balayage",
+			"cible": [
+				640,
+				920
+			],
+			"ancreDebut": "@pendant"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-ceinture.html",
+			"debut": 16.21,
+			"fin": 18.69,
+			"transition": "zoom",
+			"cible": [
+				620,
+				1050
+			],
+			"ancreDebut": "@regle"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-fenetre.html",
+			"debut": 18.69,
+			"fin": 28.76,
+			"transition": "balayage",
+			"cible": [
+				600,
+				800
+			],
+			"ancreDebut": "@regle"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-dehors.html",
+			"debut": 28.76,
+			"fin": 35.6,
+			"transition": "zoom",
+			"cible": [
+				660,
+				860
+			],
+			"ancreDebut": "@regle"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-resume.html",
+			"debut": 35.6,
+			"fin": 39.85,
+			"transition": "balayage",
+			"cible": [
+				540,
+				760
+			],
+			"ancreDebut": "@ceinture"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-question.html",
+			"debut": 39.85,
+			"fin": 42.362458333333336,
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@et"
+		}
+	],
+	"calques": [
+		{
+			"id": "hud",
+			"fichier": "compositions/hud.html",
+			"debut": 0,
+			"fin": 42.362458333333336
+		}
+	],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@route",
+			"mot": "route",
+			"motSec": 2.695,
+			"sec": 2.695
+		},
+		{
+			"scene": "s1",
+			"ancre": "@voiture",
+			"mot": "voiture",
+			"motSec": 1.897,
+			"sec": 1.897
+		},
+		{
+			"scene": "s1",
+			"ancre": "@tombe",
+			"mot": "tombe",
+			"motSec": 3.068,
+			"sec": 3.068
+		},
+		{
+			"scene": "s1",
+			"ancre": "@canal",
+			"mot": "canal.",
+			"motSec": 3.654,
+			"sec": 3.654
+		},
+		{
+			"scene": "s1",
+			"ancre": "@minute",
+			"mot": "minute.",
+			"motSec": 5.241,
+			"sec": 5.241
+		},
+		{
+			"scene": "s2",
+			"ancre": "@pousse",
+			"mot": "pousse",
+			"motSec": 7.665,
+			"sec": 7.665
+		},
+		{
+			"scene": "s2",
+			"ancre": "@portes",
+			"mot": "portes.",
+			"motSec": 8.342,
+			"sec": 8.342
+		},
+		{
+			"scene": "s2",
+			"ancre": "@ouvrir",
+			"mot": "ouvrir.",
+			"motSec": 10.67,
+			"sec": 10.67
+		},
+		{
+			"scene": "s2",
+			"ancre": "@oublie",
+			"mot": "oublie",
+			"motSec": 11.758,
+			"sec": 11.758
+		},
+		{
+			"scene": "s2",
+			"ancre": "@secours",
+			"mot": "secours",
+			"motSec": 13.58,
+			"sec": 13.58
+		},
+		{
+			"scene": "s2",
+			"ancre": "@suite",
+			"mot": "suite :",
+			"motSec": 14.1,
+			"sec": 14.1
+		},
+		{
+			"scene": "s2",
+			"ancre": "@seconde",
+			"mot": "seconde",
+			"motSec": 14.947,
+			"sec": 14.947
+		},
+		{
+			"scene": "s3",
+			"ancre": "@un",
+			"mot": "un :",
+			"motSec": 16.624,
+			"sec": 16.624
+		},
+		{
+			"scene": "s3",
+			"ancre": "@detache",
+			"mot": "détache",
+			"motSec": 17.12,
+			"sec": 17.12
+		},
+		{
+			"scene": "s3",
+			"ancre": "@ceinture",
+			"mot": "ceinture.",
+			"motSec": 17.644,
+			"sec": 17.644
+		},
+		{
+			"scene": "s4",
+			"ancre": "@encore",
+			"mot": "encore.",
+			"motSec": 22.392,
+			"sec": 22.392
+		},
+		{
+			"scene": "s4",
+			"ancre": "@deux",
+			"mot": "deux :",
+			"motSec": 18.979,
+			"sec": 18.979
+		},
+		{
+			"scene": "s4",
+			"ancre": "@ouvre",
+			"mot": "ouvre",
+			"motSec": 19.59,
+			"sec": 19.59
+		},
+		{
+			"scene": "s4",
+			"ancre": "@electriques",
+			"mot": "électriques",
+			"motSec": 21.669,
+			"sec": 21.669
+		},
+		{
+			"scene": "s4",
+			"ancre": "@sinon",
+			"mot": "Sinon,",
+			"motSec": 23,
+			"sec": 23
+		},
+		{
+			"scene": "s4",
+			"ancre": "@brisevitre",
+			"mot": "brise-vitre,",
+			"motSec": 24.83,
+			"sec": 24.83
+		},
+		{
+			"scene": "s4",
+			"ancre": "@coin",
+			"mot": "coin.",
+			"motSec": 25.774,
+			"sec": 25.774
+		},
+		{
+			"scene": "s4",
+			"ancre": "@jamais",
+			"mot": "Jamais",
+			"motSec": 26.29,
+			"sec": 26.29
+		},
+		{
+			"scene": "s4",
+			"ancre": "@parebrise",
+			"mot": "pare-brise :",
+			"motSec": 26.746,
+			"sec": 26.746
+		},
+		{
+			"scene": "s4",
+			"ancre": "@pas",
+			"mot": "pas.",
+			"motSec": 28.054,
+			"sec": 28.054
+		},
+		{
+			"scene": "s5",
+			"ancre": "@trois",
+			"mot": "trois :",
+			"motSec": 29.07,
+			"sec": 29.07
+		},
+		{
+			"scene": "s5",
+			"ancre": "@sors",
+			"mot": "sors",
+			"motSec": 29.71,
+			"sec": 29.71
+		},
+		{
+			"scene": "s5",
+			"ancre": "@fenetre",
+			"mot": "fenêtre.",
+			"motSec": 30.273,
+			"sec": 30.273
+		},
+		{
+			"scene": "s5",
+			"ancre": "@enfants",
+			"mot": "enfants,",
+			"motSec": 31.576,
+			"sec": 31.576
+		},
+		{
+			"scene": "s5",
+			"ancre": "@detacheles",
+			"mot": "détache-les",
+			"motSec": 32.01,
+			"sec": 32.01
+		},
+		{
+			"scene": "s5",
+			"ancre": "@sortir",
+			"mot": "sortir",
+			"motSec": 33.188,
+			"sec": 33.188
+		},
+		{
+			"scene": "s5",
+			"ancre": "@grand",
+			"mot": "grand",
+			"motSec": 34.428,
+			"sec": 34.428
+		},
+		{
+			"scene": "s5",
+			"ancre": "@abord",
+			"mot": "d'abord.",
+			"motSec": 34.738,
+			"sec": 34.738
+		},
+		{
+			"scene": "s6",
+			"ancre": "@ceinture",
+			"mot": "Ceinture.",
+			"motSec": 35.6,
+			"sec": 35.6
+		},
+		{
+			"scene": "s6",
+			"ancre": "@fenetre",
+			"mot": "Fenêtre.",
+			"motSec": 36.42,
+			"sec": 36.42
+		},
+		{
+			"scene": "s6",
+			"ancre": "@dehors",
+			"mot": "Dehors.",
+			"motSec": 37.045,
+			"sec": 37.045
+		},
+		{
+			"scene": "s6",
+			"ancre": "@mots",
+			"mot": "mots,",
+			"motSec": 38.217,
+			"sec": 38.217
+		},
+		{
+			"scene": "s6",
+			"ancre": "@minute",
+			"mot": "minute.",
+			"motSec": 38.923,
+			"sec": 38.923
+		},
+		{
+			"scene": "s7",
+			"ancre": "@toi",
+			"mot": "toi,",
+			"motSec": 39.998,
+			"sec": 39.998
+		},
+		{
+			"scene": "s7",
+			"ancre": "@brisevitre",
+			"mot": "brise-vitre",
+			"motSec": 40.956,
+			"sec": 40.956
+		},
+		{
+			"scene": "hud",
+			"ancre": "@minute",
+			"mot": "minute.",
+			"motSec": 5.241,
+			"sec": 5.241
+		},
+		{
+			"scene": "hud",
+			"ancre": "@seconde",
+			"mot": "seconde",
+			"motSec": 14.947,
+			"sec": 14.947
+		},
+		{
+			"scene": "hud",
+			"ancre": "@minute#2",
+			"mot": "minute.",
+			"motSec": 38.923,
+			"sec": 38.923
+		},
+		{
+			"scene": "hud",
+			"ancre": "@flotte",
+			"mot": "flotte,",
+			"motSec": 6.878,
+			"sec": 6.878
+		},
+		{
+			"scene": "hud",
+			"ancre": "@ceinture#2",
+			"mot": "Ceinture.",
+			"motSec": 35.6,
+			"sec": 35.6
+		},
+		{
+			"scene": "hud",
+			"ancre": "@trois#2",
+			"mot": "Trois",
+			"motSec": 37.95,
+			"sec": 37.95
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 3.068,
+			"son": "impact",
+			"cause": "@tombe (s1)"
+		},
+		{
+			"sec": 3.654,
+			"son": "eau",
+			"cause": "@canal (s1)"
+		},
+		{
+			"sec": 5.241,
+			"son": "bip",
+			"cause": "@minute"
+		},
+		{
+			"sec": 6.03,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 7.665,
+			"son": "eau",
+			"cause": "@pousse (s2)"
+		},
+		{
+			"sec": 11.758,
+			"son": "alerte",
+			"cause": "@oublie (s2)"
+		},
+		{
+			"sec": 13.58,
+			"son": "bip",
+			"cause": "@secours (s2)"
+		},
+		{
+			"sec": 16.16,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 16.624,
+			"son": "bip",
+			"cause": "@un (s3)"
+		},
+		{
+			"sec": 17.12,
+			"son": "tic",
+			"cause": "@detache (s3)"
+		},
+		{
+			"sec": 18.64,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 18.979,
+			"son": "bip",
+			"cause": "@deux (s4)"
+		},
+		{
+			"sec": 25.774,
+			"son": "verre",
+			"cause": "@coin (s4)"
+		},
+		{
+			"sec": 28.054,
+			"son": "alerte",
+			"cause": "@pas (s4)"
+		},
+		{
+			"sec": 28.71,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 29.07,
+			"son": "bip",
+			"cause": "@trois (s5)"
+		},
+		{
+			"sec": 33.188,
+			"son": "eau",
+			"cause": "@sortir (s5)"
+		},
+		{
+			"sec": 35.55,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 35.6,
+			"son": "bip",
+			"cause": "@ceinture (s6)"
+		},
+		{
+			"sec": 36.42,
+			"son": "bip",
+			"cause": "@fenetre (s6)"
+		},
+		{
+			"sec": 37.045,
+			"son": "bip",
+			"cause": "@dehors (s6)"
+		},
+		{
+			"sec": 38.923,
+			"son": "alerte",
+			"cause": "@minute (s6)"
+		},
+		{
+			"sec": 39.8,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Il est dix-sept heures douze.",
+			"emotion": "calme, tendu",
+			"pose": "neutre",
+			"start": 0,
+			"end": 1.27
+		},
+		{
+			"texte": "Ta voiture quitte la route et tombe dans un canal.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 1.79,
+			"end": 3.92
+		},
+		{
+			"texte": "Tu as environ une minute.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 4.45,
+			"end": 5.58
+		},
+		{
+			"texte": "Pendant que la voiture flotte, l'eau pousse sur les portes.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 6.08,
+			"end": 8.68
+		},
+		{
+			"texte": "Bientôt, tu ne pourras plus les ouvrir.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 9.17,
+			"end": 10.93
+		},
+		{
+			"texte": "Alors oublie les portes.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 11.5,
+			"end": 12.53
+		},
+		{
+			"texte": "Et n'appelle pas les secours tout de suite : chaque seconde compte.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 12.94,
+			"end": 15.72
+		},
+		{
+			"texte": "Règle un : détache ta ceinture.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 16.21,
+			"end": 18.11
+		},
+		{
+			"texte": "Règle deux : ouvre la fenêtre maintenant, tant que les vitres électriques marchent encore.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 18.69,
+			"end": 22.62
+		},
+		{
+			"texte": "Sinon, casse la vitre latérale avec un brise-vitre, dans un coin.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 23,
+			"end": 26.01
+		},
+		{
+			"texte": "Jamais le pare-brise : il ne se casse pas.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 26.29,
+			"end": 28.2
+		},
+		{
+			"texte": "Règle trois : sors par la fenêtre.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 28.76,
+			"end": 30.71
+		},
+		{
+			"texte": "S'il y a des enfants, détache-les et fais-les sortir avant toi, le plus grand d'abord.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 31.08,
+			"end": 35.11
+		},
+		{
+			"texte": "Ceinture.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 35.6,
+			"end": 36.17
+		},
+		{
+			"texte": "Fenêtre.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 36.42,
+			"end": 37.045
+		},
+		{
+			"texte": "Dehors.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 37.045,
+			"end": 37.58
+		},
+		{
+			"texte": "Trois mots, une minute.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 37.95,
+			"end": 39.25
+		},
+		{
+			"texte": "Et toi, tu as un brise-vitre dans ta voiture ?",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 39.85,
+			"end": 42.05
+		}
+	],
+	"mots": [
+		{
+			"texte": "Il",
+			"start": 0,
+			"end": 0.11
+		},
+		{
+			"texte": "est",
+			"start": 0.11,
+			"end": 0.276
+		},
+		{
+			"texte": "dix-sept",
+			"start": 0.276,
+			"end": 0.663
+		},
+		{
+			"texte": "heures",
+			"start": 0.663,
+			"end": 0.994
+		},
+		{
+			"texte": "douze.",
+			"start": 0.994,
+			"end": 1.27
+		},
+		{
+			"texte": "Ta",
+			"start": 1.79,
+			"end": 1.897
+		},
+		{
+			"texte": "voiture",
+			"start": 1.897,
+			"end": 2.269
+		},
+		{
+			"texte": "quitte",
+			"start": 2.269,
+			"end": 2.589
+		},
+		{
+			"texte": "la",
+			"start": 2.589,
+			"end": 2.695
+		},
+		{
+			"texte": "route",
+			"start": 2.695,
+			"end": 2.962
+		},
+		{
+			"texte": "et",
+			"start": 2.962,
+			"end": 3.068
+		},
+		{
+			"texte": "tombe",
+			"start": 3.068,
+			"end": 3.334
+		},
+		{
+			"texte": "dans",
+			"start": 3.334,
+			"end": 3.547
+		},
+		{
+			"texte": "un",
+			"start": 3.547,
+			"end": 3.654
+		},
+		{
+			"texte": "canal.",
+			"start": 3.654,
+			"end": 3.92
+		},
+		{
+			"texte": "Tu",
+			"start": 4.45,
+			"end": 4.563
+		},
+		{
+			"texte": "as",
+			"start": 4.563,
+			"end": 4.676
+		},
+		{
+			"texte": "environ",
+			"start": 4.676,
+			"end": 5.072
+		},
+		{
+			"texte": "une",
+			"start": 5.072,
+			"end": 5.241
+		},
+		{
+			"texte": "minute.",
+			"start": 5.241,
+			"end": 5.58
+		},
+		{
+			"texte": "Pendant",
+			"start": 6.08,
+			"end": 6.374
+		},
+		{
+			"texte": "que",
+			"start": 6.374,
+			"end": 6.5
+		},
+		{
+			"texte": "la",
+			"start": 6.5,
+			"end": 6.584
+		},
+		{
+			"texte": "voiture",
+			"start": 6.584,
+			"end": 6.878
+		},
+		{
+			"texte": "flotte,",
+			"start": 6.878,
+			"end": 7.13
+		},
+		{
+			"texte": "l'eau",
+			"start": 7.44,
+			"end": 7.665
+		},
+		{
+			"texte": "pousse",
+			"start": 7.665,
+			"end": 8.004
+		},
+		{
+			"texte": "sur",
+			"start": 8.004,
+			"end": 8.173
+		},
+		{
+			"texte": "les",
+			"start": 8.173,
+			"end": 8.342
+		},
+		{
+			"texte": "portes.",
+			"start": 8.342,
+			"end": 8.68
+		},
+		{
+			"texte": "Bientôt,",
+			"start": 9.17,
+			"end": 9.6
+		},
+		{
+			"texte": "tu",
+			"start": 9.89,
+			"end": 9.977
+		},
+		{
+			"texte": "ne",
+			"start": 9.977,
+			"end": 10.063
+		},
+		{
+			"texte": "pourras",
+			"start": 10.063,
+			"end": 10.367
+		},
+		{
+			"texte": "plus",
+			"start": 10.367,
+			"end": 10.54
+		},
+		{
+			"texte": "les",
+			"start": 10.54,
+			"end": 10.67
+		},
+		{
+			"texte": "ouvrir.",
+			"start": 10.67,
+			"end": 10.93
+		},
+		{
+			"texte": "Alors",
+			"start": 11.5,
+			"end": 11.758
+		},
+		{
+			"texte": "oublie",
+			"start": 11.758,
+			"end": 12.067
+		},
+		{
+			"texte": "les",
+			"start": 12.067,
+			"end": 12.221
+		},
+		{
+			"texte": "portes.",
+			"start": 12.221,
+			"end": 12.53
+		},
+		{
+			"texte": "Et",
+			"start": 12.94,
+			"end": 13.02
+		},
+		{
+			"texte": "n'appelle",
+			"start": 13.02,
+			"end": 13.34
+		},
+		{
+			"texte": "pas",
+			"start": 13.34,
+			"end": 13.46
+		},
+		{
+			"texte": "les",
+			"start": 13.46,
+			"end": 13.58
+		},
+		{
+			"texte": "secours",
+			"start": 13.58,
+			"end": 13.86
+		},
+		{
+			"texte": "tout",
+			"start": 13.86,
+			"end": 14.02
+		},
+		{
+			"texte": "de",
+			"start": 14.02,
+			"end": 14.1
+		},
+		{
+			"texte": "suite :",
+			"start": 14.1,
+			"end": 14.3
+		},
+		{
+			"texte": "chaque",
+			"start": 14.59,
+			"end": 14.947
+		},
+		{
+			"texte": "seconde",
+			"start": 14.947,
+			"end": 15.363
+		},
+		{
+			"texte": "compte.",
+			"start": 15.363,
+			"end": 15.72
+		},
+		{
+			"texte": "Règle",
+			"start": 16.21,
+			"end": 16.624
+		},
+		{
+			"texte": "un :",
+			"start": 16.624,
+			"end": 16.79
+		},
+		{
+			"texte": "détache",
+			"start": 17.12,
+			"end": 17.528
+		},
+		{
+			"texte": "ta",
+			"start": 17.528,
+			"end": 17.644
+		},
+		{
+			"texte": "ceinture.",
+			"start": 17.644,
+			"end": 18.11
+		},
+		{
+			"texte": "Règle",
+			"start": 18.69,
+			"end": 18.979
+		},
+		{
+			"texte": "deux :",
+			"start": 18.979,
+			"end": 19.21
+		},
+		{
+			"texte": "ouvre",
+			"start": 19.59,
+			"end": 19.844
+		},
+		{
+			"texte": "la",
+			"start": 19.844,
+			"end": 19.946
+		},
+		{
+			"texte": "fenêtre",
+			"start": 19.946,
+			"end": 20.302
+		},
+		{
+			"texte": "maintenant,",
+			"start": 20.302,
+			"end": 20.81
+		},
+		{
+			"texte": "tant",
+			"start": 21.06,
+			"end": 21.212
+		},
+		{
+			"texte": "que",
+			"start": 21.212,
+			"end": 21.326
+		},
+		{
+			"texte": "les",
+			"start": 21.326,
+			"end": 21.44
+		},
+		{
+			"texte": "vitres",
+			"start": 21.44,
+			"end": 21.669
+		},
+		{
+			"texte": "électriques",
+			"start": 21.669,
+			"end": 22.087
+		},
+		{
+			"texte": "marchent",
+			"start": 22.087,
+			"end": 22.392
+		},
+		{
+			"texte": "encore.",
+			"start": 22.392,
+			"end": 22.62
+		},
+		{
+			"texte": "Sinon,",
+			"start": 23,
+			"end": 23.295
+		},
+		{
+			"texte": "casse",
+			"start": 23.295,
+			"end": 23.59
+		},
+		{
+			"texte": "la",
+			"start": 23.59,
+			"end": 23.708
+		},
+		{
+			"texte": "vitre",
+			"start": 23.708,
+			"end": 24.003
+		},
+		{
+			"texte": "latérale",
+			"start": 24.003,
+			"end": 24.475
+		},
+		{
+			"texte": "avec",
+			"start": 24.475,
+			"end": 24.712
+		},
+		{
+			"texte": "un",
+			"start": 24.712,
+			"end": 24.83
+		},
+		{
+			"texte": "brise-vitre,",
+			"start": 24.83,
+			"end": 25.42
+		},
+		{
+			"texte": "dans",
+			"start": 25.42,
+			"end": 25.656
+		},
+		{
+			"texte": "un",
+			"start": 25.656,
+			"end": 25.774
+		},
+		{
+			"texte": "coin.",
+			"start": 25.774,
+			"end": 26.01
+		},
+		{
+			"texte": "Jamais",
+			"start": 26.29,
+			"end": 26.632
+		},
+		{
+			"texte": "le",
+			"start": 26.632,
+			"end": 26.746
+		},
+		{
+			"texte": "pare-brise :",
+			"start": 26.746,
+			"end": 27.26
+		},
+		{
+			"texte": "il",
+			"start": 27.52,
+			"end": 27.617
+		},
+		{
+			"texte": "ne",
+			"start": 27.617,
+			"end": 27.714
+		},
+		{
+			"texte": "se",
+			"start": 27.714,
+			"end": 27.811
+		},
+		{
+			"texte": "casse",
+			"start": 27.811,
+			"end": 28.054
+		},
+		{
+			"texte": "pas.",
+			"start": 28.054,
+			"end": 28.2
+		},
+		{
+			"texte": "Règle",
+			"start": 28.76,
+			"end": 29.07
+		},
+		{
+			"texte": "trois :",
+			"start": 29.07,
+			"end": 29.38
+		},
+		{
+			"texte": "sors",
+			"start": 29.71,
+			"end": 29.96
+		},
+		{
+			"texte": "par",
+			"start": 29.96,
+			"end": 30.148
+		},
+		{
+			"texte": "la",
+			"start": 30.148,
+			"end": 30.273
+		},
+		{
+			"texte": "fenêtre.",
+			"start": 30.273,
+			"end": 30.71
+		},
+		{
+			"texte": "S'il",
+			"start": 31.08,
+			"end": 31.266
+		},
+		{
+			"texte": "y",
+			"start": 31.266,
+			"end": 31.328
+		},
+		{
+			"texte": "a",
+			"start": 31.328,
+			"end": 31.39
+		},
+		{
+			"texte": "des",
+			"start": 31.39,
+			"end": 31.576
+		},
+		{
+			"texte": "enfants,",
+			"start": 31.576,
+			"end": 32.01
+		},
+		{
+			"texte": "détache-les",
+			"start": 32.01,
+			"end": 32.63
+		},
+		{
+			"texte": "et",
+			"start": 32.63,
+			"end": 32.754
+		},
+		{
+			"texte": "fais-les",
+			"start": 32.754,
+			"end": 33.188
+		},
+		{
+			"texte": "sortir",
+			"start": 33.188,
+			"end": 33.56
+		},
+		{
+			"texte": "avant",
+			"start": 33.56,
+			"end": 33.87
+		},
+		{
+			"texte": "toi,",
+			"start": 33.87,
+			"end": 34.056
+		},
+		{
+			"texte": "le",
+			"start": 34.056,
+			"end": 34.18
+		},
+		{
+			"texte": "plus",
+			"start": 34.18,
+			"end": 34.428
+		},
+		{
+			"texte": "grand",
+			"start": 34.428,
+			"end": 34.738
+		},
+		{
+			"texte": "d'abord.",
+			"start": 34.738,
+			"end": 35.11
+		},
+		{
+			"texte": "Ceinture.",
+			"start": 35.6,
+			"end": 36.17
+		},
+		{
+			"texte": "Fenêtre.",
+			"start": 36.42,
+			"end": 37.045
+		},
+		{
+			"texte": "Dehors.",
+			"start": 37.045,
+			"end": 37.58
+		},
+		{
+			"texte": "Trois",
+			"start": 37.95,
+			"end": 38.217
+		},
+		{
+			"texte": "mots,",
+			"start": 38.217,
+			"end": 38.43
+		},
+		{
+			"texte": "une",
+			"start": 38.76,
+			"end": 38.923
+		},
+		{
+			"texte": "minute.",
+			"start": 38.923,
+			"end": 39.25
+		},
+		{
+			"texte": "Et",
+			"start": 39.85,
+			"end": 39.998
+		},
+		{
+			"texte": "toi,",
+			"start": 39.998,
+			"end": 40.22
+		},
+		{
+			"texte": "tu",
+			"start": 40.67,
+			"end": 40.765
+		},
+		{
+			"texte": "as",
+			"start": 40.765,
+			"end": 40.86
+		},
+		{
+			"texte": "un",
+			"start": 40.86,
+			"end": 40.956
+		},
+		{
+			"texte": "brise-vitre",
+			"start": 40.956,
+			"end": 41.431
+		},
+		{
+			"texte": "dans",
+			"start": 41.431,
+			"end": 41.622
+		},
+		{
+			"texte": "ta",
+			"start": 41.622,
+			"end": 41.717
+		},
+		{
+			"texte": "voiture ?",
+			"start": 41.717,
+			"end": 42.05
+		}
+	]
+}

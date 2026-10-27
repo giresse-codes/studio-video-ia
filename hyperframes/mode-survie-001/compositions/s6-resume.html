@@ -1,0 +1,58 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.s6-regle {
+			left: 220px;
+			width: 640px;
+			box-sizing: border-box;
+		}
+	</style>
+	<div data-hf-id="hf-az72" id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-zg0a" class="stage" id="s6-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<!-- Fond : la surface de l'eau, vue de loin ; la voiture a disparu, il ne reste que des ronds. -->
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-enfl" fill="none" stroke="#7CC8F0" stroke-width="5" opacity="0.4">
+								<ellipse data-hf-id="hf-d4hm" cx="540" cy="1250" rx="300" ry="40" />
+								<ellipse data-hf-id="hf-l44t" cx="540" cy="1250" rx="460" ry="64" />
+							</g>
+						</svg>
+					</div>
+					<!-- Objets : les trois règles, puis « 3 mots, 1 minute ». -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-tvq7" id="s6-r1" class="regle s6-regle" style="top: 420px"><b data-hf-id="hf-t4n0">1</b>CEINTURE</div>
+						<div data-hf-id="hf-h0o4" id="s6-r2" class="regle s6-regle" style="top: 595px"><b data-hf-id="hf-rxpx">2</b>FENÊTRE</div>
+						<div data-hf-id="hf-n4h9" id="s6-r3" class="regle s6-regle" style="top: 770px"><b data-hf-id="hf-sc0y">3</b>DEHORS</div>
+						<div data-hf-id="hf-uirs" id="s6-mots" class="etiquette" style="left: 388px; top: 960px">3 MOTS</div>
+						<div data-hf-id="hf-62pg" id="s6-minute" class="etiquette" style="left: 348px; top: 960px">1 MINUTE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s6');
+			const tl = S.tl;
+
+			// Chaque mot fait tomber sa carte.
+			kit.pop(tl, '#s6-r1', S.ancre('@ceinture'));
+			kit.pop(tl, '#s6-r2', S.ancre('@fenetre'));
+			kit.pop(tl, '#s6-r3', S.ancre('@dehors'));
+			// « trois mots » puis « une minute ».
+			kit.tampon(tl, '#s6-mots', S.ancre('@mots'));
+			tl.to('#s6-mots', {opacity: 0, duration: 0.15}, S.ancre('@minute'));
+			kit.tampon(tl, '#s6-minute', S.ancre('@minute'));
+			S.zoomMot('@minute', [540, 760]);
+
+			S.fin();
+		})();
+	</script>
+</template>
