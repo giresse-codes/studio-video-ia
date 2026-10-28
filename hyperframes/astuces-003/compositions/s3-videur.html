@@ -1,0 +1,78 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-nz6b" class="stage" id="s3-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le mur en béton, son videur en costume, et la file des ondes qui veulent entrer. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-zfmy" id="s3-mur">
+								<rect data-hf-id="hf-epys" x="560" y="260" width="200" height="760" rx="10" fill="#A9AEB5" stroke="#141414" stroke-width="12" />
+								<g data-hf-id="hf-8jt5" fill="#8C9199">
+									<circle data-hf-id="hf-y59p" cx="610" cy="340" r="12" /><circle data-hf-id="hf-ksey" cx="700" cy="420" r="9" /><circle data-hf-id="hf-708p" cx="630" cy="560" r="10" />
+									<circle data-hf-id="hf-mkba" cx="715" cy="650" r="13" /><circle data-hf-id="hf-97ev" cx="605" cy="780" r="9" /><circle data-hf-id="hf-pne2" cx="700" cy="900" r="11" />
+								</g>
+							</g>
+							<!-- Le videur : costume noir, lunettes noires, bras croisés. -->
+							<g data-hf-id="hf-bjw7" transform="translate(470 700)">
+								<g data-hf-id="hf-bqhh" id="s3-videur" opacity="0">
+									<path data-hf-id="hf-v9vc" d="M -110 300 L -100 90 Q -95 30 -40 20 L 40 20 Q 95 30 100 90 L 110 300 Z" fill="#141414" stroke="#141414" stroke-width="8" stroke-linejoin="round" />
+									<path data-hf-id="hf-2xza" d="M -20 22 L 0 70 L 20 22 Z" fill="#FFFFFF" />
+									<path data-hf-id="hf-nwtn" d="M -90 150 Q 0 120 90 150 L 90 185 Q 0 160 -90 185 Z" fill="#2A2A2A" stroke="#FFFFFF" stroke-width="4" />
+									<circle data-hf-id="hf-j2dt" cx="0" cy="-40" r="62" fill="#C68A5E" stroke="#141414" stroke-width="8" />
+									<rect data-hf-id="hf-699g" x="-46" y="-58" width="40" height="24" rx="6" fill="#141414" />
+									<rect data-hf-id="hf-30p1" x="6" y="-58" width="40" height="24" rx="6" fill="#141414" />
+									<path data-hf-id="hf-0pes" d="M -6 -48 H 6" stroke="#141414" stroke-width="6" />
+									<path data-hf-id="hf-8xt3" d="M -22 -6 H 22" stroke="#141414" stroke-width="7" stroke-linecap="round" />
+								</g>
+							</g>
+							<!-- Les ondes, petites boules vertes qui font la queue. -->
+							<g data-hf-id="hf-qex6" fill="#2EB82E" stroke="#141414" stroke-width="7">
+								<circle data-hf-id="hf-wgm5" class="s3-onde" cx="300" cy="900" r="32" />
+								<circle data-hf-id="hf-011r" class="s3-onde" cx="210" cy="900" r="32" />
+								<circle data-hf-id="hf-ai6d" class="s3-onde" cx="120" cy="900" r="32" />
+								<circle data-hf-id="hf-9v9g" class="s3-onde" cx="300" cy="820" r="32" />
+								<circle data-hf-id="hf-fy16" class="s3-onde" cx="210" cy="820" r="32" />
+							</g>
+							<circle data-hf-id="hf-laqt" id="s3-passe" cx="390" cy="860" r="32" fill="#2EB82E" stroke="#141414" stroke-width="7" opacity="0" />
+						</svg>
+						<div data-hf-id="hf-weve" id="s3-beton" class="etiquette" style="left: 540px; top: 420px">BÉTON</div>
+						<div data-hf-id="hf-cyyu" id="s3-peu" class="etiquette" style="left: 180px; top: 200px">TRÈS PEU PASSENT</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s3');
+			const tl = S.tl;
+
+			// Début : le mur se pose, les ondes attendent.
+			kit.chute(tl, '#s3-mur', 0);
+			kit.cascade(tl, '.s3-onde', 0.2, 0.06);
+			kit.tampon(tl, '#s3-beton', S.ancre('@beton'));
+			// « videur » : il surgit devant le mur (zoom).
+			kit.pop(tl, '#s3-videur', S.ancre('@videur'));
+			S.zoomMot('@videur', [470, 620]);
+			// « passer » : une seule onde passe à travers le mur ; les autres rebondissent sur le videur.
+			const passer = S.ancre('@passer');
+			tl.fromTo('#s3-passe', {opacity: 1, x: 0}, {x: 460, duration: 0.7, ease: 'power1.inOut'}, passer);
+			tl.to('#s3-passe', {opacity: 0.35, scale: 0.7, svgOrigin: '850 860', duration: 0.3}, passer + 0.5);
+			tl.to('.s3-onde', {keyframes: [{x: 80, duration: 0.2, ease: 'power2.in'}, {x: -40, duration: 0.35, ease: 'back.out(3)'}], stagger: 0.05}, passer + 0.1);
+			kit.tampon(tl, '#s3-peu', S.ancre('@peu'));
+
+			S.fin();
+		})();
+	</script>
+</template>

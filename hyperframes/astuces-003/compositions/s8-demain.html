@@ -1,0 +1,69 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s8-question {
+			top: 260px;
+			left: 190px;
+			width: 700px;
+			font-size: 88px;
+		}
+	</style>
+	<div data-hf-id="hf-iyfs" id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-hbtg" class="stage" id="s8-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : l'annonce de demain (le téléphone qui gèle), puis la question et une box qui se cache. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-8gp3" id="s8-demain" class="etiquette" style="left: 330px; top: 220px">DEMAIN</div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-8j62" id="s8-tel">
+								<rect data-hf-id="hf-9c3n" x="230" y="420" width="220" height="380" rx="34" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<rect data-hf-id="hf-l2qk" id="s8-ecran" x="252" y="456" width="176" height="300" rx="16" fill="#7CC8F0" />
+							</g>
+							<g data-hf-id="hf-tlkx" stroke="#7CC8F0" stroke-width="10" stroke-linecap="round">
+								<path data-hf-id="hf-ailn" class="s8-flocon" d="M 560 470 V 550 M 525 490 L 595 530 M 525 530 L 595 490" />
+								<path data-hf-id="hf-c2vg" class="s8-flocon" d="M 640 620 V 690 M 610 637 L 670 673 M 610 673 L 670 637" />
+								<path data-hf-id="hf-tgzh" class="s8-flocon" d="M 160 860 V 920 M 134 875 L 186 905 M 134 905 L 186 875" />
+							</g>
+							<!-- La box qui se cache derrière un coussin. -->
+							<g data-hf-id="hf-xq1r" id="s8-cache" opacity="0">
+								<rect data-hf-id="hf-pr21" x="230" y="700" width="160" height="70" rx="18" fill="#FFFFFF" stroke="#141414" stroke-width="10" />
+								<path data-hf-id="hf-zwp4" d="M 262 700 L 252 650 M 358 700 L 368 650" stroke="#141414" stroke-width="10" stroke-linecap="round" />
+								<path data-hf-id="hf-6wgk" d="M 160 860 Q 150 740 260 750 Q 380 730 430 760 Q 470 860 420 880 L 190 890 Z" fill="#D8B7A4" stroke="#141414" stroke-width="10" stroke-linejoin="round" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-8ej8" id="s8-question" class="titre"><span data-hf-id="hf-mmm3">Ta box est</span> <span data-hf-id="hf-eoxt">cachée où ?</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s8');
+			const tl = S.tl;
+
+			// « Demain » : l'annonce ; « téléphone » ; « s'éteint » : l'écran devient noir ; « froid » : flocons.
+			kit.tampon(tl, '#s8-demain', 0.05);
+			kit.pop(tl, '#s8-tel', S.ancre('@telephone'));
+			tl.to('#s8-ecran', {fill: '#141414', duration: 0.25}, S.ancre('@eteint'));
+			kit.cascade(tl, '.s8-flocon', S.ancre('@froid'), 0.12);
+			S.zoomMot('@telephone', [540, 620]);
+			// « Ta box » : on passe à la question ; la box se cache derrière un coussin (gag).
+			const ta = S.ancre('@ta');
+			tl.to(['#s8-demain', '#s8-tel', '.s8-flocon'], {opacity: 0, y: -30, duration: 0.25}, ta - 0.25);
+			kit.cascade(tl, '#s8-question span', ta, 0.3);
+			tl.fromTo('#s8-cache', {opacity: 0}, {opacity: 1, duration: 0.2}, S.ancre('@cachee'));
+			tl.from('#s8-cache rect, #s8-cache path:not(:last-child)', {y: -120, duration: 0.4, ease: 'back.out(2)'}, S.ancre('@cachee'));
+
+			S.fin();
+		})();
+	</script>
+</template>

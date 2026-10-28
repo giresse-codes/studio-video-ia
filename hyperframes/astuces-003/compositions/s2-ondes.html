@@ -1,0 +1,80 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-bmd6" id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-1eiu" class="stage" id="s2-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la box qui envoie des ondes, l'ampoule qui envoie de la lumière, puis les murs qui affaiblissent. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-35p2" fill="none" stroke="#2EB82E" stroke-width="10">
+								<circle data-hf-id="hf-b2r1" class="s2-onde" cx="260" cy="640" r="200" />
+								<circle data-hf-id="hf-7ae9" class="s2-onde" cx="260" cy="640" r="200" />
+								<circle data-hf-id="hf-8hbc" class="s2-onde" cx="260" cy="640" r="200" />
+							</g>
+							<g data-hf-id="hf-bo6o" id="s2-box">
+								<rect data-hf-id="hf-9oag" x="160" y="600" width="200" height="90" rx="22" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<path data-hf-id="hf-4n2k" d="M 200 600 L 186 530 M 320 600 L 334 530" stroke="#141414" stroke-width="12" stroke-linecap="round" />
+								<circle data-hf-id="hf-7ji9" cx="210" cy="645" r="11" fill="#2EB82E" />
+								<circle data-hf-id="hf-7bzx" cx="250" cy="645" r="11" fill="#2EB82E" />
+							</g>
+							<!-- L'ampoule et ses rayons. -->
+							<g data-hf-id="hf-e00s" id="s2-ampoule" opacity="0">
+								<g data-hf-id="hf-mg11" id="s2-rayons" stroke="#FFC857" stroke-width="12" stroke-linecap="round">
+									<path data-hf-id="hf-0so9" d="M 700 250 V 210 M 610 280 L 585 250 M 790 280 L 815 250 M 580 360 H 540 M 820 360 H 860" />
+								</g>
+								<circle data-hf-id="hf-5r10" cx="700" cy="360" r="90" fill="#FFF3C4" stroke="#141414" stroke-width="12" />
+								<rect data-hf-id="hf-1whl" x="660" y="440" width="80" height="60" rx="10" fill="#BFC5CC" stroke="#141414" stroke-width="10" />
+							</g>
+							<!-- Les murs, de plus en plus loin ; les barres du signal baissent. -->
+							<g data-hf-id="hf-en98" fill="#BFC5CC" stroke="#141414" stroke-width="10">
+								<rect data-hf-id="hf-0kur" class="s2-mur" x="470" y="560" width="40" height="300" rx="6" />
+								<rect data-hf-id="hf-8gjr" class="s2-mur" x="610" y="560" width="40" height="300" rx="6" />
+								<rect data-hf-id="hf-u4ce" class="s2-mur" x="750" y="560" width="40" height="300" rx="6" />
+							</g>
+							<g data-hf-id="hf-j706" stroke-width="14" stroke-linecap="round">
+								<path data-hf-id="hf-04id" class="s2-barres" d="M 560 920 V 900 M 580 920 V 885 M 600 920 V 870" stroke="#2EB82E" />
+								<path data-hf-id="hf-mv93" class="s2-barres" d="M 700 920 V 900 M 720 920 V 885" stroke="#FFC857" />
+								<path data-hf-id="hf-epgz" class="s2-barres" d="M 840 920 V 900" stroke="#E5383B" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-5h3g" id="s2-radio" class="etiquette" style="left: 130px; top: 790px">ONDES RADIO</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s2');
+			const tl = S.tl;
+
+			kit.pop(tl, '#s2-box', 0);
+			// « ondes » : les cercles partent de la box, jusqu'à la fin de la scène.
+			const ondes = S.ancre('@ondes');
+			tl.fromTo('.s2-onde', {scale: 0.3, opacity: 0.9, svgOrigin: '260 640'}, {scale: 2.6, opacity: 0, duration: 1.8, ease: 'none', stagger: {each: 0.6, repeat: Math.floor((S.dur - ondes) / 1.8)}}, ondes);
+			kit.tampon(tl, '#s2-radio', S.ancre('@radio'));
+			// « ampoule » : même idée avec la lumière.
+			tl.to('#s2-radio', {opacity: 0, duration: 0.2}, S.ancre('@ampoule') - 0.2);
+			kit.pop(tl, '#s2-ampoule', S.ancre('@ampoule'));
+			kit.boucle(tl, '#s2-rayons', {opacity: 0.3}, S.ancre('@lumiere'), S.ancre('@affaiblissent'), 0.6);
+			// « affaiblissent » : l'ampoule part, les murs arrivent un par un, les barres baissent ; « mur » : zoom.
+			const faible = S.ancre('@affaiblissent');
+			tl.to('#s2-ampoule', {opacity: 0, scale: 0.6, svgOrigin: '700 360', duration: 0.3}, faible - 0.1);
+			kit.cascade(tl, '.s2-mur', faible, 0.3);
+			kit.cascade(tl, '.s2-barres', faible + 0.15, 0.3);
+			S.zoomMot('@mur', [640, 760]);
+
+			S.fin();
+		})();
+	</script>
+</template>

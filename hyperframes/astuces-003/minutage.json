@@ -1,0 +1,1319 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 44.929,
+	"voixCreteDb": -1.398,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-plan.html",
+			"debut": 0,
+			"fin": 3.662,
+			"transition": "zoom",
+			"cible": [
+				700,
+				560
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-ondes.html",
+			"debut": 3.662,
+			"fin": 10.09,
+			"transition": "balayage",
+			"cible": [
+				300,
+				620
+			],
+			"ancreDebut": "@wifi#2"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-videur.html",
+			"debut": 10.09,
+			"fin": 14.32,
+			"transition": "zoom",
+			"cible": [
+				420,
+				620
+			],
+			"ancreDebut": "@ton"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-frequences.html",
+			"debut": 14.32,
+			"fin": 22.76,
+			"transition": "balayage",
+			"cible": [
+				420,
+				560
+			],
+			"ancreDebut": "@il#2"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-marathon.html",
+			"debut": 22.76,
+			"fin": 25.22,
+			"transition": "zoom",
+			"cible": [
+				440,
+				640
+			],
+			"ancreDebut": "@elle#2"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-microondes.html",
+			"debut": 25.22,
+			"fin": 30.01,
+			"transition": "balayage",
+			"cible": [
+				440,
+				620
+			],
+			"ancreDebut": "@et"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-gestes.html",
+			"debut": 30.01,
+			"fin": 39.91,
+			"transition": "zoom",
+			"cible": [
+				480,
+				600
+			],
+			"ancreDebut": "@trois"
+		},
+		{
+			"id": "s8",
+			"fichier": "compositions/s8-demain.html",
+			"debut": 39.91,
+			"fin": 44.929,
+			"transition": "balayage",
+			"cible": [
+				360,
+				640
+			],
+			"ancreDebut": "@demain"
+		}
+	],
+	"calques": [],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@chambre",
+			"mot": "chambre,",
+			"motSec": 1.51,
+			"sec": 1.51
+		},
+		{
+			"scene": "s1",
+			"ancre": "@salon",
+			"mot": "salon ?",
+			"motSec": 2.718,
+			"sec": 2.718
+		},
+		{
+			"scene": "s2",
+			"ancre": "@ondes",
+			"mot": "ondes",
+			"motSec": 4.582,
+			"sec": 4.582
+		},
+		{
+			"scene": "s2",
+			"ancre": "@radio",
+			"mot": "radio.",
+			"motSec": 4.936,
+			"sec": 4.936
+		},
+		{
+			"scene": "s2",
+			"ancre": "@ampoule",
+			"mot": "ampoule",
+			"motSec": 6.871,
+			"sec": 6.871
+		},
+		{
+			"scene": "s2",
+			"ancre": "@lumiere",
+			"mot": "lumière,",
+			"motSec": 7.706,
+			"sec": 7.706
+		},
+		{
+			"scene": "s2",
+			"ancre": "@affaiblissent",
+			"mot": "s'affaiblissent",
+			"motSec": 8.631,
+			"sec": 8.631
+		},
+		{
+			"scene": "s2",
+			"ancre": "@mur",
+			"mot": "mur.",
+			"motSec": 9.505,
+			"sec": 9.505
+		},
+		{
+			"scene": "s3",
+			"ancre": "@beton",
+			"mot": "béton,",
+			"motSec": 10.688,
+			"sec": 10.688
+		},
+		{
+			"scene": "s3",
+			"ancre": "@videur",
+			"mot": "videur :",
+			"motSec": 11.511,
+			"sec": 11.511
+		},
+		{
+			"scene": "s3",
+			"ancre": "@passer",
+			"mot": "passer",
+			"motSec": 12.751,
+			"sec": 12.751
+		},
+		{
+			"scene": "s3",
+			"ancre": "@peu",
+			"mot": "peu",
+			"motSec": 13.266,
+			"sec": 13.266
+		},
+		{
+			"scene": "s4",
+			"ancre": "@frequences",
+			"mot": "fréquences.",
+			"motSec": 14.769,
+			"sec": 14.769
+		},
+		{
+			"scene": "s4",
+			"ancre": "@24",
+			"mot": "2,4",
+			"motSec": 15.885,
+			"sec": 15.885
+		},
+		{
+			"scene": "s4",
+			"ancre": "@loin",
+			"mot": "loin,",
+			"motSec": 17.198,
+			"sec": 17.198
+		},
+		{
+			"scene": "s4",
+			"ancre": "@lentement",
+			"mot": "lentement.",
+			"motSec": 18.125,
+			"sec": 18.125
+		},
+		{
+			"scene": "s4",
+			"ancre": "@5",
+			"mot": "5",
+			"motSec": 19.476,
+			"sec": 19.476
+		},
+		{
+			"scene": "s4",
+			"ancre": "@rapide",
+			"mot": "rapide,",
+			"motSec": 20.632,
+			"sec": 20.632
+		},
+		{
+			"scene": "s4",
+			"ancre": "@essouffle",
+			"mot": "s'essouffle",
+			"motSec": 21.706,
+			"sec": 21.706
+		},
+		{
+			"scene": "s4",
+			"ancre": "@vite",
+			"mot": "vite.",
+			"motSec": 22.152,
+			"sec": 22.152
+		},
+		{
+			"scene": "s5",
+			"ancre": "@sprinte",
+			"mot": "sprinte,",
+			"motSec": 22.959,
+			"sec": 22.959
+		},
+		{
+			"scene": "s5",
+			"ancre": "@marathon",
+			"mot": "marathon.",
+			"motSec": 24.252,
+			"sec": 24.252
+		},
+		{
+			"scene": "s5",
+			"ancre": "@fait",
+			"mot": "fait",
+			"motSec": 23.804,
+			"sec": 23.804
+		},
+		{
+			"scene": "s6",
+			"ancre": "@microondes",
+			"mot": "micro-ondes",
+			"motSec": 25.548,
+			"sec": 25.548
+		},
+		{
+			"scene": "s6",
+			"ancre": "@utilise",
+			"mot": "utilise",
+			"motSec": 26.205,
+			"sec": 26.205
+		},
+		{
+			"scene": "s6",
+			"ancre": "@proche",
+			"mot": "proche",
+			"motSec": 27.452,
+			"sec": 27.452
+		},
+		{
+			"scene": "s6",
+			"ancre": "@perturber",
+			"mot": "perturber.",
+			"motSec": 29.055,
+			"sec": 29.055
+		},
+		{
+			"scene": "s6",
+			"ancre": "@peut",
+			"mot": "peut",
+			"motSec": 28.759,
+			"sec": 28.759
+		},
+		{
+			"scene": "s7",
+			"ancre": "@centre",
+			"mot": "centre",
+			"motSec": 31.819,
+			"sec": 31.819
+		},
+		{
+			"scene": "s7",
+			"ancre": "@hauteur",
+			"mot": "hauteur,",
+			"motSec": 32.477,
+			"sec": 32.477
+		},
+		{
+			"scene": "s7",
+			"ancre": "@epais",
+			"mot": "épais",
+			"motSec": 33.661,
+			"sec": 33.661
+		},
+		{
+			"scene": "s7",
+			"ancre": "@microondes",
+			"mot": "micro-ondes.",
+			"motSec": 34.252,
+			"sec": 34.252
+		},
+		{
+			"scene": "s7",
+			"ancre": "@pres",
+			"mot": "Près",
+			"motSec": 35.45,
+			"sec": 35.45
+		},
+		{
+			"scene": "s7",
+			"ancre": "@loin#2",
+			"mot": "Loin,",
+			"motSec": 37.56,
+			"sec": 37.56
+		},
+		{
+			"scene": "s8",
+			"ancre": "@telephone",
+			"mot": "téléphone",
+			"motSec": 41.354,
+			"sec": 41.354
+		},
+		{
+			"scene": "s8",
+			"ancre": "@eteint",
+			"mot": "s'éteint",
+			"motSec": 41.783,
+			"sec": 41.783
+		},
+		{
+			"scene": "s8",
+			"ancre": "@froid",
+			"mot": "froid.",
+			"motSec": 42.642,
+			"sec": 42.642
+		},
+		{
+			"scene": "s8",
+			"ancre": "@ta",
+			"mot": "Ta",
+			"motSec": 43.42,
+			"sec": 43.42
+		},
+		{
+			"scene": "s8",
+			"ancre": "@cachee",
+			"mot": "cachée",
+			"motSec": 43.91,
+			"sec": 43.91
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 1.51,
+			"son": "tic",
+			"cause": "@chambre (s1)"
+		},
+		{
+			"sec": 2.718,
+			"son": "ding-1",
+			"cause": "@salon (s1)"
+		},
+		{
+			"sec": 3.612,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 4.582,
+			"son": "pop-1",
+			"cause": "@ondes (s2)"
+		},
+		{
+			"sec": 6.871,
+			"son": "ding-2",
+			"cause": "@ampoule (s2)"
+		},
+		{
+			"sec": 9.505,
+			"son": "pop-2",
+			"cause": "@mur (s2)"
+		},
+		{
+			"sec": 10.04,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 11.511,
+			"son": "pop-1",
+			"cause": "@videur (s3)"
+		},
+		{
+			"sec": 12.751,
+			"son": "boing",
+			"cause": "@passer (s3)"
+		},
+		{
+			"sec": 14.27,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 15.885,
+			"son": "pop-1",
+			"cause": "@24 (s4)"
+		},
+		{
+			"sec": 19.476,
+			"son": "pop-2",
+			"cause": "@5 (s4)"
+		},
+		{
+			"sec": 22.152,
+			"son": "tic",
+			"cause": "@vite (s4)"
+		},
+		{
+			"sec": 22.71,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 22.959,
+			"son": "whoosh-2",
+			"cause": "@sprinte (s5)"
+		},
+		{
+			"sec": 24.252,
+			"son": "boing",
+			"cause": "@marathon (s5)"
+		},
+		{
+			"sec": 25.17,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 25.548,
+			"son": "ding-1",
+			"cause": "@microondes (s6)"
+		},
+		{
+			"sec": 29.055,
+			"son": "bip",
+			"cause": "@perturber (s6)"
+		},
+		{
+			"sec": 29.96,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		},
+		{
+			"sec": 31.819,
+			"son": "pop-1",
+			"cause": "@centre (s7)"
+		},
+		{
+			"sec": 32.477,
+			"son": "pop-2",
+			"cause": "@hauteur (s7)"
+		},
+		{
+			"sec": 35.45,
+			"son": "ding-1",
+			"cause": "@pres (s7)"
+		},
+		{
+			"sec": 37.56,
+			"son": "ding-2",
+			"cause": "@loin#2 (s7)"
+		},
+		{
+			"sec": 39.86,
+			"son": "whoosh-1",
+			"cause": "transition vers s8"
+		},
+		{
+			"sec": 42.642,
+			"son": "tic",
+			"cause": "@froid (s8)"
+		},
+		{
+			"sec": 43.91,
+			"son": "boing",
+			"cause": "@cachee (s8)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Pourquoi ton wifi rame dans la chambre, mais pas dans le salon ?",
+			"emotion": "curieux",
+			"pose": "reflechit",
+			"start": 0,
+			"end": 3.02
+		},
+		{
+			"texte": "Le wifi, ce sont des ondes radio.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 3.52,
+			"end": 5.29
+		},
+		{
+			"texte": "Ta box les envoie comme une ampoule envoie de la lumière, et elles s'affaiblissent à chaque mur.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 5.79,
+			"end": 9.63
+		},
+		{
+			"texte": "Ton mur en béton, c'est un videur : il laisse passer très peu de monde.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 10.09,
+			"end": 13.78
+		},
+		{
+			"texte": "Il y a deux fréquences.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 14.32,
+			"end": 15.33
+		},
+		{
+			"texte": "La 2,4 gigahertz va plus loin, mais plus lentement.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 15.73,
+			"end": 18.82
+		},
+		{
+			"texte": "La 5 gigahertz est plus rapide, mais elle s'essouffle vite.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 19.34,
+			"end": 22.33
+		},
+		{
+			"texte": "Elle sprinte, mais elle ne fait pas le marathon.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 22.76,
+			"end": 24.65
+		},
+		{
+			"texte": "Et ton micro-ondes utilise une fréquence proche de la 2,4 : il peut la perturber.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 25.22,
+			"end": 29.5
+		},
+		{
+			"texte": "Trois gestes : place ta box au centre et en hauteur, loin des murs épais et du micro-ondes.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 30.01,
+			"end": 34.91
+		},
+		{
+			"texte": "Près de la box, choisis la 5.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 35.45,
+			"end": 37
+		},
+		{
+			"texte": "Loin, choisis la 2,4.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 37.56,
+			"end": 39.38
+		},
+		{
+			"texte": "Demain : pourquoi ton téléphone s'éteint quand il fait froid.",
+			"emotion": "souriant",
+			"pose": "content",
+			"start": 39.91,
+			"end": 42.88
+		},
+		{
+			"texte": "Ta box est cachée où ?",
+			"emotion": null,
+			"pose": "content",
+			"start": 43.42,
+			"end": 44.4
+		}
+	],
+	"mots": [
+		{
+			"texte": "Pourquoi",
+			"start": 0,
+			"end": 0.483
+		},
+		{
+			"texte": "ton",
+			"start": 0.483,
+			"end": 0.664
+		},
+		{
+			"texte": "wifi",
+			"start": 0.664,
+			"end": 0.906
+		},
+		{
+			"texte": "rame",
+			"start": 0.906,
+			"end": 1.148
+		},
+		{
+			"texte": "dans",
+			"start": 1.148,
+			"end": 1.389
+		},
+		{
+			"texte": "la",
+			"start": 1.389,
+			"end": 1.51
+		},
+		{
+			"texte": "chambre,",
+			"start": 1.51,
+			"end": 1.933
+		},
+		{
+			"texte": "mais",
+			"start": 1.933,
+			"end": 2.174
+		},
+		{
+			"texte": "pas",
+			"start": 2.174,
+			"end": 2.356
+		},
+		{
+			"texte": "dans",
+			"start": 2.356,
+			"end": 2.597
+		},
+		{
+			"texte": "le",
+			"start": 2.597,
+			"end": 2.718
+		},
+		{
+			"texte": "salon ?",
+			"start": 2.718,
+			"end": 3.02
+		},
+		{
+			"texte": "Le",
+			"start": 3.52,
+			"end": 3.662
+		},
+		{
+			"texte": "wifi,",
+			"start": 3.662,
+			"end": 3.945
+		},
+		{
+			"texte": "ce",
+			"start": 3.945,
+			"end": 4.086
+		},
+		{
+			"texte": "sont",
+			"start": 4.086,
+			"end": 4.37
+		},
+		{
+			"texte": "des",
+			"start": 4.37,
+			"end": 4.582
+		},
+		{
+			"texte": "ondes",
+			"start": 4.582,
+			"end": 4.936
+		},
+		{
+			"texte": "radio.",
+			"start": 4.936,
+			"end": 5.29
+		},
+		{
+			"texte": "Ta",
+			"start": 5.79,
+			"end": 5.888
+		},
+		{
+			"texte": "box",
+			"start": 5.888,
+			"end": 6.036
+		},
+		{
+			"texte": "les",
+			"start": 6.036,
+			"end": 6.183
+		},
+		{
+			"texte": "envoie",
+			"start": 6.183,
+			"end": 6.478
+		},
+		{
+			"texte": "comme",
+			"start": 6.478,
+			"end": 6.723
+		},
+		{
+			"texte": "une",
+			"start": 6.723,
+			"end": 6.871
+		},
+		{
+			"texte": "ampoule",
+			"start": 6.871,
+			"end": 7.215
+		},
+		{
+			"texte": "envoie",
+			"start": 7.215,
+			"end": 7.51
+		},
+		{
+			"texte": "de",
+			"start": 7.51,
+			"end": 7.608
+		},
+		{
+			"texte": "la",
+			"start": 7.608,
+			"end": 7.706
+		},
+		{
+			"texte": "lumière,",
+			"start": 7.706,
+			"end": 8.05
+		},
+		{
+			"texte": "et",
+			"start": 8.34,
+			"end": 8.423
+		},
+		{
+			"texte": "elles",
+			"start": 8.423,
+			"end": 8.631
+		},
+		{
+			"texte": "s'affaiblissent",
+			"start": 8.631,
+			"end": 9.214
+		},
+		{
+			"texte": "à",
+			"start": 9.214,
+			"end": 9.255
+		},
+		{
+			"texte": "chaque",
+			"start": 9.255,
+			"end": 9.505
+		},
+		{
+			"texte": "mur.",
+			"start": 9.505,
+			"end": 9.63
+		},
+		{
+			"texte": "Ton",
+			"start": 10.09,
+			"end": 10.314
+		},
+		{
+			"texte": "mur",
+			"start": 10.314,
+			"end": 10.539
+		},
+		{
+			"texte": "en",
+			"start": 10.539,
+			"end": 10.688
+		},
+		{
+			"texte": "béton,",
+			"start": 10.688,
+			"end": 11.062
+		},
+		{
+			"texte": "c'est",
+			"start": 11.062,
+			"end": 11.362
+		},
+		{
+			"texte": "un",
+			"start": 11.362,
+			"end": 11.511
+		},
+		{
+			"texte": "videur :",
+			"start": 11.511,
+			"end": 11.96
+		},
+		{
+			"texte": "il",
+			"start": 12.34,
+			"end": 12.443
+		},
+		{
+			"texte": "laisse",
+			"start": 12.443,
+			"end": 12.751
+		},
+		{
+			"texte": "passer",
+			"start": 12.751,
+			"end": 13.06
+		},
+		{
+			"texte": "très",
+			"start": 13.06,
+			"end": 13.266
+		},
+		{
+			"texte": "peu",
+			"start": 13.266,
+			"end": 13.42
+		},
+		{
+			"texte": "de",
+			"start": 13.42,
+			"end": 13.523
+		},
+		{
+			"texte": "monde.",
+			"start": 13.523,
+			"end": 13.78
+		},
+		{
+			"texte": "Il",
+			"start": 14.32,
+			"end": 14.432
+		},
+		{
+			"texte": "y",
+			"start": 14.432,
+			"end": 14.488
+		},
+		{
+			"texte": "a",
+			"start": 14.488,
+			"end": 14.544
+		},
+		{
+			"texte": "deux",
+			"start": 14.544,
+			"end": 14.769
+		},
+		{
+			"texte": "fréquences.",
+			"start": 14.769,
+			"end": 15.33
+		},
+		{
+			"texte": "La",
+			"start": 15.73,
+			"end": 15.885
+		},
+		{
+			"texte": "2,4",
+			"start": 15.885,
+			"end": 16.039
+		},
+		{
+			"texte": "gigahertz",
+			"start": 16.039,
+			"end": 16.734
+		},
+		{
+			"texte": "va",
+			"start": 16.734,
+			"end": 16.889
+		},
+		{
+			"texte": "plus",
+			"start": 16.889,
+			"end": 17.198
+		},
+		{
+			"texte": "loin,",
+			"start": 17.198,
+			"end": 17.507
+		},
+		{
+			"texte": "mais",
+			"start": 17.507,
+			"end": 17.816
+		},
+		{
+			"texte": "plus",
+			"start": 17.816,
+			"end": 18.125
+		},
+		{
+			"texte": "lentement.",
+			"start": 18.125,
+			"end": 18.82
+		},
+		{
+			"texte": "La",
+			"start": 19.34,
+			"end": 19.476
+		},
+		{
+			"texte": "5",
+			"start": 19.476,
+			"end": 19.544
+		},
+		{
+			"texte": "gigahertz",
+			"start": 19.544,
+			"end": 20.156
+		},
+		{
+			"texte": "est",
+			"start": 20.156,
+			"end": 20.36
+		},
+		{
+			"texte": "plus",
+			"start": 20.36,
+			"end": 20.632
+		},
+		{
+			"texte": "rapide,",
+			"start": 20.632,
+			"end": 21.04
+		},
+		{
+			"texte": "mais",
+			"start": 21.35,
+			"end": 21.528
+		},
+		{
+			"texte": "elle",
+			"start": 21.528,
+			"end": 21.706
+		},
+		{
+			"texte": "s'essouffle",
+			"start": 21.706,
+			"end": 22.152
+		},
+		{
+			"texte": "vite.",
+			"start": 22.152,
+			"end": 22.33
+		},
+		{
+			"texte": "Elle",
+			"start": 22.76,
+			"end": 22.959
+		},
+		{
+			"texte": "sprinte,",
+			"start": 22.959,
+			"end": 23.307
+		},
+		{
+			"texte": "mais",
+			"start": 23.307,
+			"end": 23.506
+		},
+		{
+			"texte": "elle",
+			"start": 23.506,
+			"end": 23.705
+		},
+		{
+			"texte": "ne",
+			"start": 23.705,
+			"end": 23.804
+		},
+		{
+			"texte": "fait",
+			"start": 23.804,
+			"end": 24.003
+		},
+		{
+			"texte": "pas",
+			"start": 24.003,
+			"end": 24.153
+		},
+		{
+			"texte": "le",
+			"start": 24.153,
+			"end": 24.252
+		},
+		{
+			"texte": "marathon.",
+			"start": 24.252,
+			"end": 24.65
+		},
+		{
+			"texte": "Et",
+			"start": 25.22,
+			"end": 25.351
+		},
+		{
+			"texte": "ton",
+			"start": 25.351,
+			"end": 25.548
+		},
+		{
+			"texte": "micro-ondes",
+			"start": 25.548,
+			"end": 26.205
+		},
+		{
+			"texte": "utilise",
+			"start": 26.205,
+			"end": 26.664
+		},
+		{
+			"texte": "une",
+			"start": 26.664,
+			"end": 26.861
+		},
+		{
+			"texte": "fréquence",
+			"start": 26.861,
+			"end": 27.452
+		},
+		{
+			"texte": "proche",
+			"start": 27.452,
+			"end": 27.846
+		},
+		{
+			"texte": "de",
+			"start": 27.846,
+			"end": 27.977
+		},
+		{
+			"texte": "la",
+			"start": 27.977,
+			"end": 28.109
+		},
+		{
+			"texte": "2,4 :",
+			"start": 28.109,
+			"end": 28.24
+		},
+		{
+			"texte": "il",
+			"start": 28.66,
+			"end": 28.759
+		},
+		{
+			"texte": "peut",
+			"start": 28.759,
+			"end": 28.956
+		},
+		{
+			"texte": "la",
+			"start": 28.956,
+			"end": 29.055
+		},
+		{
+			"texte": "perturber.",
+			"start": 29.055,
+			"end": 29.5
+		},
+		{
+			"texte": "Trois",
+			"start": 30.01,
+			"end": 30.269
+		},
+		{
+			"texte": "gestes :",
+			"start": 30.269,
+			"end": 30.58
+		},
+		{
+			"texte": "place",
+			"start": 31.03,
+			"end": 31.359
+		},
+		{
+			"texte": "ta",
+			"start": 31.359,
+			"end": 31.49
+		},
+		{
+			"texte": "box",
+			"start": 31.49,
+			"end": 31.688
+		},
+		{
+			"texte": "au",
+			"start": 31.688,
+			"end": 31.819
+		},
+		{
+			"texte": "centre",
+			"start": 31.819,
+			"end": 32.214
+		},
+		{
+			"texte": "et",
+			"start": 32.214,
+			"end": 32.345
+		},
+		{
+			"texte": "en",
+			"start": 32.345,
+			"end": 32.477
+		},
+		{
+			"texte": "hauteur,",
+			"start": 32.477,
+			"end": 32.937
+		},
+		{
+			"texte": "loin",
+			"start": 32.937,
+			"end": 33.2
+		},
+		{
+			"texte": "des",
+			"start": 33.2,
+			"end": 33.397
+		},
+		{
+			"texte": "murs",
+			"start": 33.397,
+			"end": 33.661
+		},
+		{
+			"texte": "épais",
+			"start": 33.661,
+			"end": 33.989
+		},
+		{
+			"texte": "et",
+			"start": 33.989,
+			"end": 34.121
+		},
+		{
+			"texte": "du",
+			"start": 34.121,
+			"end": 34.252
+		},
+		{
+			"texte": "micro-ondes.",
+			"start": 34.252,
+			"end": 34.91
+		},
+		{
+			"texte": "Près",
+			"start": 35.45,
+			"end": 35.745
+		},
+		{
+			"texte": "de",
+			"start": 35.745,
+			"end": 35.893
+		},
+		{
+			"texte": "la",
+			"start": 35.893,
+			"end": 36.04
+		},
+		{
+			"texte": "box,",
+			"start": 36.04,
+			"end": 36.262
+		},
+		{
+			"texte": "choisis",
+			"start": 36.262,
+			"end": 36.779
+		},
+		{
+			"texte": "la",
+			"start": 36.779,
+			"end": 36.926
+		},
+		{
+			"texte": "5.",
+			"start": 36.926,
+			"end": 37
+		},
+		{
+			"texte": "Loin,",
+			"start": 37.56,
+			"end": 37.92
+		},
+		{
+			"texte": "choisis",
+			"start": 38.24,
+			"end": 38.965
+		},
+		{
+			"texte": "la",
+			"start": 38.965,
+			"end": 39.173
+		},
+		{
+			"texte": "2,4.",
+			"start": 39.173,
+			"end": 39.38
+		},
+		{
+			"texte": "Demain :",
+			"start": 39.91,
+			"end": 40.39
+		},
+		{
+			"texte": "pourquoi",
+			"start": 40.83,
+			"end": 41.211
+		},
+		{
+			"texte": "ton",
+			"start": 41.211,
+			"end": 41.354
+		},
+		{
+			"texte": "téléphone",
+			"start": 41.354,
+			"end": 41.783
+		},
+		{
+			"texte": "s'éteint",
+			"start": 41.783,
+			"end": 42.117
+		},
+		{
+			"texte": "quand",
+			"start": 42.117,
+			"end": 42.356
+		},
+		{
+			"texte": "il",
+			"start": 42.356,
+			"end": 42.451
+		},
+		{
+			"texte": "fait",
+			"start": 42.451,
+			"end": 42.642
+		},
+		{
+			"texte": "froid.",
+			"start": 42.642,
+			"end": 42.88
+		},
+		{
+			"texte": "Ta",
+			"start": 43.42,
+			"end": 43.543
+		},
+		{
+			"texte": "box",
+			"start": 43.543,
+			"end": 43.726
+		},
+		{
+			"texte": "est",
+			"start": 43.726,
+			"end": 43.91
+		},
+		{
+			"texte": "cachée",
+			"start": 43.91,
+			"end": 44.278
+		},
+		{
+			"texte": "où ?",
+			"start": 44.278,
+			"end": 44.4
+		}
+	]
+}

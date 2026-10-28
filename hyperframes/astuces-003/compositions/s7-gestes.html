@@ -1,0 +1,90 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.s7-retenir {
+			font-size: 72px;
+		}
+	</style>
+	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-kbvr" class="stage" id="s7-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le plan de l'appartement ; la box quitte son coin pour le centre, en hauteur. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<rect data-hf-id="hf-ox2v" x="110" y="300" width="850" height="600" fill="#FFFFFF" />
+							<rect data-hf-id="hf-po5w" x="110" y="300" width="300" height="600" fill="#EBDDBB" />
+							<rect data-hf-id="hf-g8t0" x="530" y="300" width="430" height="600" fill="#F5EFE4" />
+							<g data-hf-id="hf-mul7" fill="none" stroke="#2EB82E" stroke-width="8">
+								<circle data-hf-id="hf-2s2h" class="s7-onde" cx="470" cy="560" r="300" />
+								<circle data-hf-id="hf-eu0d" class="s7-onde" cx="470" cy="560" r="300" />
+								<circle data-hf-id="hf-g0xg" class="s7-onde" cx="470" cy="560" r="300" />
+							</g>
+							<!-- Le mur épais, à gauche, et le micro-ondes, en bas. -->
+							<rect data-hf-id="hf-lgwl" id="s7-epais" x="110" y="300" width="36" height="600" fill="#A9AEB5" />
+							<g data-hf-id="hf-o4dx" fill="none" stroke="#141414" stroke-width="16" stroke-linecap="round">
+								<path data-hf-id="hf-dyhu" d="M 110 300 H 960 V 900 H 110 Z" stroke-linejoin="round" />
+								<path data-hf-id="hf-bm2l" d="M 410 300 V 520 M 410 640 V 900" />
+								<path data-hf-id="hf-ln21" d="M 530 300 V 700 M 530 820 V 900" />
+							</g>
+							<g data-hf-id="hf-wdf2" id="s7-micro">
+								<rect data-hf-id="hf-irwe" x="290" y="800" width="100" height="70" rx="12" fill="#FFFFFF" stroke="#141414" stroke-width="7" />
+								<rect data-hf-id="hf-ciaz" x="302" y="812" width="60" height="46" rx="6" fill="#3A4766" />
+							</g>
+							<!-- Croix rouges sur le mur épais et le micro-ondes. -->
+							<g data-hf-id="hf-9qm0" stroke="#E5383B" stroke-width="12" stroke-linecap="round">
+								<path data-hf-id="hf-7p0o" class="s7-croix1" d="M 100 560 L 180 640 M 180 560 L 100 640" />
+								<path data-hf-id="hf-ry7b" class="s7-croix2" d="M 300 790 L 380 880 M 380 790 L 300 880" />
+							</g>
+							<!-- L'étagère qui monte au centre. -->
+							<rect data-hf-id="hf-y7lc" id="s7-etagere" x="400" y="586" width="140" height="18" rx="6" fill="#B8854A" stroke="#141414" stroke-width="6" opacity="0" />
+							<g data-hf-id="hf-ct3b" transform="translate(200 840)">
+								<g data-hf-id="hf-6hq1" id="s7-box">
+									<rect data-hf-id="hf-g24n" x="-55" y="-26" width="110" height="52" rx="14" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+									<path data-hf-id="hf-cnrp" d="M -30 -26 L -38 -66 M 30 -26 L 38 -66" stroke="#141414" stroke-width="8" stroke-linecap="round" />
+									<circle data-hf-id="hf-6o5v" cx="-22" cy="0" r="7" fill="#2EB82E" />
+									<circle data-hf-id="hf-xq04" cx="2" cy="0" r="7" fill="#2EB82E" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-g0ct" id="s7-centre" class="etiquette" style="left: 190px; top: 200px">AU CENTRE, EN HAUT</div>
+						<div data-hf-id="hf-vyxi" id="s7-pres" class="etiquette s7-retenir" style="left: 200px; top: 960px">PRÈS = 5</div>
+						<div data-hf-id="hf-4c4r" id="s7-loin" class="etiquette s7-retenir" style="left: 200px; top: 1100px">LOIN = 2,4</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// Début : la box cachée dans son coin, au ras du sol.
+			kit.pop(tl, '#s7-box', 0);
+			// « centre » : elle glisse au milieu ; « hauteur » : elle monte sur l'étagère, les ondes partent (zoom).
+			const centre = S.ancre('@centre');
+			tl.to('#s7-box', {x: 270, y: -200, duration: 0.6, ease: 'power2.inOut'}, centre);
+			kit.tampon(tl, '#s7-centre', centre);
+			kit.pop(tl, '#s7-etagere', S.ancre('@hauteur'));
+			tl.to('#s7-box', {y: -282, duration: 0.35, ease: 'back.out(2)'}, S.ancre('@hauteur'));
+			tl.fromTo('.s7-onde', {scale: 0.15, opacity: 0.9, svgOrigin: '470 560'}, {scale: 1.6, opacity: 0, duration: 1.5, ease: 'none', stagger: {each: 0.5, repeat: 5}}, S.ancre('@hauteur') + 0.2);
+			S.zoomMot('@hauteur', [480, 560]);
+			// « murs épais » et « micro-ondes » : croix rouges.
+			kit.trace(tl, '.s7-croix1', S.ancre('@epais'), 0.3);
+			kit.trace(tl, '.s7-croix2', S.ancre('@microondes'), 0.3);
+			// « près » puis « loin » : la phrase à retenir, en grand.
+			kit.tampon(tl, '#s7-pres', S.ancre('@pres'));
+			kit.tampon(tl, '#s7-loin', S.ancre('@loin#2'));
+
+			S.fin();
+		})();
+	</script>
+</template>

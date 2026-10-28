@@ -1,0 +1,83 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s5-banniere {
+			left: 465px;
+			top: 440px;
+		}
+	</style>
+	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-cr05" class="stage" id="s5-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<rect data-hf-id="hf-xcbk" x="-100" y="760" width="1280" height="260" fill="#E5A27A" />
+							<path data-hf-id="hf-l48m" d="M -100 890 H 1180" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="40 30" />
+						</svg>
+					</div>
+					<!-- Objets : la piste ; la 5 sprinte puis s'assoit, essoufflée ; la 2,4 trottine et continue. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-hose" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-gmnw" transform="translate(180 820)">
+								<g data-hf-id="hf-y8ab" id="s5-cinq">
+									<path data-hf-id="hf-7u22" class="s5-jambes" d="M -20 40 L -40 110 M 20 40 L 40 110" stroke="#141414" stroke-width="12" stroke-linecap="round" />
+									<circle data-hf-id="hf-g98n" cx="0" cy="0" r="62" fill="#E5383B" stroke="#141414" stroke-width="10" />
+									<text data-hf-id="hf-qfrm" x="0" y="22" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="62" fill="#FFFFFF">5</text>
+									<g data-hf-id="hf-7gs3" id="s5-sueur" fill="#7CC8F0" stroke="#141414" stroke-width="4" opacity="0">
+										<path data-hf-id="hf-fym5" d="M 70 -50 Q 60 -30 70 -22 Q 80 -30 70 -50 Z" />
+										<path data-hf-id="hf-48er" d="M -70 -40 Q -80 -20 -70 -12 Q -60 -20 -70 -40 Z" />
+									</g>
+								</g>
+							</g>
+							<g data-hf-id="hf-90dx" transform="translate(140 940)">
+								<g data-hf-id="hf-l8ru" id="s5-deux">
+									<path data-hf-id="hf-110i" class="s5-jambes2" d="M -18 40 L -30 100 M 18 40 L 30 100" stroke="#141414" stroke-width="12" stroke-linecap="round" />
+									<circle data-hf-id="hf-s08c" cx="0" cy="0" r="58" fill="#2EB82E" stroke="#141414" stroke-width="10" />
+									<text data-hf-id="hf-ufwa" x="0" y="18" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="48" fill="#FFFFFF">2,4</text>
+								</g>
+							</g>
+							<!-- La ligne d'arrivée du marathon, très loin. -->
+							<g data-hf-id="hf-jkih" id="s5-arche" opacity="0">
+								<path data-hf-id="hf-zwt7" d="M 480 760 V 430 M 820 760 V 430 M 470 430 H 830" stroke="#141414" stroke-width="14" stroke-linecap="round" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-uusz" id="s5-banniere" class="etiquette">MARATHON</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+
+			// Début : les deux coureurs sur la ligne de départ.
+			kit.pop(tl, '#s5-cinq', 0);
+			kit.pop(tl, '#s5-deux', 0.15);
+			// « sprinte » : la 5 file, jambes en mouvement.
+			const sprinte = S.ancre('@sprinte');
+			tl.to('#s5-cinq', {x: 300, duration: 0.6, ease: 'power3.out'}, sprinte);
+			kit.boucle(tl, '.s5-jambes', {scaleX: -1, svgOrigin: '0 40'}, sprinte, sprinte + 0.6, 0.15);
+			// La 2,4 trottine régulièrement jusqu'à la fin.
+			tl.to('#s5-deux', {x: 380, duration: S.dur, ease: 'none'}, 0.3);
+			kit.boucle(tl, '.s5-jambes2', {scaleX: -1, svgOrigin: '0 40'}, 0.3, S.dur, 0.5);
+			// « marathon » : l'arche au loin ; la 5 s'assoit, en sueur (gag, zoom).
+			const marathon = S.ancre('@marathon');
+			kit.pop(tl, '#s5-arche', marathon - 0.1);
+			kit.tampon(tl, '#s5-banniere', marathon - 0.1);
+			tl.to('#s5-cinq', {y: 50, scaleX: 1.2, scaleY: 0.8, transformOrigin: '50% 100%', duration: 0.25, ease: 'power2.in'}, S.ancre('@fait'));
+			tl.to('#s5-sueur', {opacity: 1, duration: 0.15}, S.ancre('@fait') + 0.2);
+			kit.boucle(tl, '#s5-sueur', {y: 12}, S.ancre('@fait') + 0.3, S.dur, 0.4);
+			S.zoomMot('@marathon', [540, 700]);
+
+			S.fin();
+		})();
+	</script>
+</template>

@@ -1,0 +1,69 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-az72" id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-zg0a" class="stage" id="s6-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le micro-ondes et la box côte à côte, des éclairs entre les deux. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-k0cb" id="s6-micro">
+								<rect data-hf-id="hf-53qf" x="110" y="560" width="400" height="260" rx="28" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<rect data-hf-id="hf-moe2" x="140" y="595" width="250" height="190" rx="16" fill="#3A4766" stroke="#141414" stroke-width="8" />
+								<rect data-hf-id="hf-uzvb" id="s6-lueur" x="150" y="605" width="230" height="170" rx="12" fill="#FFC857" opacity="0" />
+								<circle data-hf-id="hf-j2qt" cx="450" cy="630" r="18" fill="#BFC5CC" stroke="#141414" stroke-width="6" />
+								<circle data-hf-id="hf-8p9r" cx="450" cy="690" r="18" fill="#BFC5CC" stroke="#141414" stroke-width="6" />
+								<rect data-hf-id="hf-6mbj" x="425" y="740" width="50" height="24" rx="6" fill="#2EB82E" stroke="#141414" stroke-width="5" />
+							</g>
+							<g data-hf-id="hf-yp3o" id="s6-box">
+								<rect data-hf-id="hf-3cok" x="660" y="620" width="240" height="110" rx="26" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<path data-hf-id="hf-aug4" d="M 700 620 L 685 545 M 860 620 L 875 545" stroke="#141414" stroke-width="12" stroke-linecap="round" />
+								<circle data-hf-id="hf-lzbc" class="s6-led" cx="715" cy="675" r="13" fill="#2EB82E" />
+								<circle data-hf-id="hf-gfhw" class="s6-led" cx="760" cy="675" r="13" fill="#2EB82E" />
+							</g>
+							<g data-hf-id="hf-kpv5" fill="#FFC857" stroke="#141414" stroke-width="7" stroke-linejoin="round">
+								<path data-hf-id="hf-n4gk" class="s6-eclair" d="M 560 560 L 520 640 L 565 640 L 535 720 L 620 610 L 575 610 L 610 560 Z" />
+								<path data-hf-id="hf-gh43" class="s6-eclair" d="M 600 720 L 570 790 L 610 790 L 590 860 L 655 770 L 615 770 L 640 720 Z" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-svak" id="s6-proche" class="etiquette" style="left: 190px; top: 400px">≈ 2,4 GHz</div>
+						<div data-hf-id="hf-0uy9" id="s6-perturbe" class="etiquette" style="left: 300px; top: 900px">PERTURBÉ</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s6');
+			const tl = S.tl;
+
+			// Début : la box ; « micro-ondes » : il se pose à côté et s'allume.
+			kit.pop(tl, '#s6-box', 0);
+			kit.chute(tl, '#s6-micro', S.ancre('@microondes'));
+			tl.to('#s6-lueur', {opacity: 0.9, duration: 0.3}, S.ancre('@utilise'));
+			// « proche » : la même fréquence que la 2,4.
+			kit.tampon(tl, '#s6-proche', S.ancre('@proche'));
+			// « perturber » : des éclairs entre les deux, les voyants de la box passent au rouge (zoom).
+			const perturber = S.ancre('@perturber');
+			kit.cascade(tl, '.s6-eclair', S.ancre('@peut'), 0.12);
+			kit.boucle(tl, '.s6-eclair', {opacity: 0.3}, S.ancre('@peut') + 0.4, S.dur, 0.25);
+			tl.to('.s6-led', {fill: '#E5383B', duration: 0.1, stagger: 0.08}, perturber);
+			tl.to('#s6-box', {keyframes: [{x: -8, duration: 0.05}, {x: 8, duration: 0.05}, {x: -5, duration: 0.05}, {x: 0, duration: 0.05}]}, perturber);
+			tl.to('#s6-proche', {opacity: 0, duration: 0.2}, perturber - 0.2);
+			kit.tampon(tl, '#s6-perturbe', perturber);
+			S.zoomMot('@perturber', [580, 700]);
+
+			S.fin();
+		})();
+	</script>
+</template>

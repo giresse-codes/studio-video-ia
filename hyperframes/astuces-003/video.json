@@ -1,0 +1,41 @@
+{
+	"chaine": "astuces",
+	"numero": "003",
+	"slug": "wifi-qui-rame",
+	"script": "channels/astuces/scripts/003-wifi-qui-rame.md",
+	"audio": "public/audio/astuces-003.wav",
+	"scenes": [
+		{"id": "s1", "fichier": "compositions/s1-plan.html", "debut": "@0", "transition": "zoom", "cible": [700, 560]},
+		{"id": "s2", "fichier": "compositions/s2-ondes.html", "debut": "@wifi#2", "transition": "balayage", "cible": [300, 620]},
+		{"id": "s3", "fichier": "compositions/s3-videur.html", "debut": "@ton", "transition": "zoom", "cible": [420, 620]},
+		{"id": "s4", "fichier": "compositions/s4-frequences.html", "debut": "@il#2", "transition": "balayage", "cible": [420, 560]},
+		{"id": "s5", "fichier": "compositions/s5-marathon.html", "debut": "@elle#2", "transition": "zoom", "cible": [440, 640]},
+		{"id": "s6", "fichier": "compositions/s6-microondes.html", "debut": "@et", "transition": "balayage", "cible": [440, 620]},
+		{"id": "s7", "fichier": "compositions/s7-gestes.html", "debut": "@trois", "transition": "zoom", "cible": [480, 600]},
+		{"id": "s8", "fichier": "compositions/s8-demain.html", "debut": "@demain", "transition": "balayage", "cible": [360, 640]}
+	],
+	"bruitages": [
+		{"ancre": "@chambre", "son": "tic", "scene": "s1"},
+		{"ancre": "@salon", "son": "ding-1", "scene": "s1"},
+		{"ancre": "@ondes", "son": "pop-1", "scene": "s2"},
+		{"ancre": "@ampoule", "son": "ding-2", "scene": "s2"},
+		{"ancre": "@mur", "son": "pop-2", "scene": "s2"},
+		{"ancre": "@videur", "son": "pop-1", "scene": "s3"},
+		{"ancre": "@passer", "son": "boing", "scene": "s3"},
+		{"ancre": "@24", "son": "pop-1", "scene": "s4"},
+		{"ancre": "@5", "son": "pop-2", "scene": "s4"},
+		{"ancre": "@vite", "son": "tic", "scene": "s4"},
+		{"ancre": "@sprinte", "son": "whoosh-2", "scene": "s5"},
+		{"ancre": "@marathon", "son": "boing", "scene": "s5"},
+		{"ancre": "@microondes", "son": "ding-1", "scene": "s6"},
+		{"ancre": "@perturber", "son": "bip", "scene": "s6"},
+		{"ancre": "@centre", "son": "pop-1", "scene": "s7"},
+		{"ancre": "@hauteur", "son": "pop-2", "scene": "s7"},
+		{"ancre": "@pres", "son": "ding-1", "scene": "s7"},
+		{"ancre": "@loin#2", "son": "ding-2", "scene": "s7"},
+		{"ancre": "@froid", "son": "tic", "scene": "s8"},
+		{"ancre": "@cachee", "son": "boing", "scene": "s8"}
+	],
+	"avatar": {"cote": "droite", "tenue": "blanche"},
+	"theme": "schema"
+}
