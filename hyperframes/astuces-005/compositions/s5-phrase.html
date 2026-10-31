@@ -1,0 +1,110 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		@font-face {
+			font-family: 'Kit Mono';
+			font-weight: 500;
+			src: url('assets/kit/fonts/jetbrains-mono-500.woff2') format('woff2');
+		}
+		.s5-champ {
+			position: absolute;
+			left: 190px;
+			height: 110px;
+			border-radius: 26px;
+			background: #ffffff;
+			border: 8px solid #141414;
+			box-sizing: border-box;
+			padding: 0 26px;
+			font-family: 'Kit Mono';
+			font-size: 56px;
+			line-height: 94px;
+			color: #141414;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		.s5-jauge {
+			position: absolute;
+			left: 190px;
+			width: 660px;
+			height: 46px;
+			border-radius: 23px;
+			background: #ebddbb;
+			border: 6px solid #141414;
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+		.s5-jauge i {
+			display: block;
+			height: 100%;
+			width: 100%;
+			transform-origin: 0 50%;
+			transform: scaleX(0);
+		}
+		.s5-mot {
+			position: absolute;
+			height: 100px;
+			padding: 0 26px;
+			border-radius: 24px;
+			border: 8px solid #141414;
+			box-sizing: border-box;
+			font-family: 'Kit Mono';
+			font-size: 56px;
+			line-height: 84px;
+			color: #141414;
+		}
+	</style>
+	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-cr05" class="stage" id="s5-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : quatre mots au hasard qui s'enchaînent (barre pleine) contre un mot court avec « ! » (barre courte). -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-lyx9" class="s5-mot" style="left: 190px; top: 260px; background: #FFD23F">pomme</div>
+						<div data-hf-id="hf-t53i" class="s5-mot" style="left: 450px; top: 260px; background: #8EE3FF">nuage</div>
+						<div data-hf-id="hf-aki0" class="s5-mot" style="left: 190px; top: 380px; background: #B9E7B0">vélo</div>
+						<div data-hf-id="hf-visw" class="s5-mot" style="left: 410px; top: 380px; background: #F5C6D0">lune</div>
+						<div data-hf-id="hf-2vwy" class="s5-jauge" style="top: 510px"><i data-hf-id="hf-sydb" id="s5-barre-phrase" style="background: #2EB82E"></i></div>
+						<div data-hf-id="hf-b1zy" id="s5-difficile" class="etiquette" style="left: 190px; top: 160px">TRÈS DIFFICILE</div>
+						<div data-hf-id="hf-hw29" id="s5-court" class="s5-champ" style="top: 640px; width: 330px">Léa!</div>
+						<div data-hf-id="hf-ky49" class="s5-jauge" id="s5-jauge-court" style="top: 770px; opacity: 0"><i data-hf-id="hf-xmc1" id="s5-barre-court" style="background: #E5383B"></i></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-ovxk" transform="translate(640 690)">
+								<g data-hf-id="hf-q031" id="s5-facile" opacity="0" fill="none" stroke="#E5383B" stroke-width="18" stroke-linecap="round">
+									<path data-hf-id="hf-j1ni" d="M -40 -40 L 40 40 M 40 -40 L -40 40" />
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+
+			// « phrase » puis « mots au hasard » : les quatre mots arrivent un par un, la barre se remplit.
+			const phrase = S.ancre('@phrase');
+			kit.cascade(tl, '.s5-mot', phrase, 0.35);
+			tl.to('#s5-barre-phrase', {scaleX: 1, duration: 1.4, ease: 'power1.inOut'}, phrase);
+			// « difficile » : l'étiquette (zoom).
+			kit.tampon(tl, '#s5-difficile', S.ancre('@difficile'));
+			S.zoomMot('@hasard', [480, 400]);
+			// « mot court » et « point d'exclamation » : le champ court, sa barre minuscule, la croix.
+			kit.pop(tl, '#s5-court', S.ancre('@court'));
+			tl.to('#s5-jauge-court', {opacity: 1, duration: 0.2}, S.ancre('@court') + 0.2);
+			tl.to('#s5-barre-court', {scaleX: 0.12, duration: 0.4}, S.ancre('@exclamation'));
+			kit.pop(tl, '#s5-facile', S.ancre('@exclamation') + 0.2);
+
+			S.fin();
+		})();
+	</script>
+</template>

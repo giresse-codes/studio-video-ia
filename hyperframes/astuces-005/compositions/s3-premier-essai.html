@@ -1,0 +1,90 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		@font-face {
+			font-family: 'Kit Mono';
+			font-weight: 500;
+			src: url('assets/kit/fonts/jetbrains-mono-500.woff2') format('woff2');
+		}
+		.s3-terminal {
+			position: absolute;
+			left: 470px;
+			top: 300px;
+			width: 400px;
+			height: 420px;
+			border-radius: 30px;
+			background: #141414;
+			border: 8px solid #141414;
+			box-sizing: border-box;
+			overflow: hidden;
+			box-shadow: var(--ombre);
+		}
+		.s3-liste {
+			padding: 18px 28px;
+			font-family: 'Kit Mono';
+			font-size: 44px;
+			line-height: 62px;
+			color: #2eb82e;
+			white-space: nowrap;
+		}
+	</style>
+	<div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-nz6b" class="stage" id="s3-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le robot trouve « Léa1998 » au premier essai ; le cadenas s'ouvre. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-iizu" id="s3-robot">
+								<path data-hf-id="hf-sou0" d="M 310 380 V 330" stroke="#141414" stroke-width="10" />
+								<circle data-hf-id="hf-8f3u" cx="310" cy="320" r="18" fill="#E5383B" stroke="#141414" stroke-width="8" />
+								<rect data-hf-id="hf-tgo0" x="200" y="380" width="220" height="170" rx="36" fill="#FFFFFF" stroke="#141414" stroke-width="12" />
+								<rect data-hf-id="hf-7joz" x="230" y="420" width="160" height="80" rx="20" fill="#141414" />
+								<g data-hf-id="hf-hxf8" class="s3-robot-yeux" fill="#2EB82E">
+									<rect data-hf-id="hf-kys8" x="255" y="443" width="34" height="34" rx="8" />
+									<rect data-hf-id="hf-lvc7" x="331" y="443" width="34" height="34" rx="8" />
+								</g>
+								<rect data-hf-id="hf-u862" x="220" y="560" width="180" height="200" rx="30" fill="#EBDDBB" stroke="#141414" stroke-width="12" />
+								<path data-hf-id="hf-ac9s" d="M 220 610 L 170 710" stroke="#141414" stroke-width="18" stroke-linecap="round" />
+								<path data-hf-id="hf-0k9b" d="M 400 610 L 450 710" stroke="#141414" stroke-width="18" stroke-linecap="round" />
+							</g>
+							<g data-hf-id="hf-3nrz" id="s3-cadenas">
+								<path data-hf-id="hf-hoqm" id="s3-anse" d="M 610 620 V 560 Q 610 500 670 500 Q 730 500 730 560 V 620" fill="none" stroke="#141414" stroke-width="22" />
+								<rect data-hf-id="hf-94wa" x="580" y="610" width="180" height="150" rx="26" fill="#FFD23F" stroke="#141414" stroke-width="12" />
+								<circle data-hf-id="hf-od5k" cx="670" cy="675" r="18" fill="#141414" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-h54i" id="s3-essai" class="etiquette" style="left: 470px; top: 330px">ESSAI N° 1</div>
+						<div data-hf-id="hf-fuld" id="s3-trouve" class="etiquette" style="left: 250px; top: 790px; color: #2EB82E">Léa1998 ✓</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s3');
+			const tl = S.tl;
+
+			// « Ton prénom plus ton année » : le robot et le cadenas.
+			kit.pop(tl, '#s3-robot', 0);
+			kit.pop(tl, '#s3-cadenas', 0.1);
+			kit.tampon(tl, '#s3-trouve', S.ancre('@annee'));
+			// « premier essai » : le cadenas s'ouvre d'un coup, le robot saute de joie (zoom).
+			const premier = S.ancre('@premier');
+			kit.tampon(tl, '#s3-essai', premier);
+			tl.to('#s3-anse', {y: -50, duration: 0.25, ease: 'back.out(3)'}, premier);
+			tl.to('#s3-robot', {y: -40, duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 3}, premier);
+			S.zoomMot('@premier', [460, 560]);
+
+			S.fin();
+		})();
+	</script>
+</template>

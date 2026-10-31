@@ -1,0 +1,92 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		@font-face {
+			font-family: 'Kit Mono';
+			font-weight: 500;
+			src: url('assets/kit/fonts/jetbrains-mono-500.woff2') format('woff2');
+		}
+		#s1-champ {
+			position: absolute;
+			left: 190px;
+			top: 470px;
+			width: 640px;
+			height: 150px;
+			border-radius: 34px;
+			background: #ffffff;
+			border: 10px solid #141414;
+			box-sizing: border-box;
+			box-shadow: var(--ombre);
+			padding-left: 40px;
+			font-family: 'Kit Mono';
+			font-size: 84px;
+			line-height: 128px;
+			color: #141414;
+			white-space: nowrap;
+		}
+		#s1-champ b {
+			font-weight: 500;
+			border-radius: 12px;
+		}
+		#s1-titre {
+			left: 190px;
+			top: 380px;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 56px;
+			color: #141414;
+			position: absolute;
+		}
+	</style>
+	<div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-jkxd" class="stage" id="s1-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le champ « mot de passe » qui se dévoile : un prénom (inventé) et une année. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-okuh" id="s1-titre">Mot de passe</div>
+						<div data-hf-id="hf-0mpv" id="s1-champ"><b data-hf-id="hf-7pzu" id="s1-prenom">Léa</b><b data-hf-id="hf-vgp5" id="s1-annee">1998</b></div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-r3j7" transform="translate(510 790)">
+								<g data-hf-id="hf-9ajn" id="s1-alerte" opacity="0">
+									<path data-hf-id="hf-56lm" d="M 0 -80 L 80 60 L -80 60 Z" fill="#E5383B" stroke="#141414" stroke-width="12" stroke-linejoin="round" />
+									<path data-hf-id="hf-dzl8" d="M 0 -30 V 15" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" />
+									<circle data-hf-id="hf-621c" cx="0" cy="40" r="9" fill="#FFFFFF" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-pzg6" id="s1-parler" class="etiquette" style="left: 250px; top: 200px">ON DOIT PARLER</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s1');
+			const tl = S.tl;
+
+			// Dès 0 s : le champ, puis les points qui se dévoilent en clair.
+			kit.pop(tl, '#s1-titre', 0);
+			kit.pop(tl, '#s1-champ', 0.05);
+			kit.frappe(tl, '#s1-prenom', 'Léa', 0.3, 0.3);
+			kit.frappe(tl, '#s1-annee', '1998', 0.7, 0.4);
+			// « prénom » puis « année » : chaque morceau s'allume.
+			tl.to('#s1-prenom', {backgroundColor: '#FFD23F', duration: 0.15}, S.ancre('@prenom'));
+			tl.to('#s1-annee', {backgroundColor: '#FFD23F', duration: 0.15}, S.ancre('@annee'));
+			S.zoomMot('@annee', [500, 545]);
+			// « parler » : le triangle d'alerte et l'étiquette.
+			kit.pop(tl, '#s1-alerte', S.ancre('@parler'));
+			kit.tampon(tl, '#s1-parler', S.ancre('@parler'));
+
+			S.fin();
+		})();
+	</script>
+</template>

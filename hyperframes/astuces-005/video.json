@@ -1,0 +1,37 @@
+{
+	"chaine": "astuces",
+	"numero": "005",
+	"slug": "mot-de-passe",
+	"script": "channels/astuces/scripts/005-mot-de-passe.md",
+	"audio": "public/audio/astuces-005.wav",
+	"scenes": [
+		{"id": "s1", "fichier": "compositions/s1-champ.html", "debut": "@0", "transition": "zoom", "cible": [480, 520]},
+		{"id": "s2", "fichier": "compositions/s2-programme.html", "debut": "@voila", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s3", "fichier": "compositions/s3-premier-essai.html", "debut": "@ton", "transition": "zoom", "cible": [480, 560]},
+		{"id": "s4", "fichier": "compositions/s4-longueur.html", "debut": "@ce", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s5", "fichier": "compositions/s5-phrase.html", "debut": "@une", "transition": "zoom", "cible": [480, 560]},
+		{"id": "s6", "fichier": "compositions/s6-gestes.html", "debut": "@trois", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s7", "fichier": "compositions/s7-demain.html", "debut": "@demain", "transition": "zoom", "cible": [480, 560]}
+	],
+	"bruitages": [
+		{"ancre": "@prenom", "son": "pop-1", "scene": "s1"},
+		{"ancre": "@annee", "son": "pop-2", "scene": "s1"},
+		{"ancre": "@parler", "son": "boing", "scene": "s1"},
+		{"ancre": "@main", "son": "tic", "scene": "s2"},
+		{"ancre": "@programme", "son": "pop-1", "scene": "s2"},
+		{"ancre": "@combinaisons", "son": "ding-2", "scene": "s2"},
+		{"ancre": "@premier", "son": "ding-1", "scene": "s3"},
+		{"ancre": "@longueur", "son": "pop-1", "scene": "s4"},
+		{"ancre": "@symboles", "son": "boing", "scene": "s4"},
+		{"ancre": "@phrase", "son": "pop-2", "scene": "s5"},
+		{"ancre": "@difficile", "son": "ding-1", "scene": "s5"},
+		{"ancre": "@phrase", "son": "pop-1", "scene": "s6"},
+		{"ancre": "@site", "son": "pop-2", "scene": "s6"},
+		{"ancre": "@gestionnaire", "son": "pop-1", "scene": "s6"},
+		{"ancre": "@cerveau", "son": "ding-2", "scene": "s6"},
+		{"ancre": "@consomme", "son": "tic", "scene": "s7"},
+		{"ancre": "@combien", "son": "boing", "scene": "s7"}
+	],
+	"avatar": {"cote": "droite", "tenue": "blanche"},
+	"theme": "schema"
+}

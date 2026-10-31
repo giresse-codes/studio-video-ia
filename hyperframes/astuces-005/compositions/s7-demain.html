@@ -1,0 +1,66 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		@font-face {
+			font-family: 'Kit Mono';
+			font-weight: 500;
+			src: url('assets/kit/fonts/jetbrains-mono-500.woff2') format('woff2');
+		}
+		#s7-question {
+			top: 220px;
+			left: 190px;
+			width: 700px;
+			font-size: 80px;
+		}
+	</style>
+	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-kbvr" class="stage" id="s7-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la télé éteinte qui consomme encore (teaser), puis la question. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-cjf0" id="s7-demain" class="etiquette" style="left: 330px; top: 220px">DEMAIN</div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-x876" id="s7-tele">
+								<rect data-hf-id="hf-13gf" x="210" y="380" width="560" height="340" rx="26" fill="#141414" stroke="#141414" stroke-width="12" />
+								<rect data-hf-id="hf-vdq8" x="232" y="402" width="516" height="296" rx="14" fill="#2A2A2A" />
+								<path data-hf-id="hf-6v4u" d="M 430 720 L 400 790 M 550 720 L 580 790" stroke="#141414" stroke-width="14" stroke-linecap="round" />
+								<circle data-hf-id="hf-9pv0" id="s7-veille" cx="740" cy="700" r="9" fill="#E5383B" />
+								<path data-hf-id="hf-aspk" d="M 770 600 Q 840 600 840 680 V 800" fill="none" stroke="#141414" stroke-width="10" />
+								<rect data-hf-id="hf-vrsa" x="815" y="800" width="50" height="60" rx="8" fill="#FFFFFF" stroke="#141414" stroke-width="8" />
+							</g>
+							<path data-hf-id="hf-r7pj" id="s7-eclair" d="M 860 700 L 830 760 L 860 760 L 835 830 L 900 740 L 868 740 L 890 700 Z" fill="#FFD23F" stroke="#141414" stroke-width="6" stroke-linejoin="round" opacity="0" />
+						</svg>
+						<div data-hf-id="hf-te09" id="s7-question" class="titre"><span data-hf-id="hf-ljgf">Combien de sites</span> <span data-hf-id="hf-z85k">partagent ton</span> <span data-hf-id="hf-j6bj">mot de passe ?</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// « Demain » ; « télé éteinte » : la télé noire, son voyant rouge ; « consomme » : l'éclair dans la prise. Zoom sur « télé ».
+			kit.tampon(tl, '#s7-demain', 0.05);
+			kit.pop(tl, '#s7-tele', S.ancre('@tele'));
+			kit.boucle(tl, '#s7-veille', {opacity: 0.2}, S.ancre('@eteinte'), S.dur, 0.6);
+			kit.pop(tl, '#s7-eclair', S.ancre('@consomme'));
+			S.zoomMot('@tele', [470, 560]);
+			// « Combien » : la question.
+			const q = S.ancre('@combien');
+			tl.to(['#s7-demain', '#s7-tele', '#s7-eclair'], {opacity: 0, y: -30, duration: 0.25}, q - 0.25);
+			kit.cascade(tl, '#s7-question span', q, 0.25);
+
+			S.fin();
+		})();
+	</script>
+</template>

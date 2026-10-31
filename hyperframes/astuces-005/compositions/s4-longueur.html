@@ -1,0 +1,92 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		@font-face {
+			font-family: 'Kit Mono';
+			font-weight: 500;
+			src: url('assets/kit/fonts/jetbrains-mono-500.woff2') format('woff2');
+		}
+		.s4-champ {
+			position: absolute;
+			left: 190px;
+			height: 110px;
+			border-radius: 26px;
+			background: #ffffff;
+			border: 8px solid #141414;
+			box-sizing: border-box;
+			padding: 0 26px;
+			font-family: 'Kit Mono';
+			font-size: 56px;
+			line-height: 94px;
+			color: #141414;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		.s4-jauge {
+			position: absolute;
+			left: 190px;
+			width: 660px;
+			height: 46px;
+			border-radius: 23px;
+			background: #ebddbb;
+			border: 6px solid #141414;
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+		.s4-jauge i {
+			display: block;
+			height: 100%;
+			width: 100%;
+			transform-origin: 0 50%;
+			transform: scaleX(0);
+		}
+	</style>
+	<div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-f3hs" class="stage" id="s4-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la barre de solidité ; elle s'allonge avec la longueur, presque pas avec les symboles. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-ofo9" id="s4-solidite" class="etiquette" style="left: 190px; top: 200px">SOLIDITÉ</div>
+						<div data-hf-id="hf-hxh4" id="s4-long" class="s4-champ" style="top: 340px; width: 660px"><span data-hf-id="hf-0l6s" id="s4-long-texte">Léa1998</span></div>
+						<div data-hf-id="hf-ry8u" class="s4-jauge" style="top: 470px"><i data-hf-id="hf-eo7t" id="s4-barre-long" style="background: #2EB82E"></i></div>
+						<div data-hf-id="hf-pnf7" id="s4-court" class="s4-champ" style="top: 600px; width: 360px">Lé@!#</div>
+						<div data-hf-id="hf-9jzd" class="s4-jauge" id="s4-jauge-court" style="top: 730px; opacity: 0"><i data-hf-id="hf-0cy8" id="s4-barre-court" style="background: #E5383B"></i></div>
+						<div data-hf-id="hf-4w0d" id="s4-pas" class="etiquette" style="left: 610px; top: 610px">PAS ÇA</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s4');
+			const tl = S.tl;
+
+			// « Ce qui compte » : la barre de solidité.
+			kit.tampon(tl, '#s4-solidite', 0.05);
+			kit.pop(tl, '#s4-long', 0.1);
+			tl.to('#s4-barre-long', {scaleX: 0.15, duration: 0.3}, 0.3);
+			// « longueur » : le mot de passe s'allonge, la barre aussi (zoom).
+			const longueur = S.ancre('@longueur');
+			kit.frappe(tl, '#s4-long-texte', 'Léa1998pommenuage', longueur, 0.8);
+			tl.to('#s4-barre-long', {scaleX: 0.85, duration: 0.8, ease: 'power1.inOut'}, longueur);
+			S.zoomMot('@longueur', [400, 450]);
+			// « symboles » : un mot court plein de symboles, sa barre reste toute petite.
+			const symboles = S.ancre('@symboles');
+			kit.pop(tl, '#s4-court', symboles - 0.1);
+			tl.to('#s4-jauge-court', {opacity: 1, duration: 0.2}, symboles);
+			tl.to('#s4-barre-court', {scaleX: 0.18, duration: 0.4}, symboles + 0.1);
+			kit.tampon(tl, '#s4-pas', S.ancre('@pas'));
+
+			S.fin();
+		})();
+	</script>
+</template>
