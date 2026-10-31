@@ -1,0 +1,38 @@
+{
+	"chaine": "astuces",
+	"numero": "006",
+	"slug": "appareils-en-veille",
+	"script": "channels/astuces/scripts/006-appareils-en-veille.md",
+	"audio": "public/audio/astuces-006.wav",
+	"scenes": [
+		{"id": "s1", "fichier": "compositions/s1-tele.html", "debut": "@0", "transition": "zoom", "cible": [480, 560]},
+		{"id": "s2", "fichier": "compositions/s2-veille.html", "debut": "@eteint#2", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s3", "fichier": "compositions/s3-oreille.html", "debut": "@fait", "transition": "zoom", "cible": [480, 560]},
+		{"id": "s4", "fichier": "compositions/s4-nombreux.html", "debut": "@un", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s5", "fichier": "compositions/s5-compteur.html", "debut": "@ensemble", "transition": "zoom", "cible": [480, 560]},
+		{"id": "s6", "fichier": "compositions/s6-gestes.html", "debut": "@trois", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s7", "fichier": "compositions/s7-demain.html", "debut": "@demain", "transition": "zoom", "cible": [480, 560]}
+	],
+	"bruitages": [
+		{"ancre": "@eteint", "son": "tic", "scene": "s1"},
+		{"ancre": "@consomme", "son": "ding-1", "scene": "s1"},
+		{"ancre": "@veille", "son": "pop-1", "scene": "s2"},
+		{"ancre": "@telecommande", "son": "pop-2", "scene": "s2"},
+		{"ancre": "@horloge", "son": "tic", "scene": "s2"},
+		{"ancre": "@mises", "son": "pop-1", "scene": "s2"},
+		{"ancre": "@dormir", "son": "pop-2", "scene": "s3"},
+		{"ancre": "@ecoute", "son": "boing", "scene": "s3"},
+		{"ancre": "@peu", "son": "tic", "scene": "s4"},
+		{"ancre": "@nombreux", "son": "pop-1", "scene": "s4"},
+		{"ancre": "@chargeurs", "son": "pop-2", "scene": "s4"},
+		{"ancre": "@ensemble", "son": "ding-2", "scene": "s5"},
+		{"ancre": "@annee", "son": "ding-1", "scene": "s5"},
+		{"ancre": "@multiprise", "son": "pop-1", "scene": "s6"},
+		{"ancre": "@coupes", "son": "boing", "scene": "s6"},
+		{"ancre": "@debranche", "son": "pop-2", "scene": "s6"},
+		{"ancre": "@lumiere", "son": "pop-1", "scene": "s6"},
+		{"ancre": "@telephone", "son": "pop-2", "scene": "s7"},
+		{"ancre": "@combien", "son": "boing", "scene": "s7"}
+	],
+	"avatar": {"cote": "droite", "tenue": "blanche"}
+}

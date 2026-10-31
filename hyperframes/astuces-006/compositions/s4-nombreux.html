@@ -1,0 +1,93 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.s4-jauge {
+			position: absolute;
+			left: 200px;
+			top: 230px;
+			width: 300px;
+			height: 46px;
+			border-radius: 23px;
+			background: #f4f1ea;
+			border: 6px solid #1a1a1a;
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+		.s4-jauge i {
+			display: block;
+			height: 100%;
+			width: 100%;
+			background: #ffc857;
+			transform-origin: 0 50%;
+			transform: scaleX(0);
+		}
+	</style>
+	<div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-f3hs" class="stage" id="s4-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : un appareil en veille (petite jauge), puis la télé, la box, la console et les chargeurs, chacun avec sa lumière. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-d0je" id="s4-jauge" class="s4-jauge"><i data-hf-id="hf-rf4n" id="s4-barre"></i></div>
+						<div data-hf-id="hf-j7ra" id="s4-peu" class="etiquette" style="left: 530px; top: 210px">PEU</div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-72av" transform="translate(330 440)">
+								<g data-hf-id="hf-6svn" id="s4-tele" opacity="0">
+									<rect data-hf-id="hf-8jbm" x="-110" y="-80" width="220" height="140" rx="14" fill="#1A1A1A" /><rect data-hf-id="hf-wrjc" x="-96" y="-66" width="192" height="112" rx="8" fill="#2A2A2A" /><path data-hf-id="hf-kgyp" d="M -20 60 L -40 95 M 20 60 L 40 95" stroke="#1A1A1A" stroke-width="10" stroke-linecap="round" />
+									<circle data-hf-id="hf-kjj9" class="s4-led" cx="70" cy="70" r="11" fill="#E5383B" />
+								</g>
+							</g>
+							<g data-hf-id="hf-pe8j" transform="translate(650 450)">
+								<g data-hf-id="hf-g9em" id="s4-box" opacity="0">
+									<rect data-hf-id="hf-9m6p" x="-100" y="-40" width="200" height="100" rx="22" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="10" /><path data-hf-id="hf-l2rp" d="M -60 -40 L -70 -95 M 60 -40 L 70 -95" stroke="#1A1A1A" stroke-width="10" stroke-linecap="round" />
+									<circle data-hf-id="hf-5b95" class="s4-led" cx="70" cy="70" r="11" fill="#E5383B" />
+								</g>
+							</g>
+							<g data-hf-id="hf-ztji" transform="translate(330 700)">
+								<g data-hf-id="hf-td52" id="s4-console" opacity="0">
+									<path data-hf-id="hf-e9nh" d="M -110 -10 Q -110 -60 -60 -60 H 60 Q 110 -60 110 -10 V 20 Q 110 70 70 70 Q 40 70 30 40 H -30 Q -40 70 -70 70 Q -110 70 -110 20 Z" fill="#9F8FC7" stroke="#1A1A1A" stroke-width="10" stroke-linejoin="round" /><path data-hf-id="hf-3061" d="M -70 -10 V 20 M -85 5 H -55" stroke="#1A1A1A" stroke-width="10" stroke-linecap="round" /><circle data-hf-id="hf-9yoa" cx="60" cy="-5" r="10" fill="#1A1A1A" /><circle data-hf-id="hf-u698" cx="80" cy="15" r="10" fill="#1A1A1A" />
+									<circle data-hf-id="hf-6i68" class="s4-led" cx="70" cy="70" r="11" fill="#E5383B" />
+								</g>
+							</g>
+							<g data-hf-id="hf-mjy2" transform="translate(640 700)">
+								<g data-hf-id="hf-pza6" id="s4-chargeur" opacity="0">
+									<rect data-hf-id="hf-0otk" x="-50" y="-60" width="100" height="110" rx="18" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="10" /><path data-hf-id="hf-30yg" d="M -20 -60 V -95 M 20 -60 V -95" stroke="#1A1A1A" stroke-width="10" stroke-linecap="round" /><path data-hf-id="hf-0gr4" d="M 0 50 Q 0 90 60 90 H 100" fill="none" stroke="#1A1A1A" stroke-width="8" />
+									<circle data-hf-id="hf-63v7" class="s4-led" cx="70" cy="70" r="11" fill="#E5383B" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-113d" id="s4-nombreux" class="etiquette" style="left: 200px; top: 820px">NOMBREUX</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s4');
+			const tl = S.tl;
+
+			// « Un appareil en veille » : la télé seule, sa jauge presque vide ; « peu ».
+			kit.pop(tl, '#s4-tele', 0.05);
+			kit.pop(tl, '#s4-jauge', 0.1);
+			tl.to('#s4-barre', {scaleX: 0.12, duration: 0.4}, S.ancre('@peu'));
+			kit.tampon(tl, '#s4-peu', S.ancre('@peu'));
+			// « nombreux » : l'étiquette ; puis box, console, chargeurs, chacun à son mot (zoom sur « nombreux »).
+			kit.tampon(tl, '#s4-nombreux', S.ancre('@nombreux'));
+			S.zoomMot('@nombreux', [340, 420]);
+			kit.pop(tl, '#s4-box', S.ancre('@box'));
+			kit.pop(tl, '#s4-console', S.ancre('@console'));
+			kit.pop(tl, '#s4-chargeur', S.ancre('@chargeurs'));
+			kit.boucle(tl, '.s4-led', {opacity: 0.35}, S.ancre('@box'), S.dur, 0.8);
+
+			S.fin();
+		})();
+	</script>
+</template>

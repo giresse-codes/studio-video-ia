@@ -1,0 +1,64 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		#s7-question {
+			top: 220px;
+			left: 190px;
+			width: 700px;
+			font-size: 80px;
+		}
+	</style>
+	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-kbvr" class="stage" id="s7-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le téléphone plein qui rame (teaser), puis la question. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-2cl6" id="s7-demain" class="etiquette" style="left: 330px; top: 200px">DEMAIN</div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-nho5" id="s7-tel">
+								<rect data-hf-id="hf-glv7" x="330" y="340" width="260" height="480" rx="40" fill="#2A2A2A" stroke="#1A1A1A" stroke-width="12" />
+								<rect data-hf-id="hf-vi9p" x="350" y="370" width="220" height="420" rx="24" fill="#F4F1EA" />
+								<rect data-hf-id="hf-xl1s" x="375" y="430" width="170" height="40" rx="20" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="6" />
+								<rect data-hf-id="hf-wfn5" id="s7-plein" x="378" y="433" width="164" height="34" rx="17" fill="#E5383B" />
+								<g data-hf-id="hf-ttoy" id="s7-roue" fill="#1A1A1A">
+									<circle data-hf-id="hf-lmgq" cx="460" cy="580" r="10" /><circle data-hf-id="hf-iaqw" cx="490" cy="610" r="10" opacity="0.7" />
+									<circle data-hf-id="hf-frdm" cx="460" cy="640" r="10" opacity="0.5" /><circle data-hf-id="hf-07p2" cx="430" cy="610" r="10" opacity="0.3" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-8pdg" id="s7-rame" class="etiquette" style="left: 190px; top: 840px">PLEIN = LENT</div>
+						<div data-hf-id="hf-te09" id="s7-question" class="titre"><span data-hf-id="hf-3d7f">Combien de petites</span> <span data-hf-id="hf-reey">lumières dans</span> <span data-hf-id="hf-dhir">ta chambre ?</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// « Demain » ; « téléphone » : il arrive, sa mémoire se remplit ; « rame » : la roue tourne (zoom sur « téléphone »).
+			kit.tampon(tl, '#s7-demain', 0.05);
+			kit.pop(tl, '#s7-tel', S.ancre('@telephone'));
+			tl.fromTo('#s7-plein', {scaleX: 0.3, svgOrigin: '378 450'}, {scaleX: 1, duration: 0.8, ease: 'power2.in'}, S.ancre('@telephone') + 0.2);
+			S.zoomMot('@telephone', [470, 560]);
+			tl.fromTo('#s7-roue', {rotation: 0, svgOrigin: '460 610'}, {rotation: 720, duration: S.dur, ease: 'none'}, 0);
+			kit.tampon(tl, '#s7-rame', S.ancre('@rame'));
+			// « Combien » : la question.
+			const q = S.ancre('@combien');
+			tl.to(['#s7-demain', '#s7-tel', '#s7-rame'], {opacity: 0, y: -30, duration: 0.25}, q - 0.25);
+			kit.cascade(tl, '#s7-question span', q, 0.25);
+
+			S.fin();
+		})();
+	</script>
+</template>

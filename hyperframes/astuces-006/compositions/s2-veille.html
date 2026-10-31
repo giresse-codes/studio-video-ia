@@ -1,0 +1,84 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-bmd6" id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-1eiu" class="stage" id="s2-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la télé qui dort (veille) ; le petit circuit, la télécommande, l'horloge, la flèche de mise à jour. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-aot1" id="s2-tele">
+								<rect data-hf-id="hf-2wm3" x="210" y="320" width="560" height="360" rx="26" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="12" />
+								<rect data-hf-id="hf-wrcv" id="s2-ecran" x="232" y="342" width="516" height="316" rx="14" fill="#141414" />
+								<path data-hf-id="hf-alw9" d="M 440 690 L 410 770 M 540 690 L 570 770" stroke="#1A1A1A" stroke-width="14" stroke-linecap="round" />
+								<circle data-hf-id="hf-zudc" id="s2-led" cx="740" cy="668" r="9" fill="#E5383B" />
+							</g>
+							<g data-hf-id="hf-l1aw" id="s2-visage" stroke="#7CC8F0" stroke-width="12" stroke-linecap="round" fill="none" opacity="0">
+								<path data-hf-id="hf-z03p" d="M 380 480 Q 410 505 440 480 M 540 480 Q 570 505 600 480" />
+								<path data-hf-id="hf-gkya" d="M 460 580 Q 490 590 520 580" />
+							</g>
+							<!-- Le petit circuit. -->
+							<g data-hf-id="hf-wglm" id="s2-circuit" opacity="0">
+								<rect data-hf-id="hf-s948" x="200" y="800" width="190" height="120" rx="16" fill="#5E8C61" stroke="#1A1A1A" stroke-width="8" />
+								<rect data-hf-id="hf-4zzr" x="255" y="830" width="80" height="60" rx="8" fill="#1A1A1A" />
+								<path data-hf-id="hf-v4tv" d="M 215 820 H 245 M 345 820 H 375 M 215 900 H 245 M 345 900 H 375" stroke="#FFC857" stroke-width="6" />
+							</g>
+							<!-- La télécommande et son signal. -->
+							<g data-hf-id="hf-h86d" id="s2-telecommande" opacity="0">
+								<rect data-hf-id="hf-59mu" x="430" y="780" width="80" height="170" rx="24" fill="#3A3A3A" stroke="#1A1A1A" stroke-width="8" />
+								<circle data-hf-id="hf-djun" cx="470" cy="815" r="14" fill="#E5383B" />
+								<circle data-hf-id="hf-783n" cx="452" cy="860" r="9" fill="#BFC5CC" /><circle data-hf-id="hf-9nmq" cx="488" cy="860" r="9" fill="#BFC5CC" />
+								<circle data-hf-id="hf-p85n" cx="452" cy="895" r="9" fill="#BFC5CC" /><circle data-hf-id="hf-j6om" cx="488" cy="895" r="9" fill="#BFC5CC" />
+							</g>
+							<g data-hf-id="hf-4wbo" fill="none" stroke="#E5383B" stroke-width="7" stroke-linecap="round">
+								<path data-hf-id="hf-i8cv" class="s2-signal" d="M 450 760 Q 470 740 490 760" />
+								<path data-hf-id="hf-ccai" class="s2-signal" d="M 435 735 Q 470 705 505 735" />
+							</g>
+							<!-- La mise à jour. -->
+							<g data-hf-id="hf-0nmj" id="s2-maj" opacity="0">
+								<circle data-hf-id="hf-u37o" cx="660" cy="410" r="44" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8" />
+								<path data-hf-id="hf-79cp" d="M 660 385 V 430 M 640 412 L 660 432 L 680 412" fill="none" stroke="#2EB82E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+							</g>
+							<text data-hf-id="hf-nixo" id="s2-horloge" x="300" y="410" font-family="Kit Poppins" font-weight="800" font-size="60" fill="#E5383B" opacity="0">23:58</text>
+						</svg>
+						<div data-hf-id="hf-5xwi" id="s2-veille" class="etiquette" style="left: 380px; top: 200px">VEILLE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s2');
+			const tl = S.tl;
+
+			// « Éteint, il n'est pas vraiment éteint » : la télé, puis son visage endormi.
+			kit.pop(tl, '#s2-tele', 0);
+			kit.boucle(tl, '#s2-led', {opacity: 0.35}, 0.3, S.dur, 0.8);
+			// « veille » : l'étiquette, le visage qui dort (zoom).
+			const veille = S.ancre('@veille');
+			tl.to('#s2-visage', {opacity: 1, duration: 0.3}, veille);
+			kit.tampon(tl, '#s2-veille', veille);
+			S.zoomMot('@veille', [490, 470]);
+			// « circuit », « télécommande », « horloge », « mises à jour » : chaque tâche apparaît à son mot.
+			kit.pop(tl, '#s2-circuit', S.ancre('@circuit'));
+			const telec = S.ancre('@telecommande');
+			kit.pop(tl, '#s2-telecommande', telec);
+			kit.monte(tl, '.s2-signal', telec + 0.2, S.dur, {dy: -60, cycle: 0.8});
+			tl.fromTo('#s2-horloge', {opacity: 0}, {opacity: 1, duration: 0.2}, S.ancre('@horloge'));
+			kit.pop(tl, '#s2-maj', S.ancre('@mises'));
+			kit.boucle(tl, '#s2-maj path', {y: 8}, S.ancre('@mises') + 0.4, S.dur, 0.5);
+
+			S.fin();
+		})();
+	</script>
+</template>

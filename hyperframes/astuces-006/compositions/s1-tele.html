@@ -1,0 +1,60 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-jkxd" class="stage" id="s1-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la télé (petite lumière rouge dès 0 s), son câble et sa prise ; l'éclair du courant qui passe encore. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<path data-hf-id="hf-09bw" d="M 770 600 Q 850 600 850 700 V 820" fill="none" stroke="#1A1A1A" stroke-width="10" />
+							<rect data-hf-id="hf-j7m9" x="822" y="820" width="56" height="70" rx="10" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8" />
+							<g data-hf-id="hf-joqs" id="s1-tele">
+								<rect data-hf-id="hf-2wm3" x="210" y="320" width="560" height="360" rx="26" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="12" />
+								<rect data-hf-id="hf-cckq" id="s1-ecran" x="232" y="342" width="516" height="316" rx="14" fill="#7CC8F0" />
+								<path data-hf-id="hf-alw9" d="M 440 690 L 410 770 M 540 690 L 570 770" stroke="#1A1A1A" stroke-width="14" stroke-linecap="round" />
+								<circle data-hf-id="hf-8vaj" id="s1-led" cx="740" cy="668" r="9" fill="#E5383B" />
+							</g>
+							<path data-hf-id="hf-gag0" id="s1-courant" d="M 850 830 V 710 Q 850 610 772 610" fill="none" stroke="#FFC857" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 22" opacity="0" />
+							<path data-hf-id="hf-02xq" id="s1-eclair" d="M 690 760 L 660 820 L 690 820 L 665 890 L 730 800 L 698 800 L 720 760 Z" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" stroke-linejoin="round" opacity="0" />
+							<text data-hf-id="hf-doqd" id="s1-question" x="490" y="560" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="220" fill="#FFC857" stroke="#1A1A1A" stroke-width="10" paint-order="stroke" opacity="0">?</text>
+						</svg>
+						<div data-hf-id="hf-276q" id="s1-consomme" class="etiquette" style="left: 240px; top: 210px">CONSOMME ENCORE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s1');
+			const tl = S.tl;
+
+			// Dès 0 s : la télé allumée, sa petite lumière rouge.
+			kit.pop(tl, '#s1-tele', 0);
+			kit.boucle(tl, '#s1-led', {opacity: 0.35}, 0.3, S.dur, 0.8);
+			// « éteint » : l'écran devient noir.
+			tl.to('#s1-ecran', {fill: '#141414', duration: 0.15}, S.ancre('@eteint'));
+			// « consomme » : le courant passe encore dans le câble (zoom).
+			const consomme = S.ancre('@consomme');
+			tl.to('#s1-courant', {opacity: 1, duration: 0.1}, consomme);
+			tl.fromTo('#s1-courant', {strokeDashoffset: 0}, {strokeDashoffset: -200, duration: S.dur - consomme, ease: 'none'}, consomme);
+			kit.pop(tl, '#s1-eclair', consomme);
+			kit.tampon(tl, '#s1-consomme', consomme);
+			S.zoomMot('@consomme', [440, 380]);
+			// « Comment ? » : un grand point d'interrogation sur l'écran.
+			kit.pop(tl, '#s1-question', S.ancre('@comment'));
+
+			S.fin();
+		})();
+	</script>
+</template>

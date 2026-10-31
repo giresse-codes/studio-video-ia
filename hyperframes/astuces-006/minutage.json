@@ -1,0 +1,1093 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 40.267,
+	"voixCreteDb": -2.391,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-tele.html",
+			"debut": 0,
+			"fin": 3.82,
+			"transition": "zoom",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-veille.html",
+			"debut": 3.82,
+			"fin": 11.967,
+			"transition": "balayage",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@eteint#2"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-oreille.html",
+			"debut": 11.967,
+			"fin": 14.53,
+			"transition": "zoom",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@fait"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-nombreux.html",
+			"debut": 14.53,
+			"fin": 20.3,
+			"transition": "balayage",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@un"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-compteur.html",
+			"debut": 20.3,
+			"fin": 23.79,
+			"transition": "zoom",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@ensemble"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-gestes.html",
+			"debut": 23.79,
+			"fin": 34.16,
+			"transition": "balayage",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@trois"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-demain.html",
+			"debut": 34.16,
+			"fin": 40.267354166666664,
+			"transition": "zoom",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@demain"
+		}
+	],
+	"calques": [],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@eteint",
+			"mot": "éteint.",
+			"motSec": 0.931,
+			"sec": 0.931
+		},
+		{
+			"scene": "s1",
+			"ancre": "@consomme",
+			"mot": "consomme",
+			"motSec": 1.995,
+			"sec": 1.995
+		},
+		{
+			"scene": "s1",
+			"ancre": "@comment",
+			"mot": "Comment ?",
+			"motSec": 2.99,
+			"sec": 2.99
+		},
+		{
+			"scene": "s2",
+			"ancre": "@veille",
+			"mot": "veille.",
+			"motSec": 6.454,
+			"sec": 6.454
+		},
+		{
+			"scene": "s2",
+			"ancre": "@circuit",
+			"mot": "circuit",
+			"motSec": 7.655,
+			"sec": 7.655
+		},
+		{
+			"scene": "s2",
+			"ancre": "@telecommande",
+			"mot": "télécommande,",
+			"motSec": 8.48,
+			"sec": 8.48
+		},
+		{
+			"scene": "s2",
+			"ancre": "@horloge",
+			"mot": "l'horloge",
+			"motSec": 9.415,
+			"sec": 9.415
+		},
+		{
+			"scene": "s2",
+			"ancre": "@mises",
+			"mot": "mises",
+			"motSec": 10.9,
+			"sec": 10.9
+		},
+		{
+			"scene": "s3",
+			"ancre": "@ecoute",
+			"mot": "écoute.",
+			"motSec": 13.619,
+			"sec": 13.619
+		},
+		{
+			"scene": "s3",
+			"ancre": "@dormir",
+			"mot": "dormir,",
+			"motSec": 12.856,
+			"sec": 12.856
+		},
+		{
+			"scene": "s4",
+			"ancre": "@peu",
+			"mot": "peu,",
+			"motSec": 16.313,
+			"sec": 16.313
+		},
+		{
+			"scene": "s4",
+			"ancre": "@nombreux",
+			"mot": "nombreux :",
+			"motSec": 17.634,
+			"sec": 17.634
+		},
+		{
+			"scene": "s4",
+			"ancre": "@box",
+			"mot": "box,",
+			"motSec": 18.457,
+			"sec": 18.457
+		},
+		{
+			"scene": "s4",
+			"ancre": "@console",
+			"mot": "console,",
+			"motSec": 18.663,
+			"sec": 18.663
+		},
+		{
+			"scene": "s4",
+			"ancre": "@chargeurs",
+			"mot": "chargeurs.",
+			"motSec": 19.143,
+			"sec": 19.143
+		},
+		{
+			"scene": "s5",
+			"ancre": "@heures",
+			"mot": "heures",
+			"motSec": 21.751,
+			"sec": 21.751
+		},
+		{
+			"scene": "s5",
+			"ancre": "@annee",
+			"mot": "l'année.",
+			"motSec": 22.96,
+			"sec": 22.96
+		},
+		{
+			"scene": "s5",
+			"ancre": "@toute",
+			"mot": "toute",
+			"motSec": 22.718,
+			"sec": 22.718
+		},
+		{
+			"scene": "s6",
+			"ancre": "@multiprise",
+			"mot": "multiprise",
+			"motSec": 24.936,
+			"sec": 24.936
+		},
+		{
+			"scene": "s6",
+			"ancre": "@coupes",
+			"mot": "coupes",
+			"motSec": 27.257,
+			"sec": 27.257
+		},
+		{
+			"scene": "s6",
+			"ancre": "@debranche",
+			"mot": "Débranche",
+			"motSec": 28.37,
+			"sec": 28.37
+		},
+		{
+			"scene": "s6",
+			"ancre": "@chargeurs",
+			"mot": "chargeurs",
+			"motSec": 28.966,
+			"sec": 28.966
+		},
+		{
+			"scene": "s6",
+			"ancre": "@lumiere",
+			"mot": "lumière :",
+			"motSec": 31.13,
+			"sec": 31.13
+		},
+		{
+			"scene": "s6",
+			"ancre": "@regarde",
+			"mot": "regarde",
+			"motSec": 30.424,
+			"sec": 30.424
+		},
+		{
+			"scene": "s6",
+			"ancre": "@veille",
+			"mot": "veille.",
+			"motSec": 33.292,
+			"sec": 33.292
+		},
+		{
+			"scene": "s7",
+			"ancre": "@telephone",
+			"mot": "téléphone :",
+			"motSec": 35.408,
+			"sec": 35.408
+		},
+		{
+			"scene": "s7",
+			"ancre": "@rame",
+			"mot": "rame",
+			"motSec": 36.856,
+			"sec": 36.856
+		},
+		{
+			"scene": "s7",
+			"ancre": "@combien",
+			"mot": "Combien",
+			"motSec": 38.13,
+			"sec": 38.13
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 0.931,
+			"son": "tic",
+			"cause": "@eteint (s1)"
+		},
+		{
+			"sec": 1.995,
+			"son": "ding-1",
+			"cause": "@consomme (s1)"
+		},
+		{
+			"sec": 3.77,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 6.454,
+			"son": "pop-1",
+			"cause": "@veille (s2)"
+		},
+		{
+			"sec": 8.48,
+			"son": "pop-2",
+			"cause": "@telecommande (s2)"
+		},
+		{
+			"sec": 9.415,
+			"son": "tic",
+			"cause": "@horloge (s2)"
+		},
+		{
+			"sec": 10.9,
+			"son": "pop-1",
+			"cause": "@mises (s2)"
+		},
+		{
+			"sec": 11.917,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 12.856,
+			"son": "pop-2",
+			"cause": "@dormir (s3)"
+		},
+		{
+			"sec": 13.619,
+			"son": "boing",
+			"cause": "@ecoute (s3)"
+		},
+		{
+			"sec": 14.48,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 16.313,
+			"son": "tic",
+			"cause": "@peu (s4)"
+		},
+		{
+			"sec": 17.634,
+			"son": "pop-1",
+			"cause": "@nombreux (s4)"
+		},
+		{
+			"sec": 19.143,
+			"son": "pop-2",
+			"cause": "@chargeurs (s4)"
+		},
+		{
+			"sec": 20.25,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 20.3,
+			"son": "ding-2",
+			"cause": "@ensemble (s5)"
+		},
+		{
+			"sec": 22.96,
+			"son": "ding-1",
+			"cause": "@annee (s5)"
+		},
+		{
+			"sec": 23.74,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 24.936,
+			"son": "pop-1",
+			"cause": "@multiprise (s6)"
+		},
+		{
+			"sec": 27.257,
+			"son": "boing",
+			"cause": "@coupes (s6)"
+		},
+		{
+			"sec": 28.37,
+			"son": "pop-2",
+			"cause": "@debranche (s6)"
+		},
+		{
+			"sec": 31.13,
+			"son": "pop-1",
+			"cause": "@lumiere (s6)"
+		},
+		{
+			"sec": 34.11,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		},
+		{
+			"sec": 35.408,
+			"son": "pop-2",
+			"cause": "@telephone (s7)"
+		},
+		{
+			"sec": 38.13,
+			"son": "boing",
+			"cause": "@combien (s7)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Ton téléviseur est éteint.",
+			"emotion": "curieux",
+			"pose": "reflechit",
+			"start": 0,
+			"end": 1.28
+		},
+		{
+			"texte": "Mais il consomme encore.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 1.71,
+			"end": 2.66
+		},
+		{
+			"texte": "Comment ?",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 2.99,
+			"end": 3.26
+		},
+		{
+			"texte": "Éteint, il n'est pas vraiment éteint : il reste en veille.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 3.82,
+			"end": 6.77
+		},
+		{
+			"texte": "Un petit circuit attend ta télécommande, garde l'horloge et cherche parfois des mises à jour.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 7.27,
+			"end": 11.45
+		},
+		{
+			"texte": "Il fait semblant de dormir, mais il écoute.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 11.84,
+			"end": 14
+		},
+		{
+			"texte": "Un appareil en veille consomme peu, mais ils sont nombreux : télé, box, console, chargeurs.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 14.53,
+			"end": 19.76
+		},
+		{
+			"texte": "Ensemble, ils tournent vingt-quatre heures sur vingt-quatre, toute l'année.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 20.3,
+			"end": 23.25
+		},
+		{
+			"texte": "Trois gestes : une multiprise à interrupteur pour le coin télé, que tu coupes le soir.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 23.79,
+			"end": 27.92
+		},
+		{
+			"texte": "Débranche les chargeurs inutilisés.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 28.37,
+			"end": 29.91
+		},
+		{
+			"texte": "Et regarde la petite lumière : si elle est allumée, l'appareil veille.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 30.33,
+			"end": 33.66
+		},
+		{
+			"texte": "Demain, on entre dans ton téléphone : pourquoi il rame quand il est plein.",
+			"emotion": "souriant",
+			"pose": "content",
+			"start": 34.16,
+			"end": 37.74
+		},
+		{
+			"texte": "Combien de petites lumières dans ta chambre ?",
+			"emotion": null,
+			"pose": "content",
+			"start": 38.13,
+			"end": 39.67
+		}
+	],
+	"mots": [
+		{
+			"texte": "Ton",
+			"start": 0,
+			"end": 0.175
+		},
+		{
+			"texte": "téléviseur",
+			"start": 0.175,
+			"end": 0.756
+		},
+		{
+			"texte": "est",
+			"start": 0.756,
+			"end": 0.931
+		},
+		{
+			"texte": "éteint.",
+			"start": 0.931,
+			"end": 1.28
+		},
+		{
+			"texte": "Mais",
+			"start": 1.71,
+			"end": 1.9
+		},
+		{
+			"texte": "il",
+			"start": 1.9,
+			"end": 1.995
+		},
+		{
+			"texte": "consomme",
+			"start": 1.995,
+			"end": 2.375
+		},
+		{
+			"texte": "encore.",
+			"start": 2.375,
+			"end": 2.66
+		},
+		{
+			"texte": "Comment ?",
+			"start": 2.99,
+			"end": 3.26
+		},
+		{
+			"texte": "Éteint,",
+			"start": 3.82,
+			"end": 4.199
+		},
+		{
+			"texte": "il",
+			"start": 4.199,
+			"end": 4.325
+		},
+		{
+			"texte": "n'est",
+			"start": 4.325,
+			"end": 4.577
+		},
+		{
+			"texte": "pas",
+			"start": 4.577,
+			"end": 4.767
+		},
+		{
+			"texte": "vraiment",
+			"start": 4.767,
+			"end": 5.271
+		},
+		{
+			"texte": "éteint :",
+			"start": 5.271,
+			"end": 5.65
+		},
+		{
+			"texte": "il",
+			"start": 5.98,
+			"end": 6.085
+		},
+		{
+			"texte": "reste",
+			"start": 6.085,
+			"end": 6.349
+		},
+		{
+			"texte": "en",
+			"start": 6.349,
+			"end": 6.454
+		},
+		{
+			"texte": "veille.",
+			"start": 6.454,
+			"end": 6.77
+		},
+		{
+			"texte": "Un",
+			"start": 7.27,
+			"end": 7.38
+		},
+		{
+			"texte": "petit",
+			"start": 7.38,
+			"end": 7.655
+		},
+		{
+			"texte": "circuit",
+			"start": 7.655,
+			"end": 8.04
+		},
+		{
+			"texte": "attend",
+			"start": 8.04,
+			"end": 8.37
+		},
+		{
+			"texte": "ta",
+			"start": 8.37,
+			"end": 8.48
+		},
+		{
+			"texte": "télécommande,",
+			"start": 8.48,
+			"end": 9.14
+		},
+		{
+			"texte": "garde",
+			"start": 9.14,
+			"end": 9.415
+		},
+		{
+			"texte": "l'horloge",
+			"start": 9.415,
+			"end": 9.855
+		},
+		{
+			"texte": "et",
+			"start": 9.855,
+			"end": 9.965
+		},
+		{
+			"texte": "cherche",
+			"start": 9.965,
+			"end": 10.35
+		},
+		{
+			"texte": "parfois",
+			"start": 10.35,
+			"end": 10.735
+		},
+		{
+			"texte": "des",
+			"start": 10.735,
+			"end": 10.9
+		},
+		{
+			"texte": "mises",
+			"start": 10.9,
+			"end": 11.175
+		},
+		{
+			"texte": "à",
+			"start": 11.175,
+			"end": 11.23
+		},
+		{
+			"texte": "jour.",
+			"start": 11.23,
+			"end": 11.45
+		},
+		{
+			"texte": "Il",
+			"start": 11.84,
+			"end": 11.967
+		},
+		{
+			"texte": "fait",
+			"start": 11.967,
+			"end": 12.221
+		},
+		{
+			"texte": "semblant",
+			"start": 12.221,
+			"end": 12.729
+		},
+		{
+			"texte": "de",
+			"start": 12.729,
+			"end": 12.856
+		},
+		{
+			"texte": "dormir,",
+			"start": 12.856,
+			"end": 13.238
+		},
+		{
+			"texte": "mais",
+			"start": 13.238,
+			"end": 13.492
+		},
+		{
+			"texte": "il",
+			"start": 13.492,
+			"end": 13.619
+		},
+		{
+			"texte": "écoute.",
+			"start": 13.619,
+			"end": 14
+		},
+		{
+			"texte": "Un",
+			"start": 14.53,
+			"end": 14.667
+		},
+		{
+			"texte": "appareil",
+			"start": 14.667,
+			"end": 15.216
+		},
+		{
+			"texte": "en",
+			"start": 15.216,
+			"end": 15.353
+		},
+		{
+			"texte": "veille",
+			"start": 15.353,
+			"end": 15.765
+		},
+		{
+			"texte": "consomme",
+			"start": 15.765,
+			"end": 16.313
+		},
+		{
+			"texte": "peu,",
+			"start": 16.313,
+			"end": 16.519
+		},
+		{
+			"texte": "mais",
+			"start": 16.519,
+			"end": 16.794
+		},
+		{
+			"texte": "ils",
+			"start": 16.794,
+			"end": 16.999
+		},
+		{
+			"texte": "sont",
+			"start": 16.999,
+			"end": 17.634
+		},
+		{
+			"texte": "nombreux :",
+			"start": 17.634,
+			"end": 18.182
+		},
+		{
+			"texte": "télé,",
+			"start": 18.182,
+			"end": 18.457
+		},
+		{
+			"texte": "box,",
+			"start": 18.457,
+			"end": 18.663
+		},
+		{
+			"texte": "console,",
+			"start": 18.663,
+			"end": 19.143
+		},
+		{
+			"texte": "chargeurs.",
+			"start": 19.143,
+			"end": 19.76
+		},
+		{
+			"texte": "Ensemble,",
+			"start": 20.3,
+			"end": 20.687
+		},
+		{
+			"texte": "ils",
+			"start": 20.687,
+			"end": 20.832
+		},
+		{
+			"texte": "tournent",
+			"start": 20.832,
+			"end": 21.219
+		},
+		{
+			"texte": "vingt-quatre",
+			"start": 21.219,
+			"end": 21.751
+		},
+		{
+			"texte": "heures",
+			"start": 21.751,
+			"end": 22.041
+		},
+		{
+			"texte": "sur",
+			"start": 22.041,
+			"end": 22.186
+		},
+		{
+			"texte": "vingt-quatre,",
+			"start": 22.186,
+			"end": 22.718
+		},
+		{
+			"texte": "toute",
+			"start": 22.718,
+			"end": 22.96
+		},
+		{
+			"texte": "l'année.",
+			"start": 22.96,
+			"end": 23.25
+		},
+		{
+			"texte": "Trois",
+			"start": 23.79,
+			"end": 24.063
+		},
+		{
+			"texte": "gestes :",
+			"start": 24.063,
+			"end": 24.39
+		},
+		{
+			"texte": "une",
+			"start": 24.77,
+			"end": 24.936
+		},
+		{
+			"texte": "multiprise",
+			"start": 24.936,
+			"end": 25.488
+		},
+		{
+			"texte": "à",
+			"start": 25.488,
+			"end": 25.544
+		},
+		{
+			"texte": "interrupteur",
+			"start": 25.544,
+			"end": 26.207
+		},
+		{
+			"texte": "pour",
+			"start": 26.207,
+			"end": 26.428
+		},
+		{
+			"texte": "le",
+			"start": 26.428,
+			"end": 26.538
+		},
+		{
+			"texte": "coin",
+			"start": 26.538,
+			"end": 26.759
+		},
+		{
+			"texte": "télé,",
+			"start": 26.759,
+			"end": 26.981
+		},
+		{
+			"texte": "que",
+			"start": 26.981,
+			"end": 27.146
+		},
+		{
+			"texte": "tu",
+			"start": 27.146,
+			"end": 27.257
+		},
+		{
+			"texte": "coupes",
+			"start": 27.257,
+			"end": 27.588
+		},
+		{
+			"texte": "le",
+			"start": 27.588,
+			"end": 27.699
+		},
+		{
+			"texte": "soir.",
+			"start": 27.699,
+			"end": 27.92
+		},
+		{
+			"texte": "Débranche",
+			"start": 28.37,
+			"end": 28.817
+		},
+		{
+			"texte": "les",
+			"start": 28.817,
+			"end": 28.966
+		},
+		{
+			"texte": "chargeurs",
+			"start": 28.966,
+			"end": 29.413
+		},
+		{
+			"texte": "inutilisés.",
+			"start": 29.413,
+			"end": 29.91
+		},
+		{
+			"texte": "Et",
+			"start": 30.33,
+			"end": 30.424
+		},
+		{
+			"texte": "regarde",
+			"start": 30.424,
+			"end": 30.754
+		},
+		{
+			"texte": "la",
+			"start": 30.754,
+			"end": 30.848
+		},
+		{
+			"texte": "petite",
+			"start": 30.848,
+			"end": 31.13
+		},
+		{
+			"texte": "lumière :",
+			"start": 31.13,
+			"end": 31.46
+		},
+		{
+			"texte": "si",
+			"start": 31.76,
+			"end": 31.883
+		},
+		{
+			"texte": "elle",
+			"start": 31.883,
+			"end": 32.128
+		},
+		{
+			"texte": "est",
+			"start": 32.128,
+			"end": 32.312
+		},
+		{
+			"texte": "allumée,",
+			"start": 32.312,
+			"end": 32.741
+		},
+		{
+			"texte": "l'appareil",
+			"start": 32.741,
+			"end": 33.292
+		},
+		{
+			"texte": "veille.",
+			"start": 33.292,
+			"end": 33.66
+		},
+		{
+			"texte": "Demain,",
+			"start": 34.16,
+			"end": 34.534
+		},
+		{
+			"texte": "on",
+			"start": 34.534,
+			"end": 34.659
+		},
+		{
+			"texte": "entre",
+			"start": 34.659,
+			"end": 34.971
+		},
+		{
+			"texte": "dans",
+			"start": 34.971,
+			"end": 35.221
+		},
+		{
+			"texte": "ton",
+			"start": 35.221,
+			"end": 35.408
+		},
+		{
+			"texte": "téléphone :",
+			"start": 35.408,
+			"end": 35.97
+		},
+		{
+			"texte": "pourquoi",
+			"start": 36.39,
+			"end": 36.762
+		},
+		{
+			"texte": "il",
+			"start": 36.762,
+			"end": 36.856
+		},
+		{
+			"texte": "rame",
+			"start": 36.856,
+			"end": 37.042
+		},
+		{
+			"texte": "quand",
+			"start": 37.042,
+			"end": 37.274
+		},
+		{
+			"texte": "il",
+			"start": 37.274,
+			"end": 37.368
+		},
+		{
+			"texte": "est",
+			"start": 37.368,
+			"end": 37.507
+		},
+		{
+			"texte": "plein.",
+			"start": 37.507,
+			"end": 37.74
+		},
+		{
+			"texte": "Combien",
+			"start": 38.13,
+			"end": 38.421
+		},
+		{
+			"texte": "de",
+			"start": 38.421,
+			"end": 38.505
+		},
+		{
+			"texte": "petites",
+			"start": 38.505,
+			"end": 38.796
+		},
+		{
+			"texte": "lumières",
+			"start": 38.796,
+			"end": 39.129
+		},
+		{
+			"texte": "dans",
+			"start": 39.129,
+			"end": 39.295
+		},
+		{
+			"texte": "ta",
+			"start": 39.295,
+			"end": 39.379
+		},
+		{
+			"texte": "chambre ?",
+			"start": 39.379,
+			"end": 39.67
+		}
+	]
+}

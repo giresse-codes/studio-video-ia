@@ -1,0 +1,71 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-nz6b" class="stage" id="s3-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la télé fait semblant de dormir (un œil entrouvert), puis une oreille géante pousse sur son côté. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-q1fi" id="s3-tele">
+								<rect data-hf-id="hf-2wm3" x="210" y="320" width="560" height="360" rx="26" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="12" />
+								<rect data-hf-id="hf-x396" id="s3-ecran" x="232" y="342" width="516" height="316" rx="14" fill="#141414" />
+								<path data-hf-id="hf-alw9" d="M 440 690 L 410 770 M 540 690 L 570 770" stroke="#1A1A1A" stroke-width="14" stroke-linecap="round" />
+								<circle data-hf-id="hf-ggud" id="s3-led" cx="740" cy="668" r="9" fill="#E5383B" />
+							</g>
+							<g data-hf-id="hf-qbkv" stroke="#7CC8F0" stroke-width="12" stroke-linecap="round" fill="none">
+								<path data-hf-id="hf-9z4y" d="M 380 480 Q 410 505 440 480" />
+								<path data-hf-id="hf-l07v" id="s3-oeil-ferme" d="M 540 480 Q 570 505 600 480" />
+								<path data-hf-id="hf-gkya" d="M 460 580 Q 490 590 520 580" />
+							</g>
+							<g data-hf-id="hf-rcqt" id="s3-oeil" opacity="0">
+								<path data-hf-id="hf-rz3o" d="M 538 488 Q 570 455 602 488 Z" fill="#FFFFFF" stroke="#7CC8F0" stroke-width="8" stroke-linejoin="round" />
+								<circle data-hf-id="hf-bwyn" cx="580" cy="480" r="10" fill="#1A1A1A" />
+							</g>
+							<g data-hf-id="hf-x6ww" class="s3-z" font-family="Kit Poppins" font-weight="800" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="5"><text data-hf-id="hf-a40b" x="620" y="300" font-size="64">Z</text></g>
+							<g data-hf-id="hf-6blk" class="s3-z" font-family="Kit Poppins" font-weight="800" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="5"><text data-hf-id="hf-xcbl" x="680" y="250" font-size="80">Z</text></g>
+							<!-- L'oreille géante. -->
+							<g data-hf-id="hf-tkxy" transform="translate(800 470)">
+								<g data-hf-id="hf-mkoo" id="s3-oreille" opacity="0">
+									<path data-hf-id="hf-mmps" d="M -30 -130 Q 90 -150 100 -20 Q 105 70 40 110 Q 10 130 0 160 Q -20 190 -50 170 Q -70 150 -50 120 Q -20 80 -30 40 Z" fill="#C68A5E" stroke="#1A1A1A" stroke-width="12" stroke-linejoin="round" />
+									<path data-hf-id="hf-y7as" d="M 0 -80 Q 60 -80 60 -10 Q 60 40 20 60 Q 0 70 10 100" fill="none" stroke="#1A1A1A" stroke-width="10" stroke-linecap="round" />
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-nxnu" id="s3-ecoute" class="etiquette" style="left: 260px; top: 820px">IL ÉCOUTE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s3');
+			const tl = S.tl;
+
+			// « semblant de dormir » : il ronfle… et un œil s'entrouvre (gag).
+			kit.pop(tl, '#s3-tele', 0);
+			kit.boucle(tl, '#s3-led', {opacity: 0.35}, 0.3, S.dur, 0.8);
+			kit.monte(tl, '.s3-z', 0.1, S.ancre('@ecoute'), {dy: -120, cycle: 1});
+			const dormir = S.ancre('@dormir');
+			tl.set('#s3-oeil-ferme', {opacity: 0}, dormir);
+			tl.fromTo('#s3-oeil', {opacity: 0, scaleY: 0.2, svgOrigin: '570 488'}, {opacity: 1, scaleY: 1, duration: 0.25, ease: 'back.out(2)'}, dormir);
+			// « écoute » : l'oreille géante pousse (zoom).
+			const ecoute = S.ancre('@ecoute');
+			kit.pop(tl, '#s3-oreille', ecoute);
+			kit.tampon(tl, '#s3-ecoute', ecoute);
+			S.zoomMot('@ecoute', [560, 520]);
+
+			S.fin();
+		})();
+	</script>
+</template>

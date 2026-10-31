@@ -1,0 +1,68 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-cr05" class="stage" id="s5-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le compteur électrique, son disque qui tourne et ses chiffres qui montent ; le calendrier qui s'effeuille. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-473d" id="s5-compteur">
+								<rect data-hf-id="hf-k1x8" x="230" y="260" width="420" height="560" rx="40" fill="#F4F1EA" stroke="#1A1A1A" stroke-width="14" />
+								<rect data-hf-id="hf-mj9r" x="280" y="320" width="320" height="110" rx="14" fill="#1A1A1A" />
+								<text data-hf-id="hf-uarh" id="s5-chiffres" x="440" y="400" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="72" fill="#FFC857">00001</text>
+								<ellipse data-hf-id="hf-bhs3" cx="440" cy="590" rx="140" ry="44" fill="#BFC5CC" stroke="#1A1A1A" stroke-width="10" />
+								<g data-hf-id="hf-4e6r" id="s5-disque"><rect data-hf-id="hf-iigb" x="420" y="552" width="40" height="76" rx="8" fill="#E5383B" /></g>
+								<text data-hf-id="hf-vyab" x="440" y="740" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="56" fill="#1A1A1A">kWh</text>
+							</g>
+							<!-- Le calendrier. -->
+							<g data-hf-id="hf-v2hn" transform="translate(780 470)">
+								<g data-hf-id="hf-v435" id="s5-calendrier" opacity="0">
+									<rect data-hf-id="hf-sipz" x="-100" y="-90" width="200" height="200" rx="20" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="10" />
+									<rect data-hf-id="hf-kufa" x="-100" y="-90" width="200" height="56" rx="20" fill="#E5383B" stroke="#1A1A1A" stroke-width="10" />
+									<text data-hf-id="hf-zafv" id="s5-jour" x="0" y="70" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="90" fill="#1A1A1A">1</text>
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-krn5" id="s5-24" class="etiquette" style="left: 200px; top: 850px">24 H SUR 24</div>
+						<div data-hf-id="hf-24ud" id="s5-annee" class="etiquette" style="left: 200px; top: 850px">TOUTE L'ANNÉE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+
+			// « Ensemble » : le compteur ; son disque tourne et les chiffres montent jusqu'à la fin.
+			kit.pop(tl, '#s5-compteur', 0);
+			tl.fromTo('#s5-disque', {scaleX: 1, svgOrigin: '440 590'}, {scaleX: -1, duration: 0.3, ease: 'none', yoyo: true, repeat: Math.floor(S.dur / 0.3)}, 0.2);
+			const chiffres = document.querySelector('#s5-chiffres');
+			const n = {v: 1};
+			tl.fromTo(n, {v: 1}, {v: 99999, duration: S.dur, ease: 'power2.in', onUpdate: () => (chiffres.textContent = String(Math.round(n.v)).padStart(5, '0'))}, 0);
+			// « vingt-quatre heures » : l'étiquette (zoom) ; « année » : le calendrier qui s'effeuille.
+			kit.tampon(tl, '#s5-24', S.ancre('@heures'));
+			S.zoomMot('@heures', [330, 560]);
+			const annee = S.ancre('@annee');
+			kit.pop(tl, '#s5-calendrier', S.ancre('@toute'));
+			const jour = document.querySelector('#s5-jour');
+			const j = {v: 1};
+			tl.fromTo(j, {v: 1}, {v: 365, duration: 0.9, ease: 'power1.in', onUpdate: () => (jour.textContent = Math.round(j.v))}, annee);
+			tl.to('#s5-24', {opacity: 0, duration: 0.15}, annee - 0.15);
+			kit.pop(tl, '#s5-annee', annee);
+
+			S.fin();
+		})();
+	</script>
+</template>
