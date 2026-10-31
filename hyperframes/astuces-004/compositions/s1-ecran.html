@@ -1,0 +1,74 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-jkxd" class="stage" id="s1-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le téléphone à 30 % qui s'éteint, puis le froid (flocons, thermomètre). -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-34sr" id="s1-tel">
+								<rect data-hf-id="hf-ay2e" x="300" y="230" width="400" height="700" rx="56" fill="#2A2A2A" stroke="#1A1A1A" stroke-width="14" />
+								<rect data-hf-id="hf-qf7h" id="s1-ecran" x="326" y="270" width="348" height="620" rx="34" fill="#0E0E0E" />
+								<g data-hf-id="hf-f7t0" id="s1-affiche">
+									<rect data-hf-id="hf-v6he" x="420" y="430" width="140" height="70" rx="12" fill="none" stroke="#F2F2F2" stroke-width="10" />
+									<rect data-hf-id="hf-v0za" x="560" y="450" width="16" height="30" rx="4" fill="#F2F2F2" />
+									<rect data-hf-id="hf-f9ev" id="s1-niveau" x="432" y="442" width="38" height="46" rx="5" fill="#FFC857" />
+									<text data-hf-id="hf-suqb" x="500" y="640" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="120" fill="#F2F2F2">30 %</text>
+								</g>
+							</g>
+							<!-- Le thermomètre. -->
+							<g data-hf-id="hf-cg1h" transform="translate(200 640)">
+								<g data-hf-id="hf-n6s5" id="s1-thermo" opacity="0">
+									<rect data-hf-id="hf-40zl" x="-22" y="-180" width="44" height="200" rx="22" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8" />
+									<circle data-hf-id="hf-gp9m" cx="0" cy="40" r="40" fill="#7CC8F0" stroke="#1A1A1A" stroke-width="8" />
+									<rect data-hf-id="hf-w2hj" id="s1-mercure" x="-9" y="-60" width="18" height="90" rx="9" fill="#7CC8F0" />
+								</g>
+							</g>
+							<g data-hf-id="hf-k5hi" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round">
+								<path data-hf-id="hf-k63a" class="s1-flocon" d="M 780 300 V 370 M 750 318 L 810 352 M 750 352 L 810 318" />
+								<path data-hf-id="hf-e78o" class="s1-flocon" d="M 820 520 V 580 M 794 535 L 846 565 M 794 565 L 846 535" />
+								<path data-hf-id="hf-1a7y" class="s1-flocon" d="M 220 330 V 390 M 194 345 L 246 375 M 194 375 L 246 345" />
+								<path data-hf-id="hf-udmb" class="s1-flocon" d="M 760 720 V 780 M 734 735 L 786 765 M 734 765 L 786 735" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-mco5" id="s1-hasard" class="etiquette" style="left: 230px; top: 780px">PAS UN HASARD</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s1');
+			const tl = S.tl;
+
+			// Dès 0 s : l'écran affiche 30 %, l'icône clignote.
+			kit.pop(tl, '#s1-tel', 0);
+			kit.boucle(tl, '#s1-niveau', {opacity: 0.3}, 0.3, S.ancre('@eteint'), 0.6);
+			// « s'éteint » : l'écran se coupe d'un coup (zoom).
+			const eteint = S.ancre('@eteint');
+			tl.to('#s1-affiche', {opacity: 0, scaleY: 0.02, svgOrigin: '500 560', duration: 0.18, ease: 'power3.in'}, eteint);
+			S.zoomMot('@eteint', [500, 560]);
+			// « froid » : thermomètre qui descend, flocons.
+			const froid = S.ancre('@froid');
+			kit.pop(tl, '#s1-thermo', froid);
+			tl.fromTo('#s1-mercure', {scaleY: 1, svgOrigin: '0 30'}, {scaleY: 0.3, duration: 0.8, ease: 'power2.out'}, froid + 0.2);
+			kit.cascade(tl, '.s1-flocon', froid, 0.1);
+			kit.boucle(tl, '.s1-flocon', {y: 30, rotation: 30, transformOrigin: '50% 50%'}, froid + 0.5, S.dur, 1.2);
+			// « hasard » : l'étiquette.
+			kit.tampon(tl, '#s1-hasard', S.ancre('@hasard'));
+
+			S.fin();
+		})();
+	</script>
+</template>

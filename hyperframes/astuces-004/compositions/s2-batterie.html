@@ -1,0 +1,62 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-bmd6" id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-1eiu" class="stage" id="s2-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la batterie en coupe, ses particules qui font l'aller-retour, l'ampoule qu'elles allument. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<path data-hf-id="hf-tf0v" id="s2-fil" d="M 830 490 V 330 H 720 V 300" fill="none" stroke="#1A1A1A" stroke-width="10" stroke-linejoin="round" />
+							<g data-hf-id="hf-oh9g" id="s2-ampoule">
+								<circle data-hf-id="hf-dbie" id="s2-verre" cx="720" cy="240" r="60" fill="#F4F1EA" stroke="#1A1A1A" stroke-width="10" />
+								<rect data-hf-id="hf-l8ff" x="695" y="292" width="50" height="34" rx="8" fill="#BFC5CC" stroke="#1A1A1A" stroke-width="8" />
+							</g>
+							<g data-hf-id="hf-t9xl" id="s2-batterie">
+								<rect data-hf-id="hf-pd4o" x="170" y="380" width="640" height="340" rx="40" fill="#F4F1EA" stroke="#1A1A1A" stroke-width="14" />
+								<rect data-hf-id="hf-dkxd" x="810" y="490" width="40" height="120" rx="10" fill="#BFC5CC" stroke="#1A1A1A" stroke-width="10" />
+								<rect data-hf-id="hf-bblz" x="200" y="410" width="40" height="280" rx="10" fill="#9F8FC7" stroke="#1A1A1A" stroke-width="6" />
+								<rect data-hf-id="hf-64hu" x="740" y="410" width="40" height="280" rx="10" fill="#7CC8F0" stroke="#1A1A1A" stroke-width="6" />
+								<path data-hf-id="hf-ztef" d="M 490 410 V 690" stroke="#BFC5CC" stroke-width="6" stroke-dasharray="16 14" />
+								<circle data-hf-id="hf-cmkx" class="s2-part" cx="280" cy="470" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-wtjo" class="s2-part" cx="340" cy="560" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-fict" class="s2-part" cx="300" cy="640" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-gnj5" class="s2-part" cx="420" cy="500" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-urvt" class="s2-part" cx="460" cy="610" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-tniq" class="s2-part" cx="520" cy="470" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-cnto" class="s2-part" cx="580" cy="580" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-3qgr" class="s2-part" cx="640" cy="520" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-fhqp" id="s2-lithium" class="etiquette" style="left: 200px; top: 220px">LITHIUM</div>
+						<div data-hf-id="hf-q7p9" id="s2-particules" class="etiquette" style="left: 200px; top: 770px">PARTICULES</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s2');
+			const tl = S.tl;
+
+			// Début : la batterie se pose.
+			kit.chute(tl, '#s2-batterie', 0);
+			kit.tampon(tl, '#s2-lithium', S.ancre('@lithium'));
+			// « particules » : elles apparaissent ; « déplacent » : elles font l'aller-retour d'un côté à l'autre.
+			kit.cascade(tl, '.s2-part', S.ancre('@particules'), 0.05);
+			kit.tampon(tl, '#s2-particules', S.ancre('@particules'));
+			const bouge = S.ancre('@deplacent');
+			tl.to('.s2-part', {x: (i) => [400, 340, 380, 260, 220, 160, 100, 40][i], duration: 0.7, ease: 'sine.inOut', yoyo: true, repeat: Math.max(1, Math.floor((S.dur - bouge) / 0.7)), stagger: 0.06}, bouge);
+			// « courant » : l'ampoule s'allume (zoom).
+			const courant = S.ancre('@courant');
+			kit.trace(tl, '#s2-fil', courant - 0.3, 0.3);
+			tl.to('#s2-verre', {fill: '#FFE98A', duration: 0.2}, courant);
+			S.zoomMot('@courant', [260, 450]);
+
+			S.fin();
+		})();
+	</script>
+</template>

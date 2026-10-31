@@ -1,0 +1,81 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-cr05" class="stage" id="s5-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le téléphone qui croit sa batterie vide ; la batterie, gelée, qui garde 30 % ; le soleil qui la réchauffe. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-bljz" id="s5-tel">
+								<rect data-hf-id="hf-nr9q" x="180" y="330" width="270" height="480" rx="40" fill="#2A2A2A" stroke="#1A1A1A" stroke-width="12" />
+								<rect data-hf-id="hf-47ql" x="200" y="360" width="230" height="420" rx="24" fill="#0E0E0E" />
+								<text data-hf-id="hf-x2hx" id="s5-zero" x="315" y="600" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="96" fill="#E5383B" opacity="0">0 %</text>
+								<text data-hf-id="hf-66l0" id="s5-trente" x="315" y="600" text-anchor="middle" font-family="Kit Poppins" font-weight="800" font-size="96" fill="#3DDC97" opacity="0">30 %</text>
+							</g>
+							<!-- Le fil : le courant qui arrive au téléphone. -->
+							<path data-hf-id="hf-ntvz" id="s5-fil" d="M 560 520 H 450" stroke="#1A1A1A" stroke-width="12" />
+							<g data-hf-id="hf-qbpc" id="s5-batterie">
+								<rect data-hf-id="hf-w0yk" x="660" y="300" width="80" height="34" rx="8" fill="#BFC5CC" stroke="#1A1A1A" stroke-width="8" />
+								<rect data-hf-id="hf-lsie" x="560" y="330" width="280" height="480" rx="36" fill="#F4F1EA" stroke="#1A1A1A" stroke-width="14" />
+								<rect data-hf-id="hf-sl3y" id="s5-niveau" x="580" y="660" width="240" height="130" rx="20" fill="#3DDC97" opacity="0" />
+								<rect data-hf-id="hf-bbh9" id="s5-givre" x="560" y="330" width="280" height="480" rx="36" fill="#7CC8F0" opacity="0.55" />
+							</g>
+							<!-- Le soleil qui réchauffe. -->
+							<g data-hf-id="hf-sv8j" transform="translate(700 210)">
+								<g data-hf-id="hf-5nm8" id="s5-soleil" opacity="0">
+									<circle data-hf-id="hf-gnqm" r="60" fill="#FFC857" stroke="#1A1A1A" stroke-width="10" />
+									<g data-hf-id="hf-db1p" stroke="#FFC857" stroke-width="14" stroke-linecap="round">
+										<path data-hf-id="hf-l7iv" d="M 0 -90 V -120 M 90 0 H 120 M -90 0 H -120 M 64 -64 L 85 -85 M -64 -64 L -85 -85" />
+									</g>
+								</g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-l6lb" id="s5-vide" class="etiquette" style="left: 190px; top: 200px">« VIDE » ?</div>
+						<div data-hf-id="hf-4hp1" id="s5-energie" class="etiquette" style="left: 200px; top: 850px">ÉNERGIE</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+
+			// Début : le téléphone et la batterie gelée ; « moins de courant » : le fil pâlit.
+			kit.pop(tl, '#s5-tel', 0);
+			kit.pop(tl, '#s5-batterie', 0.15);
+			tl.to('#s5-fil', {opacity: 0.25, duration: 0.4}, S.ancre('@moins'));
+			// « vide » : le téléphone affiche 0 %.
+			const vide = S.ancre('@vide');
+			tl.to('#s5-zero', {opacity: 1, duration: 0.15}, S.ancre('@croit'));
+			kit.tampon(tl, '#s5-vide', vide);
+			// « énergie » : sous le givre, la batterie garde 30 % (zoom).
+			const energie = S.ancre('@energie');
+			tl.fromTo('#s5-niveau', {opacity: 0, scaleY: 0, svgOrigin: '700 790'}, {opacity: 1, scaleY: 1, duration: 0.4, ease: 'back.out(2)'}, S.ancre('@reste'));
+			tl.to('#s5-vide', {opacity: 0, duration: 0.2}, energie - 0.2);
+			kit.tampon(tl, '#s5-energie', energie);
+			S.zoomMot('@energie', [320, 600]);
+			// « réchauffe » : le soleil, le givre fond ; « revient » : 30 % à l'écran, le fil se rallume.
+			const chaud = S.ancre('@rechauffe');
+			kit.pop(tl, '#s5-soleil', chaud);
+			tl.to('#s5-givre', {opacity: 0, duration: 0.8}, chaud + 0.1);
+			const revient = S.ancre('@revient');
+			tl.to('#s5-zero', {opacity: 0, duration: 0.1}, revient);
+			tl.fromTo('#s5-trente', {opacity: 0, scale: 0.5, svgOrigin: '315 570'}, {opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(3)'}, revient);
+			tl.to('#s5-fil', {opacity: 1, duration: 0.2}, revient);
+
+			S.fin();
+		})();
+	</script>
+</template>

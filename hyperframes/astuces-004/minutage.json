@@ -1,0 +1,1106 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 37.956,
+	"voixCreteDb": -2.096,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-ecran.html",
+			"debut": 0,
+			"fin": 6.05,
+			"transition": "zoom",
+			"cible": [
+				500,
+				560
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-batterie.html",
+			"debut": 6.05,
+			"fin": 11.65,
+			"transition": "balayage",
+			"cible": [
+				500,
+				550
+			],
+			"ancreDebut": "@dans"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-froid.html",
+			"debut": 11.65,
+			"fin": 13.829,
+			"transition": "zoom",
+			"cible": [
+				500,
+				550
+			],
+			"ancreDebut": "@quand"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-cafe.html",
+			"debut": 13.829,
+			"fin": 15.92,
+			"transition": "balayage",
+			"cible": [
+				420,
+				600
+			],
+			"ancreDebut": "@comme"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-energie.html",
+			"debut": 15.92,
+			"fin": 23.66,
+			"transition": "zoom",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@resultat"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-gestes.html",
+			"debut": 23.66,
+			"fin": 32.06,
+			"transition": "balayage",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@trois"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-demain.html",
+			"debut": 32.06,
+			"fin": 37.9559375,
+			"transition": "zoom",
+			"cible": [
+				480,
+				560
+			],
+			"ancreDebut": "@demain"
+		}
+	],
+	"calques": [],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@eteint",
+			"mot": "s'éteint",
+			"motSec": 2.303,
+			"sec": 2.303
+		},
+		{
+			"scene": "s1",
+			"ancre": "@froid",
+			"mot": "froid,",
+			"motSec": 4.05,
+			"sec": 4.05
+		},
+		{
+			"scene": "s1",
+			"ancre": "@hasard",
+			"mot": "hasard.",
+			"motSec": 5.13,
+			"sec": 5.13
+		},
+		{
+			"scene": "s2",
+			"ancre": "@lithium",
+			"mot": "lithium,",
+			"motSec": 6.933,
+			"sec": 6.933
+		},
+		{
+			"scene": "s2",
+			"ancre": "@particules",
+			"mot": "particules",
+			"motSec": 7.765,
+			"sec": 7.765
+		},
+		{
+			"scene": "s2",
+			"ancre": "@deplacent",
+			"mot": "déplacent",
+			"motSec": 8.804,
+			"sec": 8.804
+		},
+		{
+			"scene": "s2",
+			"ancre": "@courant",
+			"mot": "courant.",
+			"motSec": 10.726,
+			"sec": 10.726
+		},
+		{
+			"scene": "s3",
+			"ancre": "@froid",
+			"mot": "froid,",
+			"motSec": 12.275,
+			"sec": 12.275
+		},
+		{
+			"scene": "s3",
+			"ancre": "@ralentit",
+			"mot": "ralentit.",
+			"motSec": 12.786,
+			"sec": 12.786
+		},
+		{
+			"scene": "s4",
+			"ancre": "@cafe",
+			"mot": "café.",
+			"motSec": 15.141,
+			"sec": 15.141
+		},
+		{
+			"scene": "s4",
+			"ancre": "@matin",
+			"mot": "matin,",
+			"motSec": 14.425,
+			"sec": 14.425
+		},
+		{
+			"scene": "s5",
+			"ancre": "@moins",
+			"mot": "moins",
+			"motSec": 17.295,
+			"sec": 17.295
+		},
+		{
+			"scene": "s5",
+			"ancre": "@vide",
+			"mot": "vide",
+			"motSec": 19.55,
+			"sec": 19.55
+		},
+		{
+			"scene": "s5",
+			"ancre": "@croit",
+			"mot": "croit",
+			"motSec": 18.78,
+			"sec": 18.78
+		},
+		{
+			"scene": "s5",
+			"ancre": "@energie",
+			"mot": "l'énergie.",
+			"motSec": 20.65,
+			"sec": 20.65
+		},
+		{
+			"scene": "s5",
+			"ancre": "@reste",
+			"mot": "reste",
+			"motSec": 20.265,
+			"sec": 20.265
+		},
+		{
+			"scene": "s5",
+			"ancre": "@rechauffe",
+			"mot": "réchauffe,",
+			"motSec": 22.159,
+			"sec": 22.159
+		},
+		{
+			"scene": "s5",
+			"ancre": "@revient",
+			"mot": "revient.",
+			"motSec": 22.784,
+			"sec": 22.784
+		},
+		{
+			"scene": "s6",
+			"ancre": "@poche",
+			"mot": "poche",
+			"motSec": 25.955,
+			"sec": 25.955
+		},
+		{
+			"scene": "s6",
+			"ancre": "@interieure",
+			"mot": "intérieure.",
+			"motSec": 26.21,
+			"sec": 26.21
+		},
+		{
+			"scene": "s6",
+			"ancre": "@charge",
+			"mot": "charge",
+			"motSec": 27.501,
+			"sec": 27.501
+		},
+		{
+			"scene": "s6",
+			"ancre": "@glace",
+			"mot": "glacé.",
+			"motSec": 28.553,
+			"sec": 28.553
+		},
+		{
+			"scene": "s6",
+			"ancre": "@rechauffele",
+			"mot": "réchauffe-le",
+			"motSec": 29.511,
+			"sec": 29.511
+		},
+		{
+			"scene": "s6",
+			"ancre": "@doucement",
+			"mot": "doucement",
+			"motSec": 30.118,
+			"sec": 30.118
+		},
+		{
+			"scene": "s7",
+			"ancre": "@long",
+			"mot": "long",
+			"motSec": 34.141,
+			"sec": 34.141
+		},
+		{
+			"scene": "s7",
+			"ancre": "@bat",
+			"mot": "bat",
+			"motSec": 34.355,
+			"sec": 34.355
+		},
+		{
+			"scene": "s7",
+			"ancre": "@complique",
+			"mot": "compliqué.",
+			"motSec": 35.158,
+			"sec": 35.158
+		},
+		{
+			"scene": "s7",
+			"ancre": "@il",
+			"mot": "Il",
+			"motSec": 36.18,
+			"sec": 36.18
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 2.303,
+			"son": "boing",
+			"cause": "@eteint (s1)"
+		},
+		{
+			"sec": 4.05,
+			"son": "tic",
+			"cause": "@froid (s1)"
+		},
+		{
+			"sec": 5.13,
+			"son": "ding-1",
+			"cause": "@hasard (s1)"
+		},
+		{
+			"sec": 6,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 6.933,
+			"son": "pop-1",
+			"cause": "@lithium (s2)"
+		},
+		{
+			"sec": 7.765,
+			"son": "pop-2",
+			"cause": "@particules (s2)"
+		},
+		{
+			"sec": 10.726,
+			"son": "ding-2",
+			"cause": "@courant (s2)"
+		},
+		{
+			"sec": 11.6,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 12.786,
+			"son": "boing",
+			"cause": "@ralentit (s3)"
+		},
+		{
+			"sec": 13.779,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 14.425,
+			"son": "pop-1",
+			"cause": "@matin (s4)"
+		},
+		{
+			"sec": 15.141,
+			"son": "ding-1",
+			"cause": "@cafe (s4)"
+		},
+		{
+			"sec": 15.87,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 19.55,
+			"son": "boing",
+			"cause": "@vide (s5)"
+		},
+		{
+			"sec": 20.65,
+			"son": "ding-2",
+			"cause": "@energie (s5)"
+		},
+		{
+			"sec": 22.784,
+			"son": "ding-1",
+			"cause": "@revient (s5)"
+		},
+		{
+			"sec": 23.61,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 25.955,
+			"son": "pop-1",
+			"cause": "@poche (s6)"
+		},
+		{
+			"sec": 27.501,
+			"son": "pop-2",
+			"cause": "@charge (s6)"
+		},
+		{
+			"sec": 29.511,
+			"son": "pop-1",
+			"cause": "@rechauffele (s6)"
+		},
+		{
+			"sec": 32.01,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		},
+		{
+			"sec": 34.141,
+			"son": "ding-1",
+			"cause": "@long (s7)"
+		},
+		{
+			"sec": 36.18,
+			"son": "boing",
+			"cause": "@il (s7)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Ton téléphone affiche trente pour cent, puis il s'éteint d'un coup.",
+			"emotion": "curieux",
+			"pose": "reflechit",
+			"start": 0,
+			"end": 3.13
+		},
+		{
+			"texte": "Il fait froid, et ce n'est pas un hasard.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 3.69,
+			"end": 5.49
+		},
+		{
+			"texte": "Dans une batterie au lithium, de petites particules chargées se déplacent d'un côté à l'autre pour produire du courant.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 6.05,
+			"end": 11.09
+		},
+		{
+			"texte": "Quand il fait froid, tout ralentit.",
+			"emotion": null,
+			"pose": "reflechit",
+			"start": 11.65,
+			"end": 13.24
+		},
+		{
+			"texte": "C'est comme toi le matin, avant le café.",
+			"emotion": "amusé",
+			"pose": "rit",
+			"start": 13.59,
+			"end": 15.38
+		},
+		{
+			"texte": "Résultat : la batterie fournit moins de courant, et le téléphone croit qu'elle est vide alors qu'il reste de l'énergie.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 15.92,
+			"end": 21.09
+		},
+		{
+			"texte": "Dès qu'elle se réchauffe, elle revient.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 21.63,
+			"end": 23.12
+		},
+		{
+			"texte": "Trois gestes : garde ton téléphone dans une poche intérieure.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 23.66,
+			"end": 26.72
+		},
+		{
+			"texte": "Ne le charge pas quand il est glacé.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 27.28,
+			"end": 28.83
+		},
+		{
+			"texte": "Et réchauffe-le doucement avant de t'en servir.",
+			"emotion": null,
+			"pose": "rit",
+			"start": 29.4,
+			"end": 31.5
+		},
+		{
+			"texte": "Demain : pourquoi un mot de passe long bat un mot de passe compliqué.",
+			"emotion": "souriant",
+			"pose": "content",
+			"start": 32.06,
+			"end": 35.64
+		},
+		{
+			"texte": "Il s'éteint à combien, chez toi ?",
+			"emotion": null,
+			"pose": "content",
+			"start": 36.18,
+			"end": 37.43
+		}
+	],
+	"mots": [
+		{
+			"texte": "Ton",
+			"start": 0,
+			"end": 0.177
+		},
+		{
+			"texte": "téléphone",
+			"start": 0.177,
+			"end": 0.709
+		},
+		{
+			"texte": "affiche",
+			"start": 0.709,
+			"end": 1.122
+		},
+		{
+			"texte": "trente",
+			"start": 1.122,
+			"end": 1.476
+		},
+		{
+			"texte": "pour",
+			"start": 1.476,
+			"end": 1.713
+		},
+		{
+			"texte": "cent,",
+			"start": 1.713,
+			"end": 1.949
+		},
+		{
+			"texte": "puis",
+			"start": 1.949,
+			"end": 2.185
+		},
+		{
+			"texte": "il",
+			"start": 2.185,
+			"end": 2.303
+		},
+		{
+			"texte": "s'éteint",
+			"start": 2.303,
+			"end": 2.717
+		},
+		{
+			"texte": "d'un",
+			"start": 2.717,
+			"end": 2.894
+		},
+		{
+			"texte": "coup.",
+			"start": 2.894,
+			"end": 3.13
+		},
+		{
+			"texte": "Il",
+			"start": 3.69,
+			"end": 3.81
+		},
+		{
+			"texte": "fait",
+			"start": 3.81,
+			"end": 4.05
+		},
+		{
+			"texte": "froid,",
+			"start": 4.05,
+			"end": 4.35
+		},
+		{
+			"texte": "et",
+			"start": 4.35,
+			"end": 4.47
+		},
+		{
+			"texte": "ce",
+			"start": 4.47,
+			"end": 4.59
+		},
+		{
+			"texte": "n'est",
+			"start": 4.59,
+			"end": 4.83
+		},
+		{
+			"texte": "pas",
+			"start": 4.83,
+			"end": 5.01
+		},
+		{
+			"texte": "un",
+			"start": 5.01,
+			"end": 5.13
+		},
+		{
+			"texte": "hasard.",
+			"start": 5.13,
+			"end": 5.49
+		},
+		{
+			"texte": "Dans",
+			"start": 6.05,
+			"end": 6.258
+		},
+		{
+			"texte": "une",
+			"start": 6.258,
+			"end": 6.414
+		},
+		{
+			"texte": "batterie",
+			"start": 6.414,
+			"end": 6.829
+		},
+		{
+			"texte": "au",
+			"start": 6.829,
+			"end": 6.933
+		},
+		{
+			"texte": "lithium,",
+			"start": 6.933,
+			"end": 7.297
+		},
+		{
+			"texte": "de",
+			"start": 7.297,
+			"end": 7.401
+		},
+		{
+			"texte": "petites",
+			"start": 7.401,
+			"end": 7.765
+		},
+		{
+			"texte": "particules",
+			"start": 7.765,
+			"end": 8.284
+		},
+		{
+			"texte": "chargées",
+			"start": 8.284,
+			"end": 8.7
+		},
+		{
+			"texte": "se",
+			"start": 8.7,
+			"end": 8.804
+		},
+		{
+			"texte": "déplacent",
+			"start": 8.804,
+			"end": 9.271
+		},
+		{
+			"texte": "d'un",
+			"start": 9.271,
+			"end": 9.427
+		},
+		{
+			"texte": "côté",
+			"start": 9.427,
+			"end": 9.635
+		},
+		{
+			"texte": "à",
+			"start": 9.635,
+			"end": 9.687
+		},
+		{
+			"texte": "l'autre",
+			"start": 9.687,
+			"end": 9.999
+		},
+		{
+			"texte": "pour",
+			"start": 9.999,
+			"end": 10.207
+		},
+		{
+			"texte": "produire",
+			"start": 10.207,
+			"end": 10.622
+		},
+		{
+			"texte": "du",
+			"start": 10.622,
+			"end": 10.726
+		},
+		{
+			"texte": "courant.",
+			"start": 10.726,
+			"end": 11.09
+		},
+		{
+			"texte": "Quand",
+			"start": 11.65,
+			"end": 11.934
+		},
+		{
+			"texte": "il",
+			"start": 11.934,
+			"end": 12.048
+		},
+		{
+			"texte": "fait",
+			"start": 12.048,
+			"end": 12.275
+		},
+		{
+			"texte": "froid,",
+			"start": 12.275,
+			"end": 12.559
+		},
+		{
+			"texte": "tout",
+			"start": 12.559,
+			"end": 12.786
+		},
+		{
+			"texte": "ralentit.",
+			"start": 12.786,
+			"end": 13.24
+		},
+		{
+			"texte": "C'est",
+			"start": 13.59,
+			"end": 13.829
+		},
+		{
+			"texte": "comme",
+			"start": 13.829,
+			"end": 14.127
+		},
+		{
+			"texte": "toi",
+			"start": 14.127,
+			"end": 14.306
+		},
+		{
+			"texte": "le",
+			"start": 14.306,
+			"end": 14.425
+		},
+		{
+			"texte": "matin,",
+			"start": 14.425,
+			"end": 14.724
+		},
+		{
+			"texte": "avant",
+			"start": 14.724,
+			"end": 15.022
+		},
+		{
+			"texte": "le",
+			"start": 15.022,
+			"end": 15.141
+		},
+		{
+			"texte": "café.",
+			"start": 15.141,
+			"end": 15.38
+		},
+		{
+			"texte": "Résultat :",
+			"start": 15.92,
+			"end": 16.36
+		},
+		{
+			"texte": "la",
+			"start": 16.36,
+			"end": 16.47
+		},
+		{
+			"texte": "batterie",
+			"start": 16.47,
+			"end": 16.91
+		},
+		{
+			"texte": "fournit",
+			"start": 16.91,
+			"end": 17.295
+		},
+		{
+			"texte": "moins",
+			"start": 17.295,
+			"end": 17.57
+		},
+		{
+			"texte": "de",
+			"start": 17.57,
+			"end": 17.68
+		},
+		{
+			"texte": "courant,",
+			"start": 17.68,
+			"end": 18.065
+		},
+		{
+			"texte": "et",
+			"start": 18.065,
+			"end": 18.175
+		},
+		{
+			"texte": "le",
+			"start": 18.175,
+			"end": 18.285
+		},
+		{
+			"texte": "téléphone",
+			"start": 18.285,
+			"end": 18.78
+		},
+		{
+			"texte": "croit",
+			"start": 18.78,
+			"end": 19.055
+		},
+		{
+			"texte": "qu'elle",
+			"start": 19.055,
+			"end": 19.385
+		},
+		{
+			"texte": "est",
+			"start": 19.385,
+			"end": 19.55
+		},
+		{
+			"texte": "vide",
+			"start": 19.55,
+			"end": 19.77
+		},
+		{
+			"texte": "alors",
+			"start": 19.77,
+			"end": 20.045
+		},
+		{
+			"texte": "qu'il",
+			"start": 20.045,
+			"end": 20.265
+		},
+		{
+			"texte": "reste",
+			"start": 20.265,
+			"end": 20.54
+		},
+		{
+			"texte": "de",
+			"start": 20.54,
+			"end": 20.65
+		},
+		{
+			"texte": "l'énergie.",
+			"start": 20.65,
+			"end": 21.09
+		},
+		{
+			"texte": "Dès",
+			"start": 21.63,
+			"end": 21.774
+		},
+		{
+			"texte": "qu'elle",
+			"start": 21.774,
+			"end": 22.063
+		},
+		{
+			"texte": "se",
+			"start": 22.063,
+			"end": 22.159
+		},
+		{
+			"texte": "réchauffe,",
+			"start": 22.159,
+			"end": 22.591
+		},
+		{
+			"texte": "elle",
+			"start": 22.591,
+			"end": 22.784
+		},
+		{
+			"texte": "revient.",
+			"start": 22.784,
+			"end": 23.12
+		},
+		{
+			"texte": "Trois",
+			"start": 23.66,
+			"end": 23.905
+		},
+		{
+			"texte": "gestes :",
+			"start": 23.905,
+			"end": 24.2
+		},
+		{
+			"texte": "garde",
+			"start": 24.73,
+			"end": 24.985
+		},
+		{
+			"texte": "ton",
+			"start": 24.985,
+			"end": 25.138
+		},
+		{
+			"texte": "téléphone",
+			"start": 25.138,
+			"end": 25.597
+		},
+		{
+			"texte": "dans",
+			"start": 25.597,
+			"end": 25.802
+		},
+		{
+			"texte": "une",
+			"start": 25.802,
+			"end": 25.955
+		},
+		{
+			"texte": "poche",
+			"start": 25.955,
+			"end": 26.21
+		},
+		{
+			"texte": "intérieure.",
+			"start": 26.21,
+			"end": 26.72
+		},
+		{
+			"texte": "Ne",
+			"start": 27.28,
+			"end": 27.391
+		},
+		{
+			"texte": "le",
+			"start": 27.391,
+			"end": 27.501
+		},
+		{
+			"texte": "charge",
+			"start": 27.501,
+			"end": 27.834
+		},
+		{
+			"texte": "pas",
+			"start": 27.834,
+			"end": 28
+		},
+		{
+			"texte": "quand",
+			"start": 28,
+			"end": 28.276
+		},
+		{
+			"texte": "il",
+			"start": 28.276,
+			"end": 28.387
+		},
+		{
+			"texte": "est",
+			"start": 28.387,
+			"end": 28.553
+		},
+		{
+			"texte": "glacé.",
+			"start": 28.553,
+			"end": 28.83
+		},
+		{
+			"texte": "Et",
+			"start": 29.4,
+			"end": 29.511
+		},
+		{
+			"texte": "réchauffe-le",
+			"start": 29.511,
+			"end": 30.118
+		},
+		{
+			"texte": "doucement",
+			"start": 30.118,
+			"end": 30.616
+		},
+		{
+			"texte": "avant",
+			"start": 30.616,
+			"end": 30.892
+		},
+		{
+			"texte": "de",
+			"start": 30.892,
+			"end": 31.003
+		},
+		{
+			"texte": "t'en",
+			"start": 31.003,
+			"end": 31.168
+		},
+		{
+			"texte": "servir.",
+			"start": 31.168,
+			"end": 31.5
+		},
+		{
+			"texte": "Demain :",
+			"start": 32.06,
+			"end": 32.64
+		},
+		{
+			"texte": "pourquoi",
+			"start": 33.07,
+			"end": 33.498
+		},
+		{
+			"texte": "un",
+			"start": 33.498,
+			"end": 33.605
+		},
+		{
+			"texte": "mot",
+			"start": 33.605,
+			"end": 33.766
+		},
+		{
+			"texte": "de",
+			"start": 33.766,
+			"end": 33.873
+		},
+		{
+			"texte": "passe",
+			"start": 33.873,
+			"end": 34.141
+		},
+		{
+			"texte": "long",
+			"start": 34.141,
+			"end": 34.355
+		},
+		{
+			"texte": "bat",
+			"start": 34.355,
+			"end": 34.516
+		},
+		{
+			"texte": "un",
+			"start": 34.516,
+			"end": 34.623
+		},
+		{
+			"texte": "mot",
+			"start": 34.623,
+			"end": 34.783
+		},
+		{
+			"texte": "de",
+			"start": 34.783,
+			"end": 34.89
+		},
+		{
+			"texte": "passe",
+			"start": 34.89,
+			"end": 35.158
+		},
+		{
+			"texte": "compliqué.",
+			"start": 35.158,
+			"end": 35.64
+		},
+		{
+			"texte": "Il",
+			"start": 36.18,
+			"end": 36.284
+		},
+		{
+			"texte": "s'éteint",
+			"start": 36.284,
+			"end": 36.649
+		},
+		{
+			"texte": "à",
+			"start": 36.649,
+			"end": 36.701
+		},
+		{
+			"texte": "combien,",
+			"start": 36.701,
+			"end": 37.065
+		},
+		{
+			"texte": "chez",
+			"start": 37.065,
+			"end": 37.274
+		},
+		{
+			"texte": "toi ?",
+			"start": 37.274,
+			"end": 37.43
+		}
+	]
+}

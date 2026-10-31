@@ -1,0 +1,82 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-f3hs" class="stage" id="s4-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : un dormeur en pyjama rayé et bonnet de nuit (gag), puis sa tasse de café qui le réveille. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-m8tp" id="s4-dormeur">
+								<path data-hf-id="hf-9mce" d="M 300 930 L 310 700 Q 320 620 420 610 Q 520 620 530 700 L 540 930 Z" fill="#9FD3F0" stroke="#1A1A1A" stroke-width="12" stroke-linejoin="round" />
+								<path data-hf-id="hf-0vf9" d="M 316 680 H 524 M 312 750 H 530 M 308 820 H 534 M 304 890 H 538" stroke="#FFFFFF" stroke-width="14" />
+								<circle data-hf-id="hf-73qs" cx="420" cy="500" r="120" fill="#C68A5E" stroke="#1A1A1A" stroke-width="12" />
+								<path data-hf-id="hf-mkgd" d="M 300 470 Q 330 330 470 360 Q 560 380 620 300 L 640 330 Q 560 430 540 470 Z" fill="#E5383B" stroke="#1A1A1A" stroke-width="10" stroke-linejoin="round" />
+								<circle data-hf-id="hf-5es7" cx="640" cy="310" r="28" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8" />
+								<g data-hf-id="hf-9voa" id="s4-yeux-fermes" stroke="#1A1A1A" stroke-width="10" stroke-linecap="round">
+									<path data-hf-id="hf-c5p6" d="M 360 510 Q 380 525 400 510 M 440 510 Q 460 525 480 510" fill="none" />
+								</g>
+								<g data-hf-id="hf-amve" id="s4-yeux-ouverts" opacity="0" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8">
+									<circle data-hf-id="hf-827b" cx="380" cy="505" r="26" />
+									<circle data-hf-id="hf-96ru" cx="460" cy="505" r="26" />
+									<circle data-hf-id="hf-b3yw" cx="384" cy="508" r="10" fill="#1A1A1A" />
+									<circle data-hf-id="hf-lf9z" cx="464" cy="508" r="10" fill="#1A1A1A" />
+								</g>
+								<path data-hf-id="hf-kb2o" d="M 395 570 Q 420 580 445 570" fill="none" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round" />
+							</g>
+							<g data-hf-id="hf-hefq" class="s4-z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="6" font-family="Kit Poppins" font-weight="800">
+								<text data-hf-id="hf-ygwb" x="560" y="440" font-size="64">Z</text>
+							</g>
+							<g data-hf-id="hf-9ph6" class="s4-z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="6" font-family="Kit Poppins" font-weight="800">
+								<text data-hf-id="hf-nprm" x="610" y="380" font-size="80">Z</text>
+							</g>
+							<!-- La tasse de café et sa vapeur. -->
+							<g data-hf-id="hf-svhr" transform="translate(230 720)">
+								<g data-hf-id="hf-rzot" id="s4-tasse" opacity="0">
+									<path data-hf-id="hf-pyu4" d="M -60 -50 H 60 L 50 50 Q 48 70 28 70 H -28 Q -48 70 -50 50 Z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="10" stroke-linejoin="round" />
+									<path data-hf-id="hf-bqwh" d="M 58 -30 Q 100 -30 96 10 Q 92 40 52 36" fill="none" stroke="#1A1A1A" stroke-width="10" />
+									<ellipse data-hf-id="hf-dvif" cx="0" cy="-46" rx="54" ry="10" fill="#6B3F22" />
+								</g>
+							</g>
+							<g data-hf-id="hf-lr0e" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" fill="none">
+								<path data-hf-id="hf-n9tp" class="s4-vapeur" d="M 210 640 Q 195 610 210 580" />
+								<path data-hf-id="hf-j4zj" class="s4-vapeur" d="M 250 640 Q 265 610 250 580" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-ewwh" id="s4-cafe" class="etiquette" style="left: 250px; top: 200px">AVANT LE CAFÉ</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s4');
+			const tl = S.tl;
+
+			// « comme toi » : le dormeur se tasse, les Z montent.
+			kit.pop(tl, '#s4-dormeur', 0);
+			kit.boucle(tl, '#s4-dormeur', {scaleY: 0.97, transformOrigin: '50% 100%'}, 0.4, S.ancre('@cafe'), 0.8);
+			kit.monte(tl, '.s4-z', 0.2, S.ancre('@cafe'), {dy: -160, cycle: 1});
+			kit.tampon(tl, '#s4-cafe', S.ancre('@matin'));
+			// « café » : la tasse arrive, il ouvre grand les yeux (zoom).
+			const cafe = S.ancre('@cafe');
+			kit.pop(tl, '#s4-tasse', cafe - 0.1);
+			kit.monte(tl, '.s4-vapeur', cafe, S.dur, {dy: -80, cycle: 0.9});
+			tl.set('#s4-yeux-fermes', {opacity: 0}, cafe + 0.15);
+			tl.fromTo('#s4-yeux-ouverts', {opacity: 0, scale: 0.4, svgOrigin: '420 505'}, {opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(3)'}, cafe + 0.15);
+			S.zoomMot('@cafe', [420, 400]);
+
+			S.fin();
+		})();
+	</script>
+</template>

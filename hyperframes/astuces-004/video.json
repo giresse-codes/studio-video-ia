@@ -1,0 +1,36 @@
+{
+	"chaine": "astuces",
+	"numero": "004",
+	"slug": "froid-et-batterie",
+	"script": "channels/astuces/scripts/004-froid-et-batterie.md",
+	"audio": "public/audio/astuces-004.wav",
+	"scenes": [
+		{"id": "s1", "fichier": "compositions/s1-ecran.html", "debut": "@0", "transition": "zoom", "cible": [500, 560]},
+		{"id": "s2", "fichier": "compositions/s2-batterie.html", "debut": "@dans", "transition": "balayage", "cible": [500, 550]},
+		{"id": "s3", "fichier": "compositions/s3-froid.html", "debut": "@quand", "transition": "zoom", "cible": [500, 550]},
+		{"id": "s4", "fichier": "compositions/s4-cafe.html", "debut": "@comme", "transition": "balayage", "cible": [420, 600]},
+		{"id": "s5", "fichier": "compositions/s5-energie.html", "debut": "@resultat", "transition": "zoom", "cible": [480, 560]},
+		{"id": "s6", "fichier": "compositions/s6-gestes.html", "debut": "@trois", "transition": "balayage", "cible": [480, 560]},
+		{"id": "s7", "fichier": "compositions/s7-demain.html", "debut": "@demain", "transition": "zoom", "cible": [480, 560]}
+	],
+	"bruitages": [
+		{"ancre": "@eteint", "son": "boing", "scene": "s1"},
+		{"ancre": "@froid", "son": "tic", "scene": "s1"},
+		{"ancre": "@hasard", "son": "ding-1", "scene": "s1"},
+		{"ancre": "@lithium", "son": "pop-1", "scene": "s2"},
+		{"ancre": "@particules", "son": "pop-2", "scene": "s2"},
+		{"ancre": "@courant", "son": "ding-2", "scene": "s2"},
+		{"ancre": "@ralentit", "son": "boing", "scene": "s3"},
+		{"ancre": "@matin", "son": "pop-1", "scene": "s4"},
+		{"ancre": "@cafe", "son": "ding-1", "scene": "s4"},
+		{"ancre": "@vide", "son": "boing", "scene": "s5"},
+		{"ancre": "@energie", "son": "ding-2", "scene": "s5"},
+		{"ancre": "@revient", "son": "ding-1", "scene": "s5"},
+		{"ancre": "@poche", "son": "pop-1", "scene": "s6"},
+		{"ancre": "@charge", "son": "pop-2", "scene": "s6"},
+		{"ancre": "@rechauffele", "son": "pop-1", "scene": "s6"},
+		{"ancre": "@long", "son": "ding-1", "scene": "s7"},
+		{"ancre": "@il", "son": "boing", "scene": "s7"}
+	],
+	"avatar": {"cote": "droite", "tenue": "blanche"}
+}

@@ -1,0 +1,70 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.s7-champ {
+			position: absolute;
+			left: 200px;
+			height: 110px;
+			border-radius: 26px;
+			background: #ffffff;
+			border: 8px solid #1a1a1a;
+			box-sizing: border-box;
+			padding: 0 28px;
+			font-family: 'Kit Mono';
+			font-size: 56px;
+			line-height: 94px;
+			color: #1a1a1a;
+			white-space: nowrap;
+		}
+		#s7-question {
+			top: 230px;
+			left: 190px;
+			width: 700px;
+			font-size: 84px;
+		}
+	</style>
+	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-kbvr" class="stage" id="s7-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : deux mots de passe (court et compliqué, long et simple), puis la question. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<div data-hf-id="hf-cjf0" id="s7-demain" class="etiquette" style="left: 330px; top: 220px">DEMAIN</div>
+						<div data-hf-id="hf-viw3" id="s7-court" class="s7-champ" style="top: 420px; width: 330px">P@s5!</div>
+						<div data-hf-id="hf-jnjt" id="s7-long" class="s7-champ" style="top: 580px; width: 620px">chat-pluie-lune</div>
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<path data-hf-id="hf-py9e" id="s7-coche" d="M 660 760 L 700 800 L 780 720" fill="none" stroke="#2EB82E" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+						<div data-hf-id="hf-te09" id="s7-question" class="titre"><span data-hf-id="hf-1az7">Il s'éteint</span> <span data-hf-id="hf-jcso">à combien,</span> <span data-hf-id="hf-wc0s">chez toi ?</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s7');
+			const tl = S.tl;
+
+			// « Demain » : l'annonce ; « mot de passe long » / « compliqué » : les deux champs.
+			kit.tampon(tl, '#s7-demain', 0.05);
+			kit.pop(tl, '#s7-long', S.ancre('@long'));
+			kit.trace(tl, '#s7-coche', S.ancre('@bat'), 0.3);
+			kit.pop(tl, '#s7-court', S.ancre('@complique'));
+			S.zoomMot('@long', [480, 620]);
+			// « Il s'éteint » : la question.
+			const il = S.ancre('@il');
+			tl.to(['#s7-demain', '#s7-court', '#s7-long', '#s7-coche'], {opacity: 0, y: -30, duration: 0.25}, il - 0.25);
+			kit.cascade(tl, '#s7-question span', il, 0.25);
+
+			S.fin();
+		})();
+	</script>
+</template>

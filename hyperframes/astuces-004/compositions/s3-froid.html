@@ -1,0 +1,63 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-nz6b" class="stage" id="s3-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : la même batterie sous la neige ; le givre la recouvre et les particules ralentissent. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-2kda" id="s3-batterie">
+								<rect data-hf-id="hf-pd4o" x="170" y="380" width="640" height="340" rx="40" fill="#F4F1EA" stroke="#1A1A1A" stroke-width="14" />
+								<rect data-hf-id="hf-dkxd" x="810" y="490" width="40" height="120" rx="10" fill="#BFC5CC" stroke="#1A1A1A" stroke-width="10" />
+								<rect data-hf-id="hf-bblz" x="200" y="410" width="40" height="280" rx="10" fill="#9F8FC7" stroke="#1A1A1A" stroke-width="6" />
+								<rect data-hf-id="hf-64hu" x="740" y="410" width="40" height="280" rx="10" fill="#7CC8F0" stroke="#1A1A1A" stroke-width="6" />
+								<path data-hf-id="hf-ztef" d="M 490 410 V 690" stroke="#BFC5CC" stroke-width="6" stroke-dasharray="16 14" />
+								<circle data-hf-id="hf-uk1a" class="s3-part" cx="280" cy="470" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-evar" class="s3-part" cx="340" cy="560" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-nyiu" class="s3-part" cx="300" cy="640" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-w63i" class="s3-part" cx="420" cy="500" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-t5oe" class="s3-part" cx="460" cy="610" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-u3q9" class="s3-part" cx="520" cy="470" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-dimb" class="s3-part" cx="580" cy="580" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" /><circle data-hf-id="hf-aeic" class="s3-part" cx="640" cy="520" r="22" fill="#FFC857" stroke="#1A1A1A" stroke-width="6" />
+							</g>
+							<rect data-hf-id="hf-g8y9" id="s3-givre" x="170" y="380" width="640" height="340" rx="40" fill="#7CC8F0" opacity="0" />
+							<g data-hf-id="hf-fybd" fill="#FFFFFF" stroke="#7CC8F0" stroke-width="4">
+								<circle data-hf-id="hf-bdnb" class="s3-neige" cx="220" cy="200" r="16" />
+								<circle data-hf-id="hf-tq3v" class="s3-neige" cx="380" cy="160" r="12" />
+								<circle data-hf-id="hf-pwvl" class="s3-neige" cx="540" cy="210" r="18" />
+								<circle data-hf-id="hf-tp1c" class="s3-neige" cx="700" cy="170" r="14" />
+								<circle data-hf-id="hf-ml82" class="s3-neige" cx="820" cy="230" r="12" />
+								<circle data-hf-id="hf-o3qc" class="s3-neige" cx="300" cy="260" r="10" />
+								<circle data-hf-id="hf-muaq" class="s3-neige" cx="620" cy="250" r="12" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-eaaa" id="s3-ralentit" class="etiquette" style="left: 200px; top: 770px">TOUT RALENTIT</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s3');
+			const tl = S.tl;
+
+			// Début : les particules bougent encore vite ; « froid » : la neige tombe, le givre gagne.
+			tl.fromTo('.s3-part', {x: 0}, {x: (i) => [400, 340, 380, 260, 220, 160, 100, 40][i], duration: 0.7, ease: 'sine.inOut', yoyo: true, repeat: 1, stagger: 0.06}, 0);
+			const froid = S.ancre('@froid');
+			tl.fromTo('.s3-neige', {y: -120, opacity: 0}, {y: 560, opacity: 1, duration: 2.4, ease: 'none', stagger: 0.12}, froid - 0.4);
+			tl.to('#s3-givre', {opacity: 0.45, duration: 1, ease: 'power1.in'}, froid);
+			// « ralentit » : elles se figent, bleuies, presque immobiles (zoom).
+			const lent = S.ancre('@ralentit');
+			tl.to('.s3-part', {x: (i) => [60, 50, 40, 30, 30, 20, 10, 5][i], fill: '#BFE6F8', duration: 1.6, ease: 'power3.out'}, lent - 0.2);
+			kit.tampon(tl, '#s3-ralentit', lent);
+			S.zoomMot('@ralentit', [300, 560]);
+
+			S.fin();
+		})();
+	</script>
+</template>
