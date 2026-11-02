@@ -1,0 +1,61 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.titre.grand {
+			left: 250px;
+			width: 580px;
+			font-size: 92px;
+		}
+		.v {
+			color: var(--violet);
+		}
+		.etiquette.violet {
+			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
+			color: #ffffff;
+		}
+	</style>
+	<div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-f3hs" class="stage" id="s4-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : une loupe qui cherche partout, puis s'arrête net ; « Arrêtez de chercher ». -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-dbqk" id="s4-loupe">
+								<circle data-hf-id="hf-wrwk" cx="540" cy="600" r="130" fill="#EDE7FF" stroke="#0E0E12" stroke-width="22" />
+								<path data-hf-id="hf-t37t" d="M 630 690 L 760 820" stroke="#0E0E12" stroke-width="40" stroke-linecap="round" />
+							</g>
+							<g data-hf-id="hf-690q" id="s4-croix" stroke="#FF4D5E" stroke-width="26" stroke-linecap="round" opacity="0">
+								<path data-hf-id="hf-m0ta" d="M 430 490 L 650 710 M 650 490 L 430 710" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-fbek" id="s4-titre" class="titre grand" style="top: 960px"><span data-hf-id="hf-v778">Arrêtez de</span> <span data-hf-id="hf-9hgd" class="v">chercher.</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s4');
+			const tl = S.tl;
+
+			// « Alors » : la loupe cherche dans tous les sens.
+			kit.pop(tl, '#s4-loupe', 0.05);
+			tl.to('#s4-loupe', {keyframes: [{x: -120, y: -60, duration: 0.3}, {x: 110, y: -20, duration: 0.3}, {x: -60, y: 70, duration: 0.3}, {x: 0, y: 0, duration: 0.2}], ease: 'sine.inOut'}, 0.15);
+			// « arrêtez » : elle s'arrête net, barrée (zoom) ; le titre.
+			const stop = S.ancre('@arretez');
+			kit.pop(tl, '#s4-croix', stop);
+			kit.cascade(tl, '#s4-titre span', stop, 0.3);
+			S.zoomMot('@arretez', [540, 640]);
+			S.fin();
+		})();
+	</script>
+</template>

@@ -1,12 +1,14 @@
 // Règles du studio, en chiffres. Lues par les outils (nouvelle-video, preparer, verifier) ;
 // STYLE.md et CLAUDE.md les décrivent en clair : les garder alignés.
 
-export type Chaine = 'astuces' | 'devsteach' | 'mode-survie';
+export type Chaine = 'astuces' | 'devsteach' | 'mode-survie' | 'giresse';
 
 export const CHAINES: Record<Chaine, {nom: string}> = {
 	astuces: {nom: 'Astuces'},
 	devsteach: {nom: 'DevsTeach'},
 	'mode-survie': {nom: 'Mode Survie'},
+	// Publicités du studio lui-même (pas une chaîne de contenu).
+	giresse: {nom: 'GIRESSE Digital Studio'},
 };
 
 // La durée suit le contenu : pas de plafond fixe, seulement des repères.

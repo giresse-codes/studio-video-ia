@@ -49,6 +49,21 @@
 	--socle: linear-gradient(180deg, #ebddbb 0%, #dcc79c 60%, #c9b07e 100%);
 }
 
+/* Palette « Studio » (channels/giresse/STYLE.md) : blanc pur, encre, accent violet. */
+.theme-studio {
+	--mur-haut: #ffffff;
+	--mur-bas: #ffffff;
+	--sol-haut: #f7f5ff;
+	--sol-bas: #efeaff;
+	--encre: #0e0e12;
+	--violet: #6c3bff;
+	--violet-clair: #ede7ff;
+	--vert: #25d366;
+	--rouge: #ff4d5e;
+	--ombre: 0 30px 60px rgba(40, 20, 90, 0.16), 0 8px 18px rgba(40, 20, 90, 0.1);
+	--socle: linear-gradient(180deg, #efeaff 0%, #f7f5ff 100%);
+}
+
 /* Palette « Alerte » (channels/mode-survie/STYLE.md) : nuit, eau, rouge alerte, orange danger, vert sortie. */
 .theme-alerte {
 	--mur-haut: #16233f;

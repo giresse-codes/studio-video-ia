@@ -1,0 +1,69 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.titre.grand {
+			left: 250px;
+			width: 580px;
+			font-size: 92px;
+		}
+		.v {
+			color: var(--violet);
+		}
+		.etiquette.violet {
+			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
+			color: #ffffff;
+		}
+	</style>
+	<div data-hf-id="hf-k4dx" id="root" data-composition-id="s10" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-lapl" class="stage" id="s10-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le logo GIRESSE, le bouton vert « Écrivez-nous sur WhatsApp » (bulle dessinée, sans logo officiel), « Aujourd'hui ». -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-hzwn" id="s10-logo">
+								<rect data-hf-id="hf-mfvb" x="400" y="200" width="280" height="280" rx="70" fill="#6C3BFF" />
+								<path data-hf-id="hf-8fhe" d="M 610 295 A 90 90 0 1 0 610 385 H 540" fill="none" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" />
+							</g>
+							<g data-hf-id="hf-lwoz" id="s10-bouton" opacity="0">
+								<rect data-hf-id="hf-qez7" x="170" y="800" width="740" height="150" rx="75" fill="#25D366" />
+								<path data-hf-id="hf-0xhn" d="M 260 875 m -42 0 a 42 42 0 1 1 18 34 l -26 10 l 8 -24 a 42 42 0 0 1 0 -20 Z" fill="#FFFFFF" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-fy3j" id="s10-nom" class="titre grand" style="top: 510px; font-size: 96px">GIRESSE</div>
+						<div data-hf-id="hf-4i8v" id="s10-studio" class="titre grand" style="top: 625px; font-size: 56px; color: #6C3BFF">DIGITAL STUDIO</div>
+						<div data-hf-id="hf-v0zt" id="s10-texte" class="titre grand" style="top: 818px; left: 330px; width: 540px; font-size: 50px; line-height: 1.15; text-align: left; color: #FFFFFF">Écrivez-nous<br data-hf-id="hf-x5px" />sur WhatsApp</div>
+						<div data-hf-id="hf-lw26" id="s10-auj" class="etiquette violet" style="left: 330px; top: 1010px">Aujourd'hui.</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s10');
+			const tl = S.tl;
+
+			// « GIRESSE Digital Studio » : le logo et le nom.
+			kit.chute(tl, '#s10-logo', 0);
+			kit.cascade(tl, '#s10-nom', 0.1);
+			kit.cascade(tl, '#s10-studio', S.ancre('@studio'));
+			// « Écrivez-nous sur WhatsApp » : le bouton vert (zoom), qui pulse jusqu'à la fin.
+			const ecrire = S.ancre('@ecriveznous');
+			kit.pop(tl, '#s10-bouton', ecrire);
+			kit.cascade(tl, '#s10-texte', ecrire + 0.1);
+			S.zoomMot('@whatsapp', [540, 875]);
+			kit.boucle(tl, '#s10-bouton', {scale: 1.04, svgOrigin: '540 875'}, S.ancre('@whatsapp') + 1.4, S.dur, 0.8);
+			// « Aujourd'hui » : l'étiquette.
+			kit.tampon(tl, '#s10-auj', S.ancre('@aujourdhui'));
+			S.fin();
+		})();
+	</script>
+</template>

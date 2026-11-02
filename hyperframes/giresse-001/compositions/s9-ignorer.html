@@ -1,0 +1,66 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.titre.grand {
+			left: 250px;
+			width: 580px;
+			font-size: 92px;
+		}
+		.v {
+			color: var(--violet);
+		}
+		.etiquette.violet {
+			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
+			color: #ffffff;
+		}
+	</style>
+	<div data-hf-id="hf-0w2b" id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-t7pl" class="stage" id="s9-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : « Vous » gère (mallette), « Nous » rend visible (mégaphone) ; puis « impossible à ignorer » en grand. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-uvt8" id="s9-mallette">
+								<rect data-hf-id="hf-93xr" x="210" y="520" width="240" height="170" rx="24" fill="#EDE7FF" stroke="#0E0E12" stroke-width="12" />
+								<path data-hf-id="hf-9lhz" d="M 290 520 V 485 H 370 V 520" fill="none" stroke="#0E0E12" stroke-width="12" />
+							</g>
+							<g data-hf-id="hf-1mbq" id="s9-megaphone" opacity="0">
+								<path data-hf-id="hf-jyt8" d="M 640 560 L 820 480 V 720 L 640 640 Z" fill="#6C3BFF" stroke="#0E0E12" stroke-width="12" stroke-linejoin="round" />
+								<rect data-hf-id="hf-h9r4" x="600" y="560" width="50" height="80" rx="12" fill="#0E0E12" />
+								<g data-hf-id="hf-26jz" stroke="#FFD23F" stroke-width="12" stroke-linecap="round"><path data-hf-id="hf-lm44" d="M 860 520 L 900 490 M 870 600 H 910 M 860 680 L 900 710" /></g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-g01u" id="s9-vous" class="titre grand" style="top: 330px; left: 250px; width: 280px">Vous</div>
+						<div data-hf-id="hf-g5xb" id="s9-nous" class="titre grand" style="top: 330px; left: 560px; width: 280px"><span data-hf-id="hf-6upq" class="v">Nous</span></div>
+						<div data-hf-id="hf-ldsh" id="s9-ignorer" class="titre grand" style="top: 820px; font-size: 88px"><span data-hf-id="hf-ogg4">Impossible</span> <span data-hf-id="hf-u73n" class="v">à ignorer.</span></div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s9');
+			const tl = S.tl;
+
+			// « Vous, vous gérez votre business » : la mallette.
+			kit.cascade(tl, '#s9-vous', 0.05);
+			kit.pop(tl, '#s9-mallette', S.ancre('@gerez'));
+			// « Nous » : le mégaphone ; « impossible à ignorer » : en grand (zoom).
+			const nous = S.ancre('@nous');
+			kit.cascade(tl, '#s9-nous', nous);
+			kit.pop(tl, '#s9-megaphone', S.ancre('@rend'));
+			kit.cascade(tl, '#s9-ignorer span', S.ancre('@impossible'), 0.3);
+			S.zoomMot('@ignorer', [540, 820]);
+			S.fin();
+		})();
+	</script>
+</template>

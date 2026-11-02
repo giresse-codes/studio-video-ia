@@ -1,0 +1,69 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.titre.grand {
+			left: 250px;
+			width: 580px;
+			font-size: 92px;
+		}
+		.v {
+			color: var(--violet);
+		}
+		.etiquette.violet {
+			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
+			color: #ffffff;
+		}
+	</style>
+	<div data-hf-id="hf-bmd6" id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-1eiu" class="stage" id="s2-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : une flèche qui tourne en rond, et trois cartes identiques « la même chose ». -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-ffr7" id="s2-boucle" fill="none" stroke="#6C3BFF" stroke-width="26" stroke-linecap="round">
+								<path data-hf-id="hf-jvrc" d="M 700 540 A 160 160 0 1 1 640 420" />
+								<path data-hf-id="hf-2o4m" d="M 600 380 L 650 420 L 600 470" stroke-linejoin="round" />
+							</g>
+							<g data-hf-id="hf-u31k" stroke="#0E0E12" stroke-width="10" fill="#FFFFFF">
+								<rect data-hf-id="hf-zv7a" class="s2-carte" x="200" y="820" width="200" height="140" rx="24" />
+								<rect data-hf-id="hf-mtyo" class="s2-carte" x="440" y="820" width="200" height="140" rx="24" />
+								<rect data-hf-id="hf-sf7e" class="s2-carte" x="680" y="820" width="200" height="140" rx="24" />
+							</g>
+							<g data-hf-id="hf-fwoc" fill="#FF4D5E">
+								<circle data-hf-id="hf-4f3o" class="s2-carte" cx="300" cy="890" r="26" />
+								<circle data-hf-id="hf-o3f2" class="s2-carte" cx="540" cy="890" r="26" />
+								<circle data-hf-id="hf-rjhk" class="s2-carte" cx="780" cy="890" r="26" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-rjwy" id="s2-fois" class="titre grand" style="top: 280px">Chaque fois…</div>
+						<div data-hf-id="hf-nrn3" id="s2-meme" class="etiquette violet" style="left: 290px; top: 1010px">la même chose</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s2');
+			const tl = S.tl;
+
+			// « Mais chaque fois » : la flèche tourne en rond.
+			kit.pop(tl, '#s2-boucle', 0.05);
+			tl.fromTo('#s2-boucle', {rotation: 0, svgOrigin: '540 540'}, {rotation: 720, duration: S.dur, ease: 'none'}, 0);
+			kit.cascade(tl, '#s2-fois', S.ancre('@chaque'));
+			// « même chose » : trois cartes identiques.
+			kit.cascade(tl, '.s2-carte', S.ancre('@meme'), 0.1);
+			kit.tampon(tl, '#s2-meme', S.ancre('@chose'));
+			S.zoomMot('@meme', [540, 600]);
+			S.fin();
+		})();
+	</script>
+</template>

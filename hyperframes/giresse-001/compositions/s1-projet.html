@@ -1,0 +1,71 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.titre.grand {
+			left: 250px;
+			width: 580px;
+			font-size: 92px;
+		}
+		.v {
+			color: var(--violet);
+		}
+		.etiquette.violet {
+			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
+			color: #ffffff;
+		}
+	</style>
+	<div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-jkxd" class="stage" id="s1-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : « Vous avez », puis trois cartes (projet, marque, business) avec leur icône ; « connu » : un projecteur violet. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-1lrh" id="s1-faisceau" opacity="0">
+								<path data-hf-id="hf-8njz" d="M 540 120 L 200 1000 L 880 1000 Z" fill="#EDE7FF" />
+							</g>
+							<g data-hf-id="hf-d16z" fill="none" stroke="#0E0E12" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+								<g data-hf-id="hf-acnq" id="s1-i1"><circle data-hf-id="hf-1fwg" cx="260" cy="440" r="46" fill="#FFD23F" /><path data-hf-id="hf-ycpp" d="M 245 495 H 275 M 248 515 H 272" /></g>
+								<g data-hf-id="hf-6ejp" id="s1-i2"><path data-hf-id="hf-65jo" d="M 215 600 H 290 L 315 640 L 290 680 H 215 Z" fill="#EDE7FF" /><circle data-hf-id="hf-c77v" cx="240" cy="640" r="9" fill="#0E0E12" /></g>
+								<g data-hf-id="hf-5mvw" id="s1-i3"><path data-hf-id="hf-r738" d="M 210 800 H 310 V 880 H 210 Z" fill="#FFFFFF" /><path data-hf-id="hf-w403" d="M 200 800 L 220 760 H 300 L 320 800 Z" fill="#6C3BFF" /><path data-hf-id="hf-2bx2" d="M 245 880 V 840 H 275 V 880" /></g>
+							</g>
+						</svg>
+						<div data-hf-id="hf-ro05" id="s1-avez" class="etiquette violet" style="left: 400px; top: 230px">Vous avez…</div>
+						<div data-hf-id="hf-xjp0" id="s1-projet" class="titre grand" style="top: 390px; left: 350px; width: 560px; text-align: left; font-size: 78px; white-space: nowrap">un projet</div>
+						<div data-hf-id="hf-hyj5" id="s1-marque" class="titre grand" style="top: 590px; left: 350px; width: 560px; text-align: left; font-size: 78px; white-space: nowrap">une marque</div>
+						<div data-hf-id="hf-q2nm" id="s1-business" class="titre grand" style="top: 790px; left: 350px; width: 560px; text-align: left; font-size: 78px; white-space: nowrap">un <span data-hf-id="hf-x41b" class="v">business</span></div>
+						<div data-hf-id="hf-tusm" id="s1-connu" class="etiquette violet" style="left: 260px; top: 1010px">qui mérite d'être connu</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s1');
+			const tl = S.tl;
+
+			// Dès 0 s : « Vous avez… ».
+			kit.tampon(tl, '#s1-avez', 0.05);
+			// « projet », « marque », « business » : chaque carte claque avec son icône.
+			for (const [mot, id] of [['@projet', '1'], ['@marque', '2'], ['@business', '3']]) {
+				const t = S.ancre(mot);
+				kit.pop(tl, `#s1-i${id}`, t);
+				tl.fromTo(['#s1-projet', '#s1-marque', '#s1-business'][Number(id) - 1], {opacity: 0, x: -60}, {opacity: 1, x: 0, duration: 0.3, ease: 'back.out(2)'}, t);
+			}
+			// « connu » : le projecteur s'allume (zoom).
+			const connu = S.ancre('@connu');
+			tl.to('#s1-faisceau', {opacity: 1, duration: 0.3}, connu - 0.3);
+			kit.tampon(tl, '#s1-connu', S.ancre('@merite'));
+			S.zoomMot('@connu', [540, 800]);
+			S.fin();
+		})();
+	</script>
+</template>

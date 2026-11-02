@@ -1,0 +1,66 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		.titre.grand {
+			left: 250px;
+			width: 580px;
+			font-size: 92px;
+		}
+		.v {
+			color: var(--violet);
+		}
+		.etiquette.violet {
+			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
+			color: #ffffff;
+		}
+	</style>
+	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div data-hf-id="hf-cr05" class="stage" id="s5-stage">
+			<div data-hf-id="hf-12x1" class="cam">
+				<div data-hf-id="hf-ovv4" class="punch">
+					<div data-hf-id="hf-tbpr" class="fond">
+						<div data-hf-id="hf-mit3" class="decor"></div>
+					</div>
+					<!-- Objets : le logo GIRESSE (monogramme G dessiné), le nom, puis « s'occupe de tout » et trois icônes qui tournent autour. -->
+					<div data-hf-id="hf-iyzb" class="objets">
+						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
+							<g data-hf-id="hf-2rr9" id="s5-logo">
+								<rect data-hf-id="hf-if5a" x="400" y="300" width="280" height="280" rx="70" fill="#6C3BFF" />
+								<path data-hf-id="hf-agt4" d="M 610 395 A 90 90 0 1 0 610 485 H 540" fill="none" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" />
+							</g>
+							<g data-hf-id="hf-9ho6" fill="#EDE7FF" stroke="#0E0E12" stroke-width="8">
+								<circle data-hf-id="hf-949n" class="s5-orbite" cx="300" cy="420" r="50" />
+								<circle data-hf-id="hf-8zu7" class="s5-orbite" cx="780" cy="420" r="50" />
+								<circle data-hf-id="hf-ogjl" class="s5-orbite" cx="540" cy="200" r="50" />
+							</g>
+						</svg>
+						<div data-hf-id="hf-9koe" id="s5-nom" class="titre grand" style="top: 640px; font-size: 100px">GIRESSE</div>
+						<div data-hf-id="hf-b2z6" id="s5-studio" class="titre grand" style="top: 770px; font-size: 56px; color: #6C3BFF">DIGITAL STUDIO</div>
+						<div data-hf-id="hf-j753" id="s5-tout" class="etiquette violet" style="left: 300px; top: 940px">s'occupe de tout</div>
+					</div>
+					<div data-hf-id="hf-xfco" class="avant"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const S = kit.scene('s5');
+			const tl = S.tl;
+
+			// « GIRESSE » : le logo se pose, le nom arrive ; « Studio ».
+			kit.chute(tl, '#s5-logo', 0);
+			kit.cascade(tl, '#s5-nom', 0.15);
+			kit.cascade(tl, '#s5-studio', S.ancre('@studio'));
+			S.zoomMot('@studio', [540, 560]);
+			// « tout » : l'étiquette et les icônes en orbite.
+			kit.tampon(tl, '#s5-tout', S.ancre('@occupe'));
+			kit.cascade(tl, '.s5-orbite', S.ancre('@tout'), 0.08);
+			tl.to('.s5-orbite', {y: -16, duration: 0.4, yoyo: true, repeat: 3, ease: 'sine.inOut', stagger: 0.1}, S.ancre('@tout') + 0.4);
+			S.fin();
+		})();
+	</script>
+</template>

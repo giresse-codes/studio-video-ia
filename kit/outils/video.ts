@@ -19,7 +19,7 @@ export type Video = {
 	// Tenue de l'avatar : blanche (par défaut) ou bleue. `false` : vidéo sans avatar (Mode Survie).
 	avatar?: false | {cote?: 'droite' | 'gauche'; tenue?: 'blanche' | 'bleue'};
 	// Palette de la vidéo (STYLE.md de la chaîne) : « atelier » (par défaut), « schema » ou « alerte ». Le style « Écran code » s'utilise dans une scène.
-	theme?: 'atelier' | 'schema' | 'alerte';
+	theme?: 'atelier' | 'schema' | 'alerte' | 'studio';
 	// Calques fixes sur toute la vidéo, au-dessus des scènes (horodatage, compte à rebours, jauge…). Leurs ancres se lisent depuis 0 s.
 	calques?: {id: string; fichier: string}[];
 };

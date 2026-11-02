@@ -1,0 +1,1031 @@
+{
+	"source": "estimation",
+	"raison": "Whisper désactivé (KIT_WHISPER=non)",
+	"dureeSec": 29.949,
+	"voixCreteDb": -2.209,
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-projet.html",
+			"debut": 0,
+			"fin": 4.51,
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@0"
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-meme-chose.html",
+			"debut": 4.51,
+			"fin": 6.7,
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@mais"
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-manques.html",
+			"debut": 6.7,
+			"fin": 11.98,
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@pas"
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-chercher.html",
+			"debut": 11.98,
+			"fin": 13.48,
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@alors"
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-logo.html",
+			"debut": 13.48,
+			"fin": 15.255,
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@giresse"
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-pubs.html",
+			"debut": 15.255,
+			"fin": 17.354,
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@des"
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-sites.html",
+			"debut": 17.354,
+			"fin": 18.914,
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@des"
+		},
+		{
+			"id": "s8",
+			"fichier": "compositions/s8-applis.html",
+			"debut": 18.914,
+			"fin": 21.9,
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@des"
+		},
+		{
+			"id": "s9",
+			"fichier": "compositions/s9-ignorer.html",
+			"debut": 21.9,
+			"fin": 25.99,
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@vous#2"
+		},
+		{
+			"id": "s10",
+			"fichier": "compositions/s10-whatsapp.html",
+			"debut": 25.99,
+			"fin": 29.949,
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			],
+			"ancreDebut": "@giresse"
+		}
+	],
+	"calques": [],
+	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@connu",
+			"mot": "connu.",
+			"motSec": 3.692,
+			"sec": 3.692
+		},
+		{
+			"scene": "s1",
+			"ancre": "@merite",
+			"mot": "mérite",
+			"motSec": 3.082,
+			"sec": 3.082
+		},
+		{
+			"scene": "s2",
+			"ancre": "@chaque",
+			"mot": "chaque",
+			"motSec": 4.732,
+			"sec": 4.732
+		},
+		{
+			"scene": "s2",
+			"ancre": "@meme",
+			"mot": "même",
+			"motSec": 5.62,
+			"sec": 5.62
+		},
+		{
+			"scene": "s2",
+			"ancre": "@chose",
+			"mot": "chose.",
+			"motSec": 5.842,
+			"sec": 5.842
+		},
+		{
+			"scene": "s3",
+			"ancre": "@outils",
+			"mot": "outils.",
+			"motSec": 7.138,
+			"sec": 7.138
+		},
+		{
+			"scene": "s3",
+			"ancre": "@bon",
+			"mot": "bon",
+			"motSec": 8.259,
+			"sec": 8.259
+		},
+		{
+			"scene": "s3",
+			"ancre": "@visuel",
+			"mot": "visuel.",
+			"motSec": 8.433,
+			"sec": 8.433
+		},
+		{
+			"scene": "s3",
+			"ancre": "@personne",
+			"mot": "personne",
+			"motSec": 10.21,
+			"sec": 10.21
+		},
+		{
+			"scene": "s3",
+			"ancre": "@surtout",
+			"mot": "surtout…",
+			"motSec": 9.346,
+			"sec": 9.346
+		},
+		{
+			"scene": "s3",
+			"ancre": "@confiance",
+			"mot": "confiance.",
+			"motSec": 11.053,
+			"sec": 11.053
+		},
+		{
+			"scene": "s4",
+			"ancre": "@arretez",
+			"mot": "arrêtez",
+			"motSec": 12.253,
+			"sec": 12.253
+		},
+		{
+			"scene": "s5",
+			"ancre": "@studio",
+			"mot": "Studio",
+			"motSec": 14.233,
+			"sec": 14.233
+		},
+		{
+			"scene": "s5",
+			"ancre": "@occupe",
+			"mot": "s'occupe",
+			"motSec": 14.556,
+			"sec": 14.556
+		},
+		{
+			"scene": "s5",
+			"ancre": "@tout",
+			"mot": "tout :",
+			"motSec": 15.04,
+			"sec": 15.04
+		},
+		{
+			"scene": "s6",
+			"ancre": "@publicites",
+			"mot": "publicités",
+			"motSec": 15.417,
+			"sec": 15.417
+		},
+		{
+			"scene": "s6",
+			"ancre": "@arretent",
+			"mot": "arrêtent",
+			"motSec": 16.493,
+			"sec": 16.493
+		},
+		{
+			"scene": "s6",
+			"ancre": "@scroll",
+			"mot": "scroll,",
+			"motSec": 17.031,
+			"sec": 17.031
+		},
+		{
+			"scene": "s7",
+			"ancre": "@sites",
+			"mot": "sites",
+			"motSec": 17.515,
+			"sec": 17.515
+		},
+		{
+			"scene": "s7",
+			"ancre": "@vendent",
+			"mot": "vendent",
+			"motSec": 18.107,
+			"sec": 18.107
+		},
+		{
+			"scene": "s8",
+			"ancre": "@applications",
+			"mot": "applications",
+			"motSec": 19.075,
+			"sec": 19.075
+		},
+		{
+			"scene": "s8",
+			"ancre": "@travaillent",
+			"mot": "travaillent",
+			"motSec": 19.882,
+			"sec": 19.882
+		},
+		{
+			"scene": "s8",
+			"ancre": "@dormez",
+			"mot": "dormez.",
+			"motSec": 21.227,
+			"sec": 21.227
+		},
+		{
+			"scene": "s9",
+			"ancre": "@gerez",
+			"mot": "gérez",
+			"motSec": 22.436,
+			"sec": 22.436
+		},
+		{
+			"scene": "s9",
+			"ancre": "@nous",
+			"mot": "Nous,",
+			"motSec": 23.641,
+			"sec": 23.641
+		},
+		{
+			"scene": "s9",
+			"ancre": "@rend",
+			"mot": "rend",
+			"motSec": 24.177,
+			"sec": 24.177
+		},
+		{
+			"scene": "s9",
+			"ancre": "@impossible",
+			"mot": "impossible",
+			"motSec": 24.445,
+			"sec": 24.445
+		},
+		{
+			"scene": "s9",
+			"ancre": "@ignorer",
+			"mot": "ignorer.",
+			"motSec": 25.181,
+			"sec": 25.181
+		},
+		{
+			"scene": "s10",
+			"ancre": "@studio",
+			"mot": "Studio.",
+			"motSec": 26.879,
+			"sec": 26.879
+		},
+		{
+			"scene": "s10",
+			"ancre": "@ecriveznous",
+			"mot": "Écrivez-nous",
+			"motSec": 27.58,
+			"sec": 27.58
+		},
+		{
+			"scene": "s10",
+			"ancre": "@whatsapp",
+			"mot": "WhatsApp.",
+			"motSec": 28.267,
+			"sec": 28.267
+		},
+		{
+			"scene": "s10",
+			"ancre": "@aujourdhui",
+			"mot": "Aujourd'hui.",
+			"motSec": 28.99,
+			"sec": 28.99
+		}
+	],
+	"bruitages": [
+		{
+			"sec": 0.2,
+			"son": "pop-1",
+			"cause": "premier son"
+		},
+		{
+			"sec": 0.613,
+			"son": "pop-1",
+			"cause": "@projet (s1)"
+		},
+		{
+			"sec": 1.58,
+			"son": "pop-2",
+			"cause": "@marque (s1)"
+		},
+		{
+			"sec": 2.471,
+			"son": "pop-1",
+			"cause": "@business (s1)"
+		},
+		{
+			"sec": 3.692,
+			"son": "ding-1",
+			"cause": "@connu (s1)"
+		},
+		{
+			"sec": 4.46,
+			"son": "whoosh-1",
+			"cause": "transition vers s2"
+		},
+		{
+			"sec": 5.62,
+			"son": "boing",
+			"cause": "@meme (s2)"
+		},
+		{
+			"sec": 6.65,
+			"son": "whoosh-2",
+			"cause": "transition vers s3"
+		},
+		{
+			"sec": 7.138,
+			"son": "tic",
+			"cause": "@outils (s3)"
+		},
+		{
+			"sec": 8.433,
+			"son": "tic",
+			"cause": "@visuel (s3)"
+		},
+		{
+			"sec": 11.053,
+			"son": "boing",
+			"cause": "@confiance (s3)"
+		},
+		{
+			"sec": 11.93,
+			"son": "whoosh-3",
+			"cause": "transition vers s4"
+		},
+		{
+			"sec": 12.253,
+			"son": "pop-2",
+			"cause": "@arretez (s4)"
+		},
+		{
+			"sec": 13.43,
+			"son": "whoosh-1",
+			"cause": "transition vers s5"
+		},
+		{
+			"sec": 14.233,
+			"son": "ding-2",
+			"cause": "@studio (s5)"
+		},
+		{
+			"sec": 15.04,
+			"son": "pop-1",
+			"cause": "@tout (s5)"
+		},
+		{
+			"sec": 15.205,
+			"son": "whoosh-2",
+			"cause": "transition vers s6"
+		},
+		{
+			"sec": 17.031,
+			"son": "pop-2",
+			"cause": "@scroll (s6)"
+		},
+		{
+			"sec": 17.304,
+			"son": "whoosh-3",
+			"cause": "transition vers s7"
+		},
+		{
+			"sec": 18.107,
+			"son": "ding-1",
+			"cause": "@vendent (s7)"
+		},
+		{
+			"sec": 18.864,
+			"son": "whoosh-1",
+			"cause": "transition vers s8"
+		},
+		{
+			"sec": 21.227,
+			"son": "pop-1",
+			"cause": "@dormez (s8)"
+		},
+		{
+			"sec": 21.85,
+			"son": "whoosh-2",
+			"cause": "transition vers s9"
+		},
+		{
+			"sec": 23.641,
+			"son": "pop-2",
+			"cause": "@nous (s9)"
+		},
+		{
+			"sec": 25.181,
+			"son": "ding-2",
+			"cause": "@ignorer (s9)"
+		},
+		{
+			"sec": 25.94,
+			"son": "whoosh-3",
+			"cause": "transition vers s10"
+		},
+		{
+			"sec": 28.267,
+			"son": "pop-1",
+			"cause": "@whatsapp (s10)"
+		},
+		{
+			"sec": 28.99,
+			"son": "ding-1",
+			"cause": "@aujourdhui (s10)"
+		}
+	],
+	"phrases": [
+		{
+			"texte": "Vous avez un projet…",
+			"emotion": "ton calme, presque confidentiel",
+			"pose": "neutre",
+			"start": 0,
+			"end": 0.98
+		},
+		{
+			"texte": "une marque…",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 1.38,
+			"end": 1.98
+		},
+		{
+			"texte": "un business qui mérite d'être connu.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 2.36,
+			"end": 3.97
+		},
+		{
+			"texte": "Mais chaque fois, c'est la même chose.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 4.51,
+			"end": 6.12
+		},
+		{
+			"texte": "Pas les bons outils.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 6.7,
+			"end": 7.4
+		},
+		{
+			"texte": "Pas le bon visuel.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 7.97,
+			"end": 8.78
+		},
+		{
+			"texte": "Et surtout…",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 9.21,
+			"end": 9.82
+		},
+		{
+			"texte": "personne à qui faire confiance.",
+			"emotion": null,
+			"pose": "neutre",
+			"start": 10.21,
+			"end": 11.5
+		},
+		{
+			"texte": "Alors arrêtez de chercher.",
+			"emotion": "le ton remonte, assuré",
+			"pose": "explique",
+			"start": 11.98,
+			"end": 13.18
+		},
+		{
+			"texte": "GIRESSE Digital Studio s'occupe de tout : des publicités animées qui arrêtent le scroll, des sites web qui vendent pour vous, des applications qui travaillent pendant que vous dormez.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 13.48,
+			"end": 21.55
+		},
+		{
+			"texte": "Vous, vous gérez votre business.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 21.9,
+			"end": 23.641
+		},
+		{
+			"texte": "Nous, on le rend impossible à ignorer.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 23.641,
+			"end": 25.65
+		},
+		{
+			"texte": "GIRESSE Digital Studio.",
+			"emotion": "ton final, posé",
+			"pose": "explique",
+			"start": 25.99,
+			"end": 27.26
+		},
+		{
+			"texte": "Écrivez-nous sur WhatsApp.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 27.58,
+			"end": 28.66
+		},
+		{
+			"texte": "Aujourd'hui.",
+			"emotion": null,
+			"pose": "explique",
+			"start": 28.99,
+			"end": 29.49
+		}
+	],
+	"mots": [
+		{
+			"texte": "Vous",
+			"start": 0,
+			"end": 0.245
+		},
+		{
+			"texte": "avez",
+			"start": 0.245,
+			"end": 0.49
+		},
+		{
+			"texte": "un",
+			"start": 0.49,
+			"end": 0.613
+		},
+		{
+			"texte": "projet…",
+			"start": 0.613,
+			"end": 0.98
+		},
+		{
+			"texte": "une",
+			"start": 1.38,
+			"end": 1.58
+		},
+		{
+			"texte": "marque…",
+			"start": 1.58,
+			"end": 1.98
+		},
+		{
+			"texte": "un",
+			"start": 2.36,
+			"end": 2.471
+		},
+		{
+			"texte": "business",
+			"start": 2.471,
+			"end": 2.915
+		},
+		{
+			"texte": "qui",
+			"start": 2.915,
+			"end": 3.082
+		},
+		{
+			"texte": "mérite",
+			"start": 3.082,
+			"end": 3.415
+		},
+		{
+			"texte": "d'être",
+			"start": 3.415,
+			"end": 3.692
+		},
+		{
+			"texte": "connu.",
+			"start": 3.692,
+			"end": 3.97
+		},
+		{
+			"texte": "Mais",
+			"start": 4.51,
+			"end": 4.732
+		},
+		{
+			"texte": "chaque",
+			"start": 4.732,
+			"end": 5.065
+		},
+		{
+			"texte": "fois,",
+			"start": 5.065,
+			"end": 5.287
+		},
+		{
+			"texte": "c'est",
+			"start": 5.287,
+			"end": 5.509
+		},
+		{
+			"texte": "la",
+			"start": 5.509,
+			"end": 5.62
+		},
+		{
+			"texte": "même",
+			"start": 5.62,
+			"end": 5.842
+		},
+		{
+			"texte": "chose.",
+			"start": 5.842,
+			"end": 6.12
+		},
+		{
+			"texte": "Pas",
+			"start": 6.7,
+			"end": 6.831
+		},
+		{
+			"texte": "les",
+			"start": 6.831,
+			"end": 6.963
+		},
+		{
+			"texte": "bons",
+			"start": 6.963,
+			"end": 7.138
+		},
+		{
+			"texte": "outils.",
+			"start": 7.138,
+			"end": 7.4
+		},
+		{
+			"texte": "Pas",
+			"start": 7.97,
+			"end": 8.144
+		},
+		{
+			"texte": "le",
+			"start": 8.144,
+			"end": 8.259
+		},
+		{
+			"texte": "bon",
+			"start": 8.259,
+			"end": 8.433
+		},
+		{
+			"texte": "visuel.",
+			"start": 8.433,
+			"end": 8.78
+		},
+		{
+			"texte": "Et",
+			"start": 9.21,
+			"end": 9.346
+		},
+		{
+			"texte": "surtout…",
+			"start": 9.346,
+			"end": 9.82
+		},
+		{
+			"texte": "personne",
+			"start": 10.21,
+			"end": 10.607
+		},
+		{
+			"texte": "à",
+			"start": 10.607,
+			"end": 10.657
+		},
+		{
+			"texte": "qui",
+			"start": 10.657,
+			"end": 10.805
+		},
+		{
+			"texte": "faire",
+			"start": 10.805,
+			"end": 11.053
+		},
+		{
+			"texte": "confiance.",
+			"start": 11.053,
+			"end": 11.5
+		},
+		{
+			"texte": "Alors",
+			"start": 11.98,
+			"end": 12.253
+		},
+		{
+			"texte": "arrêtez",
+			"start": 12.253,
+			"end": 12.635
+		},
+		{
+			"texte": "de",
+			"start": 12.635,
+			"end": 12.744
+		},
+		{
+			"texte": "chercher.",
+			"start": 12.744,
+			"end": 13.18
+		},
+		{
+			"texte": "GIRESSE",
+			"start": 13.48,
+			"end": 13.857
+		},
+		{
+			"texte": "Digital",
+			"start": 13.857,
+			"end": 14.233
+		},
+		{
+			"texte": "Studio",
+			"start": 14.233,
+			"end": 14.556
+		},
+		{
+			"texte": "s'occupe",
+			"start": 14.556,
+			"end": 14.933
+		},
+		{
+			"texte": "de",
+			"start": 14.933,
+			"end": 15.04
+		},
+		{
+			"texte": "tout :",
+			"start": 15.04,
+			"end": 15.255
+		},
+		{
+			"texte": "des",
+			"start": 15.255,
+			"end": 15.417
+		},
+		{
+			"texte": "publicités",
+			"start": 15.417,
+			"end": 15.955
+		},
+		{
+			"texte": "animées",
+			"start": 15.955,
+			"end": 16.331
+		},
+		{
+			"texte": "qui",
+			"start": 16.331,
+			"end": 16.493
+		},
+		{
+			"texte": "arrêtent",
+			"start": 16.493,
+			"end": 16.923
+		},
+		{
+			"texte": "le",
+			"start": 16.923,
+			"end": 17.031
+		},
+		{
+			"texte": "scroll,",
+			"start": 17.031,
+			"end": 17.354
+		},
+		{
+			"texte": "des",
+			"start": 17.354,
+			"end": 17.515
+		},
+		{
+			"texte": "sites",
+			"start": 17.515,
+			"end": 17.784
+		},
+		{
+			"texte": "web",
+			"start": 17.784,
+			"end": 17.945
+		},
+		{
+			"texte": "qui",
+			"start": 17.945,
+			"end": 18.107
+		},
+		{
+			"texte": "vendent",
+			"start": 18.107,
+			"end": 18.483
+		},
+		{
+			"texte": "pour",
+			"start": 18.483,
+			"end": 18.699
+		},
+		{
+			"texte": "vous,",
+			"start": 18.699,
+			"end": 18.914
+		},
+		{
+			"texte": "des",
+			"start": 18.914,
+			"end": 19.075
+		},
+		{
+			"texte": "applications",
+			"start": 19.075,
+			"end": 19.721
+		},
+		{
+			"texte": "qui",
+			"start": 19.721,
+			"end": 19.882
+		},
+		{
+			"texte": "travaillent",
+			"start": 19.882,
+			"end": 20.474
+		},
+		{
+			"texte": "pendant",
+			"start": 20.474,
+			"end": 20.851
+		},
+		{
+			"texte": "que",
+			"start": 20.851,
+			"end": 21.012
+		},
+		{
+			"texte": "vous",
+			"start": 21.012,
+			"end": 21.227
+		},
+		{
+			"texte": "dormez.",
+			"start": 21.227,
+			"end": 21.55
+		},
+		{
+			"texte": "Vous,",
+			"start": 21.9,
+			"end": 22.168
+		},
+		{
+			"texte": "vous",
+			"start": 22.168,
+			"end": 22.436
+		},
+		{
+			"texte": "gérez",
+			"start": 22.436,
+			"end": 22.771
+		},
+		{
+			"texte": "votre",
+			"start": 22.771,
+			"end": 23.105
+		},
+		{
+			"texte": "business.",
+			"start": 23.105,
+			"end": 23.641
+		},
+		{
+			"texte": "Nous,",
+			"start": 23.641,
+			"end": 23.909
+		},
+		{
+			"texte": "on",
+			"start": 23.909,
+			"end": 24.043
+		},
+		{
+			"texte": "le",
+			"start": 24.043,
+			"end": 24.177
+		},
+		{
+			"texte": "rend",
+			"start": 24.177,
+			"end": 24.445
+		},
+		{
+			"texte": "impossible",
+			"start": 24.445,
+			"end": 25.114
+		},
+		{
+			"texte": "à",
+			"start": 25.114,
+			"end": 25.181
+		},
+		{
+			"texte": "ignorer.",
+			"start": 25.181,
+			"end": 25.65
+		},
+		{
+			"texte": "GIRESSE",
+			"start": 25.99,
+			"end": 26.435
+		},
+		{
+			"texte": "Digital",
+			"start": 26.435,
+			"end": 26.879
+		},
+		{
+			"texte": "Studio.",
+			"start": 26.879,
+			"end": 27.26
+		},
+		{
+			"texte": "Écrivez-nous",
+			"start": 27.58,
+			"end": 28.12
+		},
+		{
+			"texte": "sur",
+			"start": 28.12,
+			"end": 28.267
+		},
+		{
+			"texte": "WhatsApp.",
+			"start": 28.267,
+			"end": 28.66
+		},
+		{
+			"texte": "Aujourd'hui.",
+			"start": 28.99,
+			"end": 29.49
+		}
+	]
+}

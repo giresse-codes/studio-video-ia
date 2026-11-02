@@ -1,0 +1,203 @@
+{
+	"chaine": "giresse",
+	"numero": "001",
+	"slug": "pub-studio",
+	"script": "channels/giresse/scripts/001-pub-studio.md",
+	"audio": "public/audio/giresse-001.wav",
+	"scenes": [
+		{
+			"id": "s1",
+			"fichier": "compositions/s1-projet.html",
+			"debut": "@0",
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s2",
+			"fichier": "compositions/s2-meme-chose.html",
+			"debut": "@mais",
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s3",
+			"fichier": "compositions/s3-manques.html",
+			"debut": "@pas",
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s4",
+			"fichier": "compositions/s4-chercher.html",
+			"debut": "@alors",
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s5",
+			"fichier": "compositions/s5-logo.html",
+			"debut": "@giresse",
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s6",
+			"fichier": "compositions/s6-pubs.html",
+			"debut": "@des",
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s7",
+			"fichier": "compositions/s7-sites.html",
+			"debut": "@des",
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s8",
+			"fichier": "compositions/s8-applis.html",
+			"debut": "@des",
+			"transition": "balayage",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s9",
+			"fichier": "compositions/s9-ignorer.html",
+			"debut": "@vous#2",
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			]
+		},
+		{
+			"id": "s10",
+			"fichier": "compositions/s10-whatsapp.html",
+			"debut": "@giresse",
+			"transition": "zoom",
+			"cible": [
+				540,
+				640
+			]
+		}
+	],
+	"bruitages": [
+		{
+			"ancre": "@projet",
+			"son": "pop-1",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@marque",
+			"son": "pop-2",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@business",
+			"son": "pop-1",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@connu",
+			"son": "ding-1",
+			"scene": "s1"
+		},
+		{
+			"ancre": "@meme",
+			"son": "boing",
+			"scene": "s2"
+		},
+		{
+			"ancre": "@outils",
+			"son": "tic",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@visuel",
+			"son": "tic",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@confiance",
+			"son": "boing",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@arretez",
+			"son": "pop-2",
+			"scene": "s4"
+		},
+		{
+			"ancre": "@studio",
+			"son": "ding-2",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@tout",
+			"son": "pop-1",
+			"scene": "s5"
+		},
+		{
+			"ancre": "@scroll",
+			"son": "pop-2",
+			"scene": "s6"
+		},
+		{
+			"ancre": "@vendent",
+			"son": "ding-1",
+			"scene": "s7"
+		},
+		{
+			"ancre": "@dormez",
+			"son": "pop-1",
+			"scene": "s8"
+		},
+		{
+			"ancre": "@nous",
+			"son": "pop-2",
+			"scene": "s9"
+		},
+		{
+			"ancre": "@ignorer",
+			"son": "ding-2",
+			"scene": "s9"
+		},
+		{
+			"ancre": "@whatsapp",
+			"son": "pop-1",
+			"scene": "s10"
+		},
+		{
+			"ancre": "@aujourdhui",
+			"son": "ding-1",
+			"scene": "s10"
+		}
+	],
+	"avatar": false,
+	"theme": "studio"
+}
