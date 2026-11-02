@@ -13,13 +13,17 @@ export type Video = {
 	audio: string;
 	// Chaque scène commence sur un mot (@mot) ; la première à 0 s. `cible` : centre de l'objet principal (px),
 	// que l'avatar regarde et vers lequel zoome S.zoomMot.
-	scenes: {id: string; fichier: string; debut: string; transition?: 'zoom' | 'balayage'; cible: [number, number]}[];
+	scenes: {id: string; fichier: string; debut: string; transition?: 'zoom' | 'balayage' | 'flou'; cible: [number, number]}[];
 	// Bruitages de gags, liés à un mot.
 	bruitages?: {ancre: string; son: string; scene?: string}[];
 	// Tenue de l'avatar : blanche (par défaut) ou bleue. `false` : vidéo sans avatar (Mode Survie).
 	avatar?: false | {cote?: 'droite' | 'gauche'; tenue?: 'blanche' | 'bleue'};
 	// Palette de la vidéo (STYLE.md de la chaîne) : « atelier » (par défaut), « schema » ou « alerte ». Le style « Écran code » s'utilise dans une scène.
 	theme?: 'atelier' | 'schema' | 'alerte' | 'studio';
+	// Sous-titres : « pastille » (par défaut, mot à mot en bas) ou « titre » (la phrase s'écrit mot à mot en haut, style publicité).
+	sousTitres?: 'pastille' | 'titre';
+	// Mode « titre » : mots écrits dans la couleur d'accent (sans accent ni ponctuation : « business », « ignorer »).
+	accents?: string[];
 	// Calques fixes sur toute la vidéo, au-dessus des scènes (horodatage, compte à rebours, jauge…). Leurs ancres se lisent depuis 0 s.
 	calques?: {id: string; fichier: string}[];
 };

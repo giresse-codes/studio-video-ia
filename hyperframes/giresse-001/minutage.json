@@ -12,7 +12,7 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@0"
 		},
@@ -21,10 +21,10 @@
 			"fichier": "compositions/s2-meme-chose.html",
 			"debut": 4.51,
 			"fin": 6.7,
-			"transition": "balayage",
+			"transition": "flou",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@mais"
 		},
@@ -36,7 +36,7 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@pas"
 		},
@@ -48,7 +48,7 @@
 			"transition": "balayage",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@alors"
 		},
@@ -60,7 +60,7 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@giresse"
 		},
@@ -69,10 +69,10 @@
 			"fichier": "compositions/s6-pubs.html",
 			"debut": 15.255,
 			"fin": 17.354,
-			"transition": "balayage",
+			"transition": "flou",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@des"
 		},
@@ -84,7 +84,7 @@
 			"transition": "balayage",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@des"
 		},
@@ -96,7 +96,7 @@
 			"transition": "balayage",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@des"
 		},
@@ -108,7 +108,7 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@vous#2"
 		},
@@ -117,16 +117,44 @@
 			"fichier": "compositions/s10-whatsapp.html",
 			"debut": 25.99,
 			"fin": 29.949,
-			"transition": "zoom",
+			"transition": "flou",
 			"cible": [
 				540,
-				640
+				820
 			],
 			"ancreDebut": "@giresse"
 		}
 	],
-	"calques": [],
+	"calques": [
+		{
+			"id": "etapes",
+			"fichier": "compositions/etapes.html",
+			"debut": 0,
+			"fin": 29.949
+		}
+	],
 	"ancres": [
+		{
+			"scene": "s1",
+			"ancre": "@projet",
+			"mot": "projet…",
+			"motSec": 0.613,
+			"sec": 0.613
+		},
+		{
+			"scene": "s1",
+			"ancre": "@marque",
+			"mot": "marque…",
+			"motSec": 1.58,
+			"sec": 1.58
+		},
+		{
+			"scene": "s1",
+			"ancre": "@business",
+			"mot": "business",
+			"motSec": 2.471,
+			"sec": 2.471
+		},
 		{
 			"scene": "s1",
 			"ancre": "@connu",
@@ -150,10 +178,10 @@
 		},
 		{
 			"scene": "s2",
-			"ancre": "@meme",
-			"mot": "même",
-			"motSec": 5.62,
-			"sec": 5.62
+			"ancre": "@fois",
+			"mot": "fois,",
+			"motSec": 5.065,
+			"sec": 5.065
 		},
 		{
 			"scene": "s2",
@@ -171,10 +199,10 @@
 		},
 		{
 			"scene": "s3",
-			"ancre": "@bon",
-			"mot": "bon",
-			"motSec": 8.259,
-			"sec": 8.259
+			"ancre": "@pas#2",
+			"mot": "Pas",
+			"motSec": 7.97,
+			"sec": 7.97
 		},
 		{
 			"scene": "s3",
@@ -185,17 +213,17 @@
 		},
 		{
 			"scene": "s3",
-			"ancre": "@personne",
-			"mot": "personne",
-			"motSec": 10.21,
-			"sec": 10.21
-		},
-		{
-			"scene": "s3",
 			"ancre": "@surtout",
 			"mot": "surtout…",
 			"motSec": 9.346,
 			"sec": 9.346
+		},
+		{
+			"scene": "s3",
+			"ancre": "@personne",
+			"mot": "personne",
+			"motSec": 10.21,
+			"sec": 10.21
 		},
 		{
 			"scene": "s3",
@@ -213,10 +241,10 @@
 		},
 		{
 			"scene": "s5",
-			"ancre": "@studio",
-			"mot": "Studio",
-			"motSec": 14.233,
-			"sec": 14.233
+			"ancre": "@digital",
+			"mot": "Digital",
+			"motSec": 13.857,
+			"sec": 13.857
 		},
 		{
 			"scene": "s5",
@@ -224,20 +252,6 @@
 			"mot": "s'occupe",
 			"motSec": 14.556,
 			"sec": 14.556
-		},
-		{
-			"scene": "s5",
-			"ancre": "@tout",
-			"mot": "tout :",
-			"motSec": 15.04,
-			"sec": 15.04
-		},
-		{
-			"scene": "s6",
-			"ancre": "@publicites",
-			"mot": "publicités",
-			"motSec": 15.417,
-			"sec": 15.417
 		},
 		{
 			"scene": "s6",
@@ -255,24 +269,17 @@
 		},
 		{
 			"scene": "s7",
-			"ancre": "@sites",
-			"mot": "sites",
-			"motSec": 17.515,
-			"sec": 17.515
-		},
-		{
-			"scene": "s7",
 			"ancre": "@vendent",
 			"mot": "vendent",
 			"motSec": 18.107,
 			"sec": 18.107
 		},
 		{
-			"scene": "s8",
-			"ancre": "@applications",
-			"mot": "applications",
-			"motSec": 19.075,
-			"sec": 19.075
+			"scene": "s7",
+			"ancre": "@pour",
+			"mot": "pour",
+			"motSec": 18.483,
+			"sec": 18.483
 		},
 		{
 			"scene": "s8",
@@ -290,24 +297,10 @@
 		},
 		{
 			"scene": "s9",
-			"ancre": "@gerez",
-			"mot": "gérez",
-			"motSec": 22.436,
-			"sec": 22.436
-		},
-		{
-			"scene": "s9",
 			"ancre": "@nous",
 			"mot": "Nous,",
 			"motSec": 23.641,
 			"sec": 23.641
-		},
-		{
-			"scene": "s9",
-			"ancre": "@rend",
-			"mot": "rend",
-			"motSec": 24.177,
-			"sec": 24.177
 		},
 		{
 			"scene": "s9",
@@ -325,10 +318,10 @@
 		},
 		{
 			"scene": "s10",
-			"ancre": "@studio",
-			"mot": "Studio.",
-			"motSec": 26.879,
-			"sec": 26.879
+			"ancre": "@digital",
+			"mot": "Digital",
+			"motSec": 26.435,
+			"sec": 26.435
 		},
 		{
 			"scene": "s10",
@@ -350,6 +343,41 @@
 			"mot": "Aujourd'hui.",
 			"motSec": 28.99,
 			"sec": 28.99
+		},
+		{
+			"scene": "etapes",
+			"ancre": "@publicites",
+			"mot": "publicités",
+			"motSec": 15.417,
+			"sec": 15.417
+		},
+		{
+			"scene": "etapes",
+			"ancre": "@sites",
+			"mot": "sites",
+			"motSec": 17.515,
+			"sec": 17.515
+		},
+		{
+			"scene": "etapes",
+			"ancre": "@applications",
+			"mot": "applications",
+			"motSec": 19.075,
+			"sec": 19.075
+		},
+		{
+			"scene": "etapes",
+			"ancre": "@dormez",
+			"mot": "dormez.",
+			"motSec": 21.227,
+			"sec": 21.227
+		},
+		{
+			"scene": "etapes",
+			"ancre": "@gerez",
+			"mot": "gérez",
+			"motSec": 22.436,
+			"sec": 22.436
 		}
 	],
 	"bruitages": [
@@ -385,7 +413,7 @@
 		},
 		{
 			"sec": 5.62,
-			"son": "boing",
+			"son": "tic",
 			"cause": "@meme (s2)"
 		},
 		{
@@ -404,8 +432,13 @@
 			"cause": "@visuel (s3)"
 		},
 		{
-			"sec": 11.053,
+			"sec": 10.21,
 			"son": "boing",
+			"cause": "@personne (s3)"
+		},
+		{
+			"sec": 11.053,
+			"son": "tic",
 			"cause": "@confiance (s3)"
 		},
 		{
@@ -439,9 +472,9 @@
 			"cause": "transition vers s6"
 		},
 		{
-			"sec": 17.031,
+			"sec": 16.493,
 			"son": "pop-2",
-			"cause": "@scroll (s6)"
+			"cause": "@arretent (s6)"
 		},
 		{
 			"sec": 17.304,
@@ -459,9 +492,9 @@
 			"cause": "transition vers s8"
 		},
 		{
-			"sec": 21.227,
+			"sec": 19.882,
 			"son": "pop-1",
-			"cause": "@dormez (s8)"
+			"cause": "@travaillent (s8)"
 		},
 		{
 			"sec": 21.85,

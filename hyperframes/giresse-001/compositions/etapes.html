@@ -1,0 +1,57 @@
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+		/* Police déjà déclarée dans kit.css ; répétée ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		.etape {
+			position: absolute;
+			left: 70px;
+			width: 76px;
+			height: 76px;
+			border-radius: 38px;
+			background: #e4e0d8;
+			color: #5f574d;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 38px;
+			line-height: 76px;
+			text-align: center;
+			box-shadow: 0 12px 24px rgba(60, 50, 40, 0.15);
+		}
+	</style>
+	<div data-hf-id="hf-nmkr" id="root" data-composition-id="etapes" data-width="1080" data-height="1920">
+		<!-- Les trois services : pubs, sites, applis ; l'étape en cours en anthracite, les étapes faites en vert. -->
+		<div data-hf-id="hf-vgmn" id="etapes-boite" style="position: absolute; inset: 0; opacity: 0">
+			<div data-hf-id="hf-a1c4" id="e1" class="etape" style="top: 700px">1</div>
+			<div data-hf-id="hf-juv6" id="e2" class="etape" style="top: 810px">2</div>
+			<div data-hf-id="hf-4wpo" id="e3" class="etape" style="top: 920px">3</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const C = kit.calque('etapes');
+			const tl = C.tl;
+			const actif = {background: '#2b2b2f', color: '#ffffff', scale: 1.12, duration: 0.25, ease: 'expo.out'};
+			const fait = {background: '#168a45', color: '#ffffff', scale: 1, duration: 0.25, ease: 'expo.out'};
+			// « des publicités » : les étapes arrivent, la 1 s'allume.
+			tl.fromTo('#etapes-boite', {opacity: 0, x: -40, filter: 'blur(10px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, C.ancre('@publicites'));
+			tl.to('#e1', actif, C.ancre('@publicites'));
+			// « sites » : 1 faite, 2 en cours ; « applications » : 2 faite, 3 en cours ; « dormez » : 3 faite.
+			tl.to('#e1', fait, C.ancre('@sites'));
+			tl.to('#e2', actif, C.ancre('@sites'));
+			tl.to('#e2', fait, C.ancre('@applications'));
+			tl.to('#e3', actif, C.ancre('@applications'));
+			tl.to('#e3', fait, C.ancre('@dormez'));
+			// « Vous, vous gérez » : elles s'en vont.
+			tl.to('#etapes-boite', {opacity: 0, x: -40, filter: 'blur(10px)', duration: 0.25, ease: 'power3.in'}, C.ancre('@gerez') - 0.4);
+			C.fin();
+		})();
+	</script>
+</template>

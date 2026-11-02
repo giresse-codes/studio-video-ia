@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s5-stage .objets {
+			transform: scale(1.2);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-ejdb" id="root" data-composition-id="s5" data-width="1080" data-height="1920">
@@ -24,22 +46,16 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : le logo GIRESSE (monogramme G dessiné), le nom, puis « s'occupe de tout » et trois icônes qui tournent autour. -->
+					<!-- Objets : le monogramme GS (fichier du logo) qui se met au point avec un reflet, le nom GIRESSE / DIGITAL STUDIO, puis les trois services. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-2rr9" id="s5-logo">
-								<rect data-hf-id="hf-if5a" x="400" y="300" width="280" height="280" rx="70" fill="#6C3BFF" />
-								<path data-hf-id="hf-agt4" d="M 610 395 A 90 90 0 1 0 610 485 H 540" fill="none" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" />
-							</g>
-							<g data-hf-id="hf-9ho6" fill="#EDE7FF" stroke="#0E0E12" stroke-width="8">
-								<circle data-hf-id="hf-949n" class="s5-orbite" cx="300" cy="420" r="50" />
-								<circle data-hf-id="hf-8zu7" class="s5-orbite" cx="780" cy="420" r="50" />
-								<circle data-hf-id="hf-ogjl" class="s5-orbite" cx="540" cy="200" r="50" />
-							</g>
-						</svg>
-						<div data-hf-id="hf-9koe" id="s5-nom" class="titre grand" style="top: 640px; font-size: 100px">GIRESSE</div>
-						<div data-hf-id="hf-b2z6" id="s5-studio" class="titre grand" style="top: 770px; font-size: 56px; color: #6C3BFF">DIGITAL STUDIO</div>
-						<div data-hf-id="hf-j753" id="s5-tout" class="etiquette violet" style="left: 300px; top: 940px">s'occupe de tout</div>
+						<div data-hf-id="hf-0ia6" id="s5-mono" style="position: absolute; left: 335px; top: 470px; width: 410px; height: 432px">
+							<img data-hf-id="hf-rcs9" src="assets/marque/monogramme.png" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 40px rgba(60, 50, 40, 0.25))" />
+							<div data-hf-id="hf-q50f" id="s5-reflet" style="position: absolute; inset: 0; background: linear-gradient(105deg, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0) 65%); background-size: 300% 100%; background-position: 100% 0; -webkit-mask-image: url(assets/marque/monogramme.png); -webkit-mask-size: 100% 100%; mask-image: url(assets/marque/monogramme.png); mask-size: 100% 100%"></div>
+						</div>
+						<img data-hf-id="hf-mfp9" id="s5-nom" src="assets/marque/nom.png" style="position: absolute; left: 230px; top: 940px; width: 620px" />
+						<span data-hf-id="hf-re1u" id="s5-p1" class="pilule" style="left: 150px; top: 1170px; font-size: 40px; padding: 12px 28px 14px">🎬 Pubs</span>
+						<span data-hf-id="hf-neyg" id="s5-p2" class="pilule" style="left: 410px; top: 1170px; font-size: 40px; padding: 12px 28px 14px">🌐 Sites</span>
+						<span data-hf-id="hf-kzkw" id="s5-p3" class="pilule taupe" style="left: 668px; top: 1170px; font-size: 40px; padding: 12px 28px 14px">📱 Applis</span>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -48,18 +64,17 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s5');
+			const S = kit.scene('s5', {travelling: false});
 			const tl = S.tl;
 
-			// « GIRESSE » : le logo se pose, le nom arrive ; « Studio ».
-			kit.chute(tl, '#s5-logo', 0);
-			kit.cascade(tl, '#s5-nom', 0.15);
-			kit.cascade(tl, '#s5-studio', S.ancre('@studio'));
-			S.zoomMot('@studio', [540, 560]);
-			// « tout » : l'étiquette et les icônes en orbite.
-			kit.tampon(tl, '#s5-tout', S.ancre('@occupe'));
-			kit.cascade(tl, '.s5-orbite', S.ancre('@tout'), 0.08);
-			tl.to('.s5-orbite', {y: -16, duration: 0.4, yoyo: true, repeat: 3, ease: 'sine.inOut', stagger: 0.1}, S.ancre('@tout') + 0.4);
+			// « GIRESSE » : le monogramme se met au point, le reflet passe ; « Studio » : le nom.
+			tl.fromTo('#s5-mono', {opacity: 0, scale: 1.25, filter: 'blur(20px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'expo.out'}, 0);
+			tl.fromTo('#s5-reflet', {backgroundPosition: '100% 0'}, {backgroundPosition: '0% 0', duration: 0.9, ease: 'power2.inOut'}, 0.45);
+			kit.entre(tl, '#s5-nom', S.ancre('@digital'), {dy: 30, echelle: 1});
+			// « s'occupe de tout » : les trois services.
+			kit.entre(tl, '#s5-p1', S.ancre('@occupe') - 0.15, {dy: 40});
+			kit.entre(tl, '#s5-p2', S.ancre('@occupe'), {dy: 40});
+			kit.entre(tl, '#s5-p3', S.ancre('@occupe') + 0.15, {dy: 40});
 			S.fin();
 		})();
 	</script>

@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s9-stage .objets {
+			transform: scale(1.25);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-0w2b" id="root" data-composition-id="s9" data-width="1080" data-height="1920">
@@ -24,22 +46,29 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : « Vous » gère (mallette), « Nous » rend visible (mégaphone) ; puis « impossible à ignorer » en grand. -->
+					<!-- Objets : « Vous » (mallette) et « Nous » (carte anthracite au monogramme, mégaphone) ; puis le monogramme au centre, entouré de regards. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-uvt8" id="s9-mallette">
-								<rect data-hf-id="hf-93xr" x="210" y="520" width="240" height="170" rx="24" fill="#EDE7FF" stroke="#0E0E12" stroke-width="12" />
-								<path data-hf-id="hf-9lhz" d="M 290 520 V 485 H 370 V 520" fill="none" stroke="#0E0E12" stroke-width="12" />
-							</g>
-							<g data-hf-id="hf-1mbq" id="s9-megaphone" opacity="0">
-								<path data-hf-id="hf-jyt8" d="M 640 560 L 820 480 V 720 L 640 640 Z" fill="#6C3BFF" stroke="#0E0E12" stroke-width="12" stroke-linejoin="round" />
-								<rect data-hf-id="hf-h9r4" x="600" y="560" width="50" height="80" rx="12" fill="#0E0E12" />
-								<g data-hf-id="hf-26jz" stroke="#FFD23F" stroke-width="12" stroke-linecap="round"><path data-hf-id="hf-lm44" d="M 860 520 L 900 490 M 870 600 H 910 M 860 680 L 900 710" /></g>
-							</g>
-						</svg>
-						<div data-hf-id="hf-g01u" id="s9-vous" class="titre grand" style="top: 330px; left: 250px; width: 280px">Vous</div>
-						<div data-hf-id="hf-g5xb" id="s9-nous" class="titre grand" style="top: 330px; left: 560px; width: 280px"><span data-hf-id="hf-6upq" class="v">Nous</span></div>
-						<div data-hf-id="hf-ldsh" id="s9-ignorer" class="titre grand" style="top: 820px; font-size: 88px"><span data-hf-id="hf-ogg4">Impossible</span> <span data-hf-id="hf-u73n" class="v">à ignorer.</span></div>
+						<div data-hf-id="hf-hk1c" id="s9-vous" class="carte-pub" style="left: 170px; top: 560px; width: 350px; height: 440px">
+							<div data-hf-id="hf-gi8z" class="emoji" style="left: 105px; top: 60px; font-size: 140px">💼</div>
+							<div data-hf-id="hf-rxu7" style="position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-family: 'Kit Poppins'; font-weight: 800; font-size: 64px; color: #2b2b2f">Vous</div>
+							<div data-hf-id="hf-rzrj" style="position: absolute; left: 0; right: 0; top: 340px; text-align: center; font-family: 'Kit Inter'; font-weight: 700; font-size: 32px; color: #7a7166">votre business</div>
+						</div>
+						<div data-hf-id="hf-t4x1" id="s9-nous" class="carte-pub" style="left: 560px; top: 560px; width: 350px; height: 440px; background: linear-gradient(170deg, #3a3a3f 0%, #2b2b2f 100%)">
+							<div data-hf-id="hf-74ru" class="emoji" style="left: 105px; top: 60px; font-size: 140px">📣</div>
+							<div data-hf-id="hf-y32b" style="position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-family: 'Kit Poppins'; font-weight: 800; font-size: 64px; color: #ffffff">Nous</div>
+							<div data-hf-id="hf-utx6" style="position: absolute; left: 0; right: 0; top: 340px; text-align: center; font-family: 'Kit Inter'; font-weight: 700; font-size: 32px; color: #b8b1a6">la visibilité</div>
+						</div>
+						<div data-hf-id="hf-qlcm" id="s9-centre" class="carte-pub" style="left: 340px; top: 620px; width: 400px; height: 400px; border-radius: 200px">
+							<img data-hf-id="hf-4ftp" src="assets/marque/monogramme.png" style="position: absolute; left: 90px; top: 80px; width: 220px" />
+						</div>
+						<div data-hf-id="hf-995r" class="emoji s9-oeil" style="left: 180px; top: 520px; font-size: 90px">👀</div>
+						<div data-hf-id="hf-0kq4" class="emoji s9-oeil" style="left: 790px; top: 540px; font-size: 100px">👀</div>
+						<div data-hf-id="hf-pujc" class="emoji s9-oeil" style="left: 160px; top: 900px; font-size: 80px">👀</div>
+						<div data-hf-id="hf-ag53" class="emoji s9-oeil" style="left: 820px; top: 930px; font-size: 90px">👀</div>
+						<div data-hf-id="hf-7fge" class="emoji s9-oeil" style="left: 300px; top: 1130px; font-size: 80px">👀</div>
+						<div data-hf-id="hf-d8gy" class="emoji s9-oeil" style="left: 680px; top: 1150px; font-size: 90px">👀</div>
+						<div data-hf-id="hf-iuii" class="emoji s9-oeil" style="left: 480px; top: 450px; font-size: 70px">👀</div>
+						<div data-hf-id="hf-mhkl" class="emoji s9-oeil" style="left: 880px; top: 730px; font-size: 70px">👀</div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -48,18 +77,18 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s9');
+			const S = kit.scene('s9', {travelling: false});
 			const tl = S.tl;
 
-			// « Vous, vous gérez votre business » : la mallette.
-			kit.cascade(tl, '#s9-vous', 0.05);
-			kit.pop(tl, '#s9-mallette', S.ancre('@gerez'));
-			// « Nous » : le mégaphone ; « impossible à ignorer » : en grand (zoom).
-			const nous = S.ancre('@nous');
-			kit.cascade(tl, '#s9-nous', nous);
-			kit.pop(tl, '#s9-megaphone', S.ancre('@rend'));
-			kit.cascade(tl, '#s9-ignorer span', S.ancre('@impossible'), 0.3);
-			S.zoomMot('@ignorer', [540, 820]);
+			// « Vous, vous gérez votre business » : la carte « Vous ».
+			kit.entre(tl, '#s9-vous', 0.05, {dx: -80, dy: 0});
+			// « Nous » : la carte anthracite.
+			kit.entre(tl, '#s9-nous', S.ancre('@nous'), {dx: 80, dy: 0});
+			// « impossible à ignorer » : les cartes s'effacent, le monogramme au centre, tous les regards sur lui.
+			const imp = S.ancre('@impossible');
+			kit.sort(tl, ['#s9-vous', '#s9-nous'], imp - 0.25);
+			kit.entre(tl, '#s9-centre', imp, {dy: 0, echelle: 0.6, duree: 0.7});
+			tl.fromTo('.s9-oeil', {opacity: 0, scale: 0.3, filter: 'blur(8px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.4, ease: 'back.out(1.6)', stagger: 0.08}, S.ancre('@ignorer') - 0.2);
 			S.fin();
 		})();
 	</script>

@@ -6,7 +6,7 @@ import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFil
 import path from 'node:path';
 import {pagesByWordCount} from '../../src/lib/caption-pages';
 import {AVATAR, FORMAT, MOUVEMENT, POSE_PAR_DEFAUT, SCENE_BAS, SON, SOUS_TITRES, SYNCHRO, TENUES} from '../config';
-import {ancresDansCode, type AncreResolue, resoudreAncre} from './ancres';
+import {ancresDansCode, type AncreResolue, normaliser, resoudreAncre} from './ancres';
 import {calculerMinutage, type Minutage} from './minutage';
 import {CRETE_FICHIER_DB, genererSons, SONS} from './sons';
 import {chargerVideo, dossierVideo, type Video} from './video';
@@ -89,7 +89,70 @@ const copier = (de: string, vers: string) => {
 	copyFileSync(de, vers);
 };
 
+// Mode « titre » (publicités) : la phrase s'écrit en haut, chaque mot passe du flou au net à son heure ; mots d'accent en couleur.
+const ecrireTitres = (p: Preparation) => {
+	const accents = new Set((p.video.accents ?? []).map(normaliser));
+	// Une ligne par proposition : on coupe aussi après une virgule, deux-points ou point-virgule (si la ligne a déjà 3 mots).
+	let proposition = 0;
+	let longueur = 0;
+	const mots = p.minutage.mots.map((w, i, tous) => {
+		const mot = {text: w.text, startMs: w.start * 1000, endMs: w.end * 1000, sentence: proposition};
+		longueur++;
+		if ((/[,:;]$/.test(w.text.trim()) && longueur >= 3) || tous[i + 1]?.phrase !== w.phrase) {
+			proposition++;
+			longueur = 0;
+		}
+		return mot;
+	});
+	const pages = pagesByWordCount(mots, SOUS_TITRES.motsParTitre);
+	const groupes = pages.map((page, g) => {
+		const suivante = pages[g + 1];
+		const fin = page.tokens[page.tokens.length - 1].toMs / 1000;
+		const debut = Math.max(0, page.startMs / 1000 - 0.05);
+		return {g, debut, fin: Math.min(suivante ? suivante.startMs / 1000 - 0.05 : p.minutage.dureeSec, fin + 1.2), page};
+	});
+	const html = groupes
+		.map(
+			({g, debut, fin, page}) =>
+				`\t\t<div id="g-${g}" class="clip" data-start="${r(debut)}" data-duration="${r(fin - debut)}"><div id="gp-${g}" class="st-titre">${page.tokens
+					.map((t, j) => `<span id="m-${g}-${j}" class="st-tmot${accents.has(normaliser(t.text)) ? ' st-accent' : ''}">${t.text.trim()}</span>`)
+					.join(' ')}</div></div>`,
+		)
+		.join('\n');
+	const script = groupes
+		.map(({g, debut, fin, page}) => {
+			const sortie = Math.min(0.18, (fin - debut) / 4);
+			const lignes = page.tokens.map(
+				(t, j) => `\t\t\ttl.fromTo('#m-${g}-${j}', {opacity: 0, filter: 'blur(8px)'}, {opacity: 1, filter: 'blur(0px)', duration: 0.16, ease: 'power2.out'}, ${r(Math.max(debut, t.fromMs / 1000 - 0.04))});`,
+			);
+			lignes.push(`\t\t\ttl.to('#gp-${g}', {opacity: 0, filter: 'blur(8px)', duration: ${r(sortie)}, ease: 'power2.in'}, ${r(fin - sortie)});`);
+			return lignes.join('\n');
+		})
+		.join('\n');
+	return `<!-- Généré par npm run preparer : ne pas modifier à la main (texte : le script ; style : assets/kit/kit.css). -->
+<template>
+	<style>
+		#root {
+			position: absolute;
+			inset: 0;
+		}
+	</style>
+	<div id="root" data-composition-id="sous-titres" data-width="${FORMAT.largeur}" data-height="${FORMAT.hauteur}">
+${html}
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+${script}
+			window.__timelines['sous-titres'] = tl;
+		})();
+	</script>
+</template>
+`;
+};
+
 const ecrireSousTitres = (p: Preparation) => {
+	if (p.video.sousTitres === 'titre') return ecrireTitres(p);
 	const pages = pagesByWordCount(
 		p.minutage.mots.map((w) => ({text: w.text, startMs: w.start * 1000, endMs: w.end * 1000, sentence: w.phrase})),
 		SOUS_TITRES.motsParGroupe,

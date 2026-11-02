@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s2-stage .objets {
+			transform: scale(1.2);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-bmd6" id="root" data-composition-id="s2" data-width="1080" data-height="1920">
@@ -24,26 +46,15 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : une flèche qui tourne en rond, et trois cartes identiques « la même chose ». -->
+					<!-- Objets : une flèche circulaire qui tourne autour d'un visage épuisé ; le compteur de tentatives grimpe. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-ffr7" id="s2-boucle" fill="none" stroke="#6C3BFF" stroke-width="26" stroke-linecap="round">
-								<path data-hf-id="hf-jvrc" d="M 700 540 A 160 160 0 1 1 640 420" />
-								<path data-hf-id="hf-2o4m" d="M 600 380 L 650 420 L 600 470" stroke-linejoin="round" />
-							</g>
-							<g data-hf-id="hf-u31k" stroke="#0E0E12" stroke-width="10" fill="#FFFFFF">
-								<rect data-hf-id="hf-zv7a" class="s2-carte" x="200" y="820" width="200" height="140" rx="24" />
-								<rect data-hf-id="hf-mtyo" class="s2-carte" x="440" y="820" width="200" height="140" rx="24" />
-								<rect data-hf-id="hf-sf7e" class="s2-carte" x="680" y="820" width="200" height="140" rx="24" />
-							</g>
-							<g data-hf-id="hf-fwoc" fill="#FF4D5E">
-								<circle data-hf-id="hf-4f3o" class="s2-carte" cx="300" cy="890" r="26" />
-								<circle data-hf-id="hf-o3f2" class="s2-carte" cx="540" cy="890" r="26" />
-								<circle data-hf-id="hf-rjhk" class="s2-carte" cx="780" cy="890" r="26" />
-							</g>
+						<svg data-hf-id="hf-46t1" id="s2-boucle" style="position: absolute; left: 270px; top: 550px; width: 540px; height: 540px" viewBox="0 0 540 540">
+							<defs data-hf-id="hf-mh0t"><linearGradient data-hf-id="hf-rvf1" id="s2-degrade" x1="0" y1="0" x2="1" y2="1"><stop data-hf-id="hf-uqls" offset="0" stop-color="#2B2B2F" /><stop data-hf-id="hf-o5n7" offset="1" stop-color="#B8B1A6" /></linearGradient></defs>
+							<path data-hf-id="hf-w3gb" d="M 470 270 A 200 200 0 1 1 400 118" fill="none" stroke="url(#s2-degrade)" stroke-width="36" stroke-linecap="round" />
+							<path data-hf-id="hf-35aj" d="M 360 70 L 430 110 L 380 172 Z" fill="#B8B1A6" stroke="#B8B1A6" stroke-width="10" stroke-linejoin="round" />
 						</svg>
-						<div data-hf-id="hf-rjwy" id="s2-fois" class="titre grand" style="top: 280px">Chaque fois…</div>
-						<div data-hf-id="hf-nrn3" id="s2-meme" class="etiquette violet" style="left: 290px; top: 1010px">la même chose</div>
+						<div data-hf-id="hf-ttqj" id="s2-visage" class="emoji" style="left: 440px; top: 720px; font-size: 200px">😩</div>
+						<div data-hf-id="hf-q4vp" class="centre" style="top: 1170px"><span data-hf-id="hf-2rqc" id="s2-essai" class="pilule">essai n° <span data-hf-id="hf-5adz" id="s2-n">1</span></span></div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -52,17 +63,18 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s2');
+			const S = kit.scene('s2', {travelling: false});
 			const tl = S.tl;
 
-			// « Mais chaque fois » : la flèche tourne en rond.
-			kit.pop(tl, '#s2-boucle', 0.05);
-			tl.fromTo('#s2-boucle', {rotation: 0, svgOrigin: '540 540'}, {rotation: 720, duration: S.dur, ease: 'none'}, 0);
-			kit.cascade(tl, '#s2-fois', S.ancre('@chaque'));
-			// « même chose » : trois cartes identiques.
-			kit.cascade(tl, '.s2-carte', S.ancre('@meme'), 0.1);
-			kit.tampon(tl, '#s2-meme', S.ancre('@chose'));
-			S.zoomMot('@meme', [540, 600]);
+			// « Mais chaque fois » : la boucle tourne.
+			kit.entre(tl, '#s2-boucle', 0.05, {dy: 0, echelle: 0.7});
+			tl.fromTo('#s2-boucle', {rotation: 0}, {rotation: 400, duration: S.dur + 0.4, ease: 'none'}, 0);
+			kit.entre(tl, '#s2-visage', S.ancre('@chaque'), {dy: 30, echelle: 0.5});
+			// Le compteur de tentatives monte jusqu'à « la même chose ».
+			kit.entre(tl, '#s2-essai', S.ancre('@fois'), {dy: 30});
+			const n = document.querySelector('#s2-n');
+			const e = {v: 1};
+			tl.fromTo(e, {v: 1}, {v: 7, duration: S.ancre('@chose') - S.ancre('@fois'), ease: 'power1.in', onUpdate: () => (n.textContent = Math.round(e.v))}, S.ancre('@fois'));
 			S.fin();
 		})();
 	</script>

@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s8-stage .objets {
+			transform: scale(1.2);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-iyfs" id="root" data-composition-id="s8" data-width="1080" data-height="1920">
@@ -24,33 +46,20 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : un téléphone dans la nuit (lune, étoiles), l'appli qui reçoit des commandes pendant que tu dors. -->
+					<!-- Objets : un téléphone en mode nuit (03:12, lune) ; l'appli reçoit des réservations pendant que tu dors. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-1y8f" id="s8-nuit">
-								<rect data-hf-id="hf-4j6j" x="-200" y="0" width="1480" height="1500" fill="#1B1440" />
-								<circle data-hf-id="hf-fwrt" cx="820" cy="260" r="70" fill="#FFD23F" />
-								<circle data-hf-id="hf-z0bs" cx="850" cy="240" r="62" fill="#1B1440" />
-								<g data-hf-id="hf-mr2y" fill="#FFFFFF"><circle data-hf-id="hf-f6ux" cx="220" cy="230" r="6" /><circle data-hf-id="hf-hvus" cx="330" cy="330" r="4" /><circle data-hf-id="hf-xeeu" cx="700" cy="420" r="5" /><circle data-hf-id="hf-dnr6" cx="920" cy="520" r="4" /></g>
-							</g>
-							<g data-hf-id="hf-8j62" id="s8-tel">
-								<rect data-hf-id="hf-muqg" x="390" y="360" width="300" height="560" rx="48" fill="#0E0E12" />
-								<rect data-hf-id="hf-or75" x="406" y="385" width="268" height="510" rx="34" fill="#FFFFFF" />
-								<rect data-hf-id="hf-y3ub" x="430" y="420" width="220" height="70" rx="18" fill="#6C3BFF" />
-							</g>
-							<g data-hf-id="hf-jab3" fill="#FFFFFF" stroke="#0E0E12" stroke-width="6">
-								<rect data-hf-id="hf-sblb" class="s8-notif" x="300" y="560" width="480" height="90" rx="26" />
-								<rect data-hf-id="hf-3iyj" class="s8-notif" x="300" y="670" width="480" height="90" rx="26" />
-								<rect data-hf-id="hf-8rs3" class="s8-notif" x="300" y="780" width="480" height="90" rx="26" />
-							</g>
-							<g data-hf-id="hf-a7rq" fill="#25D366">
-								<circle data-hf-id="hf-gqrc" class="s8-notif" cx="350" cy="605" r="20" />
-								<circle data-hf-id="hf-6wmq" class="s8-notif" cx="350" cy="715" r="20" />
-								<circle data-hf-id="hf-6jd4" class="s8-notif" cx="350" cy="825" r="20" />
-							</g>
-						</svg>
-						<div data-hf-id="hf-ng43" id="s8-label" class="etiquette violet" style="left: 290px; top: 1000px">Applications</div>
-						<div data-hf-id="hf-sbt6" id="s8-zz" class="titre grand" style="top: 200px; left: 250px; width: 300px; text-align: left; color: #FFFFFF">Zzz</div>
+						<div data-hf-id="hf-eibf" id="s8-tel" class="tel-pub" style="left: 340px; top: 470px">
+							<div data-hf-id="hf-38p6" class="ilot"></div>
+							<div data-hf-id="hf-qi4m" class="ecran" style="background: linear-gradient(180deg, #1f1f24 0%, #2b2b2f 100%)">
+								<div data-hf-id="hf-d77e" style="position: absolute; left: 0; right: 0; top: 110px; text-align: center; font-family: 'Kit Poppins'; font-weight: 800; font-size: 120px; color: #ffffff">03:12</div>
+								<div data-hf-id="hf-4qzz" style="position: absolute; left: 0; right: 0; top: 260px; text-align: center; font-family: 'Kit Inter'; font-weight: 700; font-size: 30px; color: #b8b1a6">mardi 4 novembre</div>
+							</div>
+						</div>
+						<div data-hf-id="hf-o3uq" id="s8-lune" class="emoji" style="left: 800px; top: 520px; font-size: 120px">🌙</div>
+						<div data-hf-id="hf-06h8" id="s8-t1" class="toast" style="left: 230px; top: 820px"><b data-hf-id="hf-wu5z">📅</b><span data-hf-id="hf-ks91">Nouvelle réservation<small data-hf-id="hf-tf3h">Ton appli · maintenant</small></span></div>
+						<div data-hf-id="hf-uooy" id="s8-t2" class="toast" style="left: 230px; top: 960px"><b data-hf-id="hf-w3e6">🛒</b><span data-hf-id="hf-kle9">Commande payée<small data-hf-id="hf-nhfv">Ton appli · 03:11</small></span></div>
+						<div data-hf-id="hf-f7fm" id="s8-t3" class="toast" style="left: 230px; top: 1100px"><b data-hf-id="hf-fvu7">⭐</b><span data-hf-id="hf-8lij">Nouvel avis 5 étoiles<small data-hf-id="hf-s85y">Ton appli · 03:09</small></span></div>
+						<div data-hf-id="hf-vsar" id="s8-dodo" class="emoji" style="left: 190px; top: 560px; font-size: 130px">😴</div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -59,17 +68,19 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s8');
+			const S = kit.scene('s8', {travelling: false});
 			const tl = S.tl;
 
-			// « des applications » : la nuit tombe, le téléphone.
-			tl.fromTo('#s8-nuit', {opacity: 0}, {opacity: 1, duration: 0.4}, 0);
-			kit.pop(tl, '#s8-tel', 0.1);
-			kit.tampon(tl, '#s8-label', S.ancre('@applications'));
-			// « travaillent » : les commandes tombent ; « dormez » : Zzz (zoom).
-			kit.cascade(tl, '.s8-notif', S.ancre('@travaillent'), 0.12);
-			kit.cascade(tl, '#s8-zz', S.ancre('@dormez'));
-			S.zoomMot('@travaillent', [540, 700]);
+			// « des applications » : le téléphone de nuit, la lune.
+			kit.entre(tl, '#s8-tel', 0, {dy: 120, echelle: 0.9, duree: 0.7});
+			kit.entre(tl, '#s8-lune', 0.25, {dy: 30, echelle: 0.6});
+			// « travaillent » : les notifications tombent l'une après l'autre.
+			const travail = S.ancre('@travaillent');
+			kit.entre(tl, '#s8-t1', travail, {dy: -70, duree: 0.5});
+			kit.entre(tl, '#s8-t2', travail + 0.45, {dy: -70, duree: 0.5});
+			kit.entre(tl, '#s8-t3', travail + 0.9, {dy: -70, duree: 0.5});
+			// « dormez » : toi, tu dors.
+			kit.entre(tl, '#s8-dodo', S.ancre('@dormez'), {dy: 30, echelle: 0.5});
 			S.fin();
 		})();
 	</script>

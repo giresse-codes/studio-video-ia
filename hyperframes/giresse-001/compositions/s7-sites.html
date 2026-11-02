@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s7-stage .objets {
+			transform: scale(1.08);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-4arl" id="root" data-composition-id="s7" data-width="1080" data-height="1920">
@@ -24,26 +46,25 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : une fenêtre de navigateur avec un produit et son bouton, le panier qui se remplit, le compteur de ventes. -->
+					<!-- Objets : une boutique en ligne dans un navigateur ; le curseur clique « Acheter », les notifications de vente tombent. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-jzlz" id="s7-site">
-								<rect data-hf-id="hf-fvk7" x="160" y="300" width="760" height="560" rx="36" fill="#FFFFFF" stroke="#0E0E12" stroke-width="12" />
-								<path data-hf-id="hf-xm9c" d="M 166 380 H 914" stroke="#0E0E12" stroke-width="8" />
-								<circle data-hf-id="hf-j9ye" cx="210" cy="340" r="12" fill="#FF4D5E" /><circle data-hf-id="hf-fpnr" cx="250" cy="340" r="12" fill="#FFD23F" /><circle data-hf-id="hf-vfec" cx="290" cy="340" r="12" fill="#25D366" />
-								<rect data-hf-id="hf-kkv5" x="210" y="430" width="300" height="300" rx="24" fill="#EDE7FF" />
-								<path data-hf-id="hf-5j26" d="M 290 640 L 360 520 L 430 640 Z" fill="#6C3BFF" />
-								<rect data-hf-id="hf-y41o" x="560" y="450" width="300" height="34" rx="17" fill="#E5E5EA" />
-								<rect data-hf-id="hf-d7a6" x="560" y="510" width="220" height="34" rx="17" fill="#E5E5EA" />
-								<rect data-hf-id="hf-5dne" id="s7-bouton" x="560" y="640" width="300" height="90" rx="45" fill="#6C3BFF" />
-							</g>
-							<g data-hf-id="hf-gykt" id="s7-panier" opacity="0">
-								<path data-hf-id="hf-y57n" d="M 620 940 H 660 L 690 1060 H 820 L 850 970 H 675" fill="none" stroke="#0E0E12" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
-								<circle data-hf-id="hf-3uz9" cx="705" cy="1090" r="18" fill="#0E0E12" /><circle data-hf-id="hf-y9xi" cx="805" cy="1090" r="18" fill="#0E0E12" />
-							</g>
-						</svg>
-						<div data-hf-id="hf-2xg3" id="s7-label" class="etiquette violet" style="left: 300px; top: 230px">Sites web</div>
-						<div data-hf-id="hf-p3xg" id="s7-vente" class="chiffre" style="left: 280px; top: 900px; font-size: 150px; color: #25D366">+1</div>
+						<div data-hf-id="hf-5z0h" id="s7-site" class="carte-pub" style="left: 200px; top: 460px; width: 740px; height: 560px; border-radius: 36px; overflow: hidden">
+							<div data-hf-id="hf-j25y" style="position: absolute; left: 0; right: 0; top: 0; height: 70px; background: #f3f1ec; border-bottom: 2px solid #e4e0d8"></div>
+							<div data-hf-id="hf-elkw" style="position: absolute; left: 30px; top: 25px; width: 20px; height: 20px; border-radius: 10px; background: #e8655f"></div>
+							<div data-hf-id="hf-la65" style="position: absolute; left: 62px; top: 25px; width: 20px; height: 20px; border-radius: 10px; background: #f2c14e"></div>
+							<div data-hf-id="hf-bvbc" style="position: absolute; left: 94px; top: 25px; width: 20px; height: 20px; border-radius: 10px; background: #34d27a"></div>
+							<div data-hf-id="hf-v6pp" style="position: absolute; left: 150px; top: 18px; width: 440px; height: 36px; border-radius: 18px; background: #ffffff; font-family: 'Kit Inter'; font-weight: 700; font-size: 24px; line-height: 36px; color: #9e978c; text-align: center">ta-boutique.fr</div>
+							<div data-hf-id="hf-x722" style="position: absolute; left: 40px; top: 110px; width: 300px; height: 300px; border-radius: 30px; background: radial-gradient(circle at 50% 40%, #ffffff 0%, #ebe8e1 100%)"></div>
+							<div data-hf-id="hf-0boo" class="emoji" style="left: 80px; top: 170px; font-size: 180px">👟</div>
+							<div data-hf-id="hf-8s6i" style="position: absolute; left: 380px; top: 130px; font-family: 'Kit Poppins'; font-weight: 800; font-size: 46px; color: #2b2b2f">Sneakers</div>
+							<div data-hf-id="hf-dqhk" style="position: absolute; left: 380px; top: 200px; width: 300px; height: 22px; border-radius: 11px; background: #ebe8e1"></div>
+							<div data-hf-id="hf-5xb4" style="position: absolute; left: 380px; top: 240px; width: 230px; height: 22px; border-radius: 11px; background: #ebe8e1"></div>
+							<div data-hf-id="hf-mlka" style="position: absolute; left: 380px; top: 290px; font-family: 'Kit Poppins'; font-weight: 800; font-size: 60px; color: #2b2b2f">49 €</div>
+							<div data-hf-id="hf-vmfh" id="s7-acheter" style="position: absolute; left: 380px; top: 430px; width: 310px; height: 86px; border-radius: 43px; background: linear-gradient(180deg, #3a3a3f 0%, #2b2b2f 100%); font-family: 'Kit Inter'; font-weight: 800; font-size: 38px; line-height: 86px; color: #ffffff; text-align: center">Acheter</div>
+						</div>
+						<svg data-hf-id="hf-pp9x" id="s7-curseur" class="curseur-pub" viewBox="0 0 90 110" style="left: 900px; top: 1150px"><path data-hf-id="hf-c04g" d="M 8 6 L 8 86 L 28 68 L 42 100 L 58 93 L 44 62 L 72 62 Z" fill="#FFFFFF" stroke="#2B2B2F" stroke-width="7" stroke-linejoin="round" /></svg>
+						<div data-hf-id="hf-r3a3" id="s7-t1" class="toast" style="left: 200px; top: 1060px"><b data-hf-id="hf-8d1s">💸</b><span data-hf-id="hf-8ui1">Nouvelle vente<small data-hf-id="hf-auym">à l'instant · 49 €</small></span></div>
+						<div data-hf-id="hf-umia" id="s7-t2" class="toast" style="left: 230px; top: 1180px"><b data-hf-id="hf-jxm0">💸</b><span data-hf-id="hf-fjod">Nouvelle vente<small data-hf-id="hf-xlk9">il y a 2 min · 49 €</small></span></div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -52,19 +73,18 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s7');
+			const S = kit.scene('s7', {travelling: false});
 			const tl = S.tl;
 
-			// « des sites web » : la fenêtre se pose.
-			kit.pop(tl, '#s7-site', 0);
-			kit.tampon(tl, '#s7-label', S.ancre('@sites'));
-			// « vendent » : le bouton est cliqué, le panier arrive, « +1 » en vert (zoom).
+			// « des sites web » : la boutique arrive, le curseur entre par le bas.
+			kit.entre(tl, '#s7-site', 0, {dy: 100, echelle: 0.9});
 			const vend = S.ancre('@vendent');
-			tl.to('#s7-bouton', {scale: 0.92, svgOrigin: '710 685', duration: 0.1, yoyo: true, repeat: 1}, vend - 0.2);
-			tl.to('#s7-label', {opacity: 0, duration: 0.15}, vend - 0.15);
-			kit.pop(tl, '#s7-panier', vend);
-			kit.pop(tl, '#s7-vente', vend + 0.1);
-			S.zoomMot('@vendent', [560, 760]);
+			tl.fromTo('#s7-curseur', {x: 200, y: 250, opacity: 0}, {x: -100, y: -190, opacity: 1, duration: 0.45, ease: 'power3.out'}, 0.15);
+			// « vendent » : clic sur « Acheter », les ventes tombent.
+			tl.to('#s7-acheter', {scale: 0.93, duration: 0.08, ease: 'power2.in', yoyo: true, repeat: 1}, vend - 0.1);
+			tl.to('#s7-curseur', {scale: 0.9, duration: 0.08, yoyo: true, repeat: 1}, vend - 0.1);
+			kit.entre(tl, '#s7-t1', vend, {dy: -60, echelle: 0.95, duree: 0.5});
+			kit.entre(tl, '#s7-t2', S.ancre('@pour'), {dy: -60, echelle: 0.95, duree: 0.5});
 			S.fin();
 		})();
 	</script>

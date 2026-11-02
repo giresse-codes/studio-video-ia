@@ -14,6 +14,15 @@
 				tl.to(stage, {opacity: 0, scale: 1.7, filter: 'blur(14px)', duration: d, ease: 'power3.in'}, t);
 			},
 		},
+		// Échange flou sur la même scène : l'ancienne image se dissout, la nouvelle se met au point.
+		flou: {
+			entree(tl, stage, d) {
+				tl.fromTo(stage, {opacity: 0, scale: 1.04, filter: 'blur(14px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: d, ease: 'power3.out'}, 0);
+			},
+			sortie(tl, stage, t, d) {
+				tl.to(stage, {opacity: 0, filter: 'blur(14px)', duration: d * 0.6, ease: 'power2.in'}, t);
+			},
+		},
 		balayage: {
 			entree(tl, stage, d) {
 				tl.fromTo(stage, {clipPath: 'inset(0% 0% 0% 100%)', x: 160, filter: 'blur(10px)'}, {clipPath: 'inset(0% 0% 0% 0%)', x: 0, filter: 'blur(0px)', duration: d, ease: 'power3.out'}, 0);
@@ -114,6 +123,16 @@
 			};
 			ecrire();
 			tl.fromTo(etat, {s: de}, {s: de - (t1 - t0), duration: t1 - t0, ease: 'none', onUpdate: ecrire}, t0);
+		},
+
+		// Arrivée « publicité » : du flou au net, en glissant, sur une longue traîne (expo.out).
+		entre(tl, cible, t, {dy = 70, dx = 0, echelle = 0.92, duree = 0.65} = {}) {
+			tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: 'blur(14px)'}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+		},
+
+		// Sortie « publicité » : plus courte que l'entrée, accélère et se floute.
+		sort(tl, cible, t, {duree = 0.28, dy = -30} = {}) {
+			tl.to(cible, {opacity: 0, y: dy, filter: 'blur(10px)', duration: duree, ease: 'power3.in'}, t);
 		},
 
 		// Apparition avec rebond, écrasement puis étirement.

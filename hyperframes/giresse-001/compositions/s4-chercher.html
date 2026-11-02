@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s4-stage .objets {
+			transform: scale(1.2);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
@@ -24,18 +46,19 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : une loupe qui cherche partout, puis s'arrête net ; « Arrêtez de chercher ». -->
+					<!-- Objets : la barre de recherche qui tape, les onglets qui s'empilent ; « arrêtez » : tout s'efface, la main « stop ». -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-dbqk" id="s4-loupe">
-								<circle data-hf-id="hf-wrwk" cx="540" cy="600" r="130" fill="#EDE7FF" stroke="#0E0E12" stroke-width="22" />
-								<path data-hf-id="hf-t37t" d="M 630 690 L 760 820" stroke="#0E0E12" stroke-width="40" stroke-linecap="round" />
-							</g>
-							<g data-hf-id="hf-690q" id="s4-croix" stroke="#FF4D5E" stroke-width="26" stroke-linecap="round" opacity="0">
-								<path data-hf-id="hf-m0ta" d="M 430 490 L 650 710 M 650 490 L 430 710" />
-							</g>
-						</svg>
-						<div data-hf-id="hf-fbek" id="s4-titre" class="titre grand" style="top: 960px"><span data-hf-id="hf-v778">Arrêtez de</span> <span data-hf-id="hf-9hgd" class="v">chercher.</span></div>
+						<div data-hf-id="hf-n8hq" id="s4-barre" class="carte-pub" style="left: 140px; top: 560px; width: 800px; height: 130px; border-radius: 65px">
+							<div data-hf-id="hf-k2rw" class="emoji" style="left: 40px; top: 32px; font-size: 64px">🔍</div>
+							<div data-hf-id="hf-jlyz" id="s4-texte" style="position: absolute; left: 140px; top: 36px; font-family: 'Kit Inter'; font-weight: 700; font-size: 48px; color: #2b2b2f; white-space: nowrap"></div>
+						</div>
+						<div data-hf-id="hf-v2m3" class="carte-pub s4-onglet" style="left: 170px; top: 760px; width: 330px; height: 84px; border-radius: 24px; transform: rotate(-6deg)"><div data-hf-id="hf-uzub" style="position: absolute; left: 26px; top: 20px; font-family: 'Kit Inter'; font-weight: 700; font-size: 34px; color: #7a7166; white-space: nowrap">agence pub ?</div></div>
+						<div data-hf-id="hf-vwl7" class="carte-pub s4-onglet" style="left: 560px; top: 800px; width: 330px; height: 84px; border-radius: 24px; transform: rotate(5deg)"><div data-hf-id="hf-zari" style="position: absolute; left: 26px; top: 20px; font-family: 'Kit Inter'; font-weight: 700; font-size: 34px; color: #7a7166; white-space: nowrap">devis site web</div></div>
+						<div data-hf-id="hf-35ux" class="carte-pub s4-onglet" style="left: 210px; top: 900px; width: 330px; height: 84px; border-radius: 24px; transform: rotate(4deg)"><div data-hf-id="hf-mvnh" style="position: absolute; left: 26px; top: 20px; font-family: 'Kit Inter'; font-weight: 700; font-size: 34px; color: #7a7166; white-space: nowrap">freelance fiable ?</div></div>
+						<div data-hf-id="hf-5ib7" class="carte-pub s4-onglet" style="left: 520px; top: 960px; width: 330px; height: 84px; border-radius: 24px; transform: rotate(-5deg)"><div data-hf-id="hf-fu4i" style="position: absolute; left: 26px; top: 20px; font-family: 'Kit Inter'; font-weight: 700; font-size: 34px; color: #7a7166; white-space: nowrap">appli pas chère</div></div>
+						<div data-hf-id="hf-t56z" class="carte-pub s4-onglet" style="left: 300px; top: 1060px; width: 330px; height: 84px; border-radius: 24px; transform: rotate(-3deg)"><div data-hf-id="hf-jcfc" style="position: absolute; left: 26px; top: 20px; font-family: 'Kit Inter'; font-weight: 700; font-size: 34px; color: #7a7166; white-space: nowrap">logo + pub ???</div></div>
+						<div data-hf-id="hf-otde" id="s4-main" class="emoji" style="left: 410px; top: 640px; font-size: 260px">✋</div>
+						<div data-hf-id="hf-n2js" class="centre" style="top: 990px"><span data-hf-id="hf-y9pg" id="s4-stop" class="pilule">STOP</span></div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -44,17 +67,18 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s4');
+			const S = kit.scene('s4', {travelling: false});
 			const tl = S.tl;
 
-			// « Alors » : la loupe cherche dans tous les sens.
-			kit.pop(tl, '#s4-loupe', 0.05);
-			tl.to('#s4-loupe', {keyframes: [{x: -120, y: -60, duration: 0.3}, {x: 110, y: -20, duration: 0.3}, {x: -60, y: 70, duration: 0.3}, {x: 0, y: 0, duration: 0.2}], ease: 'sine.inOut'}, 0.15);
-			// « arrêtez » : elle s'arrête net, barrée (zoom) ; le titre.
+			// « Alors » : on tape, les onglets s'empilent.
+			tl.fromTo('#s4-barre', {opacity: 0.6, filter: 'blur(8px)'}, {opacity: 1, filter: 'blur(0px)', duration: 0.3, ease: 'power2.out'}, 0);
+			kit.frappe(tl, '#s4-texte', 'agence pub site appli…', 0.05, 0.45);
+			tl.fromTo('.s4-onglet', {opacity: 0, y: -60, filter: 'blur(10px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out', stagger: 0.06}, 0.1);
+			// « arrêtez » : tout se dissout, la main « stop » se pose.
 			const stop = S.ancre('@arretez');
-			kit.pop(tl, '#s4-croix', stop);
-			kit.cascade(tl, '#s4-titre span', stop, 0.3);
-			S.zoomMot('@arretez', [540, 640]);
+			kit.sort(tl, ['#s4-barre', '.s4-onglet'], stop - 0.1, {dy: 40});
+			kit.entre(tl, '#s4-main', stop, {dy: 60, echelle: 1.4});
+			kit.entre(tl, '#s4-stop', stop + 0.15, {dy: 30});
 			S.fin();
 		})();
 	</script>

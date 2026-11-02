@@ -12,17 +12,17 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
 			"id": "s2",
 			"fichier": "compositions/s2-meme-chose.html",
 			"debut": "@mais",
-			"transition": "balayage",
+			"transition": "flou",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
@@ -32,7 +32,7 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
@@ -42,7 +42,7 @@
 			"transition": "balayage",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
@@ -52,17 +52,17 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
 			"id": "s6",
 			"fichier": "compositions/s6-pubs.html",
 			"debut": "@des",
-			"transition": "balayage",
+			"transition": "flou",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
@@ -72,7 +72,7 @@
 			"transition": "balayage",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
@@ -82,7 +82,7 @@
 			"transition": "balayage",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
@@ -92,18 +92,24 @@
 			"transition": "zoom",
 			"cible": [
 				540,
-				640
+				820
 			]
 		},
 		{
 			"id": "s10",
 			"fichier": "compositions/s10-whatsapp.html",
 			"debut": "@giresse",
-			"transition": "zoom",
+			"transition": "flou",
 			"cible": [
 				540,
-				640
+				820
 			]
+		}
+	],
+	"calques": [
+		{
+			"id": "etapes",
+			"fichier": "compositions/etapes.html"
 		}
 	],
 	"bruitages": [
@@ -129,7 +135,7 @@
 		},
 		{
 			"ancre": "@meme",
-			"son": "boing",
+			"son": "tic",
 			"scene": "s2"
 		},
 		{
@@ -144,6 +150,11 @@
 		},
 		{
 			"ancre": "@confiance",
+			"son": "tic",
+			"scene": "s3"
+		},
+		{
+			"ancre": "@personne",
 			"son": "boing",
 			"scene": "s3"
 		},
@@ -163,7 +174,7 @@
 			"scene": "s5"
 		},
 		{
-			"ancre": "@scroll",
+			"ancre": "@arretent",
 			"son": "pop-2",
 			"scene": "s6"
 		},
@@ -173,7 +184,7 @@
 			"scene": "s7"
 		},
 		{
-			"ancre": "@dormez",
+			"ancre": "@travaillent",
 			"son": "pop-1",
 			"scene": "s8"
 		},
@@ -199,5 +210,24 @@
 		}
 	],
 	"avatar": false,
-	"theme": "studio"
+	"theme": "studio",
+	"sousTitres": "titre",
+	"accents": [
+		"projet",
+		"marque",
+		"business",
+		"connu",
+		"meme",
+		"outils",
+		"visuel",
+		"confiance",
+		"chercher",
+		"tout",
+		"scroll",
+		"vendent",
+		"dormez",
+		"ignorer",
+		"whatsapp",
+		"aujourdhui"
+	]
 }

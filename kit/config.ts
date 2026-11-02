@@ -41,6 +41,8 @@ export const ZONE_SURE = {gauche: 80, droite: 130, bas: 380, haut: 160} as const
 export const SOUS_TITRES = {
 	taillePx: 56,
 	motsParGroupe: 4,
+	// Mode « titre » (publicités) : au plus 7 mots par phrase affichée, sur deux lignes.
+	motsParTitre: 7,
 	motActif: '#FFD23F',
 	texte: '#FFFFFF',
 	pastille: 'rgba(20, 20, 20, 0.82)',

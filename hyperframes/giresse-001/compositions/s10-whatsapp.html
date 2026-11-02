@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s10-stage .objets {
+			transform: scale(1.15);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-k4dx" id="root" data-composition-id="s10" data-width="1080" data-height="1920">
@@ -24,22 +46,15 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : le logo GIRESSE, le bouton vert « Écrivez-nous sur WhatsApp » (bulle dessinée, sans logo officiel), « Aujourd'hui ». -->
+					<!-- Objets : le logo GIRESSE (monogramme et nom, fichiers du logo), puis le bouton vert « Écrivez-nous sur WhatsApp » (bulle dessinée) ; le curseur clique. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-hzwn" id="s10-logo">
-								<rect data-hf-id="hf-mfvb" x="400" y="200" width="280" height="280" rx="70" fill="#6C3BFF" />
-								<path data-hf-id="hf-8fhe" d="M 610 295 A 90 90 0 1 0 610 385 H 540" fill="none" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" />
-							</g>
-							<g data-hf-id="hf-lwoz" id="s10-bouton" opacity="0">
-								<rect data-hf-id="hf-qez7" x="170" y="800" width="740" height="150" rx="75" fill="#25D366" />
-								<path data-hf-id="hf-0xhn" d="M 260 875 m -42 0 a 42 42 0 1 1 18 34 l -26 10 l 8 -24 a 42 42 0 0 1 0 -20 Z" fill="#FFFFFF" />
-							</g>
-						</svg>
-						<div data-hf-id="hf-fy3j" id="s10-nom" class="titre grand" style="top: 510px; font-size: 96px">GIRESSE</div>
-						<div data-hf-id="hf-4i8v" id="s10-studio" class="titre grand" style="top: 625px; font-size: 56px; color: #6C3BFF">DIGITAL STUDIO</div>
-						<div data-hf-id="hf-v0zt" id="s10-texte" class="titre grand" style="top: 818px; left: 330px; width: 540px; font-size: 50px; line-height: 1.15; text-align: left; color: #FFFFFF">Écrivez-nous<br data-hf-id="hf-x5px" />sur WhatsApp</div>
-						<div data-hf-id="hf-lw26" id="s10-auj" class="etiquette violet" style="left: 330px; top: 1010px">Aujourd'hui.</div>
+						<img data-hf-id="hf-3o7u" id="s10-mono" src="assets/marque/monogramme.png" style="position: absolute; left: 375px; top: 450px; width: 350px; filter: drop-shadow(0 30px 40px rgba(60, 50, 40, 0.25))" />
+						<img data-hf-id="hf-ftm9" id="s10-nom" src="assets/marque/nom.png" style="position: absolute; left: 250px; top: 840px; width: 580px" />
+						<div data-hf-id="hf-a7l5" id="s10-bouton" style="position: absolute; left: 160px; top: 1070px; width: 760px; height: 140px; border-radius: 70px; background: linear-gradient(180deg, #1fa855 0%, #168a45 100%); box-shadow: 0 30px 60px rgba(22, 138, 69, 0.35)">
+							<svg data-hf-id="hf-8pe1" style="position: absolute; left: 44px; top: 32px; width: 76px; height: 76px" viewBox="0 0 76 76"><path data-hf-id="hf-2va3" d="M 38 6 A 32 32 0 1 1 20 64 L 6 70 L 11 56 A 32 32 0 0 1 38 6 Z" fill="#FFFFFF" /><path data-hf-id="hf-vcfe" d="M 26 26 Q 26 46 50 52" fill="none" stroke="#168A45" stroke-width="7" stroke-linecap="round" /></svg>
+							<div data-hf-id="hf-947i" style="position: absolute; left: 136px; top: 44px; font-family: 'Kit Inter'; font-weight: 800; font-size: 40px; color: #ffffff; white-space: nowrap">Écrivez-nous sur WhatsApp</div>
+						</div>
+						<svg data-hf-id="hf-ks5p" id="s10-curseur" class="curseur-pub" viewBox="0 0 90 110" style="left: 850px; top: 1150px"><path data-hf-id="hf-c04g" d="M 8 6 L 8 86 L 28 68 L 42 100 L 58 93 L 44 62 L 72 62 Z" fill="#FFFFFF" stroke="#2B2B2F" stroke-width="7" stroke-linejoin="round" /></svg>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -48,21 +63,19 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s10');
+			const S = kit.scene('s10', {travelling: false});
 			const tl = S.tl;
 
-			// « GIRESSE Digital Studio » : le logo et le nom.
-			kit.chute(tl, '#s10-logo', 0);
-			kit.cascade(tl, '#s10-nom', 0.1);
-			kit.cascade(tl, '#s10-studio', S.ancre('@studio'));
-			// « Écrivez-nous sur WhatsApp » : le bouton vert (zoom), qui pulse jusqu'à la fin.
-			const ecrire = S.ancre('@ecriveznous');
-			kit.pop(tl, '#s10-bouton', ecrire);
-			kit.cascade(tl, '#s10-texte', ecrire + 0.1);
-			S.zoomMot('@whatsapp', [540, 875]);
-			kit.boucle(tl, '#s10-bouton', {scale: 1.04, svgOrigin: '540 875'}, S.ancre('@whatsapp') + 1.4, S.dur, 0.8);
-			// « Aujourd'hui » : l'étiquette.
-			kit.tampon(tl, '#s10-auj', S.ancre('@aujourdhui'));
+			// « GIRESSE Digital Studio » : le logo se pose, le nom suit.
+			tl.fromTo('#s10-mono', {opacity: 0, scale: 0.8, filter: 'blur(18px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}, 0);
+			kit.entre(tl, '#s10-nom', S.ancre('@digital'), {dy: 30, echelle: 1});
+			// « Écrivez-nous sur WhatsApp » : le bouton ; le curseur arrive.
+			kit.entre(tl, '#s10-bouton', S.ancre('@ecriveznous'), {dy: 80, echelle: 0.9});
+			tl.fromTo('#s10-curseur', {x: 260, y: 300, opacity: 0}, {x: 0, y: 0, opacity: 1, duration: 0.6, ease: 'power3.out'}, S.ancre('@whatsapp'));
+			// « Aujourd'hui » : le clic.
+			const auj = S.ancre('@aujourdhui');
+			tl.to('#s10-bouton', {scale: 0.95, duration: 0.09, ease: 'power2.in', yoyo: true, repeat: 1}, auj);
+			tl.to('#s10-curseur', {scale: 0.88, duration: 0.09, yoyo: true, repeat: 1}, auj);
 			S.fin();
 		})();
 	</script>

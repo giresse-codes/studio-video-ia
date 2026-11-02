@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s1-stage .objets {
+			transform: scale(1.25);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
@@ -24,23 +46,29 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : « Vous avez », puis trois cartes (projet, marque, business) avec leur icône ; « connu » : un projecteur violet. -->
+					<!-- Objets : une carte « projet » (ampoule, croquis) qui devient une marque (badge, couleurs) puis un commerce (auvent, « ouvert ») ; « connu » : halo et étincelles. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-1lrh" id="s1-faisceau" opacity="0">
-								<path data-hf-id="hf-8njz" d="M 540 120 L 200 1000 L 880 1000 Z" fill="#EDE7FF" />
-							</g>
-							<g data-hf-id="hf-d16z" fill="none" stroke="#0E0E12" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-								<g data-hf-id="hf-acnq" id="s1-i1"><circle data-hf-id="hf-1fwg" cx="260" cy="440" r="46" fill="#FFD23F" /><path data-hf-id="hf-ycpp" d="M 245 495 H 275 M 248 515 H 272" /></g>
-								<g data-hf-id="hf-6ejp" id="s1-i2"><path data-hf-id="hf-65jo" d="M 215 600 H 290 L 315 640 L 290 680 H 215 Z" fill="#EDE7FF" /><circle data-hf-id="hf-c77v" cx="240" cy="640" r="9" fill="#0E0E12" /></g>
-								<g data-hf-id="hf-5mvw" id="s1-i3"><path data-hf-id="hf-r738" d="M 210 800 H 310 V 880 H 210 Z" fill="#FFFFFF" /><path data-hf-id="hf-w403" d="M 200 800 L 220 760 H 300 L 320 800 Z" fill="#6C3BFF" /><path data-hf-id="hf-2bx2" d="M 245 880 V 840 H 275 V 880" /></g>
-							</g>
+						<div data-hf-id="hf-9wfa" id="s1-halo" style="position: absolute; left: 140px; top: 420px; width: 800px; height: 800px; border-radius: 400px; background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(158, 151, 140, 0.25) 45%, rgba(158, 151, 140, 0) 70%); opacity: 0"></div>
+						<div data-hf-id="hf-mceq" id="s1-carte" class="carte-pub" style="left: 290px; top: 600px; width: 500px; height: 560px">
+							<div data-hf-id="hf-j04n" id="s1-ampoule" class="emoji" style="left: 50px; top: 50px; font-size: 150px">💡</div>
+							<div data-hf-id="hf-p46h" class="s1-trait" style="position: absolute; left: 50px; top: 260px; width: 380px; height: 26px; border-radius: 13px; background: #e7e3dc"></div>
+							<div data-hf-id="hf-y865" class="s1-trait" style="position: absolute; left: 50px; top: 310px; width: 300px; height: 26px; border-radius: 13px; background: #e7e3dc"></div>
+							<div data-hf-id="hf-41pk" class="s1-trait" style="position: absolute; left: 50px; top: 360px; width: 340px; height: 26px; border-radius: 13px; background: #e7e3dc"></div>
+							<div data-hf-id="hf-32so" class="s1-teinte" style="position: absolute; left: 50px; top: 440px; width: 70px; height: 70px; border-radius: 35px; background: #2b2b2f"></div>
+							<div data-hf-id="hf-mczb" class="s1-teinte" style="position: absolute; left: 135px; top: 440px; width: 70px; height: 70px; border-radius: 35px; background: #9e978c"></div>
+							<div data-hf-id="hf-98a5" class="s1-teinte" style="position: absolute; left: 220px; top: 440px; width: 70px; height: 70px; border-radius: 35px; background: #e4e0d8"></div>
+							<div data-hf-id="hf-w76b" id="s1-ouvert" class="pilule" style="left: 300px; top: 446px; font-size: 34px; padding: 10px 24px 12px; background: linear-gradient(180deg, #34d27a 0%, #23b866 100%)">OUVERT</div>
+						</div>
+						<div data-hf-id="hf-85w3" id="s1-badge" style="position: absolute; left: 690px; top: 700px; width: 170px; height: 170px; border-radius: 95px; background: linear-gradient(160deg, #3a3a3f 0%, #2b2b2f 100%); box-shadow: 0 24px 50px rgba(43, 43, 47, 0.3); font-family: 'Kit Poppins'; font-weight: 800; font-size: 86px; line-height: 170px; text-align: center; color: #ffffff">★</div>
+						<svg data-hf-id="hf-xrfh" id="s1-auvent" style="position: absolute; left: 260px; top: 520px; width: 560px; height: 150px" viewBox="0 0 560 150">
+							<path data-hf-id="hf-aouo" d="M 0 0 H 560 V 90 H 0 Z" fill="#2B2B2F" />
+							<g data-hf-id="hf-gvtn" fill="#9E978C"><rect data-hf-id="hf-059z" x="70" y="0" width="70" height="90" /><rect data-hf-id="hf-ih47" x="210" y="0" width="70" height="90" /><rect data-hf-id="hf-lif6" x="350" y="0" width="70" height="90" /><rect data-hf-id="hf-p93t" x="490" y="0" width="70" height="90" /></g>
+							<g data-hf-id="hf-vkti" fill="#2B2B2F"><circle data-hf-id="hf-borb" cx="35" cy="90" r="35" /><circle data-hf-id="hf-w3tw" cx="175" cy="90" r="35" /><circle data-hf-id="hf-cmnc" cx="315" cy="90" r="35" /><circle data-hf-id="hf-nxvl" cx="455" cy="90" r="35" /></g>
+							<g data-hf-id="hf-pl5n" fill="#9E978C"><circle data-hf-id="hf-dc67" cx="105" cy="90" r="35" /><circle data-hf-id="hf-k5me" cx="245" cy="90" r="35" /><circle data-hf-id="hf-7ceh" cx="385" cy="90" r="35" /><circle data-hf-id="hf-ytk5" cx="525" cy="90" r="35" /></g>
 						</svg>
-						<div data-hf-id="hf-ro05" id="s1-avez" class="etiquette violet" style="left: 400px; top: 230px">Vous avez…</div>
-						<div data-hf-id="hf-xjp0" id="s1-projet" class="titre grand" style="top: 390px; left: 350px; width: 560px; text-align: left; font-size: 78px; white-space: nowrap">un projet</div>
-						<div data-hf-id="hf-hyj5" id="s1-marque" class="titre grand" style="top: 590px; left: 350px; width: 560px; text-align: left; font-size: 78px; white-space: nowrap">une marque</div>
-						<div data-hf-id="hf-q2nm" id="s1-business" class="titre grand" style="top: 790px; left: 350px; width: 560px; text-align: left; font-size: 78px; white-space: nowrap">un <span data-hf-id="hf-x41b" class="v">business</span></div>
-						<div data-hf-id="hf-tusm" id="s1-connu" class="etiquette violet" style="left: 260px; top: 1010px">qui mérite d'être connu</div>
+						<div data-hf-id="hf-y9cf" class="emoji s1-etincelle" style="left: 190px; top: 560px; font-size: 90px">✨</div>
+						<div data-hf-id="hf-gf7q" class="emoji s1-etincelle" style="left: 800px; top: 900px; font-size: 80px">✨</div>
+						<div data-hf-id="hf-zwsu" class="emoji s1-etincelle" style="left: 210px; top: 1080px; font-size: 70px">✨</div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -49,22 +77,27 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s1');
+			const S = kit.scene('s1', {travelling: false});
 			const tl = S.tl;
 
-			// Dès 0 s : « Vous avez… ».
-			kit.tampon(tl, '#s1-avez', 0.05);
-			// « projet », « marque », « business » : chaque carte claque avec son icône.
-			for (const [mot, id] of [['@projet', '1'], ['@marque', '2'], ['@business', '3']]) {
-				const t = S.ancre(mot);
-				kit.pop(tl, `#s1-i${id}`, t);
-				tl.fromTo(['#s1-projet', '#s1-marque', '#s1-business'][Number(id) - 1], {opacity: 0, x: -60}, {opacity: 1, x: 0, duration: 0.3, ease: 'back.out(2)'}, t);
-			}
-			// « connu » : le projecteur s'allume (zoom).
+			// Image 0 : la carte est déjà là et se met au point.
+			tl.fromTo('#s1-carte', {scale: 0.94}, {scale: 1, duration: 0.8, ease: 'expo.out'}, 0);
+			// L'ampoule est là dès l'image 0 et s'allume ; « projet » : le croquis.
+			const projet = S.ancre('@projet');
+			tl.fromTo('#s1-ampoule', {scale: 0.8, filter: 'brightness(0.85)'}, {scale: 1, filter: 'brightness(1.1)', duration: 0.7, ease: 'expo.out'}, 0);
+			kit.cascade(tl, '.s1-trait', projet + 0.1, 0.07);
+			// « marque » : le badge se pose en tournant, les couleurs de la marque.
+			const marque = S.ancre('@marque');
+			tl.fromTo('#s1-badge', {opacity: 0, scale: 1.6, rotation: -25, filter: 'blur(12px)'}, {opacity: 1, scale: 1, rotation: 8, filter: 'blur(0px)', duration: 0.55, ease: 'expo.out'}, marque);
+			kit.cascade(tl, '.s1-teinte', marque + 0.15, 0.07);
+			// « business » : l'auvent tombe sur la carte, « ouvert ».
+			const business = S.ancre('@business');
+			kit.chute(tl, '#s1-auvent', business - 0.15, {hauteur: 260});
+			kit.entre(tl, '#s1-ouvert', business + 0.25, {dy: 20});
+			// « connu » : le halo s'ouvre derrière, les étincelles.
 			const connu = S.ancre('@connu');
-			tl.to('#s1-faisceau', {opacity: 1, duration: 0.3}, connu - 0.3);
-			kit.tampon(tl, '#s1-connu', S.ancre('@merite'));
-			S.zoomMot('@connu', [540, 800]);
+			tl.fromTo('#s1-halo', {opacity: 0, scale: 0.5}, {opacity: 1, scale: 1.1, duration: 0.8, ease: 'expo.out'}, S.ancre('@merite'));
+			kit.cascade(tl, '.s1-etincelle', connu - 0.1, 0.1);
 			S.fin();
 		})();
 	</script>

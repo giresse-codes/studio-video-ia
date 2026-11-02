@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s3-stage .objets {
+			transform: scale(1.2);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
@@ -24,23 +46,24 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : trois manques, barrés un à un (outils, visuel, confiance). -->
+					<!-- Objets : trois lignes (outils, visuel, confiance), barrées une à une d'une croix rouge ; « personne » : un haussement d'épaules. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<g data-hf-id="hf-d16z" fill="none" stroke="#0E0E12" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-								<g data-hf-id="hf-1a6o" id="s3-i1"><path data-hf-id="hf-30gk" d="M 220 430 L 300 350 M 285 335 Q 320 300 345 330 L 320 355 L 330 370 L 360 345 Q 380 380 340 405 Z" fill="#BFC5CC" /></g>
-								<g data-hf-id="hf-9y2j" id="s3-i2"><rect data-hf-id="hf-xn21" x="210" y="560" width="140" height="110" rx="14" fill="#EDE7FF" /><path data-hf-id="hf-zh1h" d="M 225 655 L 270 605 L 300 635 L 320 615 L 340 655" /><circle data-hf-id="hf-glye" cx="315" cy="590" r="12" fill="#0E0E12" /></g>
-								<g data-hf-id="hf-5zyi" id="s3-i3"><path data-hf-id="hf-8sm0" d="M 200 830 L 250 790 L 290 820 L 330 790 L 380 830 L 330 880 L 290 860 L 250 880 Z" fill="#FFD23F" /><path data-hf-id="hf-597p" d="M 285 770 L 300 900" stroke="#FF4D5E" stroke-width="10" /></g>
-							</g>
-							<g data-hf-id="hf-x8u6" stroke="#FF4D5E" stroke-width="16" stroke-linecap="round">
-								<path data-hf-id="hf-uiji" class="s3-barre1" d="M 400 378 H 860" />
-								<path data-hf-id="hf-a1wh" class="s3-barre2" d="M 400 593 H 840" />
-							</g>
-						</svg>
-						<div data-hf-id="hf-qijz" id="s3-l1" class="titre grand" style="top: 340px; left: 400px; width: 500px; font-size: 64px; text-align: left">les bons outils</div>
-						<div data-hf-id="hf-e1ii" id="s3-l2" class="titre grand" style="top: 555px; left: 400px; width: 500px; font-size: 64px; text-align: left">le bon visuel</div>
-						<div data-hf-id="hf-5p12" id="s3-l3" class="titre grand" style="top: 780px; left: 400px; width: 500px; font-size: 64px; text-align: left"><span data-hf-id="hf-e2c9" class="v">confiance</span> ?</div>
-						<div data-hf-id="hf-h8fk" id="s3-personne" class="etiquette" style="left: 300px; top: 1000px">personne</div>
+						<div data-hf-id="hf-pehb" id="s3-l1" class="carte-pub" style="left: 190px; top: 470px; width: 700px; height: 150px; border-radius: 40px">
+							<div data-hf-id="hf-lcei" class="emoji" style="left: 34px; top: 38px; font-size: 76px">🧰</div>
+							<div data-hf-id="hf-4gdo" style="position: absolute; left: 140px; top: 44px; font-family: 'Kit Inter'; font-weight: 800; font-size: 54px; color: #2b2b2f">Les bons outils</div>
+							<div data-hf-id="hf-izvx" id="s3-x1" style="position: absolute; left: 584px; top: 37px; width: 76px; height: 76px; border-radius: 38px; background: linear-gradient(180deg, #e8655f 0%, #d9534f 100%); color: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 46px; line-height: 74px; text-align: center">✕</div>
+						</div>
+						<div data-hf-id="hf-fj9o" id="s3-l2" class="carte-pub" style="left: 190px; top: 650px; width: 700px; height: 150px; border-radius: 40px">
+							<div data-hf-id="hf-8vv4" class="emoji" style="left: 34px; top: 38px; font-size: 76px">🎨</div>
+							<div data-hf-id="hf-gscm" style="position: absolute; left: 140px; top: 44px; font-family: 'Kit Inter'; font-weight: 800; font-size: 54px; color: #2b2b2f">Le bon visuel</div>
+							<div data-hf-id="hf-05l0" id="s3-x2" style="position: absolute; left: 584px; top: 37px; width: 76px; height: 76px; border-radius: 38px; background: linear-gradient(180deg, #e8655f 0%, #d9534f 100%); color: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 46px; line-height: 74px; text-align: center">✕</div>
+						</div>
+						<div data-hf-id="hf-ov19" id="s3-l3" class="carte-pub" style="left: 190px; top: 830px; width: 700px; height: 150px; border-radius: 40px">
+							<div data-hf-id="hf-4n6h" class="emoji" style="left: 34px; top: 38px; font-size: 76px">🤝</div>
+							<div data-hf-id="hf-8nfb" style="position: absolute; left: 140px; top: 44px; font-family: 'Kit Inter'; font-weight: 800; font-size: 54px; color: #2b2b2f">La confiance</div>
+							<div data-hf-id="hf-8byz" id="s3-x3" style="position: absolute; left: 584px; top: 37px; width: 76px; height: 76px; border-radius: 38px; background: linear-gradient(180deg, #e8655f 0%, #d9534f 100%); color: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 46px; line-height: 74px; text-align: center">✕</div>
+						</div>
+						<div data-hf-id="hf-7csv" id="s3-personne" class="emoji" style="left: 450px; top: 1030px; font-size: 180px">🤷</div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -49,21 +72,18 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s3');
+			const S = kit.scene('s3', {travelling: false});
 			const tl = S.tl;
 
-			// « Pas les bons outils » : barré ; « Pas le bon visuel » : barré.
-			kit.pop(tl, '#s3-i1', 0.05);
-			kit.cascade(tl, '#s3-l1', 0.1);
-			kit.trace(tl, '.s3-barre1', S.ancre('@outils'), 0.3);
-			kit.pop(tl, '#s3-i2', S.ancre('@bon') - 0.1);
-			kit.cascade(tl, '#s3-l2', S.ancre('@bon'));
-			kit.trace(tl, '.s3-barre2', S.ancre('@visuel'), 0.3);
-			// « personne à qui faire confiance » : la poignée de main cassée (zoom).
-			kit.tampon(tl, '#s3-personne', S.ancre('@personne'));
-			kit.pop(tl, '#s3-i3', S.ancre('@surtout'));
-			kit.cascade(tl, '#s3-l3', S.ancre('@confiance'));
-			S.zoomMot('@confiance', [540, 820]);
+			// « Pas les bons outils » : ligne 1, croix ; « Pas le bon visuel » : ligne 2, croix.
+			kit.entre(tl, '#s3-l1', 0.05, {dx: -80, dy: 0});
+			kit.pop(tl, '#s3-x1', S.ancre('@outils'));
+			kit.entre(tl, '#s3-l2', S.ancre('@pas#2'), {dx: -80, dy: 0});
+			kit.pop(tl, '#s3-x2', S.ancre('@visuel'));
+			// « Et surtout… personne à qui faire confiance » : ligne 3, le haussement d'épaules, la croix.
+			kit.entre(tl, '#s3-l3', S.ancre('@surtout'), {dx: -80, dy: 0});
+			kit.entre(tl, '#s3-personne', S.ancre('@personne'), {dy: 40, echelle: 0.5});
+			kit.pop(tl, '#s3-x3', S.ancre('@confiance'));
 			S.fin();
 		})();
 	</script>

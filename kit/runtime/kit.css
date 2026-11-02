@@ -49,19 +49,19 @@
 	--socle: linear-gradient(180deg, #ebddbb 0%, #dcc79c 60%, #c9b07e 100%);
 }
 
-/* Palette « Studio » (channels/giresse/STYLE.md) : blanc pur, encre, accent violet. */
+/* Palette « Studio » (channels/giresse/STYLE.md, d'après le logo GIRESSE) : crème, anthracite, taupe. */
 .theme-studio {
-	--mur-haut: #ffffff;
-	--mur-bas: #ffffff;
-	--sol-haut: #f7f5ff;
-	--sol-bas: #efeaff;
-	--encre: #0e0e12;
-	--violet: #6c3bff;
-	--violet-clair: #ede7ff;
+	--mur-haut: #f3f1ec;
+	--mur-bas: #efede8;
+	--sol-haut: #ebe8e1;
+	--sol-bas: #e4e0d8;
+	--encre: #2b2b2f;
+	--taupe: #9e978c;
+	--accent-texte: #7a7166;
 	--vert: #25d366;
-	--rouge: #ff4d5e;
-	--ombre: 0 30px 60px rgba(40, 20, 90, 0.16), 0 8px 18px rgba(40, 20, 90, 0.1);
-	--socle: linear-gradient(180deg, #efeaff 0%, #f7f5ff 100%);
+	--rouge: #d9534f;
+	--ombre: 0 30px 60px rgba(60, 50, 40, 0.16), 0 8px 18px rgba(60, 50, 40, 0.1);
+	--socle: linear-gradient(180deg, #e9e6df 0%, #e2ded5 100%);
 }
 
 /* Palette « Alerte » (channels/mode-survie/STYLE.md) : nuit, eau, rouge alerte, orange danger, vert sortie. */
@@ -371,4 +371,128 @@
 }
 .st-mot {
 	white-space: pre-wrap;
+}
+
+/* Sous-titres en mode « titre » (publicités) : la phrase en haut, mot à mot, mots d'accent en couleur. */
+.st-titre {
+	position: absolute;
+	left: 90px;
+	right: 90px;
+	top: 200px;
+	text-align: center;
+	font-family: 'Kit Inter';
+	font-weight: 800;
+	font-size: 70px;
+	line-height: 1.18;
+	letter-spacing: -0.5px;
+	color: #2b2b33;
+}
+.st-tmot {
+	display: inline-block;
+}
+.st-accent {
+	color: var(--accent-texte, #7a7166);
+}
+
+/* Éléments « Studio » (publicités) : fond blanc à halo, cartes brillantes, pastilles, maquettes, notifications, curseur. */
+@font-face {
+	font-family: 'Kit Emoji';
+	src: local('Noto Color Emoji');
+}
+.theme-studio .decor {
+	background:
+		radial-gradient(ellipse 70% 40% at 50% 58%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
+		linear-gradient(180deg, #f3f1ec 0%, #efede8 60%, #e6e2da 100%);
+}
+.emoji {
+	position: absolute;
+	font-family: 'Kit Emoji';
+	line-height: 1;
+	filter: drop-shadow(0 18px 24px rgba(60, 50, 40, 0.2));
+}
+.carte-pub {
+	position: absolute;
+	border-radius: 44px;
+	background: linear-gradient(180deg, #ffffff 0%, #faf9f6 100%);
+	box-shadow:
+		0 50px 90px rgba(60, 50, 40, 0.16),
+		0 12px 28px rgba(60, 50, 40, 0.1),
+		inset 0 2px 0 rgba(255, 255, 255, 0.9);
+	border: 2px solid rgba(60, 50, 40, 0.06);
+}
+.pilule {
+	position: absolute;
+	padding: 14px 34px 16px;
+	border-radius: 999px;
+	background: linear-gradient(180deg, #3a3a3f 0%, #2b2b2f 100%);
+	color: #ffffff;
+	font-family: 'Kit Inter';
+	font-weight: 800;
+	font-size: 56px;
+	white-space: nowrap;
+	box-shadow: 0 20px 40px rgba(43, 43, 47, 0.25);
+}
+.pilule.taupe {
+	background: linear-gradient(180deg, #aea79c 0%, #9e978c 100%);
+	box-shadow: 0 20px 44px rgba(110, 100, 85, 0.35);
+}
+.tel-pub {
+	position: absolute;
+	width: 400px;
+	height: 820px;
+	border-radius: 72px;
+	background: linear-gradient(160deg, #3a3a44 0%, #0e0e12 40%, #1c1c22 100%);
+	box-shadow:
+		0 60px 110px rgba(60, 50, 40, 0.3),
+		inset 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+.tel-pub .ecran {
+	position: absolute;
+	inset: 16px;
+	border-radius: 58px;
+	overflow: hidden;
+	background: #ffffff;
+}
+.tel-pub .ilot {
+	position: absolute;
+	left: 50%;
+	top: 34px;
+	width: 120px;
+	height: 34px;
+	margin-left: -60px;
+	border-radius: 17px;
+	background: #0e0e12;
+	z-index: 3;
+}
+.toast {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	padding: 22px 30px;
+	border-radius: 34px;
+	background: rgba(255, 255, 255, 0.96);
+	box-shadow: 0 24px 50px rgba(60, 50, 40, 0.2);
+	font-family: 'Kit Inter';
+	font-weight: 700;
+	font-size: 34px;
+	color: #2b2b33;
+	white-space: nowrap;
+}
+.toast b {
+	font-family: 'Kit Emoji';
+	font-weight: 400;
+	font-size: 46px;
+}
+.toast small {
+	display: block;
+	font-weight: 500;
+	font-size: 28px;
+	color: #7a7a88;
+}
+.curseur-pub {
+	position: absolute;
+	width: 90px;
+	height: 110px;
+	filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25));
 }

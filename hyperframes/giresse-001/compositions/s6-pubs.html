@@ -4,17 +4,39 @@
 			position: absolute;
 			inset: 0;
 		}
-		.titre.grand {
-			left: 250px;
-			width: 580px;
-			font-size: 92px;
+		/* Polices déjà déclarées dans kit.css ; répétées ici pour le contrôle HyperFrames. */
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
 		}
-		.v {
-			color: var(--violet);
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
 		}
-		.etiquette.violet {
-			background: linear-gradient(180deg, #7d52ff 0%, #6c3bff 100%);
-			color: #ffffff;
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		.centre {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.centre .pilule {
+			position: static;
+			display: inline-block;
+		}
+		#s6-stage .objets {
+			transform: scale(1.2);
+			transform-origin: 540px 820px;
 		}
 	</style>
 	<div data-hf-id="hf-az72" id="root" data-composition-id="s6" data-width="1080" data-height="1920">
@@ -24,27 +46,23 @@
 					<div data-hf-id="hf-tbpr" class="fond">
 						<div data-hf-id="hf-mit3" class="decor"></div>
 					</div>
-					<!-- Objets : un téléphone dont le fil défile, puis s'arrête sur une pub animée (violet, bouton lecture) ; la main qui ne scrolle plus. -->
+					<!-- Objets : un téléphone dont le fil défile (flou de mouvement), puis s'arrête net sur une pub animée ; cœurs ; le pouce qui ne scrolle plus. -->
 					<div data-hf-id="hf-iyzb" class="objets">
-						<svg data-hf-id="hf-vuze" class="calque" viewBox="0 0 1080 1920">
-							<defs data-hf-id="hf-mh0t"><clipPath data-hf-id="hf-rab2" id="s6-ecran"><rect data-hf-id="hf-crke" x="406" y="305" width="268" height="510" rx="34" /></clipPath></defs>
-							<g data-hf-id="hf-s1l0" id="s6-tel">
-								<rect data-hf-id="hf-8saz" x="390" y="280" width="300" height="560" rx="48" fill="#0E0E12" />
-								<rect data-hf-id="hf-u9d5" x="406" y="305" width="268" height="510" rx="34" fill="#FFFFFF" />
-								<g data-hf-id="hf-zyqg" clip-path="url(#s6-ecran)"><g data-hf-id="hf-ahhy" id="s6-fil"><rect data-hf-id="hf-64pz" x="406" y="280" width="268" height="150" rx="20" fill="#EDE7FF" /><rect data-hf-id="hf-ux97" x="406" y="450" width="268" height="150" rx="20" fill="#F2F2F2" /><rect data-hf-id="hf-3zxz" x="406" y="620" width="268" height="150" rx="20" fill="#FFE9A8" /><rect data-hf-id="hf-tagc" x="406" y="790" width="268" height="150" rx="20" fill="#F2F2F2" /><rect data-hf-id="hf-9z7i" x="406" y="960" width="268" height="150" rx="20" fill="#EDE7FF" /><rect data-hf-id="hf-rfen" x="406" y="1130" width="268" height="150" rx="20" fill="#F2F2F2" /></g></g>
-								<g data-hf-id="hf-0lza" id="s6-pub" opacity="0">
-									<rect data-hf-id="hf-a1mq" x="406" y="420" width="268" height="260" rx="20" fill="#6C3BFF" />
-									<path data-hf-id="hf-02nx" d="M 515 500 L 585 550 L 515 600 Z" fill="#FFFFFF" />
-								</g>
-							</g>
-							<g data-hf-id="hf-032m" transform="translate(700 860)">
-								<g data-hf-id="hf-xwk6" id="s6-main">
-									<path data-hf-id="hf-m89s" d="M -30 0 V -90 Q -30 -115 -5 -115 Q 20 -115 20 -90 V -20 L 70 -10 Q 100 0 95 40 L 85 100 H -20 L -60 40 Q -70 20 -50 10 Z" fill="#C68A5E" stroke="#0E0E12" stroke-width="10" stroke-linejoin="round" />
-								</g>
-							</g>
-						</svg>
-						<div data-hf-id="hf-yuwl" id="s6-label" class="etiquette violet" style="left: 260px; top: 220px">Pubs animées</div>
-						<div data-hf-id="hf-i63u" id="s6-stop" class="etiquette" style="left: 290px; top: 960px">stop scroll</div>
+						<div data-hf-id="hf-3izp" id="s6-tel" class="tel-pub" style="left: 340px; top: 470px">
+							<div data-hf-id="hf-38p6" class="ilot"></div>
+							<div data-hf-id="hf-g64f" class="ecran">
+								<div data-hf-id="hf-3k19" id="s6-fil" style="position: absolute; left: 0; right: 0; top: 60px"><div data-hf-id="hf-zkta" style="height: 280px; margin: 22px; border-radius: 26px; background: #e9e6df"></div><div data-hf-id="hf-o2vf" style="height: 280px; margin: 22px; border-radius: 26px; background: #dcd7ce"></div><div data-hf-id="hf-5ffe" style="height: 280px; margin: 22px; border-radius: 26px; background: #efede8"></div><div data-hf-id="hf-0fg2" style="height: 280px; margin: 22px; border-radius: 26px; background: #e2ded5"></div><div data-hf-id="hf-wow2" style="height: 280px; margin: 22px; border-radius: 26px; background: #e9e6df"></div><div data-hf-id="hf-2fvv" style="height: 280px; margin: 22px; border-radius: 26px; background: #dcd7ce"></div><div data-hf-id="hf-jtku" style="height: 280px; margin: 22px; border-radius: 26px; background: #efede8"></div><div data-hf-id="hf-njli" style="height: 280px; margin: 22px; border-radius: 26px; background: #e2ded5"></div></div>
+								<div data-hf-id="hf-5ltk" id="s6-pub" style="position: absolute; left: 22px; right: 22px; top: 150px; height: 470px; border-radius: 30px; background: linear-gradient(160deg, #3a3a3f 0%, #2b2b2f 50%, #9e978c 100%); box-shadow: 0 30px 60px rgba(43, 43, 47, 0.4)">
+									<div data-hf-id="hf-7ok1" id="s6-produit" class="emoji" style="left: 95px; top: 70px; font-size: 160px">🛍️</div>
+									<div data-hf-id="hf-i808" style="position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-family: 'Kit Poppins'; font-weight: 800; font-size: 54px; color: #ffffff">NOUVEAU</div>
+									<div data-hf-id="hf-656g" style="position: absolute; left: 0; right: 0; top: 375px; text-align: center; font-family: 'Kit Inter'; font-weight: 700; font-size: 30px; color: #e4e0d8">Découvrir →</div>
+								</div>
+							</div>
+						</div>
+						<div data-hf-id="hf-ok2p" id="s6-pouce" class="emoji" style="left: 700px; top: 980px; font-size: 140px">👆</div>
+						<div data-hf-id="hf-rdw7" class="emoji s6-coeur" style="left: 760px; top: 760px; font-size: 70px">❤️</div>
+						<div data-hf-id="hf-jls7" class="emoji s6-coeur" style="left: 820px; top: 820px; font-size: 56px">❤️</div>
+						<div data-hf-id="hf-q4if" class="emoji s6-coeur" style="left: 740px; top: 860px; font-size: 64px">❤️</div>
 					</div>
 					<div data-hf-id="hf-xfco" class="avant"></div>
 				</div>
@@ -53,19 +71,19 @@
 	</div>
 	<script>
 		(function () {
-			const S = kit.scene('s6');
+			const S = kit.scene('s6', {travelling: false});
 			const tl = S.tl;
 
-			// « des publicités » : le téléphone, le fil défile, le doigt scrolle.
-			kit.pop(tl, '#s6-tel', 0);
-			kit.tampon(tl, '#s6-label', S.ancre('@publicites'));
+			// « des publicités » : le téléphone, le fil défile vite, le pouce pousse.
+			kit.entre(tl, '#s6-tel', 0, {dy: 120, echelle: 0.9, duree: 0.7});
 			const stop = S.ancre('@arretent');
-			tl.fromTo('#s6-fil', {y: 0}, {y: -510, duration: stop, ease: 'none'}, 0);
-			kit.boucle(tl, '#s6-main', {y: -60}, 0.1, stop, 0.5);
-			// « arrêtent le scroll » : le fil s'arrête sur la pub, la main s'immobilise (zoom).
-			kit.pop(tl, '#s6-pub', stop);
-			kit.tampon(tl, '#s6-stop', S.ancre('@scroll'));
-			S.zoomMot('@scroll', [540, 450]);
+			tl.fromTo('#s6-fil', {y: 0, filter: 'blur(0px)'}, {y: -1300, filter: 'blur(6px)', duration: stop, ease: 'power1.in'}, 0.1);
+			tl.fromTo('#s6-pouce', {y: 0}, {y: -90, duration: 0.3, ease: 'power2.inOut', yoyo: true, repeat: Math.max(1, Math.floor(stop / 0.3) - 1)}, 0.1);
+			// « arrêtent le scroll » : la pub s'impose, le fil s'efface, les cœurs montent.
+			tl.to('#s6-fil', {opacity: 0, duration: 0.1}, stop);
+			tl.fromTo('#s6-pub', {opacity: 0, y: 260, filter: 'blur(14px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, stop);
+			tl.fromTo('#s6-produit', {rotation: -10}, {rotation: 6, duration: 0.6, ease: 'sine.inOut', yoyo: true, repeat: 2}, stop + 0.3);
+			kit.monte(tl, '.s6-coeur', S.ancre('@scroll'), S.dur, {dy: -320, cycle: 1.2});
 			S.fin();
 		})();
 	</script>
