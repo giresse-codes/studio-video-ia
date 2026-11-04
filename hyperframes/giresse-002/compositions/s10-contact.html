@@ -1,0 +1,127 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s10-fond {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, #dbe9f5 0%, #c6dcee 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.s10-etiq {
+			position: absolute;
+			left: 60px;
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			font-size: 40px;
+			line-height: 1;
+			color: #6b7a90;
+		}
+		.s10-valeur {
+			position: absolute;
+			left: 60px;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 66px;
+			line-height: 1;
+			color: #141418;
+			white-space: nowrap;
+		}
+	</style>
+	<div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
+		<div id="s10-fond"></div>
+		<!-- Fond bleu pâle : un point cyan devient le bouton « envoyer » ; la fiche inclinée s'écrit : WhatsApp, numéro, mail ; puis la fiche se redresse et le logo GIRESSE se pose. -->
+		<div id="s10-scene" style="position: absolute; inset: 0">
+			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1600px">
+				<div id="s10-fiche" data-layout-allow-overlap style="position: absolute; left: 110px; top: 560px; width: 860px; height: 500px; border-radius: 48px; background: linear-gradient(170deg, #ffffff 0%, #f1f3f6 100%); box-shadow: 0 70px 120px rgba(40, 70, 110, 0.3); overflow: hidden">
+					<img src="assets/marque/monogramme.png" style="position: absolute; left: 560px; top: 150px; width: 380px; opacity: 0.09" />
+					<div class="s10-etiq" style="top: 60px">WhatsApp</div>
+					<div id="s10-numero" class="s10-valeur" style="top: 130px"></div>
+					<div style="position: absolute; left: 60px; right: 60px; top: 260px; border-top: 4px dashed #c6d3e0"></div>
+					<div id="s10-ou" class="s10-etiq" style="top: 300px">ou par mail</div>
+					<div id="s10-email" class="s10-valeur" style="top: 370px; font-size: 54px"></div>
+					<div id="s10-curseur" style="position: absolute; left: 60px; top: 140px; width: 6px; height: 72px; background: #00b8d9"></div>
+				</div>
+			</div>
+			<div id="s10-bouton" style="position: absolute; left: 140px; top: 360px; width: 140px; height: 140px; border-radius: 70px; background: radial-gradient(circle at 35% 30%, #7ff3ff 0%, #00c6e0 60%, #0094b8 100%); box-shadow: 0 30px 60px rgba(0, 150, 190, 0.45)">
+				<svg style="position: absolute; left: 32px; top: 34px; width: 76px; height: 76px" viewBox="0 0 76 76"><path d="M 6 36 L 70 6 L 46 70 L 36 44 Z" fill="#FFFFFF" /><path d="M 36 44 L 70 6" stroke="#00A3C4" stroke-width="4" /></svg>
+			</div>
+			<div id="s10-pastille" style="position: absolute; left: 310px; top: 380px; height: 100px; padding: 0 44px; border-radius: 50px; background: linear-gradient(180deg, #3a3a3f 0%, #141418 100%); color: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 46px; line-height: 100px; white-space: nowrap; box-shadow: 0 24px 48px rgba(20, 20, 24, 0.3)">Écrivez-nous</div>
+			<div id="s10-logo" style="position: absolute; left: 240px; top: 1140px; width: 600px; height: 0">
+				<img src="assets/marque/nom.png" style="position: absolute; left: 0; top: 0; width: 600px" />
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			// Le point cyan surgit et devient le bouton « envoyer » ; la pastille « Écrivez-nous » sort de lui.
+			tl.fromTo('#s10-bouton', {opacity: 0, scale: 0.2, x: 400, y: 500}, {opacity: 1, scale: 1, x: 0, y: 0, duration: 0.55, ease: 'expo.out'}, 0);
+			tl.fromTo('#s10-pastille', {opacity: 0, x: -160, scaleX: 0.3, transformOrigin: '0% 50%', filter: 'blur(10px)'}, {opacity: 1, x: 0, scaleX: 1, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.35);
+			// La fiche glisse, inclinée, puis le numéro et le mail s'écrivent.
+			tl.fromTo('#s10-fiche', {opacity: 0, y: 700, rotationX: 35, rotationZ: -14, filter: 'blur(14px)'}, {opacity: 1, y: 0, rotationX: 14, rotationZ: -8, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}, 0.45);
+			const ecrire = (sel, texte, t, d) => {
+				const el = document.querySelector(sel);
+				const e = {n: 0};
+				tl.fromTo(e, {n: 0}, {n: texte.length, duration: d, ease: 'none', onUpdate: () => (el.textContent = texte.slice(0, Math.round(e.n)))}, t);
+			};
+			ecrire('#s10-numero', '+237 673 236 084', 1.1, 1.0);
+			tl.to('#s10-curseur', {x: 560, duration: 1.0, ease: 'none'}, 1.1);
+			tl.to('#s10-curseur', {y: 235, x: 0, duration: 0.01}, 2.4);
+			fouet('#s10-ou', 2.2, {dx: -60, duree: 0.35});
+			ecrire('#s10-email', 'giressepablo17@gmail.com', 2.5, 1.4);
+			tl.to('#s10-curseur', {x: 690, duration: 1.4, ease: 'none'}, 2.5);
+			tl.to('#s10-curseur', {opacity: 0, duration: 0.01, yoyo: true, repeat: 7}, 4.0);
+			tl.set('#s10-curseur', {opacity: 0}, 4.4);
+			// La fiche se redresse, le logo se pose dessous ; tout reste lisible jusqu'à la fin.
+			tl.to('#s10-fiche', {rotationX: 0, rotationZ: 0, y: -40, duration: 0.7, ease: 'power2.inOut'}, 4.2);
+			tl.to(['#s10-bouton', '#s10-pastille'], {y: -40, duration: 0.7, ease: 'power2.inOut'}, 4.2);
+			tl.fromTo('#s10-logo', {opacity: 0, y: 60, filter: 'blur(14px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}, 4.6);
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s10'] = tl;
+		})();
+	</script>
+</template>

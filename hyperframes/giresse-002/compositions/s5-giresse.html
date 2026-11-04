@@ -1,0 +1,92 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s5-fond {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse 90% 70% at 50% 40%, #5a1fd1 0%, #3b0a8f 55%, #1b0450 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.s5-lame {
+			position: absolute;
+			width: 760px;
+			height: 120px;
+			border-radius: 12px;
+			box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+		}
+	</style>
+	<div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+		<div id="s5-fond"></div>
+		<!-- Fond violet : des lames de couleur filent en perspective, un trait cyan tombe ; « NOUS, C'EST » puis la carte du logo GIRESSE. -->
+		<div id="s5-scene" style="position: absolute; inset: 0">
+			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1200px">
+				<div class="s5-lame" style="left: -120px; top: 360px; background: linear-gradient(90deg, #ff3ea5, #ff7ac6); transform: rotateY(-28deg)"></div>
+				<div class="s5-lame" style="left: 520px; top: 1330px; background: linear-gradient(90deg, #ffd23f, #fff07a); transform: rotateY(24deg)"></div>
+				<div class="s5-lame" style="left: -80px; top: 1460px; background: linear-gradient(90deg, #3dff9a, #b5ff6b); transform: rotateY(-20deg)"></div>
+			</div>
+			<div id="s5-laser" style="position: absolute; left: 860px; top: 0; width: 10px; height: 1920px; background: #3ff4ff; box-shadow: 0 0 30px #3ff4ff"></div>
+			<div class="mot" id="s5-nous" style="top: 330px; font-size: 130px; color: #ffffff; text-shadow: 0 1px 0 #2a0870, 0 2px 0 #2a0870, 0 3px 0 #2a0870, 0 4px 0 #2a0870, 0 5px 0 #2a0870, 0 6px 0 #2a0870, 0 7px 0 #2a0870, 0 8px 0 #2a0870, 0 9px 0 #2a0870, 0 10px 0 #2a0870, 0 11px 0 #2a0870, 0 12px 0 #2a0870, 0 26px 34px rgba(0, 0, 0, 0.35)">NOUS, C'EST</div>
+			<div id="s5-carte" style="position: absolute; left: 190px; top: 560px; width: 700px; height: 700px; border-radius: 60px; background: linear-gradient(170deg, #f6f4ef 0%, #e9e6df 100%); box-shadow: 0 60px 120px rgba(10, 0, 40, 0.5)">
+				<img src="assets/marque/logo-complet.png" style="position: absolute; left: 115px; top: 70px; width: 470px" />
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			// Les lames filent, le trait cyan tombe ; « NOUS, C'EST » ; la carte du logo pivote et se pose.
+			tl.fromTo('.s5-lame', {x: -900, filter: 'blur(20px)'}, {x: 0, filter: 'blur(0px)', duration: 0.6, ease: 'expo.out', stagger: 0.08}, 0);
+			tl.fromTo('#s5-laser', {scaleY: 0, transformOrigin: '50% 0%'}, {scaleY: 1, duration: 0.4, ease: 'power3.out'}, 0.1);
+			fouet('#s5-nous', 0.05, {dx: 300});
+			tl.fromTo('#s5-carte', {opacity: 0, rotationY: -60, rotationX: 15, scale: 0.7, filter: 'blur(18px)', transformPerspective: 1400}, {opacity: 1, rotationY: 0, rotationX: 0, scale: 1, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}, 0.35);
+			tl.to('.s5-lame', {x: 120, duration: 1.4, ease: 'none'}, 0.6);
+			part('#s5-scene', 1.82, {dy: -300});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s5'] = tl;
+		})();
+	</script>
+</template>

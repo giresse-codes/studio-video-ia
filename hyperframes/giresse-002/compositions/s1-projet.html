@@ -1,0 +1,101 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s1-fond {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse 80% 60% at 50% 45%, #1d5f9e 0%, #0b3a66 55%, #061f38 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.s1-face {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 600px;
+			height: 420px;
+			border-radius: 40px;
+			background: linear-gradient(160deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 100%);
+			border: 3px solid rgba(255, 255, 255, 0.35);
+			box-shadow: inset 0 0 60px rgba(124, 200, 255, 0.25);
+			backface-visibility: hidden;
+		}
+	</style>
+	<div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+		<div id="s1-fond"></div>
+		<!-- Un cube de verre qui tourne : « UN PROJET » sur une face, « EN TÊTE ? » sur l'autre ; les trois services flottent au-dessus. -->
+		<div id="s1-scene" style="position: absolute; inset: 0">
+			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1600px">
+				<div id="s1-cube" data-layout-allow-overlap style="position: absolute; left: 240px; top: 620px; width: 600px; height: 420px; transform-style: preserve-3d">
+					<div class="s1-face" style="transform: translateZ(210px)">
+						<div class="mot" style="top: 120px; font-size: 118px; color: #ffffff; text-shadow: 0 1px 0 #0a3157, 0 2px 0 #0a3157, 0 3px 0 #0a3157, 0 4px 0 #0a3157, 0 5px 0 #0a3157, 0 6px 0 #0a3157, 0 7px 0 #0a3157, 0 8px 0 #0a3157, 0 9px 0 #0a3157, 0 10px 0 #0a3157, 0 11px 0 #0a3157, 0 12px 0 #0a3157, 0 26px 34px rgba(0, 0, 0, 0.35)">UN PROJET</div>
+					</div>
+					<div class="s1-face" style="transform: rotateY(90deg) translateZ(390px); width: 420px; left: 90px">
+						<div class="mot" style="top: 140px; font-size: 92px; color: #ffffff; text-shadow: 0 1px 0 #0a3157, 0 2px 0 #0a3157, 0 3px 0 #0a3157, 0 4px 0 #0a3157, 0 5px 0 #0a3157, 0 6px 0 #0a3157, 0 7px 0 #0a3157, 0 8px 0 #0a3157, 0 9px 0 #0a3157, 0 10px 0 #0a3157, 0 11px 0 #0a3157, 0 12px 0 #0a3157, 0 26px 34px rgba(0, 0, 0, 0.35)">EN TÊTE ?</div>
+					</div>
+				</div>
+			</div>
+			<div id="s1-i1" class="emoji" style="left: 300px; top: 420px; font-size: 130px">🎬</div>
+			<div id="s1-i2" class="emoji" style="left: 475px; top: 380px; font-size: 130px">🌐</div>
+			<div id="s1-i3" class="emoji" style="left: 650px; top: 420px; font-size: 130px">📱</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			// Image 0 : le cube est déjà là ; il tourne pour montrer « EN TÊTE ? ».
+			tl.fromTo('#s1-cube', {rotationY: 18, rotationX: -8}, {rotationY: -62, rotationX: 6, duration: 1.7, ease: 'power2.inOut'}, 0);
+			fouet('#s1-i1', 0.15, {dy: 80, echelle: 0.4});
+			fouet('#s1-i2', 0.27, {dy: 80, echelle: 0.4});
+			fouet('#s1-i3', 0.39, {dy: 80, echelle: 0.4});
+			tl.to(['#s1-i1', '#s1-i2', '#s1-i3'], {y: -24, duration: 0.6, ease: 'sine.inOut', stagger: 0.1}, 0.8);
+			// Coupe : tout file à gauche, flou.
+			part('#s1-scene', 1.82, {dx: -420});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s1'] = tl;
+		})();
+	</script>
+</template>

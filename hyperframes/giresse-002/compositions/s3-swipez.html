@@ -1,0 +1,88 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s3-fond {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse 80% 60% at 50% 45%, #e01a32 0%, #b30d22 60%, #7a0614 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.s3-x {
+			position: absolute;
+			width: 220px;
+			height: 26px;
+			border-radius: 13px;
+			background: #ff4d5e;
+			box-shadow: 0 0 30px rgba(255, 77, 94, 0.7);
+		}
+	</style>
+	<div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+		<div id="s3-fond"></div>
+		<!-- Fond rouge : « NE / SWIPEZ / PAS » claque ligne par ligne, l'image tremble, deux croix filent. -->
+		<div id="s3-scene" style="position: absolute; inset: 0">
+			<div id="s3-bloc" style="position: absolute; inset: 0">
+				<div class="mot s3-l" style="top: 560px; font-size: 200px; color: #ffffff; text-shadow: 0 1px 0 #7a0614, 0 2px 0 #7a0614, 0 3px 0 #7a0614, 0 4px 0 #7a0614, 0 5px 0 #7a0614, 0 6px 0 #7a0614, 0 7px 0 #7a0614, 0 8px 0 #7a0614, 0 9px 0 #7a0614, 0 10px 0 #7a0614, 0 11px 0 #7a0614, 0 12px 0 #7a0614, 0 13px 0 #7a0614, 0 14px 0 #7a0614, 0 28px 34px rgba(0, 0, 0, 0.35)">NE</div>
+				<div class="mot s3-l" style="top: 780px; font-size: 168px; color: #ffffff; text-shadow: 0 1px 0 #7a0614, 0 2px 0 #7a0614, 0 3px 0 #7a0614, 0 4px 0 #7a0614, 0 5px 0 #7a0614, 0 6px 0 #7a0614, 0 7px 0 #7a0614, 0 8px 0 #7a0614, 0 9px 0 #7a0614, 0 10px 0 #7a0614, 0 11px 0 #7a0614, 0 12px 0 #7a0614, 0 13px 0 #7a0614, 0 14px 0 #7a0614, 0 28px 34px rgba(0, 0, 0, 0.35)">SWIPEZ</div>
+				<div class="mot s3-l" style="top: 980px; font-size: 200px; color: #ffffff; text-shadow: 0 1px 0 #7a0614, 0 2px 0 #7a0614, 0 3px 0 #7a0614, 0 4px 0 #7a0614, 0 5px 0 #7a0614, 0 6px 0 #7a0614, 0 7px 0 #7a0614, 0 8px 0 #7a0614, 0 9px 0 #7a0614, 0 10px 0 #7a0614, 0 11px 0 #7a0614, 0 12px 0 #7a0614, 0 13px 0 #7a0614, 0 14px 0 #7a0614, 0 28px 34px rgba(0, 0, 0, 0.35)">PAS</div>
+			</div>
+			<div class="s3-x" style="left: 120px; top: 420px; transform: rotate(35deg)"></div>
+			<div class="s3-x" style="left: 760px; top: 1250px; transform: rotate(-30deg)"></div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			// Les trois lignes claquent, 0,1 s d'écart ; à la dernière, l'image tremble.
+			tl.fromTo('.s3-l', {opacity: 0, scale: 2.2, filter: 'blur(20px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.28, ease: 'power4.out', stagger: 0.1}, 0);
+			tl.to('#s3-bloc', {keyframes: [{x: -14, y: 8, duration: 0.04}, {x: 12, y: -6, duration: 0.04}, {x: -8, y: 4, duration: 0.04}, {x: 0, y: 0, duration: 0.05}]}, 0.32);
+			tl.fromTo('.s3-x', {opacity: 0, scaleX: 0}, {opacity: 1, scaleX: 1, duration: 0.25, ease: 'expo.out', stagger: 0.08}, 0.2);
+			part('#s3-scene', 0.85, {dy: 200});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s3'] = tl;
+		})();
+	</script>
+</template>

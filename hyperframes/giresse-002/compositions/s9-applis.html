@@ -1,0 +1,77 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s9-fond {
+			position: absolute;
+			inset: 0;
+			background: #ffffff;
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+	</style>
+	<div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+		<div id="s9-fond"></div>
+		<!-- Dégradé irisé qui bouge ; un téléphone de verre se pose ; « APPLICATIONS » en blanc. -->
+		<div id="s9-scene" style="position: absolute; inset: 0">
+			<div id="s9-irise" style="position: absolute; left: -400px; top: -400px; width: 1880px; height: 2720px; background: radial-gradient(circle at 30% 30%, #00e5ff 0%, transparent 35%), radial-gradient(circle at 75% 35%, #ff4d8d 0%, transparent 35%), radial-gradient(circle at 40% 70%, #ffe600 0%, transparent 35%), radial-gradient(circle at 75% 75%, #8f00ff 0%, transparent 35%); filter: blur(60px)"></div>
+			<div id="s9-tel" style="position: absolute; left: 380px; top: 700px; width: 320px; height: 600px; border-radius: 60px; background: rgba(255, 255, 255, 0.28); border: 4px solid rgba(255, 255, 255, 0.7); box-shadow: 0 50px 100px rgba(60, 0, 120, 0.3)">
+				<div style="position: absolute; left: 110px; top: 26px; width: 100px; height: 28px; border-radius: 14px; background: rgba(255, 255, 255, 0.8)"></div>
+			</div>
+			<div class="mot" id="s9-titre" style="top: 470px; font-size: 128px; color: #ffffff; text-shadow: 0 4px 30px rgba(80, 0, 160, 0.45)">APPLICATIONS</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			tl.fromTo('#s9-irise', {x: 0, y: 0, rotation: 0}, {x: 180, y: -160, rotation: 18, duration: 1.3, ease: 'none'}, 0);
+			fouet('#s9-titre', 0, {echelle: 1.3});
+			fouet('#s9-tel', 0.15, {dy: 200, echelle: 0.8});
+			part('#s9-scene', 1.14, {dy: -200});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s9'] = tl;
+		})();
+	</script>
+</template>
