@@ -44,6 +44,9 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 		.ecran-chat {
 			background: radial-gradient(circle at 30% 20%, #18242b 0%, #0b141a 70%);
 		}
@@ -72,8 +75,10 @@
 	</style>
 	<div id="root" data-composition-id="s4b" data-width="1080" data-height="1920">
 		<div id="s4b-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s4b-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s4b-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Fond sombre : « UN MESSAGE SUFFIT. » ; sur le téléphone, la notification d'un client tombe, puis la conversation : « J'aurais besoin d'un site web pour mon entreprise ? », « Êtes-vous disponible ? », lu. -->
-		<div id="s4b-scene" style="position: absolute; inset: 0">
+		<div id="s4b-camera" style="position: absolute; inset: 0; filter: url(#s4b-flou)">
+			<div id="s4b-scene" style="position: absolute; inset: 0">
 			<div class="mot" id="s4b-l1" style="top: 230px; font-size: 104px; color: #ffffff; text-shadow: 0 1px 0 #06231a, 0 2px 0 #06231a, 0 3px 0 #06231a, 0 4px 0 #06231a, 0 5px 0 #06231a, 0 6px 0 #06231a, 0 7px 0 #06231a, 0 8px 0 #06231a, 0 9px 0 #06231a, 0 10px 0 #06231a, 0 24px 34px rgba(0, 0, 0, 0.35)">UN MESSAGE</div>
 			<div class="mot" id="s4b-l2" style="top: 350px; font-size: 104px; color: #25d366; text-shadow: 0 1px 0 #06231a, 0 2px 0 #06231a, 0 3px 0 #06231a, 0 4px 0 #06231a, 0 5px 0 #06231a, 0 6px 0 #06231a, 0 7px 0 #06231a, 0 8px 0 #06231a, 0 9px 0 #06231a, 0 10px 0 #06231a, 0 24px 34px rgba(0, 0, 0, 0.35)">SUFFIT.</div>
 			<div id="s4b-tel" style="position: absolute; left: 270px; top: 500px; width: 540px; height: 820px; border-radius: 64px; background: #0e0e12; box-shadow: 0 60px 120px rgba(0, 0, 0, 0.55), inset 0 0 0 3px rgba(255, 255, 255, 0.1)">
@@ -92,6 +97,7 @@
 				<div style="position: absolute; left: 145px; top: 30px; font-family: 'Kit Inter'; font-weight: 800; font-size: 32px; color: #3b2a22">Client · maintenant</div>
 				<div style="position: absolute; left: 145px; top: 78px; width: 600px; font-family: 'Kit Inter'; font-weight: 700; font-size: 30px; line-height: 1.2; color: #5a463c">J'aurais besoin d'un site web pour mon entreprise ?</div>
 			</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -103,19 +109,56 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s4b-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 3.0 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s4b-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s4b-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s4b-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s4b-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
+			camera({rotationY: 8, x: -30, scale: 1.05}, {rotationY: -6, x: 30, scale: 1.0});
+			fouetEntree('gauche');
+			fouetSortie('haut', 2.8);
 			// Le téléphone ; la notification du client tombe du haut.
 			fouet('#s4b-tel', 0, {dy: 160, echelle: 0.92, duree: 0.6});
 			tl.fromTo('#s4b-notif', {opacity: 0, y: -260, filter: 'blur(10px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.2);
-			fouet('#s4b-l1', 0.35, {echelle: 1.2, flou: 14});
+			lettres('#s4b-l1', 0.35, {ecart: 0.03});
 			// La notification remonte, la conversation s'ouvre : les deux messages, puis lus (coches bleues), puis « … ».
 			tl.to('#s4b-notif', {opacity: 0, y: -200, filter: 'blur(10px)', duration: 0.25, ease: 'power3.in'}, 1.0);
 			fouet('#s4b-b1', 1.1, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
 			fouet('#s4b-b2', 1.55, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
-			fouet('#s4b-l2', 1.6, {echelle: 1.4, flou: 16});
+			lettres('#s4b-l2', 1.6, {ecart: 0.05, de: {opacity: 0, scale: 2.4, y: 0, rotationX: 0}, ease: 'power4.out', duree: 0.3});
 			tl.to(['#s4b-b1-coche', '#s4b-b2-coche'], {color: '#53bdeb', duration: 0.1}, 2.1);
 			fouet('#s4b-ecrit', 2.25, {dy: 30, echelle: 0.8, duree: 0.3, flou: 6});
-			part('#s4b-scene', 2.82, {dy: -260});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s4b'] = tl;
 		})();

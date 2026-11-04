@@ -44,16 +44,22 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 	</style>
 	<div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
 		<div id="s10-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s10-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s10-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Dégradé irisé qui bouge ; un téléphone de verre se pose ; « APPLICATIONS » en blanc. -->
-		<div id="s10-scene" style="position: absolute; inset: 0">
+		<div id="s10-camera" style="position: absolute; inset: 0; filter: url(#s10-flou)">
+			<div id="s10-scene" style="position: absolute; inset: 0">
 			<div id="s10-irise" style="position: absolute; left: -400px; top: -400px; width: 1880px; height: 2720px; background: radial-gradient(circle at 30% 30%, #00e5ff 0%, transparent 35%), radial-gradient(circle at 75% 35%, #ff4d8d 0%, transparent 35%), radial-gradient(circle at 40% 70%, #ffe600 0%, transparent 35%), radial-gradient(circle at 75% 75%, #8f00ff 0%, transparent 35%); filter: blur(60px)"></div>
 			<div id="s10-tel" style="position: absolute; left: 380px; top: 700px; width: 320px; height: 600px; border-radius: 60px; background: rgba(255, 255, 255, 0.28); border: 4px solid rgba(255, 255, 255, 0.7); box-shadow: 0 50px 100px rgba(60, 0, 120, 0.3)">
 				<div style="position: absolute; left: 110px; top: 26px; width: 100px; height: 28px; border-radius: 14px; background: rgba(255, 255, 255, 0.8)"></div>
 			</div>
 			<div class="mot" id="s10-titre" style="top: 470px; font-size: 128px; color: #ffffff; text-shadow: 0 4px 30px rgba(80, 0, 160, 0.45)">APPLICATIONS</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -65,11 +71,48 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s10-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 1.93 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s10-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s10-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s10-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s10-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
+			camera({rotationZ: 3, scale: 1.12}, {rotationZ: -2, scale: 1.0});
+			fouetEntree('gauche');
+			fouetSortie('haut', 1.73);
 			tl.fromTo('#s10-irise', {x: 0, y: 0, rotation: 0}, {x: 180, y: -160, rotation: 18, duration: 1.3, ease: 'none'}, 0);
-			fouet('#s10-titre', 0, {echelle: 1.3});
+			lettres('#s10-titre', 0.02, {ecart: 0.03, de: {opacity: 0, y: 120, rotationX: 90, scale: 0.4}});
 			fouet('#s10-tel', 0.15, {dy: 200, echelle: 0.8});
-			part('#s10-scene', 1.76, {dy: -200});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s10'] = tl;
 		})();

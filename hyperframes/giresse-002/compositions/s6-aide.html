@@ -44,6 +44,9 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 		.s6-pastille {
 			position: absolute;
 			left: -20px;
@@ -71,8 +74,10 @@
 	</style>
 	<div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
 		<div id="s6-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s6-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s6-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Fond clair : « On aide » et des pastilles roses qui tournent comme une roue (entreprises, commerçants, restaurants, créateurs) ; puis « bonjour » dans plusieurs langues autour. -->
-		<div id="s6-scene" style="position: absolute; inset: 0">
+		<div id="s6-camera" style="position: absolute; inset: 0; filter: url(#s6-flou)">
+			<div id="s6-scene" style="position: absolute; inset: 0">
 			<div id="s6-aide" class="mot" style="left: 90px; right: auto; top: 800px; font-size: 104px; color: #141418; text-align: left; letter-spacing: -3px">On aide</div>
 			<div id="s6-roue" data-layout-allow-overlap style="position: absolute; left: 490px; top: 858px; width: 0; height: 0">
 				<div class="s6-pastille" style="transform: rotate(0deg)"><span>les entreprises</span></div>
@@ -88,6 +93,7 @@
 			<div class="mot s6-salut" style="left: 560px; right: auto; top: 1110px; font-size: 60px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Ciao</div>
 			<div class="mot s6-salut" style="left: 760px; right: auto; top: 960px; font-size: 62px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Hallo</div>
 			<div class="mot s6-salut" style="left: 300px; right: auto; top: 1240px; font-size: 56px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Salam</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -99,8 +105,46 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s6-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 3.0 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s6-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s6-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s6-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s6-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
-			fouet('#s6-aide', 0, {dx: -120, flou: 14});
+			camera({rotationY: 6, scale: 1.0}, {rotationY: -6, scale: 1.08});
+			fouetEntree('gauche');
+			fouetSortie('haut', 2.8);
+			lettres('#s6-aide', 0.02, {ecart: 0.04});
 			tl.fromTo('#s6-roue', {opacity: 0, rotation: -60, filter: 'blur(14px)'}, {opacity: 1, rotation: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.1);
 			// La roue tourne d'une pastille à la suivante, en tenant chacune.
 			[1, 2, 3].forEach((k) => tl.to('#s6-roue', {rotation: 28 * k, duration: 0.35, ease: 'power3.inOut'}, 0.15 + 0.45 * k));
@@ -108,7 +152,6 @@
 			tl.to(['#s6-aide', '#s6-roue'], {opacity: 0, filter: 'blur(14px)', scale: 0.94, duration: 0.22, ease: 'power3.in'}, 1.75);
 			// « bonjour » en plusieurs langues, du flou au net, tout autour.
 			tl.fromTo('.s6-salut', {opacity: 0, filter: 'blur(12px)', scale: 0.8}, {opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 2.0);
-			part('#s6-scene', 2.82, {dx: -300});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s6'] = tl;
 		})();

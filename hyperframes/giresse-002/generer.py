@@ -26,6 +26,22 @@ SCENES = [
     ("s11", "s11-contact", 18.9, 6.1),
 ]
 DUREE = 25.0
+# Sens du coup de fouet à chaque coupe (la scène sortante et l'entrante bougent dans le même sens).
+COUPES = ["gauche", "bas", "gauche", "haut", "gauche", "haut", "gauche", "bas", "gauche", "haut"]
+# Mouvement de caméra continu pendant chaque scène (de, à), en plus du décor fixe derrière.
+CAMERAS = [
+    ("{rotationY: -9, rotationX: 4, scale: 1.08, x: 40}", "{rotationY: 7, rotationX: -2, scale: 1.0, x: -40}"),
+    ("{scale: 1.0, rotationZ: -2}", "{scale: 1.12, rotationZ: 2}"),
+    ("{rotationX: 10, y: -40, scale: 1.04}", "{rotationX: -2, y: 30, scale: 1.0}"),
+    ("{rotationY: 8, x: -30, scale: 1.05}", "{rotationY: -6, x: 30, scale: 1.0}"),
+    ("{rotationY: -14, x: 80, scale: 1.1}", "{rotationY: 10, x: -80, scale: 1.0}"),
+    ("{rotationY: 6, scale: 1.0}", "{rotationY: -6, scale: 1.08}"),
+    ("{rotationX: -8, scale: 1.1}", "{rotationX: 4, scale: 1.0}"),
+    ("{rotationY: -10, x: 60, scale: 1.08}", "{rotationY: 6, x: -60, scale: 1.0}"),
+    ("{rotationY: 8, scale: 1.0}", "{rotationY: -8, scale: 1.06}"),
+    ("{rotationZ: 3, scale: 1.12}", "{rotationZ: -2, scale: 1.0}"),
+    ("{rotationX: 6, scale: 1.04}", "{rotationX: 0, scale: 1.0}"),
+]
 
 POLICES = """		@font-face {
 			font-family: 'Kit Poppins';
@@ -54,6 +70,17 @@ def relief(sombre, prof=14, ombre="rgba(0, 0, 0, 0.35)"):
     return f"{couches}, 0 {prof + 14}px 34px {ombre}"
 
 def scene(n, desc, fond, html, js, css=""):
+    k = [sc[0] for sc in SCENES].index(n)
+    dur = SCENES[k][3]
+    entree = COUPES[k - 1] if k > 0 else None
+    sortie = COUPES[k] if k < len(SCENES) - 1 else None
+    cam_de, cam_a = CAMERAS[k]
+    auto = f"\t\t\tcamera({cam_de}, {cam_a});\n"
+    if entree:
+        auto += f"\t\t\tfouetEntree('{entree}');\n"
+    if sortie:
+        auto += f"\t\t\tfouetSortie('{sortie}', {round(dur - 0.2, 3)});\n"
+    js = auto + js
     return f"""<template>
 	<style>
 {POLICES}		#root {{
@@ -81,12 +108,18 @@ def scene(n, desc, fond, html, js, css=""):
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}}
+		.lettre {{
+			display: inline-block;
+		}}
 {css}	</style>
 	<div id="root" data-composition-id="{n}" data-width="1080" data-height="1920">
 		<div id="{n}-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="{n}-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="{n}-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- {desc} -->
-		<div id="{n}-scene" style="position: absolute; inset: 0">
+		<div id="{n}-camera" style="position: absolute; inset: 0; filter: url(#{n}-flou)">
+			<div id="{n}-scene" style="position: absolute; inset: 0">
 {html}
+			</div>
 		</div>
 	</div>
 	<script>
@@ -98,6 +131,41 @@ def scene(n, desc, fond, html, js, css=""):
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {{dx = 0, dy = 0, duree = 0.2}} = {{}}) =>
 				tl.to(cible, {{opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#{n}-scene', {{...de, transformPerspective: 1700}}, {{...a, transformPerspective: 1700, duration: {dur} + 0.2, ease: 'sine.inOut'}}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {{gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]}};
+			const flou = (axe, v) => (axe === 'x' ? `${{v}} 0` : `0 ${{v}}`);
+			const fouetEntree = (dir, t = 0) => {{
+				const [axe, d] = sens[dir];
+				tl.fromTo('#{n}-camera', {{[axe]: -d * 900}}, {{[axe]: 0, duration: 0.34, ease: 'expo.out'}}, t);
+				tl.fromTo('#{n}-flou-g', {{attr: {{stdDeviation: flou(axe, 70)}}}}, {{attr: {{stdDeviation: flou(axe, 0)}}, duration: 0.3, ease: 'power2.out'}}, t);
+			}};
+			const fouetSortie = (dir, t) => {{
+				const [axe, d] = sens[dir];
+				tl.to('#{n}-camera', {{[axe]: d * 900, duration: 0.2, ease: 'power3.in'}}, t);
+				tl.fromTo('#{n}-flou-g', {{attr: {{stdDeviation: flou(axe, 0)}}}}, {{attr: {{stdDeviation: flou(axe, 70)}}, duration: 0.2, ease: 'power3.in', immediateRender: false}}, t);
+			}};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {{
+				[...el.childNodes].forEach((nd) => {{
+					if (nd.nodeType === 3) {{
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {{
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? '\u00a0' : c;
+							frag.appendChild(sp);
+						}});
+						el.replaceChild(frag, nd);
+					}} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				}});
+			}};
+			const lettres = (sel, t, {{ecart = 0.035, de = {{opacity: 0, y: -110, rotationX: -90, scale: 0.4}}, duree = 0.42, ease = 'back.out(2.2)'}} = {{}}) => {{
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${{x.trim()}} .lettre`).join(', '));
+				tl.fromTo(spans, {{...de, transformPerspective: 700}}, {{opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}}, t);
+			}};
 
 {js}
 			window.__timelines = window.__timelines || {{}};
@@ -127,12 +195,12 @@ P["s1-projet"] = scene("s1", "Un cube de verre qui tourne : « UN PROJET » sur 
 			<div id="s1-i3" class="emoji" style="left: 650px; top: 420px; font-size: 130px">📱</div>""".replace("TEXTE1", relief("#0a3157", 12)),
     """			// Image 0 : le cube est déjà là ; il tourne pour montrer « EN TÊTE ? ».
 			tl.fromTo('#s1-cube', {rotationY: 18, rotationX: -8}, {rotationY: -62, rotationX: 6, duration: 1.7, ease: 'power2.inOut'}, 0);
+			lettres('.s1-face .mot', 0.02, {ecart: 0.04});
 			fouet('#s1-i1', 0.15, {dy: 80, echelle: 0.4});
 			fouet('#s1-i2', 0.27, {dy: 80, echelle: 0.4});
 			fouet('#s1-i3', 0.39, {dy: 80, echelle: 0.4});
 			tl.to(['#s1-i1', '#s1-i2', '#s1-i3'], {y: -24, duration: 0.6, ease: 'sine.inOut', stagger: 0.1}, 0.8);
-			// Coupe : tout file à gauche, flou.
-			part('#s1-scene', 1.7, {dx: -420});""",
+			// Coupe : tout file à gauche, flou.""",
     """		.s1-face {
 			position: absolute;
 			left: 0;
@@ -158,10 +226,9 @@ P["s3-swipez"] = scene("s3", "Fond rouge : « NE / SWIPEZ / PAS » claque ligne 
 			<div class="s3-x" style="left: 120px; top: 420px; transform: rotate(35deg)"></div>
 			<div class="s3-x" style="left: 760px; top: 1250px; transform: rotate(-30deg)"></div>""".replace("@RELIEF@", relief("#7a0614", 14)),
     """			// Les trois lignes claquent, 0,1 s d'écart ; à la dernière, l'image tremble.
-			tl.fromTo('.s3-l', {opacity: 0, scale: 2.2, filter: 'blur(20px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.28, ease: 'power4.out', stagger: 0.1}, 0);
+			lettres('.s3-l', 0.02, {ecart: 0.03, de: {opacity: 0, scale: 3, y: 0, rotationX: 0}, duree: 0.26, ease: 'power4.out'});
 			tl.to('#s3-bloc', {keyframes: [{x: -14, y: 8, duration: 0.04}, {x: 12, y: -6, duration: 0.04}, {x: -8, y: 4, duration: 0.04}, {x: 0, y: 0, duration: 0.05}]}, 0.32);
-			tl.fromTo('.s3-x', {opacity: 0, scaleX: 0}, {opacity: 1, scaleX: 1, duration: 0.25, ease: 'expo.out', stagger: 0.08}, 0.2);
-			part('#s3-scene', 0.85, {dy: 200});""",
+			tl.fromTo('.s3-x', {opacity: 0, scaleX: 0}, {opacity: 1, scaleX: 1, duration: 0.25, ease: 'expo.out', stagger: 0.08}, 0.2);""",
     """		.s3-x {
 			position: absolute;
 			width: 220px;
@@ -185,15 +252,13 @@ P["s4-endroit"] = scene("s4", "Ciel bleu et pelouse en perspective : « VOUS ÊT
 				</div>
 			</div>
 			<div id="s4-epingle" class="emoji" data-layout-allow-overlap style="left: 470px; top: 1090px; font-size: 150px">📍</div>""".replace("@RELIEF@", relief("#0a3a8f", 12)),
-    """			fouet('#s4-vous', 0, {dy: -120});
-			fouet('#s4-etes', 0.12, {dy: -120});
+    """			lettres('#s4-vous, #s4-etes', 0.05, {ecart: 0.06, de: {opacity: 0, y: -200, rotationX: 0, scale: 0.6}, ease: 'back.out(3)'});
 			tl.fromTo('#s4-cible', {opacity: 0, rotationX: 85}, {opacity: 1, rotationX: 58, duration: 0.6, ease: 'expo.out'}, 0.25);
 			// L'épingle tombe pile dans la cible, s'écrase et rebondit.
 			tl.fromTo('#s4-epingle', {opacity: 0, y: -900}, {opacity: 1, y: 0, duration: 0.42, ease: 'power3.in'}, 0.45);
 			tl.to('#s4-epingle', {scaleY: 0.78, scaleX: 1.2, transformOrigin: '50% 100%', duration: 0.07, ease: 'power2.out'}, 0.87);
 			tl.to('#s4-epingle', {scaleY: 1, scaleX: 1, duration: 0.4, ease: 'elastic.out(1, 0.45)'}, 0.94);
-			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 0.87);
-			part('#s4-scene', 1.42, {dx: 420});""")
+			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 0.87);""")
 
 # s5 : « NOUS, C'EST » + le logo GIRESSE ; des lames de couleur filent en perspective, un laser tombe.
 P["s5-giresse"] = scene("s5", "Fond violet : des lames de couleur filent en perspective, un trait cyan tombe ; « NOUS, C'EST » puis la carte du logo GIRESSE.",
@@ -211,10 +276,9 @@ P["s5-giresse"] = scene("s5", "Fond violet : des lames de couleur filent en pers
     """			// Les lames filent, le trait cyan tombe ; « NOUS, C'EST » ; la carte du logo pivote et se pose.
 			tl.fromTo('.s5-lame', {x: -900, filter: 'blur(20px)'}, {x: 0, filter: 'blur(0px)', duration: 0.6, ease: 'expo.out', stagger: 0.08}, 0);
 			tl.fromTo('#s5-laser', {scaleY: 0, transformOrigin: '50% 0%'}, {scaleY: 1, duration: 0.4, ease: 'power3.out'}, 0.1);
-			fouet('#s5-nous', 0.05, {dx: 300});
+			lettres('#s5-nous', 0.05, {ecart: 0.03, de: {opacity: 0, x: 120, rotationY: -90, y: 0, rotationX: 0, scale: 0.8}});
 			tl.fromTo('#s5-carte', {opacity: 0, rotationY: -60, rotationX: 15, scale: 0.7, filter: 'blur(18px)', transformPerspective: 1400}, {opacity: 1, rotationY: 0, rotationX: 0, scale: 1, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}, 0.35);
-			tl.to('.s5-lame', {x: 120, duration: 0.9, ease: 'none'}, 0.6);
-			part('#s5-scene', 1.35, {dy: -300});""",
+			tl.to('.s5-lame', {x: 120, duration: 0.9, ease: 'none'}, 0.6);""",
     """		.s5-lame {
 			position: absolute;
 			width: 760px;
@@ -237,12 +301,11 @@ P["s7-pubs"] = scene("s7", "Fond pâle : « PUBS ANIMÉES » en relief blanc ; u
 """ + "\n".join(f'			<div class="s7-clip" style="left: {x}px; top: {y}px; width: {w}px; background: {c}"></div>' for x, y, w, c in CLIPS) + """
 			<div id="s7-b1" class="s7-badge" style="left: 170px; top: 360px">▶</div>
 			<div id="s7-b2" class="s7-badge" style="left: 830px; top: 400px">✦</div>""",
-    """			fouet('#s7-titre', 0, {echelle: 1.3});
+    """			lettres('#s7-titre', 0.02, {ecart: 0.03});
 			tl.fromTo('.s7-clip', {opacity: 0, scaleX: 0, transformOrigin: '0% 50%'}, {opacity: 1, scaleX: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 0.15);
 			tl.fromTo('#s7-tete', {x: 0}, {x: 680, duration: 0.85, ease: 'none'}, 0.12);
 			fouet('#s7-b1', 0.2, {echelle: 0.3});
-			fouet('#s7-b2', 0.3, {echelle: 0.3});
-			part('#s7-scene', 0.98, {dx: -300});""",
+			fouet('#s7-b2', 0.3, {echelle: 0.3});""",
     """		.s7-clip {
 			position: absolute;
 			height: 70px;
@@ -274,9 +337,8 @@ P["s10-applis"] = scene("s10", "Dégradé irisé qui bouge ; un téléphone de v
 			</div>
 			<div class="mot" id="s10-titre" style="top: 470px; font-size: 128px; color: #ffffff; text-shadow: 0 4px 30px rgba(80, 0, 160, 0.45)">APPLICATIONS</div>""",
     """			tl.fromTo('#s10-irise', {x: 0, y: 0, rotation: 0}, {x: 180, y: -160, rotation: 18, duration: 1.3, ease: 'none'}, 0);
-			fouet('#s10-titre', 0, {echelle: 1.3});
-			fouet('#s10-tel', 0.15, {dy: 200, echelle: 0.8});
-			part('#s10-scene', 1.76, {dy: -200});""")
+			lettres('#s10-titre', 0.02, {ecart: 0.03, de: {opacity: 0, y: 120, rotationX: 90, scale: 0.4}});
+			fouet('#s10-tel', 0.15, {dy: 200, echelle: 0.8});""")
 
 # s4b : « UN MESSAGE SUFFIT » : la notification du client arrive, puis la conversation s'ouvre.
 WA_ICONE = """<svg style="position: absolute; left: {x}px; top: {y}px; width: {t}px; height: {t}px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#25D366" /><path d="M 50 18 A 32 32 0 1 1 27 73 L 17 80 L 21 67 A 32 32 0 0 1 50 18 Z" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round" /><path d="M 38 34 Q 34 36 35 42 Q 38 54 50 63 Q 58 68 63 66 Q 67 64 66 60 L 60 56 Q 57 56 55 59 Q 49 56 44 49 Q 47 46 46 43 L 42 36 Q 40 33 38 34 Z" fill="#FFFFFF" /></svg>"""
@@ -338,15 +400,14 @@ P["s4b-message"] = scene("s4b", "Fond sombre : « UN MESSAGE SUFFIT. » ; sur le
     """			// Le téléphone ; la notification du client tombe du haut.
 			fouet('#s4b-tel', 0, {dy: 160, echelle: 0.92, duree: 0.6});
 			tl.fromTo('#s4b-notif', {opacity: 0, y: -260, filter: 'blur(10px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.2);
-			fouet('#s4b-l1', 0.35, {echelle: 1.2, flou: 14});
+			lettres('#s4b-l1', 0.35, {ecart: 0.03});
 			// La notification remonte, la conversation s'ouvre : les deux messages, puis lus (coches bleues), puis « … ».
 			tl.to('#s4b-notif', {opacity: 0, y: -200, filter: 'blur(10px)', duration: 0.25, ease: 'power3.in'}, 1.0);
 			fouet('#s4b-b1', 1.1, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
 			fouet('#s4b-b2', 1.55, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
-			fouet('#s4b-l2', 1.6, {echelle: 1.4, flou: 16});
+			lettres('#s4b-l2', 1.6, {ecart: 0.05, de: {opacity: 0, scale: 2.4, y: 0, rotationX: 0}, ease: 'power4.out', duree: 0.3});
 			tl.to(['#s4b-b1-coche', '#s4b-b2-coche'], {color: '#53bdeb', duration: 0.1}, 2.1);
-			fouet('#s4b-ecrit', 2.25, {dy: 30, echelle: 0.8, duree: 0.3, flou: 6});
-			part('#s4b-scene', 2.82, {dy: -260});""", CSS_CHAT)
+			fouet('#s4b-ecrit', 2.25, {dy: 30, echelle: 0.8, duree: 0.3, flou: 6});""", CSS_CHAT)
 
 # s6 : « On aide » + pastilles qui tournent (entreprises, commerçants, restaurants, créateurs), puis « bonjour » en plusieurs langues.
 PASTILLES = ["entreprises", "commerçants", "restaurants", "créateurs"]
@@ -359,15 +420,14 @@ P["s6-aide"] = scene("s6", "Fond clair : « On aide » et des pastilles roses qu
 """ + "\n".join(f'				<div class="s6-pastille" style="transform: rotate({-28 * k}deg)"><span>les {m}</span></div>' for k, m in enumerate(PASTILLES)) + """
 			</div>
 """ + "\n".join(f'			<div class="mot s6-salut" style="left: {x}px; right: auto; top: {y}px; font-size: {t}px; color: {c}; font-family: \'Kit Inter\'; font-weight: 700; letter-spacing: -1px">{m}</div>' for m, x, y, t, c in SALUTS),
-    """			fouet('#s6-aide', 0, {dx: -120, flou: 14});
+    """			lettres('#s6-aide', 0.02, {ecart: 0.04});
 			tl.fromTo('#s6-roue', {opacity: 0, rotation: -60, filter: 'blur(14px)'}, {opacity: 1, rotation: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.1);
 			// La roue tourne d'une pastille à la suivante, en tenant chacune.
 			[1, 2, 3].forEach((k) => tl.to('#s6-roue', {rotation: 28 * k, duration: 0.35, ease: 'power3.inOut'}, 0.15 + 0.45 * k));
 			// Puis « On aide » et la roue s'effacent : place aux « bonjour ».
 			tl.to(['#s6-aide', '#s6-roue'], {opacity: 0, filter: 'blur(14px)', scale: 0.94, duration: 0.22, ease: 'power3.in'}, 1.75);
 			// « bonjour » en plusieurs langues, du flou au net, tout autour.
-			tl.fromTo('.s6-salut', {opacity: 0, filter: 'blur(12px)', scale: 0.8}, {opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 2.0);
-			part('#s6-scene', 2.82, {dx: -300});""",
+			tl.fromTo('.s6-salut', {opacity: 0, filter: 'blur(12px)', scale: 0.8}, {opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 2.0);""",
     """		.s6-pastille {
 			position: absolute;
 			left: -20px;
@@ -406,10 +466,9 @@ P["s8-affiches"] = scene("s8", "Une affiche de produit : fond bleu nuit, traîn�
 			<div id="s8-produit" class="emoji" style="left: 360px; top: 840px; font-size: 380px; filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 40px rgba(120, 160, 255, 0.5))">👟</div>""",
     """			tl.fromTo('#s8-lumiere', {scale: 0.7, rotation: -6, opacity: 0}, {scale: 1.15, rotation: 6, opacity: 1, duration: 1.6, ease: 'power2.out'}, 0);
 			fouet('#s8-tag', 0, {dx: -100, flou: 10, duree: 0.35});
-			tl.fromTo('.s8-l', {opacity: 0, x: -160, filter: 'blur(16px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out', stagger: 0.08}, 0.05);
+			lettres('.s8-l', 0.05, {ecart: 0.018, de: {opacity: 0, x: -80, y: 0, rotationX: 0, rotationY: 70, scale: 1}, ease: 'expo.out', duree: 0.35});
 			fouet('#s8-ligne', 0.35, {dx: -60, flou: 8, duree: 0.35});
-			tl.fromTo('#s8-produit', {opacity: 0, x: 500, rotation: 25, filter: 'blur(18px)'}, {opacity: 1, x: 0, rotation: -8, filter: 'blur(0px)', duration: 0.55, ease: 'expo.out'}, 0.25);
-			part('#s8-scene', 1.5, {dy: 260});""")
+			tl.fromTo('#s8-produit', {opacity: 0, x: 500, rotation: 25, filter: 'blur(18px)'}, {opacity: 1, x: 0, rotation: -8, filter: 'blur(0px)', duration: 0.55, ease: 'expo.out'}, 0.25);""")
 
 # s9 : SITES WEB : un site de réservation sur téléphone qui défile, puis un site pro sombre sur ordinateur.
 RESULTATS = "".join(f"""<div style="display: flex; gap: 20px; margin: 0 24px 22px; padding: 18px; border-radius: 22px; background: #ffffff; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08)"><div style="width: 150px; height: 130px; border-radius: 16px; background: {g}"></div><div><div style="font-family: 'Kit Inter'; font-weight: 800; font-size: 28px; color: #1a1a1a">{n}</div><div style="margin-top: 8px; font-family: 'Kit Inter'; font-weight: 700; font-size: 22px; color: #f5a623">★★★★</div><div style="margin-top: 10px"><span style="padding: 4px 10px; border-radius: 8px; background: #0f766e; color: #fff; font-family: 'Kit Inter'; font-weight: 800; font-size: 22px">{note}</span> <span style="font-family: 'Kit Inter'; font-weight: 700; font-size: 22px; color: #4a4a4a">Superbe</span></div></div></div>"""
@@ -444,14 +503,13 @@ P["s9-sites"] = scene("s9", "« SITES WEB » : un site de réservation sur tél�
 				</div>
 				<div style="height: 34px; margin: 0 -40px; border-radius: 0 0 30px 30px; background: linear-gradient(180deg, #c9ccd2 0%, #9aa0a8 100%)"></div>
 			</div>""",
-    """			fouet('#s9-titre', 0, {echelle: 1.3});
+    """			lettres('#s9-titre', 0.02, {ecart: 0.035});
 			fouet('#s9-tel', 0, {dy: 200, echelle: 0.9, duree: 0.5});
 			// Le site de réservation défile jusqu'aux résultats.
 			tl.fromTo('#s9-page', {y: 0}, {y: -520, duration: 0.8, ease: 'power2.inOut'}, 0.35);
 			// Coup de fouet vers le site pro sur ordinateur.
 			tl.to('#s9-tel', {opacity: 0, x: -500, filter: 'blur(16px)', duration: 0.22, ease: 'power3.in'}, 1.1);
-			tl.fromTo('#s9-portable', {opacity: 0, x: 500, filter: 'blur(16px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.45, ease: 'expo.out'}, 1.2);
-			part('#s9-scene', 2.0, {dy: -240});""",
+			tl.fromTo('#s9-portable', {opacity: 0, x: 500, filter: 'blur(16px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.45, ease: 'expo.out'}, 1.2);""",
     """		.s9-champ {
 			margin-bottom: 12px;
 			padding: 0 18px;
@@ -496,8 +554,8 @@ P["s11-contact"] = scene("s11", "Au drop : sur le téléphone, la réponse de GI
 			tl.fromTo(['#s11-b1', '#s11-b2'], {{opacity: 1}}, {{opacity: 1, duration: 0.01}}, 0);
 			fouet('#s11-r1', 0.25, {{dx: -60, echelle: 0.85, duree: 0.4, flou: 8}});
 			fouet('#s11-r2', 0.7, {{dx: -60, echelle: 0.85, duree: 0.4, flou: 8}});
-			fouet('#s11-l1', 0.45, {{echelle: 1.3, flou: 16}});
-			fouet('#s11-l2', 0.6, {{echelle: 1.3, flou: 16}});
+			lettres('#s11-l1', 0.45, {{ecart: 0.03}});
+			lettres('#s11-l2', 0.75, {{ecart: 0.035, de: {{opacity: 0, scale: 2.4, y: 0, rotationX: 0}}, ease: 'power4.out', duree: 0.3}});
 			// Le téléphone s'envole, la fiche arrive : le numéro et le mail s'écrivent.
 			tl.to('#s11-chat', {{opacity: 0, y: -260, filter: 'blur(16px)', duration: 0.3, ease: 'power3.in'}}, 1.75);
 			tl.fromTo('#s11-fiche', {{opacity: 0, y: 500, rotationX: 30, rotationZ: -10, transformPerspective: 1600, filter: 'blur(14px)'}}, {{opacity: 1, y: 0, rotationX: 0, rotationZ: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}}, 1.85);

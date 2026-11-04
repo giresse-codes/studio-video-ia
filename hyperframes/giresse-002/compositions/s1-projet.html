@@ -44,6 +44,9 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 		.s1-face {
 			position: absolute;
 			left: 0;
@@ -59,8 +62,10 @@
 	</style>
 	<div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
 		<div id="s1-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s1-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s1-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Un cube de verre qui tourne : « UN PROJET » sur une face, « EN TÊTE ? » sur l'autre ; les trois services flottent au-dessus. -->
-		<div id="s1-scene" style="position: absolute; inset: 0">
+		<div id="s1-camera" style="position: absolute; inset: 0; filter: url(#s1-flou)">
+			<div id="s1-scene" style="position: absolute; inset: 0">
 			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1600px">
 				<div id="s1-cube" data-layout-allow-overlap style="position: absolute; left: 240px; top: 620px; width: 600px; height: 420px; transform-style: preserve-3d">
 					<div class="s1-face" style="transform: translateZ(210px)">
@@ -74,6 +79,7 @@
 			<div id="s1-i1" class="emoji" style="left: 300px; top: 420px; font-size: 130px">🎬</div>
 			<div id="s1-i2" class="emoji" style="left: 475px; top: 380px; font-size: 130px">🌐</div>
 			<div id="s1-i3" class="emoji" style="left: 650px; top: 420px; font-size: 130px">📱</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -85,15 +91,52 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s1-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 1.86 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s1-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s1-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s1-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s1-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
+			camera({rotationY: -9, rotationX: 4, scale: 1.08, x: 40}, {rotationY: 7, rotationX: -2, scale: 1.0, x: -40});
+			fouetSortie('gauche', 1.66);
 			// Image 0 : le cube est déjà là ; il tourne pour montrer « EN TÊTE ? ».
 			tl.fromTo('#s1-cube', {rotationY: 18, rotationX: -8}, {rotationY: -62, rotationX: 6, duration: 1.7, ease: 'power2.inOut'}, 0);
+			lettres('.s1-face .mot', 0.02, {ecart: 0.04});
 			fouet('#s1-i1', 0.15, {dy: 80, echelle: 0.4});
 			fouet('#s1-i2', 0.27, {dy: 80, echelle: 0.4});
 			fouet('#s1-i3', 0.39, {dy: 80, echelle: 0.4});
 			tl.to(['#s1-i1', '#s1-i2', '#s1-i3'], {y: -24, duration: 0.6, ease: 'sine.inOut', stagger: 0.1}, 0.8);
 			// Coupe : tout file à gauche, flou.
-			part('#s1-scene', 1.7, {dx: -420});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s1'] = tl;
 		})();

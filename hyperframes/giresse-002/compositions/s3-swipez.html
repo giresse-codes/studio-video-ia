@@ -44,6 +44,9 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 		.s3-x {
 			position: absolute;
 			width: 220px;
@@ -55,8 +58,10 @@
 	</style>
 	<div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
 		<div id="s3-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s3-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s3-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Fond rouge : « NE / SWIPEZ / PAS » claque ligne par ligne, l'image tremble, deux croix filent. -->
-		<div id="s3-scene" style="position: absolute; inset: 0">
+		<div id="s3-camera" style="position: absolute; inset: 0; filter: url(#s3-flou)">
+			<div id="s3-scene" style="position: absolute; inset: 0">
 			<div id="s3-bloc" style="position: absolute; inset: 0">
 				<div class="mot s3-l" style="top: 560px; font-size: 200px; color: #ffffff; text-shadow: 0 1px 0 #7a0614, 0 2px 0 #7a0614, 0 3px 0 #7a0614, 0 4px 0 #7a0614, 0 5px 0 #7a0614, 0 6px 0 #7a0614, 0 7px 0 #7a0614, 0 8px 0 #7a0614, 0 9px 0 #7a0614, 0 10px 0 #7a0614, 0 11px 0 #7a0614, 0 12px 0 #7a0614, 0 13px 0 #7a0614, 0 14px 0 #7a0614, 0 28px 34px rgba(0, 0, 0, 0.35)">NE</div>
 				<div class="mot s3-l" style="top: 780px; font-size: 168px; color: #ffffff; text-shadow: 0 1px 0 #7a0614, 0 2px 0 #7a0614, 0 3px 0 #7a0614, 0 4px 0 #7a0614, 0 5px 0 #7a0614, 0 6px 0 #7a0614, 0 7px 0 #7a0614, 0 8px 0 #7a0614, 0 9px 0 #7a0614, 0 10px 0 #7a0614, 0 11px 0 #7a0614, 0 12px 0 #7a0614, 0 13px 0 #7a0614, 0 14px 0 #7a0614, 0 28px 34px rgba(0, 0, 0, 0.35)">SWIPEZ</div>
@@ -64,6 +69,7 @@
 			</div>
 			<div class="s3-x" style="left: 120px; top: 420px; transform: rotate(35deg)"></div>
 			<div class="s3-x" style="left: 760px; top: 1250px; transform: rotate(-30deg)"></div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -75,12 +81,49 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s3-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 1.04 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s3-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s3-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s3-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s3-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
+			camera({scale: 1.0, rotationZ: -2}, {scale: 1.12, rotationZ: 2});
+			fouetEntree('gauche');
+			fouetSortie('bas', 0.84);
 			// Les trois lignes claquent, 0,1 s d'écart ; à la dernière, l'image tremble.
-			tl.fromTo('.s3-l', {opacity: 0, scale: 2.2, filter: 'blur(20px)'}, {opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.28, ease: 'power4.out', stagger: 0.1}, 0);
+			lettres('.s3-l', 0.02, {ecart: 0.03, de: {opacity: 0, scale: 3, y: 0, rotationX: 0}, duree: 0.26, ease: 'power4.out'});
 			tl.to('#s3-bloc', {keyframes: [{x: -14, y: 8, duration: 0.04}, {x: 12, y: -6, duration: 0.04}, {x: -8, y: 4, duration: 0.04}, {x: 0, y: 0, duration: 0.05}]}, 0.32);
 			tl.fromTo('.s3-x', {opacity: 0, scaleX: 0}, {opacity: 1, scaleX: 1, duration: 0.25, ease: 'expo.out', stagger: 0.08}, 0.2);
-			part('#s3-scene', 0.85, {dy: 200});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s3'] = tl;
 		})();

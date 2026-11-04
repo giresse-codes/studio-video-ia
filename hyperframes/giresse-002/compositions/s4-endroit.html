@@ -44,11 +44,16 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 	</style>
 	<div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
 		<div id="s4-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s4-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s4-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Ciel bleu et pelouse en perspective : « VOUS ÊTES » en relief ; une épingle tombe pile dans la cible « AU BON ENDROIT ». -->
-		<div id="s4-scene" style="position: absolute; inset: 0">
+		<div id="s4-camera" style="position: absolute; inset: 0; filter: url(#s4-flou)">
+			<div id="s4-scene" style="position: absolute; inset: 0">
 			<div class="mot" id="s4-vous" style="top: 330px; font-size: 170px; color: #ffffff; text-shadow: 0 1px 0 #0a3a8f, 0 2px 0 #0a3a8f, 0 3px 0 #0a3a8f, 0 4px 0 #0a3a8f, 0 5px 0 #0a3a8f, 0 6px 0 #0a3a8f, 0 7px 0 #0a3a8f, 0 8px 0 #0a3a8f, 0 9px 0 #0a3a8f, 0 10px 0 #0a3a8f, 0 11px 0 #0a3a8f, 0 12px 0 #0a3a8f, 0 26px 34px rgba(0, 0, 0, 0.35)">VOUS</div>
 			<div class="mot" id="s4-etes" style="top: 520px; font-size: 170px; color: #ffffff; text-shadow: 0 1px 0 #0a3a8f, 0 2px 0 #0a3a8f, 0 3px 0 #0a3a8f, 0 4px 0 #0a3a8f, 0 5px 0 #0a3a8f, 0 6px 0 #0a3a8f, 0 7px 0 #0a3a8f, 0 8px 0 #0a3a8f, 0 9px 0 #0a3a8f, 0 10px 0 #0a3a8f, 0 11px 0 #0a3a8f, 0 12px 0 #0a3a8f, 0 26px 34px rgba(0, 0, 0, 0.35)">ÊTES</div>
 			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 900px">
@@ -59,6 +64,7 @@
 				</div>
 			</div>
 			<div id="s4-epingle" class="emoji" data-layout-allow-overlap style="left: 470px; top: 1090px; font-size: 150px">📍</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -70,16 +76,52 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s4-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 1.6 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s4-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s4-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s4-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s4-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
-			fouet('#s4-vous', 0, {dy: -120});
-			fouet('#s4-etes', 0.12, {dy: -120});
+			camera({rotationX: 10, y: -40, scale: 1.04}, {rotationX: -2, y: 30, scale: 1.0});
+			fouetEntree('bas');
+			fouetSortie('gauche', 1.4);
+			lettres('#s4-vous, #s4-etes', 0.05, {ecart: 0.06, de: {opacity: 0, y: -200, rotationX: 0, scale: 0.6}, ease: 'back.out(3)'});
 			tl.fromTo('#s4-cible', {opacity: 0, rotationX: 85}, {opacity: 1, rotationX: 58, duration: 0.6, ease: 'expo.out'}, 0.25);
 			// L'épingle tombe pile dans la cible, s'écrase et rebondit.
 			tl.fromTo('#s4-epingle', {opacity: 0, y: -900}, {opacity: 1, y: 0, duration: 0.42, ease: 'power3.in'}, 0.45);
 			tl.to('#s4-epingle', {scaleY: 0.78, scaleX: 1.2, transformOrigin: '50% 100%', duration: 0.07, ease: 'power2.out'}, 0.87);
 			tl.to('#s4-epingle', {scaleY: 1, scaleX: 1, duration: 0.4, ease: 'elastic.out(1, 0.45)'}, 0.94);
 			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 0.87);
-			part('#s4-scene', 1.42, {dx: 420});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s4'] = tl;
 		})();

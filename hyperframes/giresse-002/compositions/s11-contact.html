@@ -44,6 +44,9 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 		.ecran-chat {
 			background: radial-gradient(circle at 30% 20%, #18242b 0%, #0b141a 70%);
 		}
@@ -102,8 +105,10 @@
 	</style>
 	<div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
 		<div id="s11-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s11-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s11-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Au drop : sur le téléphone, la réponse de GIRESSE arrive (« Oui, on est disponibles ! », « On en parle ? ») ; « VOUS AUSSI, ÉCRIVEZ-NOUS. » ; puis la fiche WhatsApp et mail s'écrit, le logo se pose et reste. -->
-		<div id="s11-scene" style="position: absolute; inset: 0">
+		<div id="s11-camera" style="position: absolute; inset: 0; filter: url(#s11-flou)">
+			<div id="s11-scene" style="position: absolute; inset: 0">
 			<div id="s11-chat">
 				<div class="mot" id="s11-l1" style="top: 200px; font-size: 104px; color: #ffffff; text-shadow: 0 1px 0 #6f8fae, 0 2px 0 #6f8fae, 0 3px 0 #6f8fae, 0 4px 0 #6f8fae, 0 5px 0 #6f8fae, 0 6px 0 #6f8fae, 0 7px 0 #6f8fae, 0 8px 0 #6f8fae, 0 9px 0 #6f8fae, 0 10px 0 #6f8fae, 0 24px 34px rgba(40, 70, 110, 0.35)">VOUS AUSSI,</div>
 				<div class="mot" id="s11-l2" style="top: 320px; font-size: 104px; color: #25d366; text-shadow: 0 1px 0 #6f8fae, 0 2px 0 #6f8fae, 0 3px 0 #6f8fae, 0 4px 0 #6f8fae, 0 5px 0 #6f8fae, 0 6px 0 #6f8fae, 0 7px 0 #6f8fae, 0 8px 0 #6f8fae, 0 9px 0 #6f8fae, 0 10px 0 #6f8fae, 0 24px 34px rgba(40, 70, 110, 0.35)">ÉCRIVEZ-NOUS.</div>
@@ -132,6 +137,7 @@
 				<div id="s11-curseur" style="position: absolute; left: 176px; top: 118px; width: 6px; height: 64px; background: #00b8d9"></div>
 			</div>
 			<img id="s11-logo" src="assets/marque/nom.png" style="position: absolute; left: 240px; top: 1100px; width: 600px; opacity: 0" />
+			</div>
 		</div>
 	</div>
 	<script>
@@ -143,14 +149,51 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s11-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 6.1 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s11-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s11-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s11-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s11-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
+			camera({rotationX: 6, scale: 1.04}, {rotationX: 0, scale: 1.0});
+			fouetEntree('haut');
 			// Au drop : le téléphone est là, la réponse de GIRESSE arrive, puis la deuxième.
 			tl.fromTo('#s11-tel', {scale: 1.08, filter: 'blur(10px)'}, {scale: 1, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out'}, 0);
 			tl.fromTo(['#s11-b1', '#s11-b2'], {opacity: 1}, {opacity: 1, duration: 0.01}, 0);
 			fouet('#s11-r1', 0.25, {dx: -60, echelle: 0.85, duree: 0.4, flou: 8});
 			fouet('#s11-r2', 0.7, {dx: -60, echelle: 0.85, duree: 0.4, flou: 8});
-			fouet('#s11-l1', 0.45, {echelle: 1.3, flou: 16});
-			fouet('#s11-l2', 0.6, {echelle: 1.3, flou: 16});
+			lettres('#s11-l1', 0.45, {ecart: 0.03});
+			lettres('#s11-l2', 0.75, {ecart: 0.035, de: {opacity: 0, scale: 2.4, y: 0, rotationX: 0}, ease: 'power4.out', duree: 0.3});
 			// Le téléphone s'envole, la fiche arrive : le numéro et le mail s'écrivent.
 			tl.to('#s11-chat', {opacity: 0, y: -260, filter: 'blur(16px)', duration: 0.3, ease: 'power3.in'}, 1.75);
 			tl.fromTo('#s11-fiche', {opacity: 0, y: 500, rotationX: 30, rotationZ: -10, transformPerspective: 1600, filter: 'blur(14px)'}, {opacity: 1, y: 0, rotationX: 0, rotationZ: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}, 1.85);

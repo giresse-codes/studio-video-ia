@@ -44,6 +44,9 @@
 			font-family: 'Kit Emoji';
 			line-height: 1;
 		}
+		.lettre {
+			display: inline-block;
+		}
 		.s7-clip {
 			position: absolute;
 			height: 70px;
@@ -67,8 +70,10 @@
 	</style>
 	<div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
 		<div id="s7-fond"></div>
+		<svg style="position: absolute; width: 0; height: 0"><filter id="s7-flou" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur id="s7-flou-g" stdDeviation="0 0" /></filter></svg>
 		<!-- Fond pâle : « PUBS ANIMÉES » en relief blanc ; une timeline de montage se remplit de clips, la tête de lecture la traverse ; deux badges. -->
-		<div id="s7-scene" style="position: absolute; inset: 0">
+		<div id="s7-camera" style="position: absolute; inset: 0; filter: url(#s7-flou)">
+			<div id="s7-scene" style="position: absolute; inset: 0">
 <div class="mot" id="s7-titre" style="top: 520px; font-size: 150px; color: #ffffff; text-shadow: 0 1px 0 #9fb4cc, 0 2px 0 #9fb4cc, 0 3px 0 #9fb4cc, 0 4px 0 #9fb4cc, 0 5px 0 #9fb4cc, 0 6px 0 #9fb4cc, 0 7px 0 #9fb4cc, 0 8px 0 #9fb4cc, 0 9px 0 #9fb4cc, 0 10px 0 #9fb4cc, 0 24px 34px rgba(60, 90, 130, 0.35)">PUBS<br />ANIMÉES</div>
 			<div id="s7-tete" style="position: absolute; left: 200px; top: 890px; width: 8px; height: 230px; background: #3d7fd9; box-shadow: 0 0 16px rgba(61, 127, 217, 0.6)"></div>
 			<div class="s7-clip" style="left: 220px; top: 930px; width: 220px; background: #2eb82e"></div>
@@ -78,6 +83,7 @@
 			<div class="s7-clip" style="left: 580px; top: 1030px; width: 180px; background: #9b8cff"></div>
 			<div id="s7-b1" class="s7-badge" style="left: 170px; top: 360px">▶</div>
 			<div id="s7-b2" class="s7-badge" style="left: 830px; top: 400px">✦</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -89,13 +95,50 @@
 			// Sortie : accélère et se floute, plus courte que l'arrivée.
 			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
 				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+			// Caméra : la scène tourne et glisse lentement pendant toute sa durée (le décor reste derrière).
+			const camera = (de, a) => tl.fromTo('#s7-scene', {...de, transformPerspective: 1700}, {...a, transformPerspective: 1700, duration: 1.14 + 0.2, ease: 'sine.inOut'}, 0);
+			// Coup de fouet sur toute l'image, avec un flou de mouvement dans le sens du mouvement.
+			const sens = {gauche: ['x', -1], droite: ['x', 1], haut: ['y', -1], bas: ['y', 1]};
+			const flou = (axe, v) => (axe === 'x' ? `${v} 0` : `0 ${v}`);
+			const fouetEntree = (dir, t = 0) => {
+				const [axe, d] = sens[dir];
+				tl.fromTo('#s7-camera', {[axe]: -d * 900}, {[axe]: 0, duration: 0.34, ease: 'expo.out'}, t);
+				tl.fromTo('#s7-flou-g', {attr: {stdDeviation: flou(axe, 70)}}, {attr: {stdDeviation: flou(axe, 0)}, duration: 0.3, ease: 'power2.out'}, t);
+			};
+			const fouetSortie = (dir, t) => {
+				const [axe, d] = sens[dir];
+				tl.to('#s7-camera', {[axe]: d * 900, duration: 0.2, ease: 'power3.in'}, t);
+				tl.fromTo('#s7-flou-g', {attr: {stdDeviation: flou(axe, 0)}}, {attr: {stdDeviation: flou(axe, 70)}, duration: 0.2, ease: 'power3.in', immediateRender: false}, t);
+			};
+			// Lettres une par une, qui basculent en 3D et rebondissent (le texte est découpé en lettres).
+			const decouper = (el) => {
+				[...el.childNodes].forEach((nd) => {
+					if (nd.nodeType === 3) {
+						const frag = document.createDocumentFragment();
+						[...nd.textContent].forEach((c) => {
+							const sp = document.createElement('span');
+							sp.className = 'lettre';
+							sp.textContent = c === ' ' ? ' ' : c;
+							frag.appendChild(sp);
+						});
+						el.replaceChild(frag, nd);
+					} else if (nd.nodeType === 1 && nd.tagName !== 'BR') decouper(nd);
+				});
+			};
+			const lettres = (sel, t, {ecart = 0.035, de = {opacity: 0, y: -110, rotationX: -90, scale: 0.4}, duree = 0.42, ease = 'back.out(2.2)'} = {}) => {
+				document.querySelectorAll(sel).forEach(decouper);
+				const spans = document.querySelectorAll(sel.split(',').map((x) => `${x.trim()} .lettre`).join(', '));
+				tl.fromTo(spans, {...de, transformPerspective: 700}, {opacity: 1, x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, transformPerspective: 700, duration: duree, ease, stagger: ecart}, t);
+			};
 
-			fouet('#s7-titre', 0, {echelle: 1.3});
+			camera({rotationX: -8, scale: 1.1}, {rotationX: 4, scale: 1.0});
+			fouetEntree('haut');
+			fouetSortie('gauche', 0.94);
+			lettres('#s7-titre', 0.02, {ecart: 0.03});
 			tl.fromTo('.s7-clip', {opacity: 0, scaleX: 0, transformOrigin: '0% 50%'}, {opacity: 1, scaleX: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 0.15);
 			tl.fromTo('#s7-tete', {x: 0}, {x: 680, duration: 0.85, ease: 'none'}, 0.12);
 			fouet('#s7-b1', 0.2, {echelle: 0.3});
 			fouet('#s7-b2', 0.3, {echelle: 0.3});
-			part('#s7-scene', 0.98, {dx: -300});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s7'] = tl;
 		})();
