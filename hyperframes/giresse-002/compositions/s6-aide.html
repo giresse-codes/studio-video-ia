@@ -1,0 +1,116 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s6-fond {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse 80% 60% at 40% 50%, #f7f7f7 0%, #e6e6e6 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.s6-pastille {
+			position: absolute;
+			left: -20px;
+			top: -60px;
+			width: 520px;
+			height: 120px;
+			transform-origin: 0 60px;
+		}
+		.s6-pastille span {
+			position: absolute;
+			left: 80px;
+			top: 0;
+			height: 120px;
+			padding: 0 40px;
+			border-radius: 60px;
+			background: linear-gradient(180deg, #ff4f7a 0%, #e8174f 100%);
+			box-shadow: 0 24px 50px rgba(232, 23, 79, 0.35);
+			color: #ffffff;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 58px;
+			line-height: 120px;
+			white-space: nowrap;
+		}
+	</style>
+	<div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+		<div id="s6-fond"></div>
+		<!-- Fond clair : « On aide » et des pastilles roses qui tournent comme une roue (entreprises, commerçants, restaurants, créateurs) ; puis « bonjour » dans plusieurs langues autour. -->
+		<div id="s6-scene" style="position: absolute; inset: 0">
+			<div id="s6-aide" class="mot" style="left: 90px; right: auto; top: 800px; font-size: 104px; color: #141418; text-align: left; letter-spacing: -3px">On aide</div>
+			<div id="s6-roue" data-layout-allow-overlap style="position: absolute; left: 490px; top: 858px; width: 0; height: 0">
+				<div class="s6-pastille" style="transform: rotate(0deg)"><span>les entreprises</span></div>
+				<div class="s6-pastille" style="transform: rotate(-28deg)"><span>les commerçants</span></div>
+				<div class="s6-pastille" style="transform: rotate(-56deg)"><span>les restaurants</span></div>
+				<div class="s6-pastille" style="transform: rotate(-84deg)"><span>les créateurs</span></div>
+			</div>
+			<div class="mot s6-salut" style="left: 130px; right: auto; top: 420px; font-size: 76px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Bonjour</div>
+			<div class="mot s6-salut" style="left: 660px; right: auto; top: 360px; font-size: 64px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Hello</div>
+			<div class="mot s6-salut" style="left: 330px; right: auto; top: 760px; font-size: 120px; color: #e8174f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Mbolo !</div>
+			<div class="mot s6-salut" style="left: 760px; right: auto; top: 600px; font-size: 58px; color: #e8174f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Hola</div>
+			<div class="mot s6-salut" style="left: 150px; right: auto; top: 1050px; font-size: 70px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Salut</div>
+			<div class="mot s6-salut" style="left: 560px; right: auto; top: 1110px; font-size: 60px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Ciao</div>
+			<div class="mot s6-salut" style="left: 760px; right: auto; top: 960px; font-size: 62px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Hallo</div>
+			<div class="mot s6-salut" style="left: 300px; right: auto; top: 1240px; font-size: 56px; color: #2b2b2f; font-family: 'Kit Inter'; font-weight: 700; letter-spacing: -1px">Salam</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			fouet('#s6-aide', 0, {dx: -120, flou: 14});
+			tl.fromTo('#s6-roue', {opacity: 0, rotation: -60, filter: 'blur(14px)'}, {opacity: 1, rotation: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.1);
+			// La roue tourne d'une pastille à la suivante, en tenant chacune.
+			[1, 2, 3].forEach((k) => tl.to('#s6-roue', {rotation: 28 * k, duration: 0.35, ease: 'power3.inOut'}, 0.15 + 0.45 * k));
+			// Puis « On aide » et la roue s'effacent : place aux « bonjour ».
+			tl.to(['#s6-aide', '#s6-roue'], {opacity: 0, filter: 'blur(14px)', scale: 0.94, duration: 0.22, ease: 'power3.in'}, 1.75);
+			// « bonjour » en plusieurs langues, du flou au net, tout autour.
+			tl.fromTo('.s6-salut', {opacity: 0, filter: 'blur(12px)', scale: 0.8}, {opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 2.0);
+			part('#s6-scene', 2.82, {dx: -300});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s6'] = tl;
+		})();
+	</script>
+</template>

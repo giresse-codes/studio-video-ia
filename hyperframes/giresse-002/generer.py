@@ -1,5 +1,5 @@
-# Pub GIRESSE #002 (sans voix off, rythme 120 BPM) : python3 hyperframes/giresse-002/generer.py
-# Écrit index.html, les scènes (compositions/), la musique et les bruitages (générés en local avec ffmpeg),
+# Pub GIRESSE #002 (sans voix off, sur la musique fournie) : python3 hyperframes/giresse-002/generer.py
+# Écrit index.html et les scènes (compositions/), copie la musique, génère deux bruitages (ffmpeg),
 # et copie GSAP, les polices et le logo dans assets/.
 import os, shutil, subprocess
 
@@ -7,23 +7,25 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 RACINE = os.path.abspath(os.path.join(ICI, "..", ".."))
 COMPO = os.path.join(ICI, "compositions")
 ASSETS = os.path.join(ICI, "assets")
-DUREE = 24.0
 NUMERO = "+237 673 236 084"
 EMAIL = "giressepablo17@gmail.com"
 
-# Scènes : (id, fichier, début, durée). Les coupes tombent sur le temps (0,5 s à 120 BPM).
+# Scènes : (id, fichier, début, durée), calées sur la musique (public/audio/giresse-002-musique.wav) :
+# intro calme jusqu'à 1,86 s, coups forts à 1,86 / 7,5 / 12 s, montée vers le drop à 18,9 s.
 SCENES = [
-    ("s1", "s1-projet", 0.0, 2.0),
-    ("s2", "s2-services", 2.0, 2.5),
-    ("s3", "s3-swipez", 4.5, 1.0),
-    ("s4", "s4-endroit", 5.5, 2.0),
-    ("s5", "s5-giresse", 7.5, 2.0),
-    ("s6", "s6-grandir", 9.5, 2.5),
-    ("s7", "s7-pubs", 12.0, 1.3),
-    ("s8", "s8-sites", 13.3, 1.3),
-    ("s9", "s9-applis", 14.6, 1.3),
-    ("s10", "s10-contact", 15.9, 8.1),
+    ("s1", "s1-projet", 0.0, 1.86),
+    ("s3", "s3-swipez", 1.86, 1.04),
+    ("s4", "s4-endroit", 2.9, 1.6),
+    ("s4b", "s4b-message", 4.5, 3.0),
+    ("s5", "s5-giresse", 7.5, 1.5),
+    ("s6", "s6-aide", 9.0, 3.0),
+    ("s7", "s7-pubs", 12.0, 1.14),
+    ("s8", "s8-affiches", 13.14, 1.67),
+    ("s9", "s9-sites", 14.81, 2.16),
+    ("s10", "s10-applis", 16.97, 1.93),
+    ("s11", "s11-contact", 18.9, 6.1),
 ]
+DUREE = 25.0
 
 POLICES = """		@font-face {
 			font-family: 'Kit Poppins';
@@ -130,7 +132,7 @@ P["s1-projet"] = scene("s1", "Un cube de verre qui tourne : « UN PROJET » sur 
 			fouet('#s1-i3', 0.39, {dy: 80, echelle: 0.4});
 			tl.to(['#s1-i1', '#s1-i2', '#s1-i3'], {y: -24, duration: 0.6, ease: 'sine.inOut', stagger: 0.1}, 0.8);
 			// Coupe : tout file à gauche, flou.
-			part('#s1-scene', 1.82, {dx: -420});""",
+			part('#s1-scene', 1.7, {dx: -420});""",
     """		.s1-face {
 			position: absolute;
 			left: 0;
@@ -142,87 +144,6 @@ P["s1-projet"] = scene("s1", "Un cube de verre qui tourne : « UN PROJET » sur 
 			border: 3px solid rgba(255, 255, 255, 0.35);
 			box-shadow: inset 0 0 60px rgba(124, 200, 255, 0.25);
 			backface-visibility: hidden;
-		}
-""")
-
-# s2 : les onglets Pubs / Sites / Applis ; la carte tourne d'un service à l'autre, avec son reflet.
-CARTES = {
-    "pub": """<div style="position: absolute; inset: 0; border-radius: 46px; background: linear-gradient(170deg, #3a3a3f 0%, #141418 100%)"></div>
-						<div style="position: absolute; left: 130px; top: 250px; width: 160px; height: 160px; border-radius: 80px; background: #ffffff; box-shadow: 0 0 60px rgba(255, 255, 255, 0.5)"></div>
-						<div style="position: absolute; left: 190px; top: 292px; width: 0; height: 0; border-left: 62px solid #141418; border-top: 38px solid transparent; border-bottom: 38px solid transparent"></div>
-						<div style="position: absolute; left: 0; right: 0; top: 480px; text-align: center; font-family: 'Kit Poppins'; font-weight: 800; font-size: 46px; color: #ffffff">Ta pub animée</div>""",
-    "site": """<div style="position: absolute; inset: 0; border-radius: 46px; background: linear-gradient(170deg, #ffffff 0%, #eef1f6 100%)"></div>
-						<div style="position: absolute; left: 30px; right: 30px; top: 40px; height: 54px; border-radius: 27px; background: #e3e8f0"></div>
-						<div style="position: absolute; left: 30px; right: 30px; top: 130px; height: 250px; border-radius: 30px; background: linear-gradient(135deg, #ffb347 0%, #ff5e62 100%)"></div>
-						<div style="position: absolute; left: 30px; width: 220px; top: 410px; height: 30px; border-radius: 15px; background: #d6dce6"></div>
-						<div style="position: absolute; left: 30px; width: 300px; top: 460px; height: 30px; border-radius: 15px; background: #d6dce6"></div>
-						<div style="position: absolute; left: 30px; right: 30px; top: 540px; height: 90px; border-radius: 45px; background: #141418; font-family: 'Kit Inter'; font-weight: 800; font-size: 38px; line-height: 90px; text-align: center; color: #ffffff">Commander</div>""",
-    "appli": """<div style="position: absolute; inset: 0; border-radius: 46px; background: linear-gradient(170deg, #12c2b9 0%, #0a5f8f 55%, #2b1a6b 100%)"></div>
-						<div style="position: absolute; left: 40px; top: 60px; font-family: 'Kit Poppins'; font-weight: 800; font-size: 60px; color: #ffffff">Bonjour 👋</div>
-						<div class="s2-tuile" style="left: 40px; top: 190px"></div><div class="s2-tuile" style="left: 220px; top: 190px"></div>
-						<div class="s2-tuile" style="left: 40px; top: 370px"></div><div class="s2-tuile" style="left: 220px; top: 370px"></div>
-						<div style="position: absolute; left: 40px; right: 40px; top: 560px; height: 80px; border-radius: 40px; background: rgba(255, 255, 255, 0.92); font-family: 'Kit Inter'; font-weight: 800; font-size: 34px; line-height: 80px; text-align: center; color: #0a5f8f">✓ Réservé</div>""",
-}
-def carte(k):
-    return f"""				<div id="s2-{k}" class="s2-carte">
-						{CARTES[k]}
-					</div>"""
-P["s2-services"] = scene("s2", "Studio blanc : les onglets Pubs, Sites, Applis ; la carte tourne d'un service à l'autre, avec son reflet sur le sol.",
-    "linear-gradient(180deg, #f6f7f9 0%, #e9ecf1 58%, #d9dde4 58.1%, #f1f3f6 100%)",
-    """			<div id="s2-onglets" style="position: absolute; left: 250px; top: 300px; width: 580px; height: 90px; border-radius: 45px; background: rgba(20, 20, 24, 0.08)">
-				<div id="s2-actif" style="position: absolute; left: 6px; top: 6px; width: 184px; height: 78px; border-radius: 39px; background: #141418"></div>
-				<div class="s2-onglet" style="left: 0">Pubs</div>
-				<div class="s2-onglet" style="left: 193px">Sites</div>
-				<div class="s2-onglet" style="left: 386px">Applis</div>
-			</div>
-			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1800px">
-""" + "\n".join(carte(k) for k in ("pub", "site", "appli")) + """
-			</div>
-			<div style="position: absolute; left: 0; top: 1150px; width: 1080px; height: 520px; transform: scaleY(-1); opacity: 0.22; -webkit-mask-image: linear-gradient(0deg, #000 0%, transparent 55%); mask-image: linear-gradient(0deg, #000 0%, transparent 55%); filter: blur(2px)">
-				<div id="s2-reflet" style="position: absolute; left: 330px; top: -40px; width: 420px; height: 520px; border-radius: 46px; background: #141418"></div>
-			</div>""",
-    """			// Les trois cartes : chacune entre en pivotant, puis cède la place à la suivante (l'onglet glisse).
-			const cartes = ['#s2-pub', '#s2-site', '#s2-appli'];
-			const couleurs = ['#141418', '#ffffff', '#0a8f9f'];
-			cartes.forEach((c, i) => {
-				const t = i * 0.8;
-				tl.fromTo(c, {opacity: 0, rotationY: 70, x: 260, filter: 'blur(14px)'}, {opacity: 1, rotationY: 0, x: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, t + 0.02);
-				tl.to('#s2-actif', {x: i * 193, duration: 0.35, ease: 'expo.out'}, t);
-				tl.to('#s2-reflet', {backgroundColor: couleurs[i], duration: 0.2}, t + 0.05);
-				tl.to('.s2-onglet', {color: (k) => (k === i ? '#ffffff' : '#5b6170'), duration: 0.15}, t);
-				if (i < 2) tl.to(c, {opacity: 0, rotationY: -70, x: -260, filter: 'blur(14px)', duration: 0.3, ease: 'power3.in'}, t + 0.62);
-			});
-			fouet('#s2-onglets', 0, {dy: -60});
-			part('#s2-scene', 2.32, {dy: -300});""",
-    """		.s2-onglet {
-			position: absolute;
-			top: 0;
-			width: 194px;
-			height: 90px;
-			text-align: center;
-			font-family: 'Kit Inter';
-			font-weight: 800;
-			font-size: 38px;
-			line-height: 90px;
-			color: #5b6170;
-		}
-		.s2-carte {
-			position: absolute;
-			left: 330px;
-			top: 470px;
-			width: 420px;
-			height: 680px;
-			border-radius: 46px;
-			box-shadow: 0 60px 100px rgba(20, 20, 24, 0.28);
-			opacity: 0;
-		}
-		.s2-tuile {
-			position: absolute;
-			width: 160px;
-			height: 160px;
-			border-radius: 34px;
-			background: rgba(255, 255, 255, 0.22);
-			border: 2px solid rgba(255, 255, 255, 0.35);
 		}
 """)
 
@@ -268,11 +189,11 @@ P["s4-endroit"] = scene("s4", "Ciel bleu et pelouse en perspective : « VOUS ÊT
 			fouet('#s4-etes', 0.12, {dy: -120});
 			tl.fromTo('#s4-cible', {opacity: 0, rotationX: 85}, {opacity: 1, rotationX: 58, duration: 0.6, ease: 'expo.out'}, 0.25);
 			// L'épingle tombe pile dans la cible, s'écrase et rebondit.
-			tl.fromTo('#s4-epingle', {opacity: 0, y: -900}, {opacity: 1, y: 0, duration: 0.42, ease: 'power3.in'}, 0.6);
-			tl.to('#s4-epingle', {scaleY: 0.78, scaleX: 1.2, transformOrigin: '50% 100%', duration: 0.07, ease: 'power2.out'}, 1.02);
-			tl.to('#s4-epingle', {scaleY: 1, scaleX: 1, duration: 0.4, ease: 'elastic.out(1, 0.45)'}, 1.09);
-			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 1.02);
-			part('#s4-scene', 1.82, {dx: 420});""")
+			tl.fromTo('#s4-epingle', {opacity: 0, y: -900}, {opacity: 1, y: 0, duration: 0.42, ease: 'power3.in'}, 0.45);
+			tl.to('#s4-epingle', {scaleY: 0.78, scaleX: 1.2, transformOrigin: '50% 100%', duration: 0.07, ease: 'power2.out'}, 0.87);
+			tl.to('#s4-epingle', {scaleY: 1, scaleX: 1, duration: 0.4, ease: 'elastic.out(1, 0.45)'}, 0.94);
+			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 0.87);
+			part('#s4-scene', 1.42, {dx: 420});""")
 
 # s5 : « NOUS, C'EST » + le logo GIRESSE ; des lames de couleur filent en perspective, un laser tombe.
 P["s5-giresse"] = scene("s5", "Fond violet : des lames de couleur filent en perspective, un trait cyan tombe ; « NOUS, C'EST » puis la carte du logo GIRESSE.",
@@ -292,56 +213,14 @@ P["s5-giresse"] = scene("s5", "Fond violet : des lames de couleur filent en pers
 			tl.fromTo('#s5-laser', {scaleY: 0, transformOrigin: '50% 0%'}, {scaleY: 1, duration: 0.4, ease: 'power3.out'}, 0.1);
 			fouet('#s5-nous', 0.05, {dx: 300});
 			tl.fromTo('#s5-carte', {opacity: 0, rotationY: -60, rotationX: 15, scale: 0.7, filter: 'blur(18px)', transformPerspective: 1400}, {opacity: 1, rotationY: 0, rotationX: 0, scale: 1, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}, 0.35);
-			tl.to('.s5-lame', {x: 120, duration: 1.4, ease: 'none'}, 0.6);
-			part('#s5-scene', 1.82, {dy: -300});""",
+			tl.to('.s5-lame', {x: 120, duration: 0.9, ease: 'none'}, 0.6);
+			part('#s5-scene', 1.35, {dy: -300});""",
     """		.s5-lame {
 			position: absolute;
 			width: 760px;
 			height: 120px;
 			border-radius: 12px;
 			box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
-		}
-""")
-
-# s6 : « ET ON VOUS AIDE À FAIRE GRANDIR VOTRE BUSINESS » en néon sur fond noir ; une plante pousse ; l'image se réchauffe.
-BRANCHES = ["M 540 1480 C 540 1300 530 1180 540 1020", "M 538 1260 C 470 1200 420 1160 380 1080", "M 540 1200 C 610 1150 660 1100 700 1010",
-            "M 540 1100 C 500 1060 470 1000 470 930", "M 541 1080 C 590 1040 610 990 615 920", "M 400 1100 C 360 1080 330 1050 310 1000",
-            "M 680 1040 C 720 1020 750 990 770 950", "M 540 1020 C 540 980 545 950 545 900"]
-FEUILLES = [(380, 1080), (700, 1010), (470, 930), (615, 920), (310, 1000), (770, 950), (545, 900), (430, 1150), (650, 1120)]
-P["s6-grandir"] = scene("s6", "Fond noir et néon : « ET ON VOUS AIDE », puis « À FAIRE GRANDIR » ; une plante lumineuse pousse ; « VOTRE BUSINESS » en jaune néon, l'image se réchauffe.",
-    "radial-gradient(ellipse 70% 50% at 50% 55%, #2a2a2e 0%, #0d0d10 70%)",
-    """			<div id="s6-chaud" style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 60%, #ff9a3c 0%, #c2410c 55%, #4a1205 100%); opacity: 0"></div>
-			<div class="mot s6-neon" id="s6-l1" style="top: 300px; font-size: 76px; color: #ffffff">ET ON VOUS AIDE</div>
-			<div class="mot s6-neon" id="s6-l2" style="top: 420px; font-size: 76px; color: #ffffff">À FAIRE GRANDIR</div>
-			<div class="mot s6-jaune" id="s6-l3" style="top: 560px; font-size: 130px">VOTRE</div>
-			<div class="mot s6-jaune" id="s6-l4" style="top: 700px; font-size: 130px">BUSINESS</div>
-			<svg style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px" viewBox="0 0 1080 1920">
-				<g fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" style="filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))">
-""" + "\n".join(f'					<path class="s6-branche" d="{d}" />' for d in BRANCHES) + """
-				</g>
-				<g fill="#e8ff3a" style="filter: drop-shadow(0 0 14px #e8ff3a)">
-""" + "\n".join(f'					<ellipse class="s6-feuille" cx="{x}" cy="{y}" rx="26" ry="16" />' for x, y in FEUILLES) + """
-				</g>
-			</svg>""",
-    """			fouet('#s6-l1', 0, {flou: 14, echelle: 1.15});
-			fouet('#s6-l2', 0.75, {flou: 14, echelle: 1.15});
-			// La plante pousse, branche après branche, puis ses feuilles s'allument.
-			document.querySelectorAll('.s6-branche').forEach((b, i) => {
-				const l = b.getTotalLength();
-				tl.fromTo(b, {strokeDasharray: l, strokeDashoffset: l}, {strokeDashoffset: 0, duration: 0.6, ease: 'power2.out'}, 0.7 + i * 0.1);
-			});
-			tl.fromTo('.s6-feuille', {scale: 0, transformOrigin: '50% 50%'}, {scale: 1, duration: 0.35, ease: 'back.out(2)', stagger: 0.06}, 1.3);
-			// « VOTRE BUSINESS » en jaune néon ; l'image se réchauffe d'un coup.
-			fouet('#s6-l3', 1.2, {echelle: 1.6, flou: 20, duree: 0.4});
-			fouet('#s6-l4', 1.32, {echelle: 1.6, flou: 20, duree: 0.4});
-			tl.to('#s6-chaud', {opacity: 1, duration: 0.35, ease: 'power2.inOut'}, 1.95);
-			part('#s6-scene', 2.32, {dy: -200});""",
-    """		.s6-neon {
-			text-shadow: 0 0 18px rgba(255, 255, 255, 0.75), 0 0 40px rgba(255, 255, 255, 0.35);
-		}
-		.s6-jaune {
-			color: #f4ff6a;
-			text-shadow: 0 0 20px #e8ff3a, 0 0 60px rgba(232, 255, 58, 0.6);
 		}
 """)
 
@@ -360,10 +239,10 @@ P["s7-pubs"] = scene("s7", "Fond pâle : « PUBS ANIMÉES » en relief blanc ; u
 			<div id="s7-b2" class="s7-badge" style="left: 830px; top: 400px">✦</div>""",
     """			fouet('#s7-titre', 0, {echelle: 1.3});
 			tl.fromTo('.s7-clip', {opacity: 0, scaleX: 0, transformOrigin: '0% 50%'}, {opacity: 1, scaleX: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 0.15);
-			tl.fromTo('#s7-tete', {x: 0}, {x: 680, duration: 1.0, ease: 'none'}, 0.15);
+			tl.fromTo('#s7-tete', {x: 0}, {x: 680, duration: 0.85, ease: 'none'}, 0.12);
 			fouet('#s7-b1', 0.2, {echelle: 0.3});
 			fouet('#s7-b2', 0.3, {echelle: 0.3});
-			part('#s7-scene', 1.14, {dx: -300});""",
+			part('#s7-scene', 0.98, {dx: -300});""",
     """		.s7-clip {
 			position: absolute;
 			height: 70px;
@@ -386,100 +265,284 @@ P["s7-pubs"] = scene("s7", "Fond pâle : « PUBS ANIMÉES » en relief blanc ; u
 		}
 """)
 
-# s8 : SITES WEB : une sphère violette, des colonnes de pages qui montent comme une ville.
-COLONNES = [(140, 260), (250, 420), (360, 330), (470, 560), (580, 380), (690, 500), (800, 300)]
-P["s8-sites"] = scene("s8", "Fond pâle : une grande sphère violette en haut ; des colonnes jaunes et orange montent comme une ville ; « SITES WEB » en relief.",
-    PALE,
-    """			<div id="s8-sphere" style="position: absolute; left: 240px; top: -280px; width: 600px; height: 600px; border-radius: 300px; background: radial-gradient(circle at 40% 70%, #c45cff 0%, #7a1fd6 50%, #3b0a8f 100%); box-shadow: 0 40px 120px rgba(122, 31, 214, 0.5)"></div>
-""" + "\n".join(f'			<div class="s8-col" style="left: {x}px; top: {1420 - h}px; height: {h}px"></div>' for x, h in COLONNES) + """
-			""" + titre_pale("s8", "SITES WEB", 150),
-    """			tl.fromTo('#s8-sphere', {y: -200, filter: 'blur(14px)'}, {y: 0, filter: 'blur(0px)', duration: 0.6, ease: 'expo.out'}, 0);
-			tl.fromTo('.s8-col', {scaleY: 0, transformOrigin: '50% 100%'}, {scaleY: 1, duration: 0.55, ease: 'expo.out', stagger: 0.05}, 0.05);
-			fouet('#s8-titre', 0.1, {echelle: 1.3});
-			part('#s8-scene', 1.14, {dx: -300});""",
-    """		.s8-col {
+# s10 : APPLICATIONS : dégradé irisé qui bouge, un téléphone de verre.
+P["s10-applis"] = scene("s10", "Dégradé irisé qui bouge ; un téléphone de verre se pose ; « APPLICATIONS » en blanc.",
+    "#ffffff",
+    """			<div id="s10-irise" style="position: absolute; left: -400px; top: -400px; width: 1880px; height: 2720px; background: radial-gradient(circle at 30% 30%, #00e5ff 0%, transparent 35%), radial-gradient(circle at 75% 35%, #ff4d8d 0%, transparent 35%), radial-gradient(circle at 40% 70%, #ffe600 0%, transparent 35%), radial-gradient(circle at 75% 75%, #8f00ff 0%, transparent 35%); filter: blur(60px)"></div>
+			<div id="s10-tel" style="position: absolute; left: 380px; top: 700px; width: 320px; height: 600px; border-radius: 60px; background: rgba(255, 255, 255, 0.28); border: 4px solid rgba(255, 255, 255, 0.7); box-shadow: 0 50px 100px rgba(60, 0, 120, 0.3)">
+				<div style="position: absolute; left: 110px; top: 26px; width: 100px; height: 28px; border-radius: 14px; background: rgba(255, 255, 255, 0.8)"></div>
+			</div>
+			<div class="mot" id="s10-titre" style="top: 470px; font-size: 128px; color: #ffffff; text-shadow: 0 4px 30px rgba(80, 0, 160, 0.45)">APPLICATIONS</div>""",
+    """			tl.fromTo('#s10-irise', {x: 0, y: 0, rotation: 0}, {x: 180, y: -160, rotation: 18, duration: 1.3, ease: 'none'}, 0);
+			fouet('#s10-titre', 0, {echelle: 1.3});
+			fouet('#s10-tel', 0.15, {dy: 200, echelle: 0.8});
+			part('#s10-scene', 1.76, {dy: -200});""")
+
+# s4b : « UN MESSAGE SUFFIT » : la notification du client arrive, puis la conversation s'ouvre.
+WA_ICONE = """<svg style="position: absolute; left: {x}px; top: {y}px; width: {t}px; height: {t}px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#25D366" /><path d="M 50 18 A 32 32 0 1 1 27 73 L 17 80 L 21 67 A 32 32 0 0 1 50 18 Z" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round" /><path d="M 38 34 Q 34 36 35 42 Q 38 54 50 63 Q 58 68 63 66 Q 67 64 66 60 L 60 56 Q 57 56 55 59 Q 49 56 44 49 Q 47 46 46 43 L 42 36 Q 40 33 38 34 Z" fill="#FFFFFF" /></svg>"""
+def bulle(id, texte, heure, top, cote="droite", coche=True):
+    if cote == "droite":
+        style = f"right: 26px; top: {top}px; background: #1f6f5c; border-radius: 26px 6px 26px 26px"
+    else:
+        style = f"left: 26px; top: {top}px; background: #2a2f35; border-radius: 6px 26px 26px 26px"
+    c = f'<span class="coche" id="{id}-coche">✓✓</span>' if coche else ""
+    return f'<div id="{id}" class="bulle" style="{style}">{texte}<span class="heure">{heure} {c}</span></div>'
+TEL_CHAT = """			<div id="{p}-tel" style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px; border-radius: 64px; background: #0e0e12; box-shadow: 0 60px 120px rgba(0, 0, 0, 0.55), inset 0 0 0 3px rgba(255, 255, 255, 0.1)">
+				<div class="ecran-chat" style="position: absolute; inset: 14px; border-radius: 52px; overflow: hidden">
+					<div style="position: absolute; left: 0; right: 0; top: 0; height: 130px; background: #1c2227"></div>
+					<div style="position: absolute; left: 30px; top: 50px; width: 64px; height: 64px; border-radius: 32px; background: linear-gradient(160deg, #3a3a3f, #2b2b2f); color: #e9e6df; font-family: 'Kit Poppins'; font-weight: 800; font-size: 34px; line-height: 64px; text-align: center">G</div>
+					<div style="position: absolute; left: 112px; top: 50px; font-family: 'Kit Inter'; font-weight: 800; font-size: 30px; color: #e9edef">GIRESSE Digital Studio</div>
+					<div style="position: absolute; left: 112px; top: 88px; font-family: 'Kit Inter'; font-weight: 700; font-size: 24px; color: #8696a0">en ligne</div>
+{contenu}
+				</div>
+			</div>"""
+CSS_CHAT = """		.ecran-chat {
+			background: radial-gradient(circle at 30% 20%, #18242b 0%, #0b141a 70%);
+		}
+		.bulle {
 			position: absolute;
-			width: 96px;
-			border-radius: 10px 10px 0 0;
-			background: linear-gradient(90deg, #ff8a00 0%, #ffd23f 45%, #ffb000 100%);
-			box-shadow: 0 0 40px rgba(255, 170, 0, 0.45);
+			max-width: 78%;
+			padding: 20px 26px 16px;
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			font-size: 32px;
+			line-height: 1.25;
+			color: #e9edef;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+		}
+		.bulle .heure {
+			display: block;
+			margin-top: 6px;
+			text-align: right;
+			font-size: 22px;
+			font-weight: 700;
+			color: #9fb7b0;
+		}
+		.bulle .coche {
+			color: #9fb7b0;
+		}
+"""
+P["s4b-message"] = scene("s4b", "Fond sombre : « UN MESSAGE SUFFIT. » ; sur le téléphone, la notification d'un client tombe, puis la conversation : « J'aurais besoin d'un site web pour mon entreprise ? », « Êtes-vous disponible ? », lu.",
+    "radial-gradient(ellipse 80% 60% at 50% 55%, #1d2a30 0%, #0b1014 75%)",
+    """			<div class="mot" id="s4b-l1" style="top: 230px; font-size: 104px; color: #ffffff; text-shadow: @RELIEF@">UN MESSAGE</div>
+			<div class="mot" id="s4b-l2" style="top: 350px; font-size: 104px; color: #25d366; text-shadow: @RELIEF@">SUFFIT.</div>
+""".replace("@RELIEF@", relief("#06231a", 10)) + TEL_CHAT.format(p="s4b", x=270, y=500, w=540, h=820, contenu="\n".join([
+        "					" + bulle("s4b-b1", "J'aurais besoin d'un site web pour mon entreprise ?", "20:59", 380),
+        "					" + bulle("s4b-b2", "Êtes-vous disponible ?", "20:59", 580),
+        """					<div id="s4b-ecrit" class="bulle" style="left: 26px; top: 720px; background: #2a2f35; border-radius: 6px 26px 26px 26px; font-size: 40px; padding: 10px 26px 16px">• • •</div>"""])) + """
+			<div id="s4b-notif" data-layout-allow-overlap style="position: absolute; left: 150px; top: 520px; width: 780px; height: 170px; border-radius: 40px; background: #efe2da; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4)">
+				""" + WA_ICONE.format(x=30, y=40, t=90) + """
+				<div style="position: absolute; left: 145px; top: 30px; font-family: 'Kit Inter'; font-weight: 800; font-size: 32px; color: #3b2a22">Client · maintenant</div>
+				<div style="position: absolute; left: 145px; top: 78px; width: 600px; font-family: 'Kit Inter'; font-weight: 700; font-size: 30px; line-height: 1.2; color: #5a463c">J'aurais besoin d'un site web pour mon entreprise ?</div>
+			</div>""",
+    """			// Le téléphone ; la notification du client tombe du haut.
+			fouet('#s4b-tel', 0, {dy: 160, echelle: 0.92, duree: 0.6});
+			tl.fromTo('#s4b-notif', {opacity: 0, y: -260, filter: 'blur(10px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.2);
+			fouet('#s4b-l1', 0.35, {echelle: 1.2, flou: 14});
+			// La notification remonte, la conversation s'ouvre : les deux messages, puis lus (coches bleues), puis « … ».
+			tl.to('#s4b-notif', {opacity: 0, y: -200, filter: 'blur(10px)', duration: 0.25, ease: 'power3.in'}, 1.0);
+			fouet('#s4b-b1', 1.1, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
+			fouet('#s4b-b2', 1.55, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
+			fouet('#s4b-l2', 1.6, {echelle: 1.4, flou: 16});
+			tl.to(['#s4b-b1-coche', '#s4b-b2-coche'], {color: '#53bdeb', duration: 0.1}, 2.1);
+			fouet('#s4b-ecrit', 2.25, {dy: 30, echelle: 0.8, duree: 0.3, flou: 6});
+			part('#s4b-scene', 2.82, {dy: -260});""", CSS_CHAT)
+
+# s6 : « On aide » + pastilles qui tournent (entreprises, commerçants, restaurants, créateurs), puis « bonjour » en plusieurs langues.
+PASTILLES = ["entreprises", "commerçants", "restaurants", "créateurs"]
+SALUTS = [("Bonjour", 130, 420, 76, "#2b2b2f"), ("Hello", 660, 360, 64, "#2b2b2f"), ("Mbolo !", 330, 760, 120, "#e8174f"), ("Hola", 760, 600, 58, "#e8174f"),
+          ("Salut", 150, 1050, 70, "#2b2b2f"), ("Ciao", 560, 1110, 60, "#2b2b2f"), ("Hallo", 760, 960, 62, "#2b2b2f"), ("Salam", 300, 1240, 56, "#2b2b2f")]
+P["s6-aide"] = scene("s6", "Fond clair : « On aide » et des pastilles roses qui tournent comme une roue (entreprises, commerçants, restaurants, créateurs) ; puis « bonjour » dans plusieurs langues autour.",
+    "radial-gradient(ellipse 80% 60% at 40% 50%, #f7f7f7 0%, #e6e6e6 100%)",
+    """			<div id="s6-aide" class="mot" style="left: 90px; right: auto; top: 800px; font-size: 104px; color: #141418; text-align: left; letter-spacing: -3px">On aide</div>
+			<div id="s6-roue" data-layout-allow-overlap style="position: absolute; left: 490px; top: 858px; width: 0; height: 0">
+""" + "\n".join(f'				<div class="s6-pastille" style="transform: rotate({-28 * k}deg)"><span>les {m}</span></div>' for k, m in enumerate(PASTILLES)) + """
+			</div>
+""" + "\n".join(f'			<div class="mot s6-salut" style="left: {x}px; right: auto; top: {y}px; font-size: {t}px; color: {c}; font-family: \'Kit Inter\'; font-weight: 700; letter-spacing: -1px">{m}</div>' for m, x, y, t, c in SALUTS),
+    """			fouet('#s6-aide', 0, {dx: -120, flou: 14});
+			tl.fromTo('#s6-roue', {opacity: 0, rotation: -60, filter: 'blur(14px)'}, {opacity: 1, rotation: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.1);
+			// La roue tourne d'une pastille à la suivante, en tenant chacune.
+			[1, 2, 3].forEach((k) => tl.to('#s6-roue', {rotation: 28 * k, duration: 0.35, ease: 'power3.inOut'}, 0.15 + 0.45 * k));
+			// Puis « On aide » et la roue s'effacent : place aux « bonjour ».
+			tl.to(['#s6-aide', '#s6-roue'], {opacity: 0, filter: 'blur(14px)', scale: 0.94, duration: 0.22, ease: 'power3.in'}, 1.75);
+			// « bonjour » en plusieurs langues, du flou au net, tout autour.
+			tl.fromTo('.s6-salut', {opacity: 0, filter: 'blur(12px)', scale: 0.8}, {opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.3, ease: 'expo.out', stagger: 0.07}, 2.0);
+			part('#s6-scene', 2.82, {dx: -300});""",
+    """		.s6-pastille {
+			position: absolute;
+			left: -20px;
+			top: -60px;
+			width: 520px;
+			height: 120px;
+			transform-origin: 0 60px;
+		}
+		.s6-pastille span {
+			position: absolute;
+			left: 80px;
+			top: 0;
+			height: 120px;
+			padding: 0 40px;
+			border-radius: 60px;
+			background: linear-gradient(180deg, #ff4f7a 0%, #e8174f 100%);
+			box-shadow: 0 24px 50px rgba(232, 23, 79, 0.35);
+			color: #ffffff;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 58px;
+			line-height: 120px;
+			white-space: nowrap;
 		}
 """)
 
-# s9 : APPLICATIONS : dégradé irisé qui bouge, un téléphone de verre.
-P["s9-applis"] = scene("s9", "Dégradé irisé qui bouge ; un téléphone de verre se pose ; « APPLICATIONS » en blanc.",
-    "#ffffff",
-    """			<div id="s9-irise" style="position: absolute; left: -400px; top: -400px; width: 1880px; height: 2720px; background: radial-gradient(circle at 30% 30%, #00e5ff 0%, transparent 35%), radial-gradient(circle at 75% 35%, #ff4d8d 0%, transparent 35%), radial-gradient(circle at 40% 70%, #ffe600 0%, transparent 35%), radial-gradient(circle at 75% 75%, #8f00ff 0%, transparent 35%); filter: blur(60px)"></div>
-			<div id="s9-tel" style="position: absolute; left: 380px; top: 700px; width: 320px; height: 600px; border-radius: 60px; background: rgba(255, 255, 255, 0.28); border: 4px solid rgba(255, 255, 255, 0.7); box-shadow: 0 50px 100px rgba(60, 0, 120, 0.3)">
-				<div style="position: absolute; left: 110px; top: 26px; width: 100px; height: 28px; border-radius: 14px; background: rgba(255, 255, 255, 0.8)"></div>
-			</div>
-			<div class="mot" id="s9-titre" style="top: 470px; font-size: 128px; color: #ffffff; text-shadow: 0 4px 30px rgba(80, 0, 160, 0.45)">APPLICATIONS</div>""",
-    """			tl.fromTo('#s9-irise', {x: 0, y: 0, rotation: 0}, {x: 180, y: -160, rotation: 18, duration: 1.3, ease: 'none'}, 0);
-			fouet('#s9-titre', 0, {echelle: 1.3});
-			fouet('#s9-tel', 0.15, {dy: 200, echelle: 0.8});
-			part('#s9-scene', 1.14, {dy: -200});""")
+# s8 : AFFICHES : une affiche de produit, gros titre serré, traînées de lumière.
+P["s8-affiches"] = scene("s8", "Une affiche de produit : fond bleu nuit, traînées de lumière qui jaillissent du bas, étiquette « AFFICHES », gros titre serré, la basket qui arrive en grand.",
+    "radial-gradient(ellipse 90% 70% at 50% 30%, #2a1fa8 0%, #10106a 55%, #070824 100%)",
+    """			<div id="s8-lumiere" style="position: absolute; left: -540px; top: 900px; width: 2160px; height: 2160px; border-radius: 50%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 60, 200, 0.55) 0deg 2deg, rgba(80, 200, 255, 0.5) 2deg 4deg, rgba(255, 200, 60, 0.45) 4deg 5deg, transparent 5deg 9deg); -webkit-mask-image: radial-gradient(circle, transparent 18%, #000 40%, transparent 72%); mask-image: radial-gradient(circle, transparent 18%, #000 40%, transparent 72%); filter: blur(3px)"></div>
+			<div id="s8-tag" style="position: absolute; left: 110px; top: 250px; padding: 14px 28px; border-radius: 14px; background: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 34px; letter-spacing: 10px; color: #2a1fa8">AFFICHES</div>
+			<div class="mot s8-l" style="left: 104px; right: auto; top: 350px; font-size: 118px; color: #ffffff; text-align: left; letter-spacing: -4px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)">VOTRE PRODUIT</div>
+			<div class="mot s8-l" style="left: 104px; right: auto; top: 470px; font-size: 118px; color: #ffffff; text-align: left; letter-spacing: -4px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)">EN GRAND,</div>
+			<div class="mot s8-l" style="left: 104px; right: auto; top: 590px; font-size: 118px; color: #ffffff; text-align: left; letter-spacing: -4px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)">PARTOUT.</div>
+			<div id="s8-ligne" style="position: absolute; left: 110px; top: 750px; font-family: 'Kit Inter'; font-weight: 800; font-size: 30px; letter-spacing: 8px; color: #c9cbff">GIRESSE <span style="color: #6f74ff">|</span> DIGITAL STUDIO</div>
+			<div id="s8-produit" class="emoji" style="left: 360px; top: 840px; font-size: 380px; filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 40px rgba(120, 160, 255, 0.5))">👟</div>""",
+    """			tl.fromTo('#s8-lumiere', {scale: 0.7, rotation: -6, opacity: 0}, {scale: 1.15, rotation: 6, opacity: 1, duration: 1.6, ease: 'power2.out'}, 0);
+			fouet('#s8-tag', 0, {dx: -100, flou: 10, duree: 0.35});
+			tl.fromTo('.s8-l', {opacity: 0, x: -160, filter: 'blur(16px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out', stagger: 0.08}, 0.05);
+			fouet('#s8-ligne', 0.35, {dx: -60, flou: 8, duree: 0.35});
+			tl.fromTo('#s8-produit', {opacity: 0, x: 500, rotation: 25, filter: 'blur(18px)'}, {opacity: 1, x: 0, rotation: -8, filter: 'blur(0px)', duration: 0.55, ease: 'expo.out'}, 0.25);
+			part('#s8-scene', 1.5, {dy: 260});""")
 
-# s10 : le contact : un bouton cyan devient « envoyer », la fiche de contact s'incline et s'écrit ; puis le logo.
-P["s10-contact"] = scene("s10", "Fond bleu pâle : un point cyan devient le bouton « envoyer » ; la fiche inclinée s'écrit : WhatsApp, numéro, mail ; puis la fiche se redresse et le logo GIRESSE se pose.",
-    "linear-gradient(180deg, #dbe9f5 0%, #c6dcee 100%)",
-    f"""			<div style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1600px">
-				<div id="s10-fiche" data-layout-allow-overlap style="position: absolute; left: 110px; top: 560px; width: 860px; height: 500px; border-radius: 48px; background: linear-gradient(170deg, #ffffff 0%, #f1f3f6 100%); box-shadow: 0 70px 120px rgba(40, 70, 110, 0.3); overflow: hidden">
-					<img src="assets/marque/monogramme.png" style="position: absolute; left: 560px; top: 150px; width: 380px; opacity: 0.09" />
-					<div class="s10-etiq" style="top: 60px">WhatsApp</div>
-					<div id="s10-numero" class="s10-valeur" style="top: 130px"></div>
-					<div style="position: absolute; left: 60px; right: 60px; top: 260px; border-top: 4px dashed #c6d3e0"></div>
-					<div id="s10-ou" class="s10-etiq" style="top: 300px">ou par mail</div>
-					<div id="s10-email" class="s10-valeur" style="top: 370px; font-size: 54px"></div>
-					<div id="s10-curseur" style="position: absolute; left: 60px; top: 140px; width: 6px; height: 72px; background: #00b8d9"></div>
+# s9 : SITES WEB : un site de réservation sur téléphone qui défile, puis un site pro sombre sur ordinateur.
+RESULTATS = "".join(f"""<div style="display: flex; gap: 20px; margin: 0 24px 22px; padding: 18px; border-radius: 22px; background: #ffffff; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08)"><div style="width: 150px; height: 130px; border-radius: 16px; background: {g}"></div><div><div style="font-family: 'Kit Inter'; font-weight: 800; font-size: 28px; color: #1a1a1a">{n}</div><div style="margin-top: 8px; font-family: 'Kit Inter'; font-weight: 700; font-size: 22px; color: #f5a623">★★★★</div><div style="margin-top: 10px"><span style="padding: 4px 10px; border-radius: 8px; background: #0f766e; color: #fff; font-family: 'Kit Inter'; font-weight: 800; font-size: 22px">{note}</span> <span style="font-family: 'Kit Inter'; font-weight: 700; font-size: 22px; color: #4a4a4a">Superbe</span></div></div></div>"""
+    for n, note, g in [("Hôtel Les Palmiers", "8,6", "linear-gradient(135deg, #7dd3fc, #0e7490)"), ("Villa Océane", "9,1", "linear-gradient(135deg, #fcd34d, #ea580c)"), ("Le Jardin Lodge", "8,8", "linear-gradient(135deg, #86efac, #15803d)"), ("Résidence Azur", "8,4", "linear-gradient(135deg, #c4b5fd, #6d28d9)")])
+P["s9-sites"] = scene("s9", "« SITES WEB » : un site de réservation sur téléphone (recherche, dates, résultats) qui défile ; puis un site pro sombre à accents jaunes sur un ordinateur portable.",
+    "linear-gradient(180deg, #dfe9f3 0%, #c9d9ea 100%)",
+    """			<div class="mot" id="s9-titre" style="top: 220px; font-size: 140px; color: #ffffff; text-shadow: @RELIEF@">SITES WEB</div>""".replace("@RELIEF@", relief("#9fb4cc", 10, "rgba(60, 90, 130, 0.35)")) + """
+			<div id="s9-tel" style="position: absolute; left: 300px; top: 420px; width: 480px; height: 900px; border-radius: 60px; background: #0e0e12; box-shadow: 0 60px 110px rgba(40, 60, 90, 0.35)">
+				<div style="position: absolute; inset: 14px; border-radius: 48px; overflow: hidden; background: #f2f4f7">
+					<div id="s9-page" style="position: absolute; left: 0; right: 0; top: 0">
+						<div style="height: 120px; background: #0f766e; padding: 46px 28px 0; font-family: 'Kit Poppins'; font-weight: 800; font-size: 34px; color: #ffffff">Réservez</div>
+						<div style="margin: 20px 24px; padding: 20px; border-radius: 24px; background: #ffd7a8">
+							<div class="s9-champ">🔍 Kribi, Cameroun</div>
+							<div style="display: flex; gap: 12px"><div class="s9-champ" style="flex: 1">mer. 4 nov.</div><div class="s9-champ" style="flex: 1">jeu. 5 nov.</div></div>
+							<div class="s9-champ">2 adultes · 1 chambre</div>
+							<div style="height: 76px; border-radius: 16px; background: #f97316; font-family: 'Kit Inter'; font-weight: 800; font-size: 30px; line-height: 76px; text-align: center; color: #ffffff">Rechercher</div>
+						</div>
+						""" + RESULTATS + """
+					</div>
 				</div>
 			</div>
-			<div id="s10-bouton" style="position: absolute; left: 140px; top: 360px; width: 140px; height: 140px; border-radius: 70px; background: radial-gradient(circle at 35% 30%, #7ff3ff 0%, #00c6e0 60%, #0094b8 100%); box-shadow: 0 30px 60px rgba(0, 150, 190, 0.45)">
-				<svg style="position: absolute; left: 32px; top: 34px; width: 76px; height: 76px" viewBox="0 0 76 76"><path d="M 6 36 L 70 6 L 46 70 L 36 44 Z" fill="#FFFFFF" /><path d="M 36 44 L 70 6" stroke="#00A3C4" stroke-width="4" /></svg>
-			</div>
-			<div id="s10-pastille" style="position: absolute; left: 310px; top: 380px; height: 100px; padding: 0 44px; border-radius: 50px; background: linear-gradient(180deg, #3a3a3f 0%, #141418 100%); color: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 46px; line-height: 100px; white-space: nowrap; box-shadow: 0 24px 48px rgba(20, 20, 24, 0.3)">Écrivez-nous</div>
-			<div id="s10-logo" style="position: absolute; left: 240px; top: 1140px; width: 600px; height: 0">
-				<img src="assets/marque/nom.png" style="position: absolute; left: 0; top: 0; width: 600px" />
+			<div id="s9-portable" style="position: absolute; left: 110px; top: 520px; width: 860px; opacity: 0">
+				<div style="position: relative; height: 540px; border-radius: 28px 28px 0 0; background: #111418; border: 14px solid #2a2d33; overflow: hidden">
+					<div style="position: absolute; left: 40px; top: 36px; font-family: 'Kit Poppins'; font-weight: 800; font-size: 28px; color: #ffffff">Votre<span style="color: #facc15">.</span>marque</div>
+					<div style="position: absolute; left: 40px; top: 120px; width: 470px; font-family: 'Kit Poppins'; font-weight: 800; font-size: 50px; line-height: 1.1; color: #ffffff">Votre entreprise en ligne, <span style="color: #facc15">24 h / 24</span></div>
+					<div style="position: absolute; left: 40px; top: 330px; padding: 16px 30px; border-radius: 12px; background: #facc15; font-family: 'Kit Inter'; font-weight: 800; font-size: 26px; color: #111418">Demander un devis</div>
+					<div style="position: absolute; left: 540px; top: 110px; width: 260px; height: 300px; border-radius: 20px; background: #1d2228; border: 2px solid #2f3640">
+						<div style="margin: 24px auto 0; width: 150px; height: 150px; border-radius: 75px; border: 26px solid #facc15; border-right-color: #3a414b; box-sizing: border-box"></div>
+						<div style="margin: 30px 24px 0; height: 16px; border-radius: 8px; background: #3a414b"></div>
+						<div style="margin: 14px 24px 0; width: 120px; height: 16px; border-radius: 8px; background: #3a414b"></div>
+					</div>
+				</div>
+				<div style="height: 34px; margin: 0 -40px; border-radius: 0 0 30px 30px; background: linear-gradient(180deg, #c9ccd2 0%, #9aa0a8 100%)"></div>
 			</div>""",
-    f"""			// Le point cyan surgit et devient le bouton « envoyer » ; la pastille « Écrivez-nous » sort de lui.
-			tl.fromTo('#s10-bouton', {{opacity: 0, scale: 0.2, x: 400, y: 500}}, {{opacity: 1, scale: 1, x: 0, y: 0, duration: 0.55, ease: 'expo.out'}}, 0);
-			tl.fromTo('#s10-pastille', {{opacity: 0, x: -160, scaleX: 0.3, transformOrigin: '0% 50%', filter: 'blur(10px)'}}, {{opacity: 1, x: 0, scaleX: 1, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}}, 0.35);
-			// La fiche glisse, inclinée, puis le numéro et le mail s'écrivent.
-			tl.fromTo('#s10-fiche', {{opacity: 0, y: 700, rotationX: 35, rotationZ: -14, filter: 'blur(14px)'}}, {{opacity: 1, y: 0, rotationX: 14, rotationZ: -8, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}}, 0.45);
+    """			fouet('#s9-titre', 0, {echelle: 1.3});
+			fouet('#s9-tel', 0, {dy: 200, echelle: 0.9, duree: 0.5});
+			// Le site de réservation défile jusqu'aux résultats.
+			tl.fromTo('#s9-page', {y: 0}, {y: -520, duration: 0.8, ease: 'power2.inOut'}, 0.35);
+			// Coup de fouet vers le site pro sur ordinateur.
+			tl.to('#s9-tel', {opacity: 0, x: -500, filter: 'blur(16px)', duration: 0.22, ease: 'power3.in'}, 1.1);
+			tl.fromTo('#s9-portable', {opacity: 0, x: 500, filter: 'blur(16px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.45, ease: 'expo.out'}, 1.2);
+			part('#s9-scene', 2.0, {dy: -240});""",
+    """		.s9-champ {
+			margin-bottom: 12px;
+			padding: 0 18px;
+			height: 64px;
+			border-radius: 14px;
+			background: #ffffff;
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			font-size: 26px;
+			line-height: 64px;
+			color: #333333;
+			white-space: nowrap;
+		}
+""")
+
+# s11 : au drop, GIRESSE répond sur WhatsApp ; puis la fiche de contact s'écrit et le logo se pose.
+P["s11-contact"] = scene("s11", "Au drop : sur le téléphone, la réponse de GIRESSE arrive (« Oui, on est disponibles ! », « On en parle ? ») ; « VOUS AUSSI, ÉCRIVEZ-NOUS. » ; puis la fiche WhatsApp et mail s'écrit, le logo se pose et reste.",
+    "linear-gradient(180deg, #dbe9f5 0%, #c6dcee 100%)",
+    """			<div id="s11-chat">
+				<div class="mot" id="s11-l1" style="top: 200px; font-size: 104px; color: #ffffff; text-shadow: @RELIEF@">VOUS AUSSI,</div>
+				<div class="mot" id="s11-l2" style="top: 320px; font-size: 104px; color: #25d366; text-shadow: @RELIEF@">ÉCRIVEZ-NOUS.</div>
+""".replace("@RELIEF@", relief("#6f8fae", 10, "rgba(40, 70, 110, 0.35)")) + TEL_CHAT.format(p="s11", x=270, y=480, w=540, h=840, contenu="\n".join([
+        "					" + bulle("s11-b1", "J'aurais besoin d'un site web pour mon entreprise ?", "20:59", 170),
+        "					" + bulle("s11-b2", "Êtes-vous disponible ?", "20:59", 370),
+        "					" + bulle("s11-r1", "Oui, on est disponibles ! ✅", "21:00", 510, cote="gauche", coche=False),
+        "					" + bulle("s11-r2", "On en parle ? 🚀", "21:00", 690, cote="gauche", coche=False)])).replace('id="s11-b1-coche">✓✓', 'id="s11-b1-coche" style="color: #53bdeb">✓✓').replace('id="s11-b2-coche">✓✓', 'id="s11-b2-coche" style="color: #53bdeb">✓✓') + """
+			</div>
+			<div id="s11-fiche" style="position: absolute; left: 110px; top: 470px; width: 860px; height: 560px; border-radius: 48px; background: linear-gradient(170deg, #ffffff 0%, #f1f3f6 100%); box-shadow: 0 70px 120px rgba(40, 70, 110, 0.3); overflow: hidden; opacity: 0">
+				<img src="assets/marque/monogramme.png" style="position: absolute; left: 580px; top: 190px; width: 360px; opacity: 0.08" />
+				""" + WA_ICONE.format(x=56, y=60, t=96) + """
+				<div class="s11-etiq" style="left: 176px; top: 70px">WhatsApp</div>
+				<div id="s11-numero" class="s11-valeur" style="left: 176px; top: 112px"></div>
+				<div style="position: absolute; left: 56px; right: 56px; top: 260px; border-top: 4px dashed #c6d3e0"></div>
+				<div class="s11-mail" style="left: 56px; top: 310px">✉</div>
+				<div class="s11-etiq" style="left: 176px; top: 310px">Email</div>
+				<div id="s11-email" class="s11-valeur" style="left: 176px; top: 352px; font-size: 48px"></div>
+				<div id="s11-curseur" style="position: absolute; left: 176px; top: 118px; width: 6px; height: 64px; background: #00b8d9"></div>
+			</div>
+			<img id="s11-logo" src="assets/marque/nom.png" style="position: absolute; left: 240px; top: 1100px; width: 600px; opacity: 0" />""",
+    f"""			// Au drop : le téléphone est là, la réponse de GIRESSE arrive, puis la deuxième.
+			tl.fromTo('#s11-tel', {{scale: 1.08, filter: 'blur(10px)'}}, {{scale: 1, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out'}}, 0);
+			tl.fromTo(['#s11-b1', '#s11-b2'], {{opacity: 1}}, {{opacity: 1, duration: 0.01}}, 0);
+			fouet('#s11-r1', 0.25, {{dx: -60, echelle: 0.85, duree: 0.4, flou: 8}});
+			fouet('#s11-r2', 0.7, {{dx: -60, echelle: 0.85, duree: 0.4, flou: 8}});
+			fouet('#s11-l1', 0.45, {{echelle: 1.3, flou: 16}});
+			fouet('#s11-l2', 0.6, {{echelle: 1.3, flou: 16}});
+			// Le téléphone s'envole, la fiche arrive : le numéro et le mail s'écrivent.
+			tl.to('#s11-chat', {{opacity: 0, y: -260, filter: 'blur(16px)', duration: 0.3, ease: 'power3.in'}}, 1.75);
+			tl.fromTo('#s11-fiche', {{opacity: 0, y: 500, rotationX: 30, rotationZ: -10, transformPerspective: 1600, filter: 'blur(14px)'}}, {{opacity: 1, y: 0, rotationX: 0, rotationZ: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}}, 1.85);
 			const ecrire = (sel, texte, t, d) => {{
 				const el = document.querySelector(sel);
 				const e = {{n: 0}};
 				tl.fromTo(e, {{n: 0}}, {{n: texte.length, duration: d, ease: 'none', onUpdate: () => (el.textContent = texte.slice(0, Math.round(e.n)))}}, t);
 			}};
-			ecrire('#s10-numero', '{NUMERO}', 1.1, 1.0);
-			tl.to('#s10-curseur', {{x: 560, duration: 1.0, ease: 'none'}}, 1.1);
-			tl.to('#s10-curseur', {{y: 235, x: 0, duration: 0.01}}, 2.4);
-			fouet('#s10-ou', 2.2, {{dx: -60, duree: 0.35}});
-			ecrire('#s10-email', '{EMAIL}', 2.5, 1.4);
-			tl.to('#s10-curseur', {{x: 690, duration: 1.4, ease: 'none'}}, 2.5);
-			tl.to('#s10-curseur', {{opacity: 0, duration: 0.01, yoyo: true, repeat: 7}}, 4.0);
-			tl.set('#s10-curseur', {{opacity: 0}}, 4.4);
-			// La fiche se redresse, le logo se pose dessous ; tout reste lisible jusqu'à la fin.
-			tl.to('#s10-fiche', {{rotationX: 0, rotationZ: 0, y: -40, duration: 0.7, ease: 'power2.inOut'}}, 4.2);
-			tl.to(['#s10-bouton', '#s10-pastille'], {{y: -40, duration: 0.7, ease: 'power2.inOut'}}, 4.2);
-			tl.fromTo('#s10-logo', {{opacity: 0, y: 60, filter: 'blur(14px)'}}, {{opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}}, 4.6);""",
-    """		.s10-etiq {
+			ecrire('#s11-numero', '{NUMERO}', 2.2, 0.7);
+			tl.to('#s11-curseur', {{x: 530, duration: 0.7, ease: 'none'}}, 2.2);
+			tl.set('#s11-curseur', {{x: 0, y: 240}}, 2.95);
+			ecrire('#s11-email', '{EMAIL}', 3.0, 0.9);
+			tl.to('#s11-curseur', {{x: 610, duration: 0.9, ease: 'none'}}, 3.0);
+			tl.set('#s11-curseur', {{opacity: 0}}, 4.0);
+			// Le logo se pose sous la fiche et tout reste à l'écran jusqu'à la fin.
+			tl.fromTo('#s11-logo', {{opacity: 0, y: 60, filter: 'blur(14px)'}}, {{opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}}, 3.9);""",
+    CSS_CHAT + """		.s11-etiq {
 			position: absolute;
-			left: 60px;
 			font-family: 'Kit Inter';
 			font-weight: 700;
-			font-size: 40px;
+			font-size: 36px;
 			line-height: 1;
 			color: #6b7a90;
 		}
-		.s10-valeur {
+		.s11-valeur {
 			position: absolute;
-			left: 60px;
 			font-family: 'Kit Inter';
 			font-weight: 800;
-			font-size: 66px;
+			font-size: 62px;
 			line-height: 1;
 			color: #141418;
 			white-space: nowrap;
+		}
+		.s11-mail {
+			position: absolute;
+			width: 96px;
+			height: 96px;
+			border-radius: 48px;
+			background: linear-gradient(160deg, #3a3a3f 0%, #2b2b2f 100%);
+			color: #ffffff;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 50px;
+			line-height: 96px;
+			text-align: center;
 		}
 """)
 
@@ -487,9 +550,9 @@ os.makedirs(COMPO, exist_ok=True)
 for nom, contenu in P.items():
     open(os.path.join(COMPO, f"{nom}.html"), "w").write(contenu)
 
-# Bruitages : (heure, fichier, volume).
-DUREES_SONS = {"fouet": 0.45, "impact": 0.8, "pop": 0.2, "ding": 1.0}
-SONS = [(s[2], "fouet", 0.55) for s in SCENES[1:]] + [(4.5, "impact", 0.8), (6.52, "pop", 0.7), (7.95, "impact", 0.45), (11.45, "impact", 0.5), (20.5, "ding", 0.6)]
+# Bruitages : (heure, fichier, volume) : seulement les messages, la musique fait le reste.
+DUREES_SONS = {"pop": 0.2, "ding": 1.0}
+SONS = [(4.72, "ding", 0.45), (5.62, "pop", 0.35), (6.07, "pop", 0.35), (19.17, "pop", 0.4), (19.62, "pop", 0.4)]
 hotes = "\n".join(
     f'			<div id="{i}" class="clip" data-composition-id="{i}" data-composition-src="compositions/{f}.html" data-start="{d}" data-duration="{du}" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: {k + 2}"></div>'
     for k, (i, f, d, du) in enumerate(SCENES))
@@ -543,7 +606,7 @@ for de, vers in [("@fontsource/poppins/files/poppins-latin-800-normal.woff2", "p
 for f in ("monogramme.png", "nom.png", "logo-complet.png"):
     copier(os.path.join(RACINE, "channels/giresse/logo", f), os.path.join(ASSETS, "marque", f))
 
-# Musique (120 BPM, la mineur : la, fa, do, sol) et bruitages, générés avec ffmpeg.
+# Musique : le morceau fourni (public/audio/giresse-002-musique.wav), et deux bruitages générés avec ffmpeg.
 def ff(expr, sortie, duree, filtres=""):
     os.makedirs(os.path.dirname(sortie), exist_ok=True)
     src = f"aevalsrc='{expr}':s=48000:d={duree}"
@@ -552,21 +615,8 @@ def ff(expr, sortie, duree, filtres=""):
         cmd += ["-af", filtres]
     subprocess.run(cmd + ["-ac", "1", sortie], check=True)
 
-TMP = os.path.join(ASSETS, "audio")
-# Basse : une note par mesure de 2 s.
-f_basse = "(55*eq(mod(floor(t/2)\\,4)\\,0)+43.65*eq(mod(floor(t/2)\\,4)\\,1)+65.41*eq(mod(floor(t/2)\\,4)\\,2)+49*eq(mod(floor(t/2)\\,4)\\,3))"
-ff(f"0.9*sin(2*PI*(45+100*exp(-mod(t\\,0.5)*35))*mod(t\\,0.5))*exp(-mod(t\\,0.5)*10)", os.path.join(TMP, "kick.wav"), DUREE)
-ff("(random(0)*2-1)*exp(-mod(t+0.25\\,0.5)*70)", os.path.join(TMP, "hat.wav"), DUREE, "highpass=f=7000")
-ff(f"0.55*sin(2*PI*{f_basse}*t)*(0.6+0.4*exp(-mod(t\\,0.5)*6))", os.path.join(TMP, "basse.wav"), DUREE, "lowpass=f=300")
-ff(f"0.14*(sin(2*PI*4*{f_basse}*t)+sin(2*PI*4*1.1892*{f_basse}*t)+sin(2*PI*6*{f_basse}*t))*(0.7+0.3*sin(2*PI*0.25*t))", os.path.join(TMP, "nappe.wav"), DUREE, "lowpass=f=2500")
-musique = os.path.join(TMP, "musique.wav")
-subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y"] + sum([["-i", os.path.join(TMP, f)] for f in ("kick.wav", "hat.wav", "basse.wav", "nappe.wav")], []) +
-    ["-filter_complex", "[0]volume=1.0[a];[1]volume=0.22[b];[2]volume=0.8[c];[3]volume=0.6[d];[a][b][c][d]amix=inputs=4:normalize=0,afade=t=out:st=22.8:d=1.2,loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "48000", "-ac", "2", musique], check=True)
-for f in ("kick.wav", "hat.wav", "basse.wav", "nappe.wav"):
-    os.remove(os.path.join(TMP, f))
+copier(os.path.join(RACINE, "public/audio/giresse-002-musique.wav"), os.path.join(ASSETS, "audio/musique.wav"))
 S = os.path.join(ASSETS, "sons")
-ff("(random(0)*2-1)*sin(PI*t/0.45)", os.path.join(S, "fouet.wav"), 0.45, "bandpass=f=1800:w=1500,volume=1.6")
-ff("0.9*sin(2*PI*(40+120*exp(-t*20))*t)*exp(-t*6)+0.4*(random(1)*2-1)*exp(-t*25)", os.path.join(S, "impact.wav"), 0.8, "lowpass=f=1500")
 ff("0.9*sin(2*PI*(520+900*exp(-t*40))*t)*exp(-t*28)", os.path.join(S, "pop.wav"), 0.2)
 ff("0.6*sin(2*PI*1318*t)*exp(-t*5)+0.4*sin(2*PI*1975*t)*exp(-t*6)", os.path.join(S, "ding.wav"), 1.0)
 print("ok :", len(P), "scènes,", len(SONS), "bruitages")

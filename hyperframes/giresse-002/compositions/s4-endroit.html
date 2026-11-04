@@ -75,11 +75,11 @@
 			fouet('#s4-etes', 0.12, {dy: -120});
 			tl.fromTo('#s4-cible', {opacity: 0, rotationX: 85}, {opacity: 1, rotationX: 58, duration: 0.6, ease: 'expo.out'}, 0.25);
 			// L'épingle tombe pile dans la cible, s'écrase et rebondit.
-			tl.fromTo('#s4-epingle', {opacity: 0, y: -900}, {opacity: 1, y: 0, duration: 0.42, ease: 'power3.in'}, 0.6);
-			tl.to('#s4-epingle', {scaleY: 0.78, scaleX: 1.2, transformOrigin: '50% 100%', duration: 0.07, ease: 'power2.out'}, 1.02);
-			tl.to('#s4-epingle', {scaleY: 1, scaleX: 1, duration: 0.4, ease: 'elastic.out(1, 0.45)'}, 1.09);
-			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 1.02);
-			part('#s4-scene', 1.82, {dx: 420});
+			tl.fromTo('#s4-epingle', {opacity: 0, y: -900}, {opacity: 1, y: 0, duration: 0.42, ease: 'power3.in'}, 0.45);
+			tl.to('#s4-epingle', {scaleY: 0.78, scaleX: 1.2, transformOrigin: '50% 100%', duration: 0.07, ease: 'power2.out'}, 0.87);
+			tl.to('#s4-epingle', {scaleY: 1, scaleX: 1, duration: 0.4, ease: 'elastic.out(1, 0.45)'}, 0.94);
+			tl.fromTo('#s4-cible', {scale: 1}, {scale: 1.04, duration: 0.1, ease: 'power2.out', yoyo: true, repeat: 1}, 0.87);
+			part('#s4-scene', 1.42, {dx: 420});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s4'] = tl;
 		})();

@@ -83,8 +83,8 @@
 			tl.fromTo('#s5-laser', {scaleY: 0, transformOrigin: '50% 0%'}, {scaleY: 1, duration: 0.4, ease: 'power3.out'}, 0.1);
 			fouet('#s5-nous', 0.05, {dx: 300});
 			tl.fromTo('#s5-carte', {opacity: 0, rotationY: -60, rotationX: 15, scale: 0.7, filter: 'blur(18px)', transformPerspective: 1400}, {opacity: 1, rotationY: 0, rotationX: 0, scale: 1, filter: 'blur(0px)', duration: 0.8, ease: 'expo.out'}, 0.35);
-			tl.to('.s5-lame', {x: 120, duration: 1.4, ease: 'none'}, 0.6);
-			part('#s5-scene', 1.82, {dy: -300});
+			tl.to('.s5-lame', {x: 120, duration: 0.9, ease: 'none'}, 0.6);
+			part('#s5-scene', 1.35, {dy: -300});
 			window.__timelines = window.__timelines || {};
 			window.__timelines['s5'] = tl;
 		})();

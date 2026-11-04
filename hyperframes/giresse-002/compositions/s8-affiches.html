@@ -1,0 +1,81 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s8-fond {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse 90% 70% at 50% 30%, #2a1fa8 0%, #10106a 55%, #070824 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+	</style>
+	<div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+		<div id="s8-fond"></div>
+		<!-- Une affiche de produit : fond bleu nuit, traînées de lumière qui jaillissent du bas, étiquette « AFFICHES », gros titre serré, la basket qui arrive en grand. -->
+		<div id="s8-scene" style="position: absolute; inset: 0">
+			<div id="s8-lumiere" style="position: absolute; left: -540px; top: 900px; width: 2160px; height: 2160px; border-radius: 50%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 60, 200, 0.55) 0deg 2deg, rgba(80, 200, 255, 0.5) 2deg 4deg, rgba(255, 200, 60, 0.45) 4deg 5deg, transparent 5deg 9deg); -webkit-mask-image: radial-gradient(circle, transparent 18%, #000 40%, transparent 72%); mask-image: radial-gradient(circle, transparent 18%, #000 40%, transparent 72%); filter: blur(3px)"></div>
+			<div id="s8-tag" style="position: absolute; left: 110px; top: 250px; padding: 14px 28px; border-radius: 14px; background: #ffffff; font-family: 'Kit Inter'; font-weight: 800; font-size: 34px; letter-spacing: 10px; color: #2a1fa8">AFFICHES</div>
+			<div class="mot s8-l" style="left: 104px; right: auto; top: 350px; font-size: 118px; color: #ffffff; text-align: left; letter-spacing: -4px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)">VOTRE PRODUIT</div>
+			<div class="mot s8-l" style="left: 104px; right: auto; top: 470px; font-size: 118px; color: #ffffff; text-align: left; letter-spacing: -4px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)">EN GRAND,</div>
+			<div class="mot s8-l" style="left: 104px; right: auto; top: 590px; font-size: 118px; color: #ffffff; text-align: left; letter-spacing: -4px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)">PARTOUT.</div>
+			<div id="s8-ligne" style="position: absolute; left: 110px; top: 750px; font-family: 'Kit Inter'; font-weight: 800; font-size: 30px; letter-spacing: 8px; color: #c9cbff">GIRESSE <span style="color: #6f74ff">|</span> DIGITAL STUDIO</div>
+			<div id="s8-produit" class="emoji" style="left: 360px; top: 840px; font-size: 380px; filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 40px rgba(120, 160, 255, 0.5))">👟</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			tl.fromTo('#s8-lumiere', {scale: 0.7, rotation: -6, opacity: 0}, {scale: 1.15, rotation: 6, opacity: 1, duration: 1.6, ease: 'power2.out'}, 0);
+			fouet('#s8-tag', 0, {dx: -100, flou: 10, duree: 0.35});
+			tl.fromTo('.s8-l', {opacity: 0, x: -160, filter: 'blur(16px)'}, {opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out', stagger: 0.08}, 0.05);
+			fouet('#s8-ligne', 0.35, {dx: -60, flou: 8, duree: 0.35});
+			tl.fromTo('#s8-produit', {opacity: 0, x: 500, rotation: 25, filter: 'blur(18px)'}, {opacity: 1, x: 0, rotation: -8, filter: 'blur(0px)', duration: 0.55, ease: 'expo.out'}, 0.25);
+			part('#s8-scene', 1.5, {dy: 260});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s8'] = tl;
+		})();
+	</script>
+</template>

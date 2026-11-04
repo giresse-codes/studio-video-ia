@@ -1,0 +1,174 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s11-fond {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, #dbe9f5 0%, #c6dcee 100%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.ecran-chat {
+			background: radial-gradient(circle at 30% 20%, #18242b 0%, #0b141a 70%);
+		}
+		.bulle {
+			position: absolute;
+			max-width: 78%;
+			padding: 20px 26px 16px;
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			font-size: 32px;
+			line-height: 1.25;
+			color: #e9edef;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+		}
+		.bulle .heure {
+			display: block;
+			margin-top: 6px;
+			text-align: right;
+			font-size: 22px;
+			font-weight: 700;
+			color: #9fb7b0;
+		}
+		.bulle .coche {
+			color: #9fb7b0;
+		}
+		.s11-etiq {
+			position: absolute;
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			font-size: 36px;
+			line-height: 1;
+			color: #6b7a90;
+		}
+		.s11-valeur {
+			position: absolute;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 62px;
+			line-height: 1;
+			color: #141418;
+			white-space: nowrap;
+		}
+		.s11-mail {
+			position: absolute;
+			width: 96px;
+			height: 96px;
+			border-radius: 48px;
+			background: linear-gradient(160deg, #3a3a3f 0%, #2b2b2f 100%);
+			color: #ffffff;
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			font-size: 50px;
+			line-height: 96px;
+			text-align: center;
+		}
+	</style>
+	<div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
+		<div id="s11-fond"></div>
+		<!-- Au drop : sur le téléphone, la réponse de GIRESSE arrive (« Oui, on est disponibles ! », « On en parle ? ») ; « VOUS AUSSI, ÉCRIVEZ-NOUS. » ; puis la fiche WhatsApp et mail s'écrit, le logo se pose et reste. -->
+		<div id="s11-scene" style="position: absolute; inset: 0">
+			<div id="s11-chat">
+				<div class="mot" id="s11-l1" style="top: 200px; font-size: 104px; color: #ffffff; text-shadow: 0 1px 0 #6f8fae, 0 2px 0 #6f8fae, 0 3px 0 #6f8fae, 0 4px 0 #6f8fae, 0 5px 0 #6f8fae, 0 6px 0 #6f8fae, 0 7px 0 #6f8fae, 0 8px 0 #6f8fae, 0 9px 0 #6f8fae, 0 10px 0 #6f8fae, 0 24px 34px rgba(40, 70, 110, 0.35)">VOUS AUSSI,</div>
+				<div class="mot" id="s11-l2" style="top: 320px; font-size: 104px; color: #25d366; text-shadow: 0 1px 0 #6f8fae, 0 2px 0 #6f8fae, 0 3px 0 #6f8fae, 0 4px 0 #6f8fae, 0 5px 0 #6f8fae, 0 6px 0 #6f8fae, 0 7px 0 #6f8fae, 0 8px 0 #6f8fae, 0 9px 0 #6f8fae, 0 10px 0 #6f8fae, 0 24px 34px rgba(40, 70, 110, 0.35)">ÉCRIVEZ-NOUS.</div>
+			<div id="s11-tel" style="position: absolute; left: 270px; top: 480px; width: 540px; height: 840px; border-radius: 64px; background: #0e0e12; box-shadow: 0 60px 120px rgba(0, 0, 0, 0.55), inset 0 0 0 3px rgba(255, 255, 255, 0.1)">
+				<div class="ecran-chat" style="position: absolute; inset: 14px; border-radius: 52px; overflow: hidden">
+					<div style="position: absolute; left: 0; right: 0; top: 0; height: 130px; background: #1c2227"></div>
+					<div style="position: absolute; left: 30px; top: 50px; width: 64px; height: 64px; border-radius: 32px; background: linear-gradient(160deg, #3a3a3f, #2b2b2f); color: #e9e6df; font-family: 'Kit Poppins'; font-weight: 800; font-size: 34px; line-height: 64px; text-align: center">G</div>
+					<div style="position: absolute; left: 112px; top: 50px; font-family: 'Kit Inter'; font-weight: 800; font-size: 30px; color: #e9edef">GIRESSE Digital Studio</div>
+					<div style="position: absolute; left: 112px; top: 88px; font-family: 'Kit Inter'; font-weight: 700; font-size: 24px; color: #8696a0">en ligne</div>
+					<div id="s11-b1" class="bulle" style="right: 26px; top: 170px; background: #1f6f5c; border-radius: 26px 6px 26px 26px">J'aurais besoin d'un site web pour mon entreprise ?<span class="heure">20:59 <span class="coche" id="s11-b1-coche" style="color: #53bdeb">✓✓</span></span></div>
+					<div id="s11-b2" class="bulle" style="right: 26px; top: 370px; background: #1f6f5c; border-radius: 26px 6px 26px 26px">Êtes-vous disponible ?<span class="heure">20:59 <span class="coche" id="s11-b2-coche" style="color: #53bdeb">✓✓</span></span></div>
+					<div id="s11-r1" class="bulle" style="left: 26px; top: 510px; background: #2a2f35; border-radius: 6px 26px 26px 26px">Oui, on est disponibles ! ✅<span class="heure">21:00 </span></div>
+					<div id="s11-r2" class="bulle" style="left: 26px; top: 690px; background: #2a2f35; border-radius: 6px 26px 26px 26px">On en parle ? 🚀<span class="heure">21:00 </span></div>
+				</div>
+			</div>
+			</div>
+			<div id="s11-fiche" style="position: absolute; left: 110px; top: 470px; width: 860px; height: 560px; border-radius: 48px; background: linear-gradient(170deg, #ffffff 0%, #f1f3f6 100%); box-shadow: 0 70px 120px rgba(40, 70, 110, 0.3); overflow: hidden; opacity: 0">
+				<img src="assets/marque/monogramme.png" style="position: absolute; left: 580px; top: 190px; width: 360px; opacity: 0.08" />
+				<svg style="position: absolute; left: 56px; top: 60px; width: 96px; height: 96px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#25D366" /><path d="M 50 18 A 32 32 0 1 1 27 73 L 17 80 L 21 67 A 32 32 0 0 1 50 18 Z" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round" /><path d="M 38 34 Q 34 36 35 42 Q 38 54 50 63 Q 58 68 63 66 Q 67 64 66 60 L 60 56 Q 57 56 55 59 Q 49 56 44 49 Q 47 46 46 43 L 42 36 Q 40 33 38 34 Z" fill="#FFFFFF" /></svg>
+				<div class="s11-etiq" style="left: 176px; top: 70px">WhatsApp</div>
+				<div id="s11-numero" class="s11-valeur" style="left: 176px; top: 112px"></div>
+				<div style="position: absolute; left: 56px; right: 56px; top: 260px; border-top: 4px dashed #c6d3e0"></div>
+				<div class="s11-mail" style="left: 56px; top: 310px">✉</div>
+				<div class="s11-etiq" style="left: 176px; top: 310px">Email</div>
+				<div id="s11-email" class="s11-valeur" style="left: 176px; top: 352px; font-size: 48px"></div>
+				<div id="s11-curseur" style="position: absolute; left: 176px; top: 118px; width: 6px; height: 64px; background: #00b8d9"></div>
+			</div>
+			<img id="s11-logo" src="assets/marque/nom.png" style="position: absolute; left: 240px; top: 1100px; width: 600px; opacity: 0" />
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			// Au drop : le téléphone est là, la réponse de GIRESSE arrive, puis la deuxième.
+			tl.fromTo('#s11-tel', {scale: 1.08, filter: 'blur(10px)'}, {scale: 1, filter: 'blur(0px)', duration: 0.4, ease: 'expo.out'}, 0);
+			tl.fromTo(['#s11-b1', '#s11-b2'], {opacity: 1}, {opacity: 1, duration: 0.01}, 0);
+			fouet('#s11-r1', 0.25, {dx: -60, echelle: 0.85, duree: 0.4, flou: 8});
+			fouet('#s11-r2', 0.7, {dx: -60, echelle: 0.85, duree: 0.4, flou: 8});
+			fouet('#s11-l1', 0.45, {echelle: 1.3, flou: 16});
+			fouet('#s11-l2', 0.6, {echelle: 1.3, flou: 16});
+			// Le téléphone s'envole, la fiche arrive : le numéro et le mail s'écrivent.
+			tl.to('#s11-chat', {opacity: 0, y: -260, filter: 'blur(16px)', duration: 0.3, ease: 'power3.in'}, 1.75);
+			tl.fromTo('#s11-fiche', {opacity: 0, y: 500, rotationX: 30, rotationZ: -10, transformPerspective: 1600, filter: 'blur(14px)'}, {opacity: 1, y: 0, rotationX: 0, rotationZ: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}, 1.85);
+			const ecrire = (sel, texte, t, d) => {
+				const el = document.querySelector(sel);
+				const e = {n: 0};
+				tl.fromTo(e, {n: 0}, {n: texte.length, duration: d, ease: 'none', onUpdate: () => (el.textContent = texte.slice(0, Math.round(e.n)))}, t);
+			};
+			ecrire('#s11-numero', '+237 673 236 084', 2.2, 0.7);
+			tl.to('#s11-curseur', {x: 530, duration: 0.7, ease: 'none'}, 2.2);
+			tl.set('#s11-curseur', {x: 0, y: 240}, 2.95);
+			ecrire('#s11-email', 'giressepablo17@gmail.com', 3.0, 0.9);
+			tl.to('#s11-curseur', {x: 610, duration: 0.9, ease: 'none'}, 3.0);
+			tl.set('#s11-curseur', {opacity: 0}, 4.0);
+			// Le logo se pose sous la fiche et tout reste à l'écran jusqu'à la fin.
+			tl.fromTo('#s11-logo', {opacity: 0, y: 60, filter: 'blur(14px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out'}, 3.9);
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s11'] = tl;
+		})();
+	</script>
+</template>

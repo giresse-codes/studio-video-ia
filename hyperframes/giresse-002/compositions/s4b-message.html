@@ -1,0 +1,123 @@
+<template>
+	<style>
+		@font-face {
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			src: url('assets/kit/fonts/poppins-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 800;
+			src: url('assets/kit/fonts/inter-800.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			src: url('assets/kit/fonts/inter-700.woff2') format('woff2');
+		}
+		@font-face {
+			font-family: 'Kit Emoji';
+			src: local('Noto Color Emoji');
+		}
+		#root {
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+		}
+		#s4b-fond {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse 80% 60% at 50% 55%, #1d2a30 0%, #0b1014 75%);
+		}
+		.mot {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-family: 'Kit Poppins';
+			font-weight: 800;
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.emoji {
+			position: absolute;
+			font-family: 'Kit Emoji';
+			line-height: 1;
+		}
+		.ecran-chat {
+			background: radial-gradient(circle at 30% 20%, #18242b 0%, #0b141a 70%);
+		}
+		.bulle {
+			position: absolute;
+			max-width: 78%;
+			padding: 20px 26px 16px;
+			font-family: 'Kit Inter';
+			font-weight: 700;
+			font-size: 32px;
+			line-height: 1.25;
+			color: #e9edef;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+		}
+		.bulle .heure {
+			display: block;
+			margin-top: 6px;
+			text-align: right;
+			font-size: 22px;
+			font-weight: 700;
+			color: #9fb7b0;
+		}
+		.bulle .coche {
+			color: #9fb7b0;
+		}
+	</style>
+	<div id="root" data-composition-id="s4b" data-width="1080" data-height="1920">
+		<div id="s4b-fond"></div>
+		<!-- Fond sombre : « UN MESSAGE SUFFIT. » ; sur le téléphone, la notification d'un client tombe, puis la conversation : « J'aurais besoin d'un site web pour mon entreprise ? », « Êtes-vous disponible ? », lu. -->
+		<div id="s4b-scene" style="position: absolute; inset: 0">
+			<div class="mot" id="s4b-l1" style="top: 230px; font-size: 104px; color: #ffffff; text-shadow: 0 1px 0 #06231a, 0 2px 0 #06231a, 0 3px 0 #06231a, 0 4px 0 #06231a, 0 5px 0 #06231a, 0 6px 0 #06231a, 0 7px 0 #06231a, 0 8px 0 #06231a, 0 9px 0 #06231a, 0 10px 0 #06231a, 0 24px 34px rgba(0, 0, 0, 0.35)">UN MESSAGE</div>
+			<div class="mot" id="s4b-l2" style="top: 350px; font-size: 104px; color: #25d366; text-shadow: 0 1px 0 #06231a, 0 2px 0 #06231a, 0 3px 0 #06231a, 0 4px 0 #06231a, 0 5px 0 #06231a, 0 6px 0 #06231a, 0 7px 0 #06231a, 0 8px 0 #06231a, 0 9px 0 #06231a, 0 10px 0 #06231a, 0 24px 34px rgba(0, 0, 0, 0.35)">SUFFIT.</div>
+			<div id="s4b-tel" style="position: absolute; left: 270px; top: 500px; width: 540px; height: 820px; border-radius: 64px; background: #0e0e12; box-shadow: 0 60px 120px rgba(0, 0, 0, 0.55), inset 0 0 0 3px rgba(255, 255, 255, 0.1)">
+				<div class="ecran-chat" style="position: absolute; inset: 14px; border-radius: 52px; overflow: hidden">
+					<div style="position: absolute; left: 0; right: 0; top: 0; height: 130px; background: #1c2227"></div>
+					<div style="position: absolute; left: 30px; top: 50px; width: 64px; height: 64px; border-radius: 32px; background: linear-gradient(160deg, #3a3a3f, #2b2b2f); color: #e9e6df; font-family: 'Kit Poppins'; font-weight: 800; font-size: 34px; line-height: 64px; text-align: center">G</div>
+					<div style="position: absolute; left: 112px; top: 50px; font-family: 'Kit Inter'; font-weight: 800; font-size: 30px; color: #e9edef">GIRESSE Digital Studio</div>
+					<div style="position: absolute; left: 112px; top: 88px; font-family: 'Kit Inter'; font-weight: 700; font-size: 24px; color: #8696a0">en ligne</div>
+					<div id="s4b-b1" class="bulle" style="right: 26px; top: 380px; background: #1f6f5c; border-radius: 26px 6px 26px 26px">J'aurais besoin d'un site web pour mon entreprise ?<span class="heure">20:59 <span class="coche" id="s4b-b1-coche">✓✓</span></span></div>
+					<div id="s4b-b2" class="bulle" style="right: 26px; top: 580px; background: #1f6f5c; border-radius: 26px 6px 26px 26px">Êtes-vous disponible ?<span class="heure">20:59 <span class="coche" id="s4b-b2-coche">✓✓</span></span></div>
+					<div id="s4b-ecrit" class="bulle" style="left: 26px; top: 720px; background: #2a2f35; border-radius: 6px 26px 26px 26px; font-size: 40px; padding: 10px 26px 16px">• • •</div>
+				</div>
+			</div>
+			<div id="s4b-notif" data-layout-allow-overlap style="position: absolute; left: 150px; top: 520px; width: 780px; height: 170px; border-radius: 40px; background: #efe2da; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4)">
+				<svg style="position: absolute; left: 30px; top: 40px; width: 90px; height: 90px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#25D366" /><path d="M 50 18 A 32 32 0 1 1 27 73 L 17 80 L 21 67 A 32 32 0 0 1 50 18 Z" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round" /><path d="M 38 34 Q 34 36 35 42 Q 38 54 50 63 Q 58 68 63 66 Q 67 64 66 60 L 60 56 Q 57 56 55 59 Q 49 56 44 49 Q 47 46 46 43 L 42 36 Q 40 33 38 34 Z" fill="#FFFFFF" /></svg>
+				<div style="position: absolute; left: 145px; top: 30px; font-family: 'Kit Inter'; font-weight: 800; font-size: 32px; color: #3b2a22">Client · maintenant</div>
+				<div style="position: absolute; left: 145px; top: 78px; width: 600px; font-family: 'Kit Inter'; font-weight: 700; font-size: 30px; line-height: 1.2; color: #5a463c">J'aurais besoin d'un site web pour mon entreprise ?</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			const tl = gsap.timeline({paused: true});
+			// Arrivée en coup de fouet : flou de mouvement qui se dissipe sur une longue traîne.
+			const fouet = (cible, t, {dx = 0, dy = 0, echelle = 1, duree = 0.45, flou = 18} = {}) =>
+				tl.fromTo(cible, {opacity: 0, x: dx, y: dy, scale: echelle, filter: `blur(${flou}px)`}, {opacity: 1, x: 0, y: 0, scale: 1, filter: 'blur(0px)', duration: duree, ease: 'expo.out'}, t);
+			// Sortie : accélère et se floute, plus courte que l'arrivée.
+			const part = (cible, t, {dx = 0, dy = 0, duree = 0.2} = {}) =>
+				tl.to(cible, {opacity: 0, x: dx, y: dy, filter: 'blur(16px)', duration: duree, ease: 'power3.in'}, t);
+
+			// Le téléphone ; la notification du client tombe du haut.
+			fouet('#s4b-tel', 0, {dy: 160, echelle: 0.92, duree: 0.6});
+			tl.fromTo('#s4b-notif', {opacity: 0, y: -260, filter: 'blur(10px)'}, {opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out'}, 0.2);
+			fouet('#s4b-l1', 0.35, {echelle: 1.2, flou: 14});
+			// La notification remonte, la conversation s'ouvre : les deux messages, puis lus (coches bleues), puis « … ».
+			tl.to('#s4b-notif', {opacity: 0, y: -200, filter: 'blur(10px)', duration: 0.25, ease: 'power3.in'}, 1.0);
+			fouet('#s4b-b1', 1.1, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
+			fouet('#s4b-b2', 1.55, {dy: 40, echelle: 0.9, duree: 0.4, flou: 8});
+			fouet('#s4b-l2', 1.6, {echelle: 1.4, flou: 16});
+			tl.to(['#s4b-b1-coche', '#s4b-b2-coche'], {color: '#53bdeb', duration: 0.1}, 2.1);
+			fouet('#s4b-ecrit', 2.25, {dy: 30, echelle: 0.8, duree: 0.3, flou: 6});
+			part('#s4b-scene', 2.82, {dy: -260});
+			window.__timelines = window.__timelines || {};
+			window.__timelines['s4b'] = tl;
+		})();
+	</script>
+</template>
