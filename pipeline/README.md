@@ -1,7 +1,8 @@
-# Pipeline « basket lyrics edit »
+# Pipeline « basket lyrics » (v2)
 
-1. `ffmpeg` : débruitage (hqdn3d) + upscale 640x436 -> 1600x1090 (lanczos) + netteté (cas) -> `hq/%05d.jpg`
-2. Transcription Whisper large-v3 (mots horodatés) -> `words.json`
-3. `build_lyrics.py` : corrections des paroles -> `lyrics.json` (modifiable à la main, puis relancer le rendu)
-4. `masks.py` : détourage de la joueuse + ballon (RMBG-1.4 filtré par YOLO11-seg) -> `masks/`
-5. `render.py` : étalonnage chaud/doux, halo, grain, vignette, mot par mot (3 polices) + anneau circulaire rotatif DERRIÈRE la joueuse
+- Format d'origine respecté : vidéo verticale (rotation -90 dans les métadonnées) -> 1080x1586
+- `esr.py` : upscale IA Real-ESRGAN (realesr-general-x4v3) image par image
+- `masks2.py` : détourage joueuse + ballon (RMBG-1.4 + YOLO11-seg) sur les passages où le texte passe derrière elle
+- `real_lyrics.py` : vraies paroles calées sur le timing Whisper -> `lyrics.json`
+- `render3.py` : lyrics style serif élégant (Bodoni Moda condensé, majuscules espacées), phrase construite mot par mot,
+  écho géant en transparence, texture usée, petits glitchs, alternance voile clair/sombre, vignette, grain.
