@@ -1,0 +1,518 @@
+[
+ {
+  "word": "Entourée",
+  "start": 0.0,
+  "end": 0.96,
+  "line": 0
+ },
+ {
+  "word": "de",
+  "start": 0.96,
+  "end": 1.02,
+  "line": 0
+ },
+ {
+  "word": "mes",
+  "start": 1.02,
+  "end": 1.3,
+  "line": 0
+ },
+ {
+  "word": "gos",
+  "start": 1.3,
+  "end": 1.86,
+  "line": 0
+ },
+ {
+  "word": "j'suis",
+  "start": 1.86,
+  "end": 1.96,
+  "line": 0
+ },
+ {
+  "word": "dans",
+  "start": 1.96,
+  "end": 2.08,
+  "line": 0
+ },
+ {
+  "word": "l'mood",
+  "start": 2.08,
+  "end": 3.18,
+  "line": 0
+ },
+ {
+  "word": "J'vous",
+  "start": 3.18,
+  "end": 3.78,
+  "line": 1
+ },
+ {
+  "word": "mousse",
+  "start": 3.78,
+  "end": 4.1,
+  "line": 1
+ },
+ {
+  "word": "en",
+  "start": 4.1,
+  "end": 4.26,
+  "line": 1
+ },
+ {
+  "word": "garée",
+  "start": 4.26,
+  "end": 4.72,
+  "line": 1
+ },
+ {
+  "word": "dans",
+  "start": 4.72,
+  "end": 5.02,
+  "line": 1
+ },
+ {
+  "word": "la",
+  "start": 5.02,
+  "end": 5.26,
+  "line": 1
+ },
+ {
+  "word": "côte",
+  "start": 5.26,
+  "end": 5.7,
+  "line": 1
+ },
+ {
+  "word": "On",
+  "start": 5.7,
+  "end": 6.64,
+  "line": 2
+ },
+ {
+  "word": "est",
+  "start": 6.64,
+  "end": 6.8,
+  "line": 2
+ },
+ {
+  "word": "bien",
+  "start": 6.8,
+  "end": 7.12,
+  "line": 2
+ },
+ {
+  "word": "on",
+  "start": 7.22,
+  "end": 7.4,
+  "line": 2
+ },
+ {
+  "word": "est",
+  "start": 7.4,
+  "end": 7.58,
+  "line": 2
+ },
+ {
+  "word": "rempli",
+  "start": 7.58,
+  "end": 8.24,
+  "line": 2
+ },
+ {
+  "word": "de",
+  "start": 8.24,
+  "end": 8.38,
+  "line": 2
+ },
+ {
+  "word": "love",
+  "start": 8.38,
+  "end": 8.82,
+  "line": 2
+ },
+ {
+  "word": "Ce",
+  "start": 9.38,
+  "end": 9.9,
+  "line": 3
+ },
+ {
+  "word": "soir",
+  "start": 9.9,
+  "end": 10.4,
+  "line": 3
+ },
+ {
+  "word": "on",
+  "start": 10.48,
+  "end": 10.64,
+  "line": 3
+ },
+ {
+  "word": "nous",
+  "start": 10.64,
+  "end": 10.74,
+  "line": 3
+ },
+ {
+  "word": "parle",
+  "start": 10.74,
+  "end": 11.14,
+  "line": 3
+ },
+ {
+  "word": "pas",
+  "start": 11.14,
+  "end": 11.3,
+  "line": 3
+ },
+ {
+  "word": "de",
+  "start": 11.3,
+  "end": 11.54,
+  "line": 3
+ },
+ {
+  "word": "love",
+  "start": 11.54,
+  "end": 11.92,
+  "line": 3
+ },
+ {
+  "word": "Arrêtez",
+  "start": 12.94,
+  "end": 13.46,
+  "line": 4
+ },
+ {
+  "word": "parce que",
+  "start": 13.46,
+  "end": 13.72,
+  "line": 4
+ },
+ {
+  "word": "nous",
+  "start": 13.72,
+  "end": 14.2,
+  "line": 4
+ },
+ {
+  "word": "on",
+  "start": 14.2,
+  "end": 14.46,
+  "line": 4
+ },
+ {
+  "word": "est",
+  "start": 14.46,
+  "end": 14.68,
+  "line": 4
+ },
+ {
+  "word": "fraîches",
+  "start": 14.68,
+  "end": 15.38,
+  "line": 4
+ },
+ {
+  "word": "Ce",
+  "start": 15.38,
+  "end": 16.24,
+  "line": 5
+ },
+ {
+  "word": "soir",
+  "start": 16.24,
+  "end": 16.62,
+  "line": 5
+ },
+ {
+  "word": "t'as",
+  "start": 16.62,
+  "end": 16.82,
+  "line": 5
+ },
+ {
+  "word": "raté",
+  "start": 16.82,
+  "end": 17.34,
+  "line": 5
+ },
+ {
+  "word": "si",
+  "start": 17.34,
+  "end": 17.54,
+  "line": 5
+ },
+ {
+  "word": "t'es",
+  "start": 17.54,
+  "end": 17.84,
+  "line": 5
+ },
+ {
+  "word": "pas",
+  "start": 17.84,
+  "end": 18.04,
+  "line": 5
+ },
+ {
+  "word": "là",
+  "start": 18.04,
+  "end": 18.44,
+  "line": 5
+ },
+ {
+  "word": "T'es",
+  "start": 18.44,
+  "end": 19.2,
+  "line": 6
+ },
+ {
+  "word": "rentrée",
+  "start": 19.2,
+  "end": 19.76,
+  "line": 6
+ },
+ {
+  "word": "mais",
+  "start": 19.76,
+  "end": 19.92,
+  "line": 6
+ },
+ {
+  "word": "tes",
+  "start": 19.92,
+  "end": 20.1,
+  "line": 6
+ },
+ {
+  "word": "talons",
+  "start": 20.1,
+  "end": 20.66,
+  "line": 6
+ },
+ {
+  "word": "te",
+  "start": 20.66,
+  "end": 20.8,
+  "line": 6
+ },
+ {
+  "word": "blessent",
+  "start": 20.8,
+  "end": 21.8,
+  "line": 6
+ },
+ {
+  "word": "Une",
+  "start": 21.8,
+  "end": 22.16,
+  "line": 7
+ },
+ {
+  "word": "heure",
+  "start": 22.16,
+  "end": 22.36,
+  "line": 7
+ },
+ {
+  "word": "deux",
+  "start": 22.38,
+  "end": 22.5,
+  "line": 7
+ },
+ {
+  "word": "heures",
+  "start": 22.5,
+  "end": 22.82,
+  "line": 7
+ },
+ {
+  "word": "te",
+  "start": 22.94,
+  "end": 23.04,
+  "line": 7
+ },
+ {
+  "word": "voilà",
+  "start": 23.04,
+  "end": 23.4,
+  "line": 7
+ },
+ {
+  "word": "mal",
+  "start": 23.4,
+  "end": 23.9,
+  "line": 7
+ },
+ {
+  "word": "à",
+  "start": 23.9,
+  "end": 24.12,
+  "line": 7
+ },
+ {
+  "word": "l'aise",
+  "start": 24.12,
+  "end": 24.62,
+  "line": 7
+ },
+ {
+  "word": "Déhanche-toi",
+  "start": 24.62,
+  "end": 25.82,
+  "line": 8
+ },
+ {
+  "word": "oublie",
+  "start": 25.94,
+  "end": 26.4,
+  "line": 8
+ },
+ {
+  "word": "tout",
+  "start": 26.4,
+  "end": 26.74,
+  "line": 8
+ },
+ {
+  "word": "ça",
+  "start": 26.9,
+  "end": 27.08,
+  "line": 8
+ },
+ {
+  "word": "reste",
+  "start": 27.08,
+  "end": 27.48,
+  "line": 8
+ },
+ {
+  "word": "entre",
+  "start": 27.48,
+  "end": 27.84,
+  "line": 8
+ },
+ {
+  "word": "nous",
+  "start": 27.84,
+  "end": 28.24,
+  "line": 8
+ },
+ {
+  "word": "Ce",
+  "start": 28.24,
+  "end": 28.68,
+  "line": 9
+ },
+ {
+  "word": "soir",
+  "start": 28.68,
+  "end": 29.16,
+  "line": 9
+ },
+ {
+  "word": "c'est",
+  "start": 29.16,
+  "end": 29.42,
+  "line": 9
+ },
+ {
+  "word": "la",
+  "start": 29.42,
+  "end": 29.76,
+  "line": 9
+ },
+ {
+  "word": "malade",
+  "start": 29.76,
+  "end": 30.56,
+  "line": 9
+ },
+ {
+  "word": "Tu",
+  "start": 30.56,
+  "end": 31.82,
+  "line": 10
+ },
+ {
+  "word": "forces",
+  "start": 31.82,
+  "end": 32.34,
+  "line": 10
+ },
+ {
+  "word": "on",
+  "start": 32.4,
+  "end": 32.54,
+  "line": 10
+ },
+ {
+  "word": "avance",
+  "start": 32.54,
+  "end": 33.2,
+  "line": 10
+ },
+ {
+  "word": "on",
+  "start": 33.2,
+  "end": 33.52,
+  "line": 10
+ },
+ {
+  "word": "reste",
+  "start": 33.52,
+  "end": 33.82,
+  "line": 10
+ },
+ {
+  "word": "entre",
+  "start": 33.82,
+  "end": 34.12,
+  "line": 10
+ },
+ {
+  "word": "nous",
+  "start": 34.12,
+  "end": 34.58,
+  "line": 10
+ },
+ {
+  "word": "On",
+  "start": 34.58,
+  "end": 35.06,
+  "line": 11
+ },
+ {
+  "word": "ne",
+  "start": 35.06,
+  "end": 35.26,
+  "line": 11
+ },
+ {
+  "word": "se",
+  "start": 35.26,
+  "end": 35.6,
+  "line": 11
+ },
+ {
+  "word": "mélange",
+  "start": 35.6,
+  "end": 36.6,
+  "line": 11
+ },
+ {
+  "word": "pas",
+  "start": 36.6,
+  "end": 36.92,
+  "line": 11
+ },
+ {
+  "word": "oh",
+  "start": 37.08,
+  "end": 37.54,
+  "line": 11
+ }
+]
